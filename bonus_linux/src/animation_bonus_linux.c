@@ -6,95 +6,11 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:10:53 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/31 17:00:07 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:17:41 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_linux/so_long_bonus_linux.h"
-
-/**
- * @brief
- *
- * 			Same thing for every animation
- *
- * 	so every x.frames and x.frame * 2
- *  	we change the frame_0 to the 1 when we hit
- * 			the frame fof the object aka frame count
- * 				in the fct, then change it to frame 2
- * 					when we hit the double of the frame
- * 						the reset it to 0 again and again
- *
- * @param animation
- */
-void	ft_wall_animation(t_animation *animation)
-{
-	static int	frame;
-
-	if (frame == animation->frames)
-		animation->current = animation->frame_1;
-	else if (frame >= animation->frames * 2)
-	{
-		animation->current = animation->frame_2;
-		frame = FALSE;
-	}
-	frame += TRUE;
-}
-
-/**
- * @brief
- *
- * 			Same thing for every animation
- *
- * 	so every x.frames and x.frame * 2
- *  	we change the frame_0 to the 1 when we hit
- * 			the frame fof the object aka frame count
- * 				in the fct, then change it to frame 2
- * 					when we hit the double of the frame
- * 						the reset it to 0 again and again
- *
- * @param animation
- */
-void	ft_lava_animation(t_animation *animation)
-{
-	static int	frame;
-
-	if (frame == animation->frames)
-		animation->current = animation->frame_1;
-	else if (frame >= animation->frames * 2)
-	{
-		animation->current = animation->frame_2;
-		frame = FALSE;
-	}
-	frame += TRUE;
-}
-
-/**
- * @brief
- *
- * 			Same thing for every animation
- *
- * 	so every x.frames and x.frame * 2
- *  	we change the frame_0 to the 1 when we hit
- * 			the frame fof the object aka frame count
- * 				in the fct, then change it to frame 2
- * 					when we hit the double of the frame
- * 						the reset it to 0 again and again
- *
- * @param animation
- */
-void	ft_key_animation(t_animation *animation)
-{
-	static int	frame;
-
-	if (frame == animation->frames)
-		animation->current = animation->frame_1;
-	else if (frame >= animation->frames * 2)
-	{
-		animation->current = animation->frame_2;
-		frame = FALSE;
-	}
-	frame += TRUE;
-}
 
 /**
  * @brief
@@ -140,160 +56,70 @@ void	ft_door_open_animation(t_anim_door *animation)
  *
  * @param door
  */
+void	ft_door_closed_animation(t_anim_door *animation)
+{
+	static int	frame;
+
+	if (frame >= 0 && frame < animation->frames)
+		animation->current = animation->frame_0;
+	else if (frame >= animation->frames && frame < 2 * animation->frames)
+		animation->current = animation->frame_1;
+	else if (frame >= 2 * animation->frames)
+	{
+		animation->current = animation->frame_2;
+		frame = -1;
+	}
+	frame++;
+}
+
+static void	ft_update_animation(t_animation *animation, int *frame)
+{
+	if (*frame == animation->frames)
+		animation->current = animation->frame_1;
+	else if (*frame >= animation->frames * 2)
+	{
+		animation->current = animation->frame_2;
+		*frame = 0x0;
+	}
+	(*frame)++;
+}
+
+void	ft_wall_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_update_animation(animation, &frame);
+}
+
+void	ft_lava_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_update_animation(animation, &frame);
+}
+
+void	ft_key_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_update_animation(animation, &frame);
+}
+
 void	ft_love_animation(t_animation *animation)
 {
 	static int	frame;
 
-	if (frame == animation->frames)
-		animation->current = animation->frame_1;
-	else if (frame >= animation->frames * 2)
-	{
-		animation->current = animation->frame_2;
-		frame = FALSE;
-	}
-	frame += TRUE;
+	frame = 0;
+	ft_update_animation(animation, &frame);
 }
 
-/**
- * @brief
- *
- * 			Same thing for every animation
- *
- * 	so every x.frames and x.frame * 2
- *  	we change the frame_0 to the 1 when we hit
- * 			the frame fof the object aka frame count
- * 				in the fct, then change it to frame 2
- * 					when we hit the double of the frame
- * 						the reset it to 0 again and again
- *
- *
- * @param door
- */
 void	ft_grass_animation(t_animation *animation)
 {
 	static int	frame;
 
-	if (frame == animation->frames)
-		animation->current = animation->frame_1;
-	else if (frame >= animation->frames * 2)
-	{
-		animation->current = animation->frame_2;
-		frame = FALSE;
-	}
-	frame += TRUE;
+	frame = 0;
+	ft_update_animation(animation, &frame);
 }
-
-/**
- * @brief
- *
- * 			Same thing for every animation
- *
- * 	so every x.frames and x.frame * 2
- *  	we change the frame_0 to the 1 when we hit
- * 			the frame fof the object aka frame count
- * 				in the fct, then change it to frame 2
- * 					when we hit the double of the frame
- * 						the reset it to 0 again and again
- *
- *
- * @param door
- */
-void	ft_door_closed_animation(t_anim_door *animation)
-{
-   static int frame;
-
-    if (frame >= 0 && frame < animation->frames) {
-        animation->current = animation->frame_0;
-    } else if (frame >= animation->frames && frame < 2 * animation->frames) {
-        animation->current = animation->frame_1;
-    } else if (frame >= 2 * animation->frames) {
-        animation->current = animation->frame_2;
-        frame = -1;
-    }
-    frame++;
-}
-
-
-// void ft_animation(t_animation *animation) {
-//     static int frame = 8;
-
-//     if (frame >= 0 && frame < animation->frames) {
-//         animation->current = animation->frame_0;
-//     } else if (frame >= animation->frames && frame < 2 * animation->frames) {
-//         animation->current = animation->frame_1;
-//     } else if (frame >= 2 * animation->frames) {
-//         animation->current = animation->frame_2;
-//         frame = -1;
-//     }
-//     frame++;
-// }
-
-// static void	update_animation(t_animation *animation, int *frame)
-// {
-// 	if (*frame == animation->frames)
-// 		animation->current = animation->frame_1;
-// 	else if (*frame >= animation->frames * 2)
-// 	{
-// 		animation->current = animation->frame_2;
-// 		*frame = 0; // Remise à zéro pour recommencer l'animation
-// 	}
-// 	(*frame)++;
-// }
-
-// void	ft_love_animation(t_animation *animation)
-// {
-// 	static int	frame;
-
-// 	if (frame == animation->frames)
-// 		animation->current = animation->frame_1;
-// 	else if (frame >= animation->frames * 2)
-// 	{
-// 		animation->current = animation->frame_2;
-// 		frame = FALSE;
-// 	}
-// 	frame += TRUE;
-// }
-
-// void	ft_grass_animation(t_animation *animation)
-// {
-// 	static int	frame;
-
-// 	if (frame == animation->frames)
-// 		animation->current = animation->frame_1;
-// 	else if (frame >= animation->frames * 2)
-// 	{
-// 		animation->current = animation->frame_2;
-// 		frame = FALSE;
-// 	}
-// 	frame += TRUE;
-// }
-
-// void	ft_wall_animation(t_animation *animation)
-// {
-// 	static int	frame = 0;
-// 	update_animation(animation, &frame);
-// }
-
-// void	ft_lava_animation(t_animation *animation)
-// {
-// 	static int	frame = 0;
-// 	update_animation(animation, &frame);
-// }
-
-// void	ft_key_animation(t_animation *animation)
-// {
-// 	static int	frame = 0;
-// 	update_animation(animation, &frame);
-// }
-
-// void	ft_love_animation(t_animation *animation)
-// {
-// 	static int	frame = 0;
-// 	update_animation(animation, &frame);
-// }
-
-// void	ft_grass_animation(t_animation *animation)
-// {
-// 	static int	frame = 0;
-// 	update_animation(animation, &frame);
-// }

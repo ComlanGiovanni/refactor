@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:12:11 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/31 14:07:02 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:15:59 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /**
  * @brief
  *
- *	 	This fct display the map store in
+ *			This fct display the map store in
  * 			game->map.map_str not in one line but like
  * 			in the map.ber where we join every line
  * 				11111
@@ -70,11 +70,10 @@ void	ft_print_map_better_format(t_game *game)
 void	ft_print_game_info(t_game *game)
 {
 	system("clear");
-	//ft_print_map_better_format(game);
-	//ft_print_display_grid(game->map.matrice);
 	ft_print_display_grid(game->map.grid);
-	//ft_printf("\n");
-	printf("Player position: (%d, %d)\n",game->player.movement.current_position.x, game->player.movement.current_position.y);
+	ft_printf("Player position: (%d, %d)\n",
+		game->player.movement.current_position.x,
+		game->player.movement.current_position.y);
 }
 
 /**
@@ -156,7 +155,7 @@ void	ft_direction_by_pos_after_launch(t_game *game)
  *
  * 		return 1 because we fail hummmm legit ? or its 0
  *
- * 		 mlx_destroy_window(game->mlx, game->win);
+ * 			mlx_destroy_window(game->mlx, game->win);
  *
  * @param game
  * @return int
@@ -175,32 +174,8 @@ void	ft_free_step_and_storage(t_game *game)
 {
 	if (game->hud.str_step != NULL)
 		free(game->hud.str_step);
-	// if (game->hud.str_storage != NULL)
-	// 	free(game->hud.str_storage);
 	if (game->hud.str_fps != NULL)
 		free(game->hud.str_fps);
 	if (game->hud.str_key_remain != NULL)
 		free(game->hud.str_key_remain);
-
 }
-
-	// ft_printf("----------------------------------\n");
-	// ft_printf("**********************************\n");
-	//ft_printf("* key pressed : %d                \n", key_code);
-	// ft_printf("---------MAP INIT INFO------------\n");
-	// ft_printf("* Number of void : %d             \n", game->map.nbr_void);
-	// ft_printf("* Number of Wall : %d             \n", game->map.nbr_wall);
-	// ft_printf("* Number of Lava : %d             \n", game->map.nbr_lava);
-	// ft_printf("* Number of Love : %d        \n", game->map.nbr_love);
-	// ft_printf("* Number of Key : %d              \n", game->map.nbr_key);
-	// ft_printf("---------PLAYER INFO--------------\n");
-	// ft_printf("* Player Step    : %d             \n", game->player.step);
-	// ft_printf("* Player Storage : %d             \n", game->player.storage);
-	// ft_printf("* Player Life : %d                \n", game->player.life);
-	// ft_print_facing(game);
-	// ft_print_status(game);
-	// ft_printf("---------REMANING--------------\n");
-	// ft_printf("* Remaining key : %d\n",
-	// 	(game->map.nbr_key - game->player.storage));
-	// ft_printf("*********************************\n");
-	// ft_printf("---------------------------------\n");

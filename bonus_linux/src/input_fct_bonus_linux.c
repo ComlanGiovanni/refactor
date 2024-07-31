@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:17 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/31 13:26:19 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 00:55:36 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,52 +32,32 @@
 
 void	ft_input_up(t_game *game)
 {
-	//ft_change_animation(char direction, void *movement_frame);
 	game->player.up_anim.current = game->player.up_anim.frame_move;
-	// game->player.movement.target_position.x = game->player.movement.current_position.x;
-	// game->player.movement.target_position.y = game->player.movement.current_position.y - 1;
 	game->player.movement.direction = 'u';
 	game->player.movement.moved = TRUE;
-	//ft_change_animation(char direction, void *movement_frame);
 	ft_move_up(game);
-	//ft_put_sprites_by_line(game);
 }
 
 void	ft_input_down(t_game *game)
 {
-	//ft_change_animation(char direction, void *movement_frame);
 	game->player.down_anim.current = game->player.down_anim.frame_move;
-	// game->player.movement.target_position.x = game->player.movement.current_position.x;
-	// game->player.movement.target_position.y = game->player.movement.current_position.y + 1;
 	game->player.movement.direction = 'd';
 	game->player.movement.moved = TRUE;
-	//ft_change_animation(char direction, void *movement_frame);
 	ft_move_down(game);
-	//ft_put_sprites_by_line(game);
 }
 
 void	ft_input_left(t_game *game)
 {
-	//ft_change_animation(char direction, void *movement_frame);
 	game->player.left_anim.current = game->player.left_anim.frame_move;
-	// game->player.movement.target_position.x = game->player.movement.current_position.x - 1;
-	// game->player.movement.target_position.y = game->player.movement.current_position.y;
 	game->player.movement.direction = 'l';
 	game->player.movement.moved = TRUE;
-	//ft_change_animation(char direction, void *movement_frame);
 	ft_move_left(game);
-	//ft_put_sprites_by_line(game);
 }
 
 void	ft_input_right(t_game *game)
 {
-	//ft_change_animation(char direction, void *movement_frame);
 	game->player.right_anim.current = game->player.right_anim.frame_move;
-	// game->player.movement.target_position.x = game->player.movement.current_position.x + 1;
-	// game->player.movement.target_position.y = game->player.movement.current_position.y;
 	game->player.movement.direction = 'r';
 	game->player.movement.moved = TRUE;
-	//ft_change_animation(char direction, void *movement_frame);
 	ft_move_right(game);
-	//ft_put_sprites_by_line(game);
 }

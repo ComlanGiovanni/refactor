@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 23:24:37 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/29 05:47:44 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:14:33 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_check_map_finishable(t_game *game)
 	if (coin != game->map.info.nbr_key)
 	{
 		ft_printf("%s %d\n%s %d\n", KEY_FOUND, coin, KEY_AVAILABLE,
-				game->map.info.nbr_key);
+			game->map.info.nbr_key);
 		ft_free_and_print(game->map.matrice, game, COIN_MAP_ERROR);
 	}
 	ft_printf("%s", PATH_MAP_GOOD);
@@ -82,7 +82,6 @@ void	ft_clean_grid_map(char **grid, int row)
 	int	index;
 
 	index = 0;
-	//system("clear");
 	while (index < row)
 	{
 		if (grid[index])

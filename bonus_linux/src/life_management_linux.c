@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:30 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/31 20:49:53 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:09:15 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
  * is not great display because for 100 life we dont manage to print all
  * 		for DLC we can stack every heath
  *
+ * 	//t_point for less line put in struct
+ * //regarde pour la tranparance lalpha
  * @param game
  */
 void	ft_display_life_on_windows(t_game *game)
@@ -34,14 +36,13 @@ void	ft_display_life_on_windows(t_game *game)
 	int	icon_spacing;
 
 	idx = 0;
-	//t_point for less line put in struct
 	x = 5;
 	y = 5;
 	icons_per_row = 3;
 	icon_spacing = 5;
 	while (idx < game->player.life && idx < 500)
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->love.icon, x, y);//regarde pour la tranparance lalpha
+		mlx_put_image_to_window(game->mlx, game->win, game->love.icon, x, y);
 		idx++;
 		if ((idx % icons_per_row) == 0)
 		{
@@ -73,7 +74,7 @@ void	ft_random_lava_move(t_game *game)
 	int	random;
 
 	srand(time(0));
-	random = rand() % 4;
+	random = rand() % 4 ;
 	if (random == 0)
 		game->lava.move = 'u';
 	if (random == 1)

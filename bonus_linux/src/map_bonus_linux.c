@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:55 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/29 04:07:04 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 00:57:34 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,32 +58,6 @@ void	ft_read_map(t_game *game, char *map_name)
 	game->map.size.y = game->height;
 }
 
-/**
- * @brief
- *
- *
- *  	here is the fct who call all the check we need to the game
- *
- * 	valid char 0 1 P C E			 ----------- void wall player coin exit
- * 	 NOT	rectangular form		|			|   FOR BONUS
- * 	no breathing room around the map ----------
- * 				playable P = 1 C/E >=1
- * 	in bonus we can have squared map
- * 				all the fct need game->map so we send a pointer to
- * 		t_game *game we could just send the game->map but who care ? i am lazy
- *
- * 		we init some map info
- *	 		nbr of key
- *   	exit player storage
- *  	lava love wall void etc
- * 	 the wall is 1 because
- * we start already at the firs wall
- *
- * the we print the map in console not in line but in
- * the file format with they new line
- *
- * @param game
- */
 void	ft_check_map(t_game *game)
 {
 	ft_map_fit_screen(game);

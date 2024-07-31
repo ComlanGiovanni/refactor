@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 20:05:20 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/30 12:48:05 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 00:47:44 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_init_camera(t_game *game)
 {
-	//mettre a 0 pour une fondue sur le personnage au demarrage ?
-
 	game->camera.current.x = game->player.movement.current_position.x;
 	game->camera.current.y = game->player.movement.current_position.y;
 	game->camera.target.x = game->player.movement.current_position.x;

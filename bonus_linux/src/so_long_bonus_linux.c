@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:12:23 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/31 20:47:38 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:06:43 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,13 @@ void	ft_init_frames(t_game *game)
 	game->hud.digits.nine.frames = 78;
 }
 
+//make position offset ?
+//missing t_point for life
+// game->hud.storage.x = 200;
+// game->hud.storage.y = 300;
+
 void	ft_init_hud_sprites_position(t_game *game)
 {
-	//make position offset ?
-	//missing t_point for life
 	game->hud.step.x = 90;
 	game->hud.step.y = 40;
 	game->hud.fps.x = 60;
@@ -88,15 +91,12 @@ void	ft_init_hud_sprites_position(t_game *game)
 	game->hud.direction.y = 320;
 	game->hud.keys.x = 170;
 	game->hud.keys.y = 240;
-	// game->hud.storage.x = 200;
-	// game->hud.storage.y = 300;
 }
 
 void	ft_display_sprites_addr(t_game *game)
 {
-	//check every line and found better way of doing this
-	ft_printf("All image width and height are [%d x %d]\n\n", IMG_SIZE,
-			IMG_SIZE);
+	ft_printf("All image width and height are [%d x %d]\n\n",
+		IMG_SIZE, IMG_SIZE);
 	ft_printf("assets/xpm/Bonus/lava/lava_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
 	ft_printf("assets/xpm/Bonus/lava/lava_frame_1.xpm");
@@ -174,47 +174,45 @@ void	ft_display_sprites_addr(t_game *game)
 	ft_printf("assets/xpm/Bonus/love/love_frame_2.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
 	ft_printf("assets/xpm/Bonus/love/love_small_icon.xpm");
-	//ft_printf(" : [\033[0;32m%p\033[0m]\n", game->hud.digits.two.frame_2);
 }
 
-void	ft_draw_sprite(t_game *game, void *sprite_img, int x, int y)
-{
-int				sprite_width;
-	int				sprite_height;
-	int				i;
-	int				j;
-	char			*dst;
-	char			*src;
-	unsigned int	color;
-	char			*sprite_data;
-	int				sprite_bpp;
-	int				sprite_size_line;
-	int				sprite_endian;
+// void	ft_draw_sprite(t_game *game, void *sprite_img, int x, int y)
+// {
+// 	int				sprite_width;
+// 	int				sprite_height;
+// 	int				i;
+// 	int				j;
+// 	char			*dst;
+// 	char			*src;
+// 	unsigned int	color;
+// 	char			*sprite_data;
+// 	int				sprite_bpp;
+// 	int				sprite_size_line;
+// 	int				sprite_endian;
 
-	// Récupérer les données de l'image du sprite
-	sprite_data = mlx_get_data_addr(sprite_img, &sprite_bpp, &sprite_size_line, &sprite_endian);
-	sprite_width = 64;
-	sprite_height = 64;
-
-	// Parcourir chaque pixel du sprite
-	for (i = 0; i < sprite_height; i++)
-	{
-		for (j = 0; j < sprite_width; j++)
-		{
-			// Calculer la position du pixel source et destination
-			src = sprite_data + (i * sprite_size_line + j * (sprite_bpp / 8));
-			dst = game->win + ((y + i) * game->window.size_line + (x + j) * (game->window.bpp / 8));
-
-			// Récupérer la couleur du pixel source
-			color = *(unsigned int *)src;
-
-			// Gestion de la transparence
-			if (color != 0xFF000000) // 0xFF000000 pour la transparence (si applicable)
-				*(unsigned int *)dst = color;
-		}
-	}
-}
-
+// 	// Récupérer les données de l'image du sprite
+// 	sprite_data = mlx_get_data_addr(sprite_img, &sprite_bpp, &sprite_size_line,
+// 			&sprite_endian);
+// 	sprite_width = 64;
+// 	sprite_height = 64;
+// 	// Parcourir chaque pixel du sprite
+// 	for (i = 0; i < sprite_height; i++)
+// 	{
+// 		for (j = 0; j < sprite_width; j++)
+// 		{
+// 			// Calculer la position du pixel source et destination
+// 			src = sprite_data + (i * sprite_size_line + j * (sprite_bpp / 8));
+// 			dst = game->win + ((y + i) * game->window.size_line + (x + j)
+// 					* (game->window.bpp / 8));
+// 			// Récupérer la couleur du pixel source
+// 			color = *(unsigned int *)src;
+// 			// Gestion de la transparence
+// 			if (color != 0xFF000000)
+// 			// 0xFF000000 pour la transparence (si applicable)
+// 				*(unsigned int *)dst = color;
+// 		}
+// 	}
+// }
 
 /**
  * @brief
@@ -263,36 +261,7 @@ void	ft_init_game(t_game *game, char *map_name)
 	ft_check_map(game);
 	ft_setup_map(game);
 	ft_create_window(game);
-	// game->window.img = mlx_new_image(game->mlx, game->window.width, game->window.height);
-	// if (game->window.img == NULL)
-	// 	ft_print_error("game->window.img_data fail", game);
-	// game->window.img_data = mlx_get_data_addr(game->window.img, &game->window.bpp, &game->window.size_line, &game->window.endian);
-	// if (game->window.img_data == NULL)
-	// 	ft_print_error("game->window.img_data fail", game);
-	// int	i;
-	// int j;
-	// int	color = 0xffffff;
-
-	// for (i = 0; i < game->window.height; i++)
-	// {
-	// 	for (j = 0; j < game->window.width; j++)
-	// 	{
-	// 		*(unsigned int*)(game->window.img_data + (i * game->window.size_line) + (j * (game->window.bpp / 8))) = color;
-	// 	}
-	// }
-	// ft_draw_sprite(game, game->grass.animation.current, 500, 500);
-	// ft_draw_sprite(game, game->love.animation.current, 500, 500);
-	// ft_printf("-----------------------------------------------");
-	// ft_printf("\n\nImage Data: %p\n", game->window.img_data);
-	// ft_printf("BPP: %d\n", game->window.bpp);
-	// ft_printf("Size Line: %d\n", game->window.size_line);
-	// ft_printf("Endian: %d\n", game->window.endian);
-	// ft_printf("-----------------------------------------------\n");
-	// ft_printf("Screen Width -> [%d]\n", game->window.width);
-	// ft_printf("Screen Height -> [%d]\n\n", game->window.height);
-	//mlx_put_image_to_window(game->mlx, game->win, game->window.img, 0, 0);
 	ft_display_sprites_addr(game);
-	//mlx_put_image_to_window(game->mlx, game->win, game->window.img, 0, 0);
 	system("cvlc sounds/BabaIsYouOnTheIsland.wav &");
 }
 

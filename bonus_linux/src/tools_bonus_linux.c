@@ -6,20 +6,12 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:12:43 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/20 03:12:46 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 00:58:57 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_linux/so_long_bonus_linux.h"
 
-/**
- * @brief
- *
- * It's just a strdup but until \n
- *
- * @param s1
- * @return char*
- */
 char	*ft_custom_strdup(char *s1)
 {
 	char	*dest;

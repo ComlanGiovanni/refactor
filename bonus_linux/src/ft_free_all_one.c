@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 20:17:50 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/31 20:36:33 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:12:35 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	ft_free_five(t_game *game)
 	if (game->hud.digits.five.frame_2 != NULL)
 		mlx_destroy_image(game->mlx, game->hud.digits.five.frame_2);
 }
+
 void	ft_free_six(t_game *game)
 {
 	if (game->hud.digits.six.frame_0)
@@ -125,7 +126,6 @@ void	ft_free_digits(t_game *game)
 	ft_free_nine(game);
 }
 
-
 void	ft_free_animation(t_game *game)
 {
 	ft_free_player_move(game);
@@ -140,15 +140,12 @@ void	ft_free_animation(t_game *game)
 	ft_free_digits(game);
 }
 
-//message for every sprites free ?
-//make a table for while loop to free ?
-
 void	ft_free_mlx(t_game *game)
 {
-	// if (game->window.img)
-	// 	mlx_destroy_image(game->mlx, game->window.img);
-	// if (game->window.img_data)
-	// 	free(game->window.img);
+	if (game->window.img)
+		mlx_destroy_image(game->mlx, game->window.img);
+	if (game->window.img_data)
+		free(game->window.img);
 	if (game->mlx && game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
@@ -158,7 +155,6 @@ void	ft_free_mlx(t_game *game)
 	if (game)
 		free(game);
 }
-
 
 void	ft_free_grass(t_game *game)
 {

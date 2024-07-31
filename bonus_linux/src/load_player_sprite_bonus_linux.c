@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:43 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/26 20:30:31 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 00:57:10 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,6 @@ void	ft_player_animation(t_player *player)
 	frame += TRUE;
 }
 
-/**
- * @brief
- *
- * 		Check after load to prevent segfault
- * 			of all the loaded sprite
- *			print the good error message
- * 		Here player sprite close and open sprite
- * 				UP sprite frame 0 1 2 move
- *
- * @param game
- */
 void	ft_load_player_up_sprites(t_game *game)
 {
 	int	width;
@@ -89,17 +78,6 @@ void	ft_load_player_up_sprites(t_game *game)
 		ft_print_error(PLAYER_U_M_ERROR, game);
 }
 
-/**
- * @brief
- *
- * 		Check after load to prevent segfault
- * 			of all the loaded sprite
- *			print the good error message
- * 		Here player sprite close and open sprite
- * 				DOWN sprite frame 0 1 2 move
- *
- * @param game
- */
 void	ft_load_player_down_sprites(t_game *game)
 {
 	int	width;
@@ -127,17 +105,6 @@ void	ft_load_player_down_sprites(t_game *game)
 		ft_print_error(PLAYER_D_M_ERROR, game);
 }
 
-/**
- * @brief
- *
- * 		Check after load to prevent segfault
- * 			of all the loaded sprite
- *			print the good error message
- * 		Here player sprite close and open sprite
- * 				LEFT sprite frame 0 1 2 move
- *
- * @param game
- */
 void	ft_load_player_left_sprites(t_game *game)
 {
 	int	width;
@@ -165,17 +132,6 @@ void	ft_load_player_left_sprites(t_game *game)
 		ft_print_error(PLAYER_L_M_ERROR, game);
 }
 
-/**
- * @brief
- *
- * 		Check after load to prevent segfault
- * 			of all the loaded sprite
- *			print the good error message
- * 		Here player sprite close and open sprite
- * 				RIGHT sprite frame 0 1 2 move
- *
- * @param game
- */
 void	ft_load_player_right_sprites(t_game *game)
 {
 	int	width;

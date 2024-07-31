@@ -6,35 +6,17 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:37 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/29 21:52:47 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 00:56:44 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_linux/so_long_bonus_linux.h"
 
-/**
- * @brief
- *
- * 		Check after load to prevent segfault of all the loaded sprite
- * 				set of the frame of the animation in the struct
- *			print the good erro message
- * 				Here door sprite close and open sprite
- *
- * 		we can see here that we only load one sprite for the closed dooor
- * 	because by mistake i forget to load all the sprite for the door and then
- * 	realized that is better if we animate the door in green when all collectible
- * 	if collect by the player or good felling like feed back to the player
- *
- *
- * @param game
- */
 void	ft_load_door_closed_sprites(t_game *game)
 {
 	int	width;
 	int	height;
 
-	//game->door.frames = 24;
-	//game->door.closed.frames = 12;
 	game->door.closed.frames = 24;
 	game->door.closed.frame_0 = mlx_xpm_file_to_image(game->mlx,
 			"assets/xpm/Bonus/door/closed/door_closed_frame_0.xpm",

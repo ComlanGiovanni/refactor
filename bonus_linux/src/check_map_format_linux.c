@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:10:59 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/29 23:13:08 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:07:14 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	check_ber_format(char *map_name, int height, t_game *game)
  * 				and init width to the
  * 		len of line send to the fct
  * 					the copy the line in map
- *
+ *game->window.img = NULL;
  * @param game
  * @param line
  */
@@ -121,13 +121,11 @@ void	ft_init_map_info(t_game *game, char *line)
 	game->height = FALSE;
 	game->width = ft_strlen(line) - TRUE;
 	game->map.map_str = ft_custom_strdup(line);
-	//ft_init_window_info memeset ? bzero ?
 	game->window.width = 0x0;
 	game->window.height = 0x0;
 	game->window.size_line = 0x0;
 	game->window.bpp = 0x0;
 	game->window.endian = 0x0;
-	game->window.img = NULL;
 	free(line);
 }
 

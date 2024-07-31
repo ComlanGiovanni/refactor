@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:31:55 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/31 19:01:59 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:06:08 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,7 +316,6 @@ void				ft_grass_animation(t_animation *animation);
 void				ft_print_fill_grid(char **map);
 void				ft_print_display_grid(char **res);
 void				ft_display_start_end(t_point start, t_point end);
-void				ft_secure_usleep(int microseconds);
 //../src/bonus/check_map_format.c
 
 int					get_map_height(char *map_name, t_game *game);
@@ -331,8 +330,6 @@ t_bool				ft_path_exists(char **tab, t_point size, t_point start,
 						t_point end);
 t_bool				ft_path_founding(char **tab, t_point size, t_point cur,
 						t_point end);
-void				ft_get_all_collectable(char **tab, t_game *game,
-						t_point start, int *coins);
 
 void				ft_flood_fill(char **tab, t_game *game, t_point start,
 						t_bool *exit_found, int *coins);
@@ -492,9 +489,9 @@ void				ft_init_camera(t_game *game);
 char				**ft_create_map_with_border(t_game *game);
 void				ft_player_get_hit(t_game *game);
 
-void	ft_draw_sprite(t_game *game, void *sprite_img, int x, int y);
+//void	ft_draw_sprite(t_game *game, void *sprite_img, int x, int y);
 
-void	ft_put_buffer_image(t_game *game);
+//void	ft_put_buffer_image(t_game *game);
 
 void	ft_draw_image_buffer(t_game *game, int width, int height,
 		t_point sprite_pos);

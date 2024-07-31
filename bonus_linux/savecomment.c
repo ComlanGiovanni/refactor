@@ -303,3 +303,99 @@
 // 		}
 // 	}
 // }
+// game->window.img = mlx_new_image(game->mlx, game->window.width, game->window.height);
+	// if (game->window.img == NULL)
+	// 	ft_print_error("game->window.img_data fail", game);
+	// game->window.img_data = mlx_get_data_addr(game->window.img, &game->window.bpp, &game->window.size_line, &game->window.endian);
+	// if (game->window.img_data == NULL)
+	// 	ft_print_error("game->window.img_data fail", game);
+	// int	i;
+	// int j;
+	// int	color = 0xffffff;
+
+	// for (i = 0; i < game->window.height; i++)
+	// {
+	// 	for (j = 0; j < game->window.width; j++)
+	// 	{
+	// 		*(unsigned int*)(game->window.img_data + (i * game->window.size_line) + (j * (game->window.bpp / 8))) = color;
+	// 	}
+	// }
+	// ft_draw_sprite(game, game->grass.animation.current, 500, 500);
+	// ft_draw_sprite(game, game->love.animation.current, 500, 500);
+	// ft_printf("-----------------------------------------------");
+	// ft_printf("\n\nImage Data: %p\n", game->window.img_data);
+	// ft_printf("BPP: %d\n", game->window.bpp);
+	// ft_printf("Size Line: %d\n", game->window.size_line);
+	// ft_printf("Endian: %d\n", game->window.endian);
+	// ft_printf("-----------------------------------------------\n");
+	// ft_printf("Screen Width -> [%d]\n", game->window.width);
+	// ft_printf("Screen Height -> [%d]\n\n", game->window.height);
+	//mlx_put_image_to_window(game->mlx, game->win, game->window.img, 0, 0);
+
+// void ft_alpha_blend(t_game *game, t_point pos, void *sprite, int width, int height) {
+//     int x, y;
+//     int color;
+//     int dst_offset;
+//     int src_offset;
+//     char *src_data;
+//     int a, r, g, b;
+//     int bg_r, bg_g, bg_b;
+
+//     src_data = mlx_get_data_addr(sprite, &game->bpp, &game->size_line, &game->endian);
+
+//     for (y = 0; y < height; y++) {
+//         for (x = 0; x < width; x++) {
+//             src_offset = (y * game->size_line) + (x * (game->bpp / 8));
+//             dst_offset = ((pos.y + y) * game->size_line) + ((pos.x + x) * (game->bpp / 8));
+
+//             color = *(int *)(src_data + src_offset);
+//             a = (color >> 24) & 0xFF;
+//             r = (color >> 16) & 0xFF;
+//             g = (color >> 8) & 0xFF;
+//             b = color & 0xFF;
+
+//             bg_r = game->img_data[dst_offset + 2] & 0xFF;
+//             bg_g = game->img_data[dst_offset + 1] & 0xFF;
+//             bg_b = game->img_data[dst_offset] & 0xFF;
+
+//             game->img_data[dst_offset + 2] = (r * a + bg_r * (255 - a)) / 255;
+//             game->img_data[dst_offset + 1] = (g * a + bg_g * (255 - a)) / 255;
+//             game->img_data[dst_offset] = (b * a + bg_b * (255 - a)) / 255;
+//         }
+//     }
+// }
+
+//ft_capture_screen(game, "screenshot.bmp");
+
+// void ft_capture_screen(t_game *game, const char *filename) {
+//     int fd;
+//     int filesize = 54 + 3 * game->win_width * game->win_height;
+//     unsigned char bmpfileheader[14] = {
+//         'B', 'M', filesize, 0, 0, 0, 0, 0, 0, 0, 54, 0, 0, 0
+//     };
+//     unsigned char bmpinfoheader[40] = {
+//         40, 0, 0, 0, game->win_width, 0, 0, 0, game->win_height, 0, 0, 0, 1, 0, 24, 0
+//     };
+//     unsigned char bmppad[3] = {0, 0, 0};
+//     int i, j;
+//     int *img_data_int = (int *)game->img_data;
+
+//     fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0666);
+//     if (fd < 0) {
+//         ft_print_error("Error opening file for screenshot", game);
+//     }
+
+//     write(fd, bmpfileheader, 14);
+//     write(fd, bmpinfoheader, 40);
+
+//     for (i = 0; i < game->win_height; i++) {
+//         for (j = 0; j < game->win_width; j++) {
+//             int pixel = img_data_int[(game->win_height - i - 1) * game->win_width + j];
+//             unsigned char color[3] = {pixel & 0xFF, (pixel >> 8) & 0xFF, (pixel >> 16) & 0xFF};
+//             write(fd, color, 3);
+//         }
+//         write(fd, bmppad, (4 - (game->win_width * 3) % 4) % 4);
+//     }
+
+//     close(fd);
+// }

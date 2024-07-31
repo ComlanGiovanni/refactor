@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:12:49 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/31 20:34:32 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 00:59:10 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,8 +265,6 @@ int	ft_update(t_game *game)
 	ft_update_camera(game);
 	ft_play_animation(game);
 	//ft_draw_sprite(game, game->grass.animation.current, 500, 500);
-	//to make lesscall
-	//ft_random_lava_move(game);
 	if ((game->map.info.nbr_key == game->player.storage) && !game->finished)
 	{
 		game->finished = 1;
