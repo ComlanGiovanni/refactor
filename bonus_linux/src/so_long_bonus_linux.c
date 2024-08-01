@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:12:23 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 17:07:37 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:49:11 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ft_setup_map(t_game *game)
 			PORTAL_1_CHAR);
 	game->map.portal_2_pos = ft_find_pos_char(game->map.grid, game->map.size,
 			PORTAL_2_CHAR);
+	ft_printf("\n[%d] y->[%d]\n", game->map.size.x, game->map.size.y);
 	ft_display_position(game->map.start, game->map.end, game->map.portal_1_pos,
 			game->map.portal_2_pos);
 	game->player.movement.current_position.x = game->map.start.x;

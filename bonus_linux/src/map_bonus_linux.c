@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:55 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 15:31:31 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:40:04 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,8 @@ void	ft_get_info_map(t_game *game)
 			game->map.info.nbr_portal_1++;
 		else if (game->map.map_str[idx] == PORTAL_2_CHAR)
 			game->map.info.nbr_portal_2++;
+		else if (game->map.map_str[idx] == BORDER_CHAR)
+			game->map.info.nbr_border++;
 		else
 			game->map.info.nbr_void++;
 	}

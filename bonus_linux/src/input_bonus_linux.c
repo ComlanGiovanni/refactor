@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:11 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 17:20:31 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:31:15 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,10 @@ void	ft_teleport_player(t_game *game, int y, int x)
 	t_point		destination;
 
 	if (game->map.grid[y][x] == 'N')
+	{
 		destination = game->map.portal_1_pos;
+		ft_printf("bugs");
+	}
 	else if (game->map.grid[y][x] == 'Z')
 		destination = game->map.portal_2_pos;
 	else
