@@ -399,3 +399,76 @@
 
 //     close(fd);
 // }
+
+// void	ft_generic_animation(t_animation *animation, int *frame)
+// {
+// 	if (*frame == animation->frames)
+// 		animation->current = animation->frame_1;
+// 	else if (*frame >= animation->frames * 2)
+// 	{
+// 		animation->current = animation->frame_2;
+// 		*frame = 0;
+// 	}
+// }
+
+// void	ft_digits_animation(t_game *game)
+// {
+// 	static int	frame_zero;
+// 	static int	frame_one;
+// 	static int	frame_two;
+// 	static int	frame_tree;
+// 	static int	frame_four;
+// 	static int	frame_five;
+// 	static int	frame_six;
+// 	static int	frame_seven;
+// 	static int	frame_eight;
+// 	static int	frame_nine;
+
+// 	ft_generic_animation(&game->hud.digits.zero, &frame_zero);
+// 	ft_generic_animation(&game->hud.digits.one, &frame_one);
+// 	ft_generic_animation(&game->hud.digits.two, &frame_two);
+// 	ft_generic_animation(&game->hud.digits.tree, &frame_tree);
+// 	ft_generic_animation(&game->hud.digits.four, &frame_four);
+// 	ft_generic_animation(&game->hud.digits.five, &frame_five);
+// 	ft_generic_animation(&game->hud.digits.six, &frame_six);
+// 	ft_generic_animation(&game->hud.digits.seven, &frame_seven);
+// 	ft_generic_animation(&game->hud.digits.eight, &frame_eight);
+// 	ft_generic_animation(&game->hud.digits.nine, &frame_nine);
+// }
+
+
+// mets le path dans const char	*paths[]  et la maccor error message de ft_pritnerror dns const cahr * errors_messages et appel la fonction ft_ load_animation sprites avec game->, game, paths, et error_messa
+
+
+// void	ft_put_sprites_by_line(t_game *game)
+// {
+// 	int		width;
+// 	int		height;
+// 	int		win_width;
+// 	int		win_height;
+// 	t_point	sprite_pos;
+
+// 	win_width = ((game->width * IMG_SIZE) / 2);
+// 	win_height = ((game->height * IMG_SIZE) / 2);
+
+// 	// Only render visible sprites
+// 	int start_x = (game->camera.current.x / IMG_SIZE) - 1;
+// 	int end_x = ((game->camera.current.x + win_width) / IMG_SIZE) + 1;
+// 	int start_y = (game->camera.current.y / IMG_SIZE) - 1;
+// 	int end_y = ((game->camera.current.y + win_height) / IMG_SIZE) + 1;
+
+// 	start_x = start_x < 0 ? 0 : start_x;
+// 	end_x = end_x > game->width ? game->width : end_x;
+// 	start_y = start_y < 0 ? 0 : start_y;
+// 	end_y = end_y > game->height ? game->height : end_y;
+
+// 	for (height = start_y; height < end_y; height++)
+// 	{
+// 		for (width = start_x; width < end_x; width++)
+// 		{
+// 			sprite_pos.x = ((width * IMG_SIZE) - game->camera.current.x);
+// 			sprite_pos.y = ((height * IMG_SIZE) - game->camera.current.y);
+// 			ft_put_all_sprites_to_line(game, width, height, sprite_pos);
+// 		}
+// 	}
+// }

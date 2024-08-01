@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 16:30:10 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 01:14:45 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 04:44:49 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,12 @@ void	ft_flood_fill(char **tab, t_game *game, t_point start,
 	}
 	tab[start.y][start.x] = VISITED_CHAR;
 	ft_print_fill_grid(tab);
-	ft_flood_fill(tab, game, (t_point){start.x - 1, start.y}, exit_found, coins);
-	ft_flood_fill(tab, game, (t_point){start.x + 1, start.y}, exit_found, coins);
-	ft_flood_fill(tab, game, (t_point){start.x, start.y - 1}, exit_found, coins);
-	ft_flood_fill(tab, game, (t_point){start.x, start.y + 1}, exit_found, coins);
+	ft_flood_fill(tab, game, (t_point){start.x - 1, start.y}, exit_found,
+			coins);
+	ft_flood_fill(tab, game, (t_point){start.x + 1, start.y}, exit_found,
+			coins);
+	ft_flood_fill(tab, game, (t_point){start.x, start.y - 1}, exit_found,
+			coins);
+	ft_flood_fill(tab, game, (t_point){start.x, start.y + 1}, exit_found,
+			coins);
 }

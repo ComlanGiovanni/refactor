@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:10:53 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 01:17:41 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 14:02:48 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,47 +79,70 @@ static void	ft_update_animation(t_animation *animation, int *frame)
 	else if (*frame >= animation->frames * 2)
 	{
 		animation->current = animation->frame_2;
-		*frame = 0x0;
+		*frame = 0;
 	}
-	(*frame)++;
 }
 
 void	ft_wall_animation(t_animation *animation)
 {
-	static int	frame;
+	static int	frame = 0;
 
-	frame = 0;
 	ft_update_animation(animation, &frame);
+	frame++;
 }
 
 void	ft_lava_animation(t_animation *animation)
 {
-	static int	frame;
+	static int	frame = 0;
 
-	frame = 0;
 	ft_update_animation(animation, &frame);
+	frame++;
 }
 
 void	ft_key_animation(t_animation *animation)
 {
-	static int	frame;
+	static int	frame = 0;
 
-	frame = 0;
 	ft_update_animation(animation, &frame);
+	frame++;
 }
 
 void	ft_love_animation(t_animation *animation)
 {
-	static int	frame;
+	static int	frame = 0;
 
-	frame = 0;
 	ft_update_animation(animation, &frame);
+	frame++;
 }
 
 void	ft_grass_animation(t_animation *animation)
 {
-	static int	frame;
+	static int	frame = 0;
 
-	frame = 0;
 	ft_update_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_box_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_update_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_portal_n_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_update_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_portal_z_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_update_animation(animation, &frame);
+	frame++;
 }

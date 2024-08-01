@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:12:23 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 01:06:43 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:07:37 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,28 @@ void	ft_init_mlx(t_game *game)
 
 void	ft_setup_map(t_game *game)
 {
-	ft_display_start_end(game->map.start, game->map.end);
+	ft_printf("\nPlayer Start  position in grid x->%d y->%d\n",
+			game->map.start.x, game->map.start.y);
+	ft_printf("Player Exit     position in grid x->%d y->%d\n\n", game->map.end.x,
+			game->map.end.y);
 	if (game->map.matrice != NULL)
 		ft_clean_grid_map(game->map.matrice, game->height);
 	game->map.matrice = ft_split_map(game);
 	ft_print_display_grid(game->map.matrice);
 	game->map.grid = ft_create_map_with_border(game);
+	game->map.info.nbr_border = (game->map.size.x * game->map.size.y)
+		- game->map.len;
 	ft_printf(NEW_GRID_MSG);
 	ft_print_display_grid(game->map.grid);
-	game->map.start = ft_find_pos_char(game->map.grid, game->map.size, 'P');
-	game->map.end = ft_find_pos_char(game->map.grid, game->map.size, 'E');
-	ft_display_start_end(game->map.start, game->map.end);
+	game->map.start = ft_find_pos_char(game->map.grid, game->map.size,
+			PLAYER_CHAR);
+	game->map.end = ft_find_pos_char(game->map.grid, game->map.size, EXIT_CHAR);
+	game->map.portal_1_pos = ft_find_pos_char(game->map.grid, game->map.size,
+			PORTAL_1_CHAR);
+	game->map.portal_2_pos = ft_find_pos_char(game->map.grid, game->map.size,
+			PORTAL_2_CHAR);
+	ft_display_position(game->map.start, game->map.end, game->map.portal_1_pos,
+			game->map.portal_2_pos);
 	game->player.movement.current_position.x = game->map.start.x;
 	game->player.movement.current_position.y = game->map.start.y;
 }
@@ -58,13 +69,15 @@ void	ft_create_window(t_game *game)
 
 void	ft_init_frames(t_game *game)
 {
-	game->player.frames = PLAYER_FRAMES;
+	game->player.frames = 9;
 	game->lava.animation.frames = 24;
 	game->key.animation.frames = 6;
 	game->wall.animation.frames = 64;
-	game->grass.animation.frames = 8;
+	game->grass.animation.frames = 128;
 	game->love.animation.frames = 48;
 	game->hud.digits.zero.frames = 64;
+	game->door.closed.frames = 24;
+	game->door.open.frames = 24;
 	game->hud.digits.one.frames = 7;
 	game->hud.digits.two.frames = 12;
 	game->hud.digits.tree.frames = 7;
@@ -74,6 +87,9 @@ void	ft_init_frames(t_game *game)
 	game->hud.digits.seven.frames = 7;
 	game->hud.digits.eight.frames = 7;
 	game->hud.digits.nine.frames = 78;
+	game->box.animation.frames = 42;
+	game->portal.n.frames = 24;
+	game->portal.z.frames = 24;
 }
 
 //make position offset ?
@@ -96,7 +112,8 @@ void	ft_init_hud_sprites_position(t_game *game)
 void	ft_display_sprites_addr(t_game *game)
 {
 	ft_printf("All image width and height are [%d x %d]\n\n",
-		IMG_SIZE, IMG_SIZE);
+				IMG_SIZE,
+				IMG_SIZE);
 	ft_printf("assets/xpm/Bonus/lava/lava_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
 	ft_printf("assets/xpm/Bonus/lava/lava_frame_1.xpm");
@@ -214,6 +231,22 @@ void	ft_display_sprites_addr(t_game *game)
 // 	}
 // }
 
+void	ft_play_random_theme()
+{
+	static int random;
+
+	srand(time(0));
+	random = rand() % 4 ;
+	if (random == 0)
+		system("cvlc sounds/BabaIsYouOnTheIsland.wav &");
+	if (random == 1)
+		system("cvlc sounds/BabaIsYouTheme.wav &");
+	if (random == 2)
+		system("cvlc sounds/BabaIsYouWaterIsSinkThelake.wav &");
+	if (random == 3)
+		system("cvlc sounds/BabaIsYouCrystalIsStillCrystalcave.wav &");
+}
+
 /**
  * @brief
  *
@@ -260,9 +293,17 @@ void	ft_init_game(t_game *game, char *map_name)
 	ft_read_map(game, map_name);
 	ft_check_map(game);
 	ft_setup_map(game);
+	ft_print_map_info(game);
 	ft_create_window(game);
 	ft_display_sprites_addr(game);
-	system("cvlc sounds/BabaIsYouOnTheIsland.wav &");
+	ft_play_random_theme();
+}
+
+static int	ft_is_valid_char(char tile)
+{
+	return (tile == WALL_CHAR && tile == PLAYER_CHAR && tile == KEY_CHAR
+		&& tile == EXIT_CHAR && tile == VOID_CHAR && tile == PLAYER_CHAR
+		&& tile == BOX_CHAR);
 }
 
 /**
@@ -281,13 +322,7 @@ void	ft_check_valid_char(t_game *game)
 	idx = FALSE;
 	while (game->map.map_str[idx] != '\0')
 	{
-		if (game->map.map_str[idx] != WALL_CHAR
-			&& game->map.map_str[idx] != PLAYER_CHAR
-			&& game->map.map_str[idx] != KEY_CHAR
-			&& game->map.map_str[idx] != EXIT_CHAR
-			&& game->map.map_str[idx] != VOID_CHAR
-			&& game->map.map_str[idx] != LAVA_CHAR
-			&& game->map.map_str[idx] != LOVE_CHAR)
+		if (ft_is_valid_char(game->map.map_str[idx]))
 			ft_print_error(BAD_CHAR_MAP_ERROR, game);
 		idx++;
 	}

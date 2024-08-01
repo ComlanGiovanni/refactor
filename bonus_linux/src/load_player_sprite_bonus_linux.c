@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:43 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 00:57:10 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 14:15:46 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	ft_player_animation(t_player *player)
 
 	if (frame == player->frames)
 	{
-		player->up_anim.current = player->up_anim.frame_1;
+		player->up_anim.current = player->up_anim.frame_0;
 		player->down_anim.current = player->down_anim.frame_1;
 		player->left_anim.current = player->left_anim.frame_1;
 		player->right_anim.current = player->right_anim.frame_1;
 	}
 	else if (frame >= player->frames * 2)
 	{
-		player->up_anim.current = player->up_anim.frame_2;
+		player->up_anim.current = player->up_anim.frame_1;
 		player->down_anim.current = player->down_anim.frame_2;
 		player->left_anim.current = player->left_anim.frame_2;
 		player->right_anim.current = player->right_anim.frame_2;
@@ -53,108 +53,105 @@ void	ft_player_animation(t_player *player)
 
 void	ft_load_player_up_sprites(t_game *game)
 {
-	int	width;
-	int	height;
+	const char	*paths[] = {
+		"assets/xpm/Bonus/player/up/player_up_frame_0.xpm",
+		"assets/xpm/Bonus/player/up/player_up_frame_1.xpm",
+		"assets/xpm/Bonus/player/up/player_up_frame_2.xpm"};
+	const char	*error_messages[] = {
+		"PLAYER_U_0_ERROR",
+		"PLAYER_U_1_ERROR",
+		"PLAYER_U_2_ERROR"};
 
-	game->player.up_anim.frame_0 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/up/player_up_frame_0.xpm",
-			&width, &height);
-	if (game->player.up_anim.frame_0 == NULL)
-		ft_print_error(PLAYER_U_0_ERROR, game);
-	game->player.up_anim.frame_1 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/up/player_up_frame_1.xpm",
-			&width, &height);
-	if (game->player.up_anim.frame_1 == NULL)
-		ft_print_error(PLAYER_U_1_ERROR, game);
-	game->player.up_anim.frame_2 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/up/player_up_frame_2.xpm",
-			&width, &height);
-	if (game->player.up_anim.frame_2 == NULL)
-		ft_print_error(PLAYER_U_2_ERROR, game);
-	game->player.up_anim.frame_move = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/up/player_up_frame_move.xpm",
-			&width, &height);
-	if (game->player.up_anim.frame_move == NULL)
-		ft_print_error(PLAYER_U_M_ERROR, game);
+	ft_load_animation_sprites((t_animation *)&(game->player.up_anim), game,
+		paths, error_messages);
+	ft_load_sprite_frame(&(game->player.up_anim.frame_move), game,
+		"assets/xpm/Bonus/player/up/player_up_frame_move.xpm",
+		"Generic message error replace soon");
 }
 
 void	ft_load_player_down_sprites(t_game *game)
 {
-	int	width;
-	int	height;
+	const char	*paths[] = {
+		"assets/xpm/Bonus/player/down/player_down_frame_0.xpm",
+		"assets/xpm/Bonus/player/down/player_down_frame_1.xpm",
+		"assets/xpm/Bonus/player/down/player_down_frame_2.xpm"};
+	const char	*error_messages[] = {
+		"PLAYER_D_0_ERROR",
+		"PLAYER_D_1_ERROR",
+		"PLAYER_D_2_ERROR"};
 
-	game->player.down_anim.frame_0 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/down/player_down_frame_0.xpm",
-			&width, &height);
-	if (game->player.down_anim.frame_0 == NULL)
-		ft_print_error(PLAYER_D_0_ERROR, game);
-	game->player.down_anim.frame_1 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/down/player_down_frame_1.xpm",
-			&width, &height);
-	if (game->player.down_anim.frame_1 == NULL)
-		ft_print_error(PLAYER_D_1_ERROR, game);
-	game->player.down_anim.frame_2 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/down/player_down_frame_2.xpm",
-			&width, &height);
-	if (game->player.down_anim.frame_2 == NULL)
-		ft_print_error(PLAYER_D_2_ERROR, game);
-	game->player.down_anim.frame_move = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/down/player_down_frame_move.xpm",
-			&width, &height);
-	if (game->player.down_anim.frame_move == NULL)
-		ft_print_error(PLAYER_D_M_ERROR, game);
+	ft_load_animation_sprites((t_animation *)&(game->player.down_anim), game,
+		paths, error_messages);
+	ft_load_sprite_frame(&(game->player.down_anim.frame_move), game,
+		"assets/xpm/Bonus/player/down/player_down_frame_move.xpm",
+		"Generic message error replace soon");
 }
 
 void	ft_load_player_left_sprites(t_game *game)
 {
-	int	width;
-	int	height;
+	const char	*paths[] = {
+		"assets/xpm/Bonus/player/left/player_left_frame_0.xpm",
+		"assets/xpm/Bonus/player/left/player_left_frame_1.xpm",
+		"assets/xpm/Bonus/player/left/player_left_frame_2.xpm"};
+	const char	*error_messages[] = {
+		"PLAYER_L_0_ERROR",
+		"PLAYER_L_1_ERROR",
+		"PLAYER_L_2_ERROR"};
 
-	game->player.left_anim.frame_0 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/left/player_left_frame_0.xpm",
-			&width, &height);
-	if (game->player.left_anim.frame_0 == NULL)
-		ft_print_error(PLAYER_L_0_ERROR, game);
-	game->player.left_anim.frame_1 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/left/player_left_frame_1.xpm",
-			&width, &height);
-	if (game->player.left_anim.frame_1 == NULL)
-		ft_print_error(PLAYER_L_1_ERROR, game);
-	game->player.left_anim.frame_2 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/left/player_left_frame_2.xpm",
-			&width, &height);
-	if (game->player.left_anim.frame_2 == NULL)
-		ft_print_error(PLAYER_L_2_ERROR, game);
-	game->player.left_anim.frame_move = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/left/player_left_frame_move.xpm",
-			&width, &height);
-	if (game->player.left_anim.frame_move == NULL)
-		ft_print_error(PLAYER_L_M_ERROR, game);
+	ft_load_animation_sprites((t_animation *)&(game->player.left_anim), game,
+		paths, error_messages);
+	ft_load_sprite_frame(&(game->player.left_anim.frame_move), game,
+		"assets/xpm/Bonus/player/left/player_left_frame_move.xpm",
+		"Generic message error replace soon");
 }
 
 void	ft_load_player_right_sprites(t_game *game)
 {
-	int	width;
-	int	height;
+	const char	*paths[] = {
+		"assets/xpm/Bonus/player/right/player_right_frame_0.xpm",
+		"assets/xpm/Bonus/player/right/player_right_frame_1.xpm",
+		"assets/xpm/Bonus/player/right/player_right_frame_2.xpm",};
+	const char	*error_messages[] = {
+		"PLAYER_R_0_ERROR",
+		"PLAYER_R_1_ERROR",
+		"PLAYER_R_2_ERROR",
+	};
 
-	game->player.right_anim.frame_0 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/right/player_right_frame_0.xpm",
-			&width, &height);
-	if (game->player.right_anim.frame_0 == NULL)
-		ft_print_error(PLAYER_R_0_ERROR, game);
-	game->player.right_anim.frame_1 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/right/player_right_frame_1.xpm",
-			&width, &height);
-	if (game->player.right_anim.frame_1 == NULL)
-		ft_print_error(PLAYER_R_1_ERROR, game);
-	game->player.right_anim.frame_2 = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/right/player_right_frame_2.xpm",
-			&width, &height);
-	if (game->player.right_anim.frame_2 == NULL)
-		ft_print_error(PLAYER_R_2_ERROR, game);
-	game->player.right_anim.frame_move = mlx_xpm_file_to_image(game->mlx,
-			"assets/xpm/Bonus/player/right/player_right_frame_move.xpm",
-			&width, &height);
-	if (game->player.right_anim.frame_move == NULL)
-		ft_print_error(PLAYER_R_M_ERROR, game);
+	ft_load_animation_sprites((t_animation *)&(game->player.right_anim), game,
+		paths, error_messages);
+	ft_load_sprite_frame(&(game->player.right_anim.frame_move), game,
+		"assets/xpm/Bonus/player/right/player_right_frame_move.xpm",
+		"Generic message error replace soon");
+}
+
+void	ft_load_portal_z_sprites(t_game *game)
+{
+	const char	*paths[] = {
+		"assets/xpm/Bonus/portal/second/portal_2_frame_1.xpm",
+		"assets/xpm/Bonus/portal/second/portal_2_frame_0.xpm",
+		"assets/xpm/Bonus/portal/second/portal_2_frame_2.xpm",};
+	const char	*error_messages[] = {
+		"Generic message error replace soon",
+		"Generic message error replace soon",
+		"Generic message error replace soon",
+	};
+
+	ft_load_animation_sprites((t_animation *)&(game->portal.z), game,
+		paths, error_messages);
+}
+
+void	ft_load_portal_n_sprites(t_game *game)
+{
+	const char	*paths[] = {
+		"assets/xpm/Bonus/portal/first/portal_1_frame_1.xpm",
+		"assets/xpm/Bonus/portal/first/portal_1_frame_0.xpm",
+		"assets/xpm/Bonus/portal/first/portal_1_frame_2.xpm",};
+	const char	*error_messages[] = {
+		"Generic message error replace soon",
+		"Generic message error replace soon",
+		"Generic message error replace soon",
+	};
+
+	ft_load_animation_sprites((t_animation *)&(game->portal.n), game,
+		paths, error_messages);
 }

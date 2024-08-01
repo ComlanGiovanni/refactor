@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:55 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 00:57:34 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:31:31 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  *
  * 	first we need the height of the map to check if the map is well formatted
  * 		before reading it, then re-open the file to get every line in the
- * 			line variable.	 (secure the open with a print message)
+ * 			line variable.		(secure the open with a print message)
  * 		just before joining every line we initialized all the map info
  * 			step height width to 0 and map to the first line of the map with a
  * 						custom strdup of first line.
@@ -58,6 +58,24 @@ void	ft_read_map(t_game *game, char *map_name)
 	game->map.size.y = game->height;
 }
 
+void	ft_print_map_info(t_game *game)
+{
+	ft_printf("[All item in map Number]\n\n");
+	ft_printf("Player : [%c] -> {%d}\n", PLAYER_CHAR,
+			game->map.info.nbr_player);
+	ft_printf("wall   : [%c] -> {%d}\n", WALL_CHAR, game->map.info.nbr_wall);
+	ft_printf("Void   : [%c] -> {%d}\n", VOID_CHAR, game->map.info.nbr_void);
+	ft_printf("Life   : [%c] -> {%d}\n", LOVE_CHAR, game->map.info.nbr_love);
+	ft_printf("Lava   : [%c] -> {%d}\n", LAVA_CHAR, game->map.info.nbr_lava);
+	ft_printf("Key    : [%c] -> {%d}\n", KEY_CHAR, game->map.info.nbr_key);
+	ft_printf("Exit   : [%c] -> {%d}\n", EXIT_CHAR, game->map.info.nbr_exit);
+	ft_printf("Box    : [%c] -> {%d}\n", BOX_CHAR, game->map.info.nbr_box);
+	ft_printf("Portal : [%c] -> {%d}\n", BOX_CHAR, game->map.info.nbr_portal_1
+			+ game->map.info.nbr_portal_2);
+	ft_printf("Border : [%c] -> {%d}\n\n", BORDER_CHAR,
+			game->map.info.nbr_border);
+}
+
 void	ft_check_map(t_game *game)
 {
 	ft_map_fit_screen(game);
@@ -79,6 +97,10 @@ void	ft_init_game_info(t_game *game)
 	game->map.info.nbr_love = FALSE;
 	game->map.info.nbr_wall = TRUE;
 	game->map.info.nbr_void = FALSE;
+	game->map.info.nbr_box = FALSE;
+	game->map.info.nbr_border = FALSE;
+	game->map.info.nbr_portal_1 = FALSE;
+	game->map.info.nbr_portal_2 = FALSE;
 	game->map.border_width = BORDERS_WIDTH;
 }
 
@@ -91,11 +113,11 @@ void	ft_init_game_info(t_game *game)
  * 1PE1	(idx % game->width == 0 || idx % game->width == game->width - 1)
  * 1111			(1111) [1CC1] [1PE1] (1111)
  *
- * 	     *      *
+ * 			*      *
  * 		[1CC1] [1PE1]	the first idx modulo width is alway 0
  * 						because we alway add the width because
  * 						its a perfect form square rectangle
- * 			*	   *
+ * 			*		*
  * 		[1CC1] [1PE1]	this last idx of a line modulo of width
  * 						is alway equal to width - 1 because
  * 						we are almost near to the next whose
@@ -125,8 +147,8 @@ void	ft_check_sealed(t_game *game)
 			if (game->map.map_str[idx] != WALL_CHAR)
 				ft_print_error(WALL_ERROR, game);
 		}
-		else if (idx % game->width == FALSE
-			|| idx % game->width == game->width - TRUE)
+		else if (idx % game->width == FALSE || idx % game->width == game->width
+				- TRUE)
 		{
 			if (game->map.map_str[idx] != WALL_CHAR)
 				ft_print_error(WALL_ERROR, game);
@@ -162,6 +184,12 @@ void	ft_get_info_map(t_game *game)
 			game->map.info.nbr_love++;
 		else if (game->map.map_str[idx] == WALL_CHAR)
 			game->map.info.nbr_wall++;
+		else if (game->map.map_str[idx] == BOX_CHAR)
+			game->map.info.nbr_box++;
+		else if (game->map.map_str[idx] == PORTAL_1_CHAR)
+			game->map.info.nbr_portal_1++;
+		else if (game->map.map_str[idx] == PORTAL_2_CHAR)
+			game->map.info.nbr_portal_2++;
 		else
 			game->map.info.nbr_void++;
 	}
@@ -183,4 +211,8 @@ void	ft_check_playability(t_game *game)
 		ft_print_error(PLAYER_ERROR, game);
 	if (game->map.info.nbr_exit != TRUE)
 		ft_print_error(EXIT_ERROR, game);
+	if ((game->map.info.nbr_portal_1 > 1 || game->map.info.nbr_portal_2 > 1) ||
+		(game->map.info.nbr_portal_1 == 1 && game->map.info.nbr_portal_2 == 0) ||
+		(game->map.info.nbr_portal_1 == 0 && game->map.info.nbr_portal_2 == 1))
+		ft_print_error("There must be either exactly one N portal and one Z portal, or no portals at all", game);
 }

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:12:36 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 01:11:57 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:18:48 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
  */
 void	ft_load_sprites(t_game *game)
 {
+	game->node = NULL;
 	ft_load_key_sprites(game);
 	ft_load_lava_sprites(game);
 	ft_load_love_sprites(game);
@@ -49,6 +50,9 @@ void	ft_load_sprites(t_game *game)
 	ft_load_door_closed_sprites(game);
 	ft_load_door_open_sprites(game);
 	ft_load_digits_sprites(game);
+	ft_load_box_sprites(game);
+	ft_load_portal_n_sprites(game);
+	ft_load_portal_z_sprites(game);
 }
 
 void	ft_put_sprites_by_line(t_game *game)
@@ -164,6 +168,12 @@ void	ft_put_all_sprites_to_line(t_game *game, int width, int height,
 		ft_ground_sprite(game, sprite_pos);
 	else if (tile == BORDER_CHAR)
 		ft_borders_sprite(game, sprite_pos);
+	else if (tile == BOX_CHAR)
+		ft_box_sprite(game, sprite_pos);
+	else if (tile == PORTAL_1_CHAR)
+		ft_portal_n_sprite(game, sprite_pos);
+	else if (tile == PORTAL_2_CHAR)
+		ft_portal_z_sprite(game, sprite_pos);
 	else
 		ft_player_sprite_call(game, width, height, sprite_pos);
 }
@@ -228,4 +238,22 @@ void	ft_borders_sprite(t_game *game, t_point pos)
 {
 	mlx_put_image_to_window(game->mlx, game->win,
 		game->grass.animation.current, pos.x, pos.y);
+}
+
+void	ft_box_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->box.animation.current, pos.x, pos.y);
+}
+
+void	ft_portal_z_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->portal.z.current, pos.x, pos.y);
+}
+
+void	ft_portal_n_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->portal.n.current, pos.x, pos.y);
 }

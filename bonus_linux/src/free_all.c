@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:06 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 01:12:49 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 04:29:12 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,72 +36,16 @@ void	ft_free_all(t_game *game)
 	ft_free_mlx(game);
 }
 
-void	ft_free_player(t_game *game)
+void	ft_free_sprite_frame(void **frame, void *mlx)
 {
-	if (game->player.up_anim.frame_2)
-		mlx_destroy_image(game->mlx, game->player.up_anim.frame_2);
-	if (game->player.up_anim.frame_1)
-		mlx_destroy_image(game->mlx, game->player.up_anim.frame_1);
-	if (game->player.down_anim.frame_1)
-		mlx_destroy_image(game->mlx, game->player.down_anim.frame_1);
-	if (game->player.down_anim.frame_2)
-		mlx_destroy_image(game->mlx, game->player.down_anim.frame_2);
-	if (game->player.left_anim.frame_1)
-		mlx_destroy_image(game->mlx, game->player.left_anim.frame_1);
-	if (game->player.left_anim.frame_2)
-		mlx_destroy_image(game->mlx, game->player.left_anim.frame_2);
-	if (game->player.right_anim.frame_1)
-		mlx_destroy_image(game->mlx, game->player.right_anim.frame_1);
-	if (game->player.right_anim.frame_2)
-		mlx_destroy_image(game->mlx, game->player.right_anim.frame_2);
-	if (game->player.right_anim.frame_0)
-		mlx_destroy_image(game->mlx, game->player.right_anim.frame_0);
-	if (game->player.left_anim.frame_0)
-		mlx_destroy_image(game->mlx, game->player.left_anim.frame_0);
-	if (game->player.up_anim.frame_0)
-		mlx_destroy_image(game->mlx, game->player.up_anim.frame_0);
-	if (game->player.down_anim.frame_0)
-		mlx_destroy_image(game->mlx, game->player.down_anim.frame_0);
-}
-
-void	ft_free_player_move(t_game *game)
-{
-	if (game->player.up_anim.frame_move)
-		mlx_destroy_image(game->mlx, game->player.up_anim.frame_move);
-	if (game->player.down_anim.frame_move)
-		mlx_destroy_image(game->mlx, game->player.down_anim.frame_move);
-	if (game->player.left_anim.frame_move)
-		mlx_destroy_image(game->mlx, game->player.left_anim.frame_move);
-	if (game->player.right_anim.frame_move)
-		mlx_destroy_image(game->mlx, game->player.right_anim.frame_move);
+	if (*frame)
+	{
+		mlx_destroy_image(mlx, *frame);
+		*frame = NULL;
+	}
 }
 
 void	ft_free_ground(t_game *game)
 {
-	if (game->map.ground)
-		mlx_destroy_image(game->mlx, game->map.ground);
-}
-
-void	ft_free_lava(t_game *game)
-{
-	if (game->lava.animation.frame_0)
-		mlx_destroy_image(game->mlx, game->lava.animation.frame_0);
-	if (game->lava.animation.frame_1)
-		mlx_destroy_image(game->mlx, game->lava.animation.frame_1);
-	if (game->lava.animation.frame_2)
-		mlx_destroy_image(game->mlx, game->lava.animation.frame_2);
-}
-
-void	ft_free_life(t_game *game)
-{
-	if (game->love.icon)
-		mlx_destroy_image(game->mlx, game->love.icon);
-	if (game->love.animation.frame_1)
-		mlx_destroy_image(game->mlx, game->love.animation.frame_1);
-	if (game->love.animation.frame_0)
-		mlx_destroy_image(game->mlx, game->love.animation.frame_0);
-	if (game->love.animation.frame_2)
-		mlx_destroy_image(game->mlx, game->love.animation.frame_2);
-	if (game->love.nope)
-		mlx_destroy_image(game->mlx, game->love.nope);
+	ft_free_sprite_frame((void **)&game->map.ground, game->mlx);
 }

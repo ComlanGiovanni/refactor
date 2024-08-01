@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:12:49 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 00:59:10 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:39:18 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,9 @@ void	ft_play_animation(t_game *game)
 	ft_player_animation(&game->player);
 	ft_lava_animation(&game->lava.animation);
 	ft_key_animation(&game->key.animation);
+	ft_box_animation(&game->box.animation);
+	ft_portal_n_animation(&game->portal.n);
+	ft_portal_z_animation(&game->portal.z);
 	ft_door_open_animation(&game->door.open);
 	ft_door_closed_animation(&game->door.closed);
 	ft_grass_animation(&game->grass.animation);
@@ -325,25 +328,13 @@ void	ft_init_player_info(t_game *game)
 void	ft_display_digits_sprites(t_game *game, char *digits_str,
 		t_point position)
 {
-	void	*digit_images[10];
 	int		index;
-
-	digit_images[0] = game->hud.digits.zero.current;
-	digit_images[1] = game->hud.digits.one.current;
-	digit_images[2] = game->hud.digits.two.current;
-	digit_images[3] = game->hud.digits.tree.current;
-	digit_images[4] = game->hud.digits.four.current;
-	digit_images[5] = game->hud.digits.five.current;
-	digit_images[6] = game->hud.digits.six.current;
-	digit_images[7] = game->hud.digits.seven.current;
-	digit_images[8] = game->hud.digits.eight.current;
-	digit_images[9] = game->hud.digits.nine.current;
 	index = 0;
 	while (digits_str[index] != '\0')
 	{
 		if ((digits_str[index] - '0') >= 0 && (digits_str[index] - '0') <= 9)
 		{
-			mlx_put_image_to_window(game->mlx, game->win, digit_images[(digits_str[index] - '0')],
+			mlx_put_image_to_window(game->mlx, game->win, game->hud.digits.tab[(digits_str[index] - '0')],
 					position.x, position.y);
 			position.x += 24;
 		}
@@ -399,9 +390,6 @@ void	ft_print_info_on_window(t_game *game)
 	//			game->hud.str_fps);
 	//add lke esc, indication for deplacement
 	ft_free_step_and_storage(game);
-	// free(game->hud.str_step);
-	// free(game->hud.str_storage );
-	// free(game->hud.str_fps);
 }
 
 /*

@@ -6,16 +6,17 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:25 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/01 01:14:06 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:51:12 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc_linux/so_long_bonus_linux.h"
 
-static int	ft_is_wall_obstacle(char tile)
+static int	ft_is_lava_obstacle(char tile)
 {
 	return (tile == WALL_CHAR || tile == EXIT_CHAR || tile == KEY_CHAR
-		|| tile == LAVA_CHAR || tile == LOVE_CHAR || tile == PLAYER_CHAR);
+		|| tile == LAVA_CHAR || tile == LOVE_CHAR || tile == PLAYER_CHAR
+		|| tile == PORTAL_1_CHAR || tile == PORTAL_2_CHAR);
 }
 
 static void	move_lava_up(t_game *game, int row, int col)
@@ -25,8 +26,10 @@ static void	move_lava_up(t_game *game, int row, int col)
 		ft_player_get_hit(game);
 		game->map.grid[row][col] = VOID_CHAR;
 	}
-	else if (!ft_is_wall_obstacle(game->map.grid[row - 1][col]))
+	else if (!ft_is_lava_obstacle(game->map.grid[row - 1][col]))
 	{
+		if (game->map.grid[row - 1][col] == BOX_CHAR)
+			system("cvlc sounds/box_destroyed.wav &");
 		game->map.grid[row][col] = VOID_CHAR;
 		game->map.grid[row - 1][col] = LAVA_CHAR;
 	}
@@ -58,8 +61,10 @@ static void	move_lava_down(t_game *game, int row, int col)
 		ft_player_get_hit(game);
 		game->map.grid[row][col] = VOID_CHAR;
 	}
-	else if (!ft_is_wall_obstacle(game->map.grid[row + 1][col]))
+	else if (!ft_is_lava_obstacle(game->map.grid[row + 1][col]))
 	{
+		if (game->map.grid[row + 1][col] == BOX_CHAR)
+			system("cvlc sounds/box_destroyed.wav &");
 		game->map.grid[row][col] = VOID_CHAR;
 		game->map.grid[row + 1][col] = LAVA_CHAR;
 	}
@@ -91,8 +96,10 @@ static void	move_lava_left(t_game *game, int row, int col)
 		ft_player_get_hit(game);
 		game->map.grid[row][col] = VOID_CHAR;
 	}
-	else if (!ft_is_wall_obstacle(game->map.grid[row][col - 1]))
+	else if (!ft_is_lava_obstacle(game->map.grid[row][col - 1]))
 	{
+		if (game->map.grid[row][col - 1] == BOX_CHAR)
+			system("cvlc sounds/box_destroyed.wav &");
 		game->map.grid[row][col] = VOID_CHAR;
 		game->map.grid[row][col - 1] = LAVA_CHAR;
 	}
@@ -124,8 +131,10 @@ static void	move_lava_right(t_game *game, int row, int col)
 		ft_player_get_hit(game);
 		game->map.grid[row][col] = VOID_CHAR;
 	}
-	else if (!ft_is_wall_obstacle(game->map.grid[row][col + 1]))
+	else if (!ft_is_lava_obstacle(game->map.grid[row][col + 1]))
 	{
+		if (game->map.grid[row][col + 1] == BOX_CHAR)
+			system("cvlc sounds/box_destroyed.wav &");
 		game->map.grid[row][col] = VOID_CHAR;
 		game->map.grid[row][col + 1] = LAVA_CHAR;
 	}

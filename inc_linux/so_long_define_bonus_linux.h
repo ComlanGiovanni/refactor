@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:32:03 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/07/29 19:43:21 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/01 04:33:01 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 # define BER_EXTENSION		".ber"
 # define IMG_SIZE 			64
 # define ICON_SIZE 			10
-# define PLAYER_FRAMES 		9
 # define BORDERS_WIDTH 		10
 # define ERROR_MSG			"Error\n"
 # define KEY_FOUND			"Key found ->"
