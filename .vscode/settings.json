@@ -11,6 +11,7 @@
 		"so_long_bonus.h": "c",
 		"ft_so_long_bonus.h": "c",
 		"ft_so_long_structs_bonus.h": "c",
-		"ft_so_long_functions_bonus.h": "c"
+		"ft_so_long_functions_bonus.h": "c",
+		"ft_so_long_mandatory.h": "c"
 	}
 }

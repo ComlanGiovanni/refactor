@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:11 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:14:52 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:43:44 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	ft_move_up(t_game *game)
 		{
 			game->map.grid[y][x] = VOID_CHAR;
 			game->map.grid[y - 1][x] = PLAYER_CHAR;
-			play_movement_sound(game);
+			ft_play_movement_sound(game);
 			game->player.movement.current_position.y -= 1;
 			//ft_handle_tile_action(game, next_tile);
 		}
@@ -117,7 +117,7 @@ void	ft_move_down(t_game *game)
 		{
 			game->map.grid[y][x] = VOID_CHAR;
 			game->map.grid[y + 1][x] = PLAYER_CHAR;
-			play_movement_sound(game);
+			ft_play_movement_sound(game);
 			game->player.movement.current_position.y += 1;
 			//ft_handle_tile_action(game, next_tile);
 		}
@@ -153,7 +153,7 @@ void	ft_move_left(t_game *game)
 		{
 			game->map.grid[y][x] = VOID_CHAR;
 			game->map.grid[y][x - 1] = PLAYER_CHAR;
-			play_movement_sound(game);
+			ft_play_movement_sound(game);
 			game->player.movement.current_position.x -= 1;
 			//ft_handle_tile_action(game, next_tile);
 		}
@@ -189,7 +189,7 @@ void	ft_move_right(t_game *game)
 		{
 			game->map.grid[y][x] = VOID_CHAR;
 			game->map.grid[y][x + 1] = PLAYER_CHAR;
-			play_movement_sound(game);
+			ft_play_movement_sound(game);
 			game->player.movement.current_position.x += 1;
 			//ft_handle_tile_action(game, next_tile);
 		}

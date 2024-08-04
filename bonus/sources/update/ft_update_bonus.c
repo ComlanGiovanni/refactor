@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:02:13 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 01:51:52 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/04 21:48:09 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_update(t_game *game)
 		game->finished = 1;
 		system("cvlc sounds/FinishLevel.wav &");
 	}
-	//mlx_clear_window(game->mlx, game->win);
+	mlx_clear_window(game->mlx, game->win);
 	ft_put_sprites_by_line(game);
 	//ft_put_buffer_image(game);
 	//mlx_put_image_to_window(game->mlx, game->win, game->window.img, 0, 0);

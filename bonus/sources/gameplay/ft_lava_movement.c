@@ -6,13 +6,13 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:43:47 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:26:52 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:43:20 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
 
-void	move_lava_up(t_game *game, int row, int col)
+void	ft_move_lava_up(t_game *game, int row, int col)
 {
 	if (game->map.grid[row - 1][col] == PLAYER_CHAR)
 	{
@@ -28,7 +28,7 @@ void	move_lava_up(t_game *game, int row, int col)
 	}
 }
 
-void	move_lava_down(t_game *game, int row, int col)
+void	ft_move_lava_down(t_game *game, int row, int col)
 {
 	if (game->map.grid[row + 1][col] == PLAYER_CHAR)
 	{
@@ -44,7 +44,7 @@ void	move_lava_down(t_game *game, int row, int col)
 	}
 }
 
-void	move_lava_left(t_game *game, int row, int col)
+void	ft_move_lava_left(t_game *game, int row, int col)
 {
 	if (game->map.grid[row][col - 1] == PLAYER_CHAR)
 	{
@@ -60,7 +60,7 @@ void	move_lava_left(t_game *game, int row, int col)
 	}
 }
 
-void	move_lava_right(t_game *game, int row, int col)
+void	ft_move_lava_right(t_game *game, int row, int col)
 {
 	if (game->map.grid[row][col + 1] == PLAYER_CHAR)
 	{

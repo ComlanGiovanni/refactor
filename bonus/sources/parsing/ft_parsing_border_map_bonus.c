@@ -6,13 +6,13 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 19:55:04 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:43:50 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:45:05 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
 
-char	**allocate_new_map(int new_height, int new_width, t_game *game)
+char	**ft_allocate_new_map(int new_height, int new_width, t_game *game)
 {
 	char	**new_map;
 	int		row;
@@ -32,7 +32,7 @@ char	**allocate_new_map(int new_height, int new_width, t_game *game)
 	return (new_map);
 }
 
-void	fill_map_row(char **new_map, int row, t_game *game, int new_width)
+void	ft_fill_map_row(char **new_map, int row, t_game *game, int new_width)
 {
 	int	column;
 	int	border_width;
@@ -63,11 +63,11 @@ char	**ft_create_map_with_border(t_game *game)
 
 	new_width = game->width + 2 * game->map.border_width;
 	new_height = game->height + 2 * game->map.border_width;
-	new_map = allocate_new_map(new_height, new_width, game);
+	new_map = ft_allocate_new_map(new_height, new_width, game);
 	row = 0;
 	while (row < new_height)
 	{
-		fill_map_row(new_map, row, game, new_width);
+		ft_fill_map_row(new_map, row, game, new_width);
 		row++;
 	}
 	if (game->map.matrice)

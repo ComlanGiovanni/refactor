@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:10:08 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 01:18:17 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:36:42 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_load_sprites(t_game *game)
 	ft_load_player_down_sprites(game);
 	ft_load_player_left_sprites(game);
 	ft_load_player_right_sprites(game);
-	//ft_load_player_current(game);
+	ft_load_player_current(game);
 	ft_load_door_closed_sprites(game);
 	ft_load_door_open_sprites(game);
 	ft_load_digits_sprites(game);

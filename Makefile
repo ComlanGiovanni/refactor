@@ -6,7 +6,7 @@
 #    By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 03:25:21 by gicomlan          #+#    #+#              #
-#    Updated: 2024/08/04 00:43:17 by gicomlan         ###   ########.fr        #
+#    Updated: 2024/08/05 01:11:42 by gicomlan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,15 +54,15 @@ PATH_FOUNDING_SUBDIR 	= $(BONUS_PATH)path-founding/
 UPDATE_SUBDIR 			= $(BONUS_PATH)update/
 # ------------------------------------------------------------------ [ SOURCES ]
 # 															  (Mandatory sources)
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)check_map_finishable.c
+MANDATORY_SRCS_FILES	+= $(MANDATORY_PATH)ft_check_map_finishable.c
 MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_utils_map_finishable.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)so_long_linux.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)check_map_format_linux.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)input_linux.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)sprite_linux.c
+MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_so_long_linux.c
+MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_check_map_format_linux.c
+MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_input_linux.c
+MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_sprite_linux.c
 MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_debug.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)map_linux.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)tools_linux.c
+MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_map_linux.c
+MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_tools_linux.c
 MANDATORY_SRCS_FILES	+= $(MANDATORY_DIR)main.c
 # 																  (Bonus sources)
 BONUS_SRCS_FILES		+= $(ANIMATION_SUBDIR)ft_animation_bonus.c
@@ -134,13 +134,13 @@ CFLAGS 					+= -Werror
 CFLAGS 					+= -Wextra
 CFLAGS 					+= -Wall
 #CFLAGS 				+= -fPIE
-#CFLAGS 				+= -MMD
+CFLAGS 					+= -MMD
 CFLAGS 					+= -I $(INCLUDES_DIR)
 #CFLAGS 				+= -lbsd
 #CFLAGS 				+= -fsanitize=address
 #CFLAGS 				+= -fsanitize=undefined
 #CFLAGS 					+= -MP -MF $(DEPS_DIR)/$*.define
-#CFLAGS 				+= -MP
+CFLAGS 					+= -MP
 MLX_FLAGS				+= -L $(MLX_PATH)
 MLX_FLAGS				+= -lmlx
 MLX_FLAGS				+= -lXext
@@ -212,10 +212,10 @@ bonus : ${BONUS_NAME}
 # 									(Compilation of object files into a library)
 $(MANDATORY_NAME) : $(OBJS_MANDATORY)
 	$(MAKE) -C $(MINI_LIB_PATH)
-	$(COPY) $(MINI_LIB_PATH)/$(LIB_SO_LONG_NAME) .
+	$(COPY) $(MINI_LIB_PATH)$(LIB_SO_LONG_NAME) .
 	@$(SO_LONG_COMP)
 	$(MAKE) --no-print-directory -C $(MLX_PATH)
-	$(COPY) $(MLX_PATH)/$(MLX_NAME) .
+	$(COPY) $(MLX_PATH)$(MLX_NAME) .
 	$(CC) $(CFLAGS) -o $(MANDATORY_NAME) $(MANDATORY_SRCS_FILES) $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
 	@echo "$$ASCII_MANDATORY"
 	@$(SO_LONG_READY)
@@ -224,7 +224,7 @@ ${BONUS_NAME} : ${OBJS_BONUS}
 	$(MAKE) -C $(MINI_LIB_PATH)
 	$(COPY) $(MINI_LIB_PATH)$(LIB_SO_LONG_NAME) .
 	$(MAKE) --no-print-directory -C $(MLX_PATH)
-	$(COPY) $(MLX_PATH)/$(MLX_NAME) .
+	$(COPY) $(MLX_PATH)$(MLX_NAME) .
 	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_SRCS_FILES) $(MLX_FLAGS)  -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
 	@echo "$$ASCII_BONUS"
 	@$(BONUS_READY)
@@ -296,7 +296,9 @@ define progress_bar
 endef
 # =============================================================== [ DEPENDENCY ]
 # 													(Including dependency files)
--include $(DEPS_DIR)
+#-include $(DEPS_DIR)
+#-include $(OBJS_MANDATORY:.o=.d)
+#-include $(OBJS_BONUS:.o=.d)
 # ==================================================================== [ ASCII ]
 # 							 (Ascii are to diplay at the end of the compilation)
 coffee:

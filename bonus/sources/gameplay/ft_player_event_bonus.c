@@ -6,14 +6,14 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:23:29 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:14:30 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:43:44 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
 
 // if ((game->fps.current_time.tv_sec - game->fps.last_time.tv_sec) > 1.0)
-void	play_movement_sound(t_game *game)
+void	ft_play_movement_sound(t_game *game)
 {
 	game->player.step++;
 	system("cvlc sounds/baba-move.wav &");

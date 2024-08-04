@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:10:59 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 01:22:56 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/04 14:37:37 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	ft_is_valid_char(char tile)
 {
 	return (tile == WALL_CHAR && tile == PLAYER_CHAR && tile == KEY_CHAR
 		&& tile == EXIT_CHAR && tile == VOID_CHAR && tile == PLAYER_CHAR
-		&& tile == BOX_CHAR);
+		&& tile == BOX_CHAR && tile == LAVA_CHAR && tile == PORTAL_1_CHAR
+		&& tile == PORTAL_2_CHAR);
 }
 
 /**

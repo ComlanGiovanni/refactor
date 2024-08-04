@@ -1,62 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parsing_bonus.c                                 :+:      :+:    :+:   */
+/*   check_map_format_linux.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 02:30:44 by gicomlan          #+#    #+#             */
+/*   Created: 2024/07/20 03:00:42 by gicomlan          #+#    #+#             */
 /*   Updated: 2024/08/04 11:45:26 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_so_long_bonus.h"
-
-/**
- * @brief
- * 			map str is not the game->map struct
- *
- * 	first we need the height of the map to check if the map is well formatted
- * 		before reading it, then re-open the file to get every line in the
- * 			line variable.		(secure the open with a print message)
- * 		just before joining every line we initialized all the map info
- * 			step height width to 0 and map to the first line of the map with a
- * 						custom strdup of first line.
- * 	when we are able to open the map on READONLY we can get the next line of the
- * 		map aka the first line, we can now join the next line until the end
- * 			to the game->map(str), then free and close the fd
- * 							the get the full len of it
- *
- * @param game
- * @param map_name
- */
-void	ft_read_map(t_game *game, char *map_name)
-{
-	int		fd;
-	int		height;
-	char	*line;
-
-	height = ft_get_map_height(map_name, game);
-	ft_check_ber_format(map_name, height, game);
-	if (game->empty_line == 1)
-		ft_print_error(EMPTY_LINE, game);
-	fd = open(map_name, O_RDONLY);
-	if (fd <= FALSE)
-		ft_print_error(FAIL_OPEN_ERROR, game);
-	line = get_next_line(fd);
-	ft_init_map_info(game, line);
-	while (line)
-	{
-		game->height++;
-		line = get_next_line(fd);
-		if (line)
-			game->map.map_str = ft_custom_strjoin(game->map.map_str, line);
-	}
-	close(fd);
-	game->map.len = ft_strlen(game->map.map_str);
-	game->map.size.x = game->width;
-	game->map.size.y = game->height;
-}
+#include "ft_so_long_mandatory.h"
 
 /**
  * @brief Get the map height object
@@ -149,4 +103,24 @@ void	ft_check_ber_format(char *map_name, int height, t_game *game)
 		free(line);
 	}
 	close(fd);
+}
+
+/**
+ * @brief
+ *
+ * 		init to 0 height step
+ * 				and init width to the
+ * 		len of line send to the fct
+ * 					the copy the line in map
+ *
+ * @param game
+ * @param line
+ */
+void	ft_init_map_info(t_game *game, char *line)
+{
+	game->height = FALSE;
+	game->step = FALSE;
+	game->width = ft_strlen(line) - TRUE;
+	game->map = ft_custom_strdup(line);
+	free(line);
 }

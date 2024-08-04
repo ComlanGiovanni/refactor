@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:23 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 01:23:16 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:45:26 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,10 +137,10 @@ void	ft_move_lava(t_game *game);
 
 //=================================================================== [ file.c ]
 
-void	move_lava_up(t_game *game, int row, int col);
-void	move_lava_down(t_game *game, int row, int col);
-void	move_lava_left(t_game *game, int row, int col);
-void	move_lava_right(t_game *game, int row, int col);
+void	ft_move_lava_up(t_game *game, int row, int col);
+void	ft_move_lava_down(t_game *game, int row, int col);
+void	ft_move_lava_left(t_game *game, int row, int col);
+void	ft_move_lava_right(t_game *game, int row, int col);
 
 //=================================================================== [ file.c ]
 
@@ -150,7 +150,7 @@ void	ft_teleport_player(t_game *game, int y, int x);
 
 //=================================================================== [ file.c ]
 
-void	play_movement_sound(t_game *game);
+void	ft_play_movement_sound(t_game *game);
 void	ft_player_take_coin(t_game *game);
 void	ft_player_take_life(t_game *game);
 void	ft_player_get_hit(t_game *game);
@@ -255,7 +255,7 @@ void	ft_load_player_up_sprites(t_game *game);
 void	ft_load_player_down_sprites(t_game *game);
 void	ft_load_player_left_sprites(t_game *game);
 void	ft_load_player_right_sprites(t_game *game);
-
+void	ft_load_player_current(t_game *game);
 //=================================================================== [ file.c ]
 
 void	ft_load_ground_sprites(t_game *game);
@@ -270,14 +270,14 @@ void	ft_mlx_hook_loop(t_game *game);
 
 void	ft_read_map(t_game *game, char *map_name);
 
-int		get_map_height(char *map_name, t_game *game);
+int		ft_get_map_height(char *map_name, t_game *game);
 
-void	check_ber_format(char *map_name, int height, t_game *game);
+void	ft_check_ber_format(char *map_name, int height, t_game *game);
 
 //=================================================================== [ file.c ]
 
-char	**allocate_new_map(int new_height, int new_width, t_game *game);
-void	fill_map_row(char **new_map, int row, t_game *game, int new_width);
+char	**ft_allocate_new_map(int new_height, int new_width, t_game *game);
+void	ft_fill_map_row(char **new_map, int row, t_game *game, int new_width);
 char	**ft_create_map_with_border(t_game *game);
 
 //=================================================================== [ file.c ]

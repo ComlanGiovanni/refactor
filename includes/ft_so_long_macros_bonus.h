@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:25:57 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 12:15:00 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/04 15:13:34 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@
 # define LOVE_ICON_ERROR	"love_small_icon.xpm fail to load\n"
 # define WIN_MSG			"Thanks for playing, you WIN with steps : "
 # define LOSE_MSG			"You LOSE with steps : "
-# define EMPTY_LINE 		"Remove that empty line at the top or middle\n"
+# define EMPTY_LINE 		"Remove that empty line at the top or middle or bottom\n"
 # define MAP_TOO_BIG		"Reduce map size, map too big for the screen\n"
 # define SPLIT_MAP_ERROR	"Malloc grid for path finding fail\n"
 # define BORDERS_MAP_ERROR	"Malloc grid with border fail\n"
