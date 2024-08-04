@@ -1,5 +1,16 @@
 {
 	"files.associations": {
-		"so_long_bonus_linux.h": "c"
+		"so_long_bonus_linux.h": "c",
+		"array": "c",
+		"deque": "c",
+		"string": "c",
+		"unordered_map": "c",
+		"vector": "c",
+		"string_view": "c",
+		"initializer_list": "c",
+		"so_long_bonus.h": "c",
+		"ft_so_long_bonus.h": "c",
+		"ft_so_long_structs_bonus.h": "c",
+		"ft_so_long_functions_bonus.h": "c"
 	}
 }
