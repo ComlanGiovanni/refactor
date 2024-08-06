@@ -6,7 +6,7 @@
 #    By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 03:25:21 by gicomlan          #+#    #+#              #
-#    Updated: 2024/08/06 14:07:02 by gicomlan         ###   ########.fr        #
+#    Updated: 2024/08/06 14:59:36 by gicomlan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -182,12 +182,13 @@ RESET 					= \e[0m
 # ================================================================= [ Messages ]
 #												 (Colored display + emoji etc..)
 COMPILE					=	"Starting the compilation of *.o..."
+COMPILE_DONE			=	"compilation of *.o DONE"
 MAKING					=	" Making of "
 CLEANNING				=	" Cleanning of "
 FCLEANNING				=	" Fcleanning of "
-SO_LONG_COMP			=	echo "\n🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(MANDATORY_NAME): $(NO_COLOR)$(COMPILE)\n"
-SO_LONG_BONUS_COMP		=	echo "\n🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(BONUS_NAME): $(NO_COLOR)$(COMPILE)\n"
-MLX_COMP				=	echo "\n🚧$(BOLD)$(MAKING)$(RESET)$(PURPLE)$(MLX_NAME)$(NO_COLOR): $(COMPILE)\n"
+SO_LONG_COMP			=	echo "🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(MANDATORY_NAME): $(NO_COLOR)$(COMPILE_DONE)"
+SO_LONG_BONUS_COMP		=	echo "🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(BONUS_NAME): $(NO_COLOR)$(COMPILE_DONE)"
+MLX_COMP				=	echo "\n🚧$(BOLD)$(MAKING)$(RESET)$(PURPLE)$(MLX_NAME)$(NO_COLOR): $(COMPILE)"
 SO_LONG_READY			=	echo "\n🧮 $(RED)$(REVERSE)Mandatory$(RESET): $(RED) $(MANDATORY_NAME) ready!\n"
 BONUS_READY				=	echo "\n🎯 $(CYAN)$(REVERSE)Bonus$(RESET): $(CYAN) $(BONUS_NAME) ready!\n"
 CLEANED					=	echo "\n💧$(BOLD)$(CLEANNING)$(RESET)$(GREEN)$(ITALIC)$(UNDERLINE)$(MANDATORY_NAME)$(RESET)$(NO_COLOR) && $(GREEN)$(ITALIC)$(UNDERLINE)$(BONUS_NAME)$(RESET)$(NO_COLOR): $(DIM)Removed$(RESET) all the $(STRIKE)\".o\"$(RESET) files 🗑\\n"
@@ -197,7 +198,6 @@ MLX_FCLEANED			=	echo "\n🧼$(BOLD)$(FCLEANNING)$(RESET)$(GREEN)$(ITALIC)$(UNDE
 NEW_LINE				=	echo "\n"
 # ==================================================================== [ Rules ]
 # 										  (Default rule for library compilation)
-TOTAL_SRCS_FILES	:= $(words $(BONUS_SRCS_FILES))
 PROGRESS_BAR_SIZE	:= 50
 COMPILED_SRCS_FILES	:= 0
 PROGRESS_UNICODE	:= █
@@ -207,23 +207,25 @@ all : $(MANDATORY_NAME)
 bonus : $(BONUS_NAME)
 # 									(Compilation of object files into a library)
 $(MANDATORY_NAME) : $(OBJS_MANDATORY)
+	@$(NEW_LINE)
 	@$(MAKE) $(MAKE_FLAGS) $(MINI_LIB_PATH)
 	@$(COPY) $(MINI_LIB_PATH)$(LIB_SO_LONG_NAME) .
+	@$(SO_LONG_COMP)
 	@$(MLX_COMP)
 	@$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MLX_PATH) > $(NULL_FILE) $(REDIRECT_STDERR)
 	@$(COPY) $(MLX_PATH)$(MLX_NAME) .
-	@$(SO_LONG_COMP)
 	@$(CC) $(CFLAGS) -o $(MANDATORY_NAME) $(OBJS_MANDATORY) $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
 	@$(SO_LONG_READY)
 	@echo "$$ASCII_MANDATORY"
 
 $(BONUS_NAME) : $(OBJS_BONUS)
+	@$(NEW_LINE)
 	@$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MINI_LIB_PATH)
 	@$(COPY) $(MINI_LIB_PATH)$(LIB_SO_LONG_NAME) .
+	@$(SO_LONG_BONUS_COMP)
 	@$(MLX_COMP)
 	@$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MLX_PATH) > $(NULL_FILE) $(REDIRECT_STDERR)
 	@$(COPY) $(MLX_PATH)$(MLX_NAME) .
-	@$(SO_LONG_BONUS_COMP)
 	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJS_BONUS) $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
 	@$(BONUS_READY)
 	@echo "$$ASCII_BONUS"
@@ -232,14 +234,16 @@ $(BONUS_NAME) : $(OBJS_BONUS)
 objects/mandatory/%.o: mandatory/%.c
 	@mkdir -p $(dir $@)
 	@mkdir -p $(dir $(DEPS_MANDATORY))
-	@echo "Compiling $< into $@"
+	@$(eval TOTAL_SRCS_FILES := $(words $(MANDATORY_SRCS_FILES)))
+	@$(call progress_bar)
 	@$(CC) $(CFLAGS) -MMD -c -I $(INCLUDES_DIR) -MP $< -o $@ -MF dependencies/mandatory/$(patsubst mandatory/%.c,%.d,$<)
 
 objects/bonus/%.o: bonus/%.c
 	@mkdir -p $(dir $@)
 	@mkdir -p $(dir $(DEPS_BONUS))
-	@$(CC) $(CFLAGS) -MMD -c -I $(INCLUDES_DIR) -MP $< -o $@ -MF dependencies/bonus/$(patsubst bonus/%.c,%.d,$<)
+	@$(eval TOTAL_SRCS_FILES := $(words $(BONUS_SRCS_FILES)))
 	@$(call progress_bar)
+	@$(CC) $(CFLAGS) -MMD -c -I $(INCLUDES_DIR) -MP $< -o $@ -MF dependencies/bonus/$(patsubst bonus/%.c,%.d,$<)
 
 clean :
 	$(RM) $(RMFLAGS) $(OBJS_DIR) > $(NULL_FILE)
@@ -310,6 +314,15 @@ define progress_bar
         $(shell echo "scale=2; $(COMPILED_SRCS_FILES)/$(TOTAL_SRCS_FILES) * 100" | bc) \
         $(COMPILED_SRCS_FILES) $(TOTAL_SRCS_FILES) $(notdir $<)
     @printf "\033[0K\r"
+endef
+
+define loading_loop
+	while true; do \
+		for i in / - \\ \|; do \
+			printf "\rLoading... %s" "$$i"; \
+			sleep 0.1; \
+		done \
+	done
 endef
 
 # =============================================================== [ DEPENDENCY ]

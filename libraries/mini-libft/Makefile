@@ -6,7 +6,7 @@
 #    By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 03:31:05 by gicomlan          #+#    #+#              #
-#    Updated: 2024/08/06 12:52:34 by gicomlan         ###   ########.fr        #
+#    Updated: 2024/08/06 14:52:38 by gicomlan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,13 @@ HIDDEN					= \e[8m
 STRIKE					= \e[9m
 RESET 					= \e[0m
 
-COMP_START	=	echo "\n🚧 $(BOLD)Making of $(RESET)$(PURPLE)$(NAME)$(NO_COLOR): Starting the compilation of *.o...\n"
+TOTAL_SRCS_FILES 	:= $(words $(SRC))
+PROGRESS_BAR_SIZE	:= 50
+COMPILED_SRCS_FILES	:= 0
+PROGRESS_UNICODE	:= █
+REMAINING_UNICODE	:= ▒
+
+COMP_START	=	echo "\n🚧 $(BOLD)Making of $(RESET)$(PURPLE)$(NAME)$(NO_COLOR): compilation of *.o DONE\n"
 
 CLEANED		=	echo "\n💧 $(BOLD)Cleanning of $(RESET)$(GREEN)$(ITALIC)$(UNDERLINE)$(NAME)$(RESET)$(NO_COLOR): $(DIM)Removed$(RESET) all the $(STRIKE)\".o\"$(RESET) files 🗑\\n"
 
@@ -67,12 +73,13 @@ OBJS = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	@$(COMP_START)
 	@ar rc $(NAME) $(OBJS) > /dev/null 2>&1
 	@ranlib $(NAME)
+	$(COMP_START)
 
 %.o: %.c
 	@$(CC) -c $< -o $@ > /dev/null 2>&1
+	@$(call progress_bar)
 
 clean :
 	@rm -f $(OBJS)
@@ -85,3 +92,16 @@ fclean : clean
 re : fclean all
 
 .PHONY : all clean fclean re
+
+define progress_bar
+    @$(eval COMPILED_SRCS_FILES := $(shell expr $(COMPILED_SRCS_FILES) + 1))
+    @printf "⚙️  "
+    @$(eval PROGRESS := $(shell expr $(COMPILED_SRCS_FILES) \* $(PROGRESS_BAR_SIZE) / $(TOTAL_SRCS_FILES)))
+    @$(eval REMAINING := $(shell expr $(PROGRESS_BAR_SIZE) - $(PROGRESS)))
+    @printf "$(RED)%$(PROGRESS)s$(NO_COLOR)" | sed 's/ /$(PROGRESS_UNICODE)/g'
+    @printf "$(BLUE)%$(REMAINING)s$(NO_COLOR)" | sed 's/ /$(REMAINING_UNICODE)/g'
+    @printf " (%.2f%%) [%d/%d] %s" \
+        $(shell echo "scale=2; $(COMPILED_SRCS_FILES)/$(TOTAL_SRCS_FILES) * 100" | bc) \
+        $(COMPILED_SRCS_FILES) $(TOTAL_SRCS_FILES) $(notdir $<)
+    @printf "\033[0K\r"
+endef
