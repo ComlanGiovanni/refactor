@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:52:04 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 12:34:33 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/06 15:52:30 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_print_fill_grid(char **map)
 {
 	ft_print_display_grid(map);
-	usleep(200000);
 	system("clear");
 }
 
