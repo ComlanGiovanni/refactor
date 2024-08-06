@@ -6,11 +6,11 @@
 #    By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 03:25:21 by gicomlan          #+#    #+#              #
-#    Updated: 2024/08/06 14:59:36 by gicomlan         ###   ########.fr        #
+#    Updated: 2024/08/06 15:49:46 by gicomlan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#‧₊˚✩ {  } •. 。　.
+#‧₊˚✩ { ŝ̵̨̝̣̩̔ő̶͙̙̪̖̉̔_̵̱̯̙͑͘ͅĺ̷̟̼̌͠͝ǫ̶͇̑̋̕͜n̶͖̯͓̳̓̂̾͐g̷̡̿ } •. 。　.
 # 																  (Library name)
 MANDATORY_NAME			= so_long
 BONUS_NAME				= so_long_bonus
@@ -59,6 +59,7 @@ BONUS_SUBDIRS			+= update
 # -------------------------------------------------------------------------- []
 # 							   (Calculation of the total number of source files)
 #TOTAL_SRCS_FILES 	:= $(words $(BONUS_SRCS_FILES))----------------------------
+#SRC_FILE_NAMES 		:= $(filter-out %main.c ,$(SRCS))
 # 										            (Full paths to source files)
 # Fichiers objets correspondants
 #MANDATORY_SRCS_FILES	+= $(shell find $(MANDATORY_DIR) -name '*.c')
@@ -148,7 +149,25 @@ MKDIR					:= mkdir
 MKDIRFLAGS				:= -p
 NULL_FILE				:= /dev/null
 REDIRECT_STDERR			:= 2>&1
-
+# =============================================================== [ NORMINETTE ]
+# 												 (Command to run the norminette)
+NORM				:=	norminette
+NORM_FLAG			:=	-R CheckForbiddenSourceHeader
+NORM_DEF_FLAG		:=	-R CheckDefine
+NORM_SRC			:= "$(NORM) $(FULL_SRCS_SUBDIRS)"
+NORM_HEAD			:= "$(NORM) $(NORM_FLAG) $(FULL_SRCS_SUBDIRS)"
+NORM_DEFINE			:= "$(NORM) $(NORM_DEF_FLAG) $(DIR_INCLUDES)"
+# =============================================================== [  ]
+# 												 ()
+#ifeq ($(OS),Darwin)
+##	SHELL = /bin/bash
+#	FLAGS_MLX 	= -lmlx -framework OpenGL -framework AppKit
+#else ifeq ($(OS),Linux)
+#	SHELL = /usr/bin/bash
+#	FLAGS_MLX = -lmlx -lXext -lX11 -lm -lz
+#else
+#	$(error Incompatable OS Detected Linux and Mac os only)
+#endif
 # =================================================================== [ COLORS ]
 # 														   (Colors for messages)
 BLACK					=	\e[0;30m
@@ -212,7 +231,10 @@ $(MANDATORY_NAME) : $(OBJS_MANDATORY)
 	@$(COPY) $(MINI_LIB_PATH)$(LIB_SO_LONG_NAME) .
 	@$(SO_LONG_COMP)
 	@$(MLX_COMP)
-	@$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MLX_PATH) > $(NULL_FILE) $(REDIRECT_STDERR)
+	@$(loading_loop) & LOADING_PID=$$!; \
+	$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MLX_PATH) > $(NULL_FILE) $(REDIRECT_STDERR); \
+	kill $$LOADING_PID; \
+	printf "\r\033[0K";
 	@$(COPY) $(MLX_PATH)$(MLX_NAME) .
 	@$(CC) $(CFLAGS) -o $(MANDATORY_NAME) $(OBJS_MANDATORY) $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
 	@$(SO_LONG_READY)
@@ -224,7 +246,10 @@ $(BONUS_NAME) : $(OBJS_BONUS)
 	@$(COPY) $(MINI_LIB_PATH)$(LIB_SO_LONG_NAME) .
 	@$(SO_LONG_BONUS_COMP)
 	@$(MLX_COMP)
-	@$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MLX_PATH) > $(NULL_FILE) $(REDIRECT_STDERR)
+	@$(loading_loop) & LOADING_PID=$$!; \
+	$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MLX_PATH) > $(NULL_FILE) $(REDIRECT_STDERR); \
+	kill $$LOADING_PID; \
+	printf "\r\033[0K";
 	@$(COPY) $(MLX_PATH)$(MLX_NAME) .
 	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJS_BONUS) $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
 	@$(BONUS_READY)
@@ -269,12 +294,12 @@ debug_make:
 	@echo "MANDATORY_PATH = $(MANDATORY_PATH)"
 	@echo "MANDATORY_SRCS_FILES = $(MANDATORY_SRCS_FILES)"
 
-help:
-	@echo "$$HELP_MSG"
+info:
+	@echo "$$INFO_MSG"
 
 # 								(Rule for checking compliance with the standard)
 
-define HELP_MSG
+define INFO_MSG
 Usage: make [TARGET]
 
 all         - Build the main program
@@ -284,8 +309,15 @@ re          - Rebuild the program
 bonus       - Build the bonus part of the program
 norm        - Run norminette checks
 help        - Display this help message
+
+Summary:
+This project is a very small 2D game.
+Its purpose is to make you work with textures, sprites,
+and some other very basic gameplay elements.
+Version: 3
 endef
-export HELP_MSG
+export INFO_MSG
+
 norm :
 	@ALL_NORM_CHECK=0; \
 	for cmd in $(NORM_SRC) $(NORM_HEAD) $(NORM_DEFINE); do \
@@ -319,7 +351,7 @@ endef
 define loading_loop
 	while true; do \
 		for i in / - \\ \|; do \
-			printf "\rLoading... %s" "$$i"; \
+			printf "\r[$(CYAN)%s$(NO_COLOR)]" "$$i"; \
 			sleep 0.1; \
 		done \
 	done
@@ -332,108 +364,10 @@ endef
 # ==================================================================== [ ASCII ]
 # 							 (Ascii are to diplay at the end of the compilation)
 coffee:
-	@clear
-	@echo ""
-	@echo "                   ("
-	@echo "	                     )     ("
-	@echo "               ___...(-------)-....___"
-	@echo '           .-""       )    (          ""-.'
-	@echo "      .-''''|-._             )         _.-|"
-	@echo '     /  .--.|   `""---...........---""`   |'
-	@echo "    /  /    |                             |"
-	@echo "    |  |    |                             |"
-	@echo "     \  \   |                             |"
-	@echo "      '\ '\ |                             |"
-	@echo "        '\ '|                             |"
-	@echo "        _/ /\                             /"
-	@echo "       (__/  \                           /"
-	@echo '    _..---""` \                         /`""---.._'
-	@echo " .-'           \                       /          '-."
-	@echo ":               '-.__             __.-'              :"
-	@echo ':                  ) ""---...---"" (                :'
-	@echo "\'._                '"--...___...--"'              _.'"
-	@echo '   \""--..__                              __..--""/'
-	@echo "     '._     """----.....______.....----"""         _.'"
-	@echo '         ""--..,,_____            _____,,..--"""'''
-	@echo '                      """------"""'
-	@sleep 0.5
-	@clear
-	@echo ""
-	@echo "                 ("
-	@echo "	                  )      ("
-	@echo "               ___..(.------)--....___"
-	@echo '           .-""       )   (           ""-.'
-	@echo "      .-''''|-._      (       )        _.-|"
-	@echo '     /  .--.|   `""---...........---""`   |'
-	@echo "    /  /    |                             |"
-	@echo "    |  |    |                             |"
-	@echo "     \  \   |                             |"
-	@echo "      '\ '\ |                             |"
-	@echo "        '\ '|                             |"
-	@echo "        _/ /\                             /"
-	@echo "       (__/  \                           /"
-	@echo '    _..---""` \                         /`""---.._'
-	@echo " .-'           \                       /          '-."
-	@echo ":               '-.__             __.-'              :"
-	@echo ':                  ) ""---...---"" (                :'
-	@echo "\'._                '"--...___...--"'              _.'"
-	@echo '   \""--..__                              __..--""/'
-	@echo "     '._     """----.....______.....----"""         _.'"
-	@echo '         ""--..,,_____            _____,,..--"""'''
-	@echo '                      """------"""'
-	@sleep 0.5
-	@clear
-	@echo ""
-	@echo "               ("
-	@echo "	                  )     ("
-	@echo "               ___..(.------)--....___"
-	@echo '           .-""      )    (           ""-.'
-	@echo "      .-''''|-._      (       )        _.-|"
-	@echo '     /  .--.|   `""---...........---""`   |'
-	@echo "    /  /    |                             |"
-	@echo "    |  |    |                             |"
-	@echo "     \  \   |                             |"
-	@echo "      '\ '\ |                             |"
-	@echo "        '\ '|                             |"
-	@echo "        _/ /\                             /"
-	@echo "       (__/  \                           /"
-	@echo '    _..---""` \                         /`""---.._'
-	@echo " .-'           \                       /          '-."
-	@echo ":               '-.__             __.-'              :"
-	@echo ':                  ) ""---...---"" (                :'
-	@echo "\'._                '"--...___...--"'              _.'"
-	@echo '   \""--..__                              __..--""/'
-	@echo "     '._     """----.....______.....----"""         _.'"
-	@echo '         ""--..,,_____            _____,,..--"""'''
-	@echo '                      """------"""'
-	@sleep 0.5
-	@clear
-	@echo ""
-	@echo "             (         ) "
-	@echo "	              )        ("
-	@echo "               ___)...----)----....___"
-	@echo '           .-""      )    (           ""-.'
-	@echo "      .-''''|-._      (       )        _.-|"
-	@echo '     /  .--.|   `""---...........---""`   |'
-	@echo "    /  /    |                             |"
-	@echo "    |  |    |                             |"
-	@echo "     \  \   |                             |"
-	@echo "      '\ '\ |                             |"
-	@echo "        '\ '|                             |"
-	@echo "        _/ /\                             /"
-	@echo "       (__/  \                           /"
-	@echo '    _..---""` \                         /`""---.._'
-	@echo " .-'           \                       /          '-."
-	@echo ":               '-.__             __.-'              :"
-	@echo ':                  ) ""---...---"" (                :'
-	@echo "\'._                '"--...___...--"'              _.'"
-	@echo '   \""--..__                              __..--""/'
-	@echo "     '._     """----.....______.....----"""         _.'"
-	@echo '         ""--..,,_____            _____,,..--"""'''
-	@echo '                      """------"""'
+	@./coffee.sh
+
 # ==================================================================== [ ASCII ]
 # 							 (Ascii are to diplay at the end of the compilation)
-info: ascii
 
 define ASCII_MANDATORY
 $(RED)                       ,         $(NO_COLOR)
@@ -458,6 +392,6 @@ $(CYAN)                                 \((	$(NO_COLOR)
 endef
 export ASCII_BONUS
 
-.PHONY: all clean fclean re bonus coffee info debug_make help norm
+.PHONY: all clean fclean re bonus coffee info debug_make help norm coffee loading_loop progress_bar
 .SILENT: re clean fclean
 # ‧₊˚✩ { E̶̩̹̽ṉ̸̂d̷̰̫̉͊ ̷̖̀Ọ̴͆͝f̴͎̒ ̸̡͈̀̊M̵̞͘a̷͓̞͂͝ḳ̶̚é̴̹̈f̸̞̟̀́i̵̤͆l̷͔̐ḛ̵̥̎̓  •. 。　.
