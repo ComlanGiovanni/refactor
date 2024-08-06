@@ -6,7 +6,7 @@
 #    By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 03:25:21 by gicomlan          #+#    #+#              #
-#    Updated: 2024/08/06 10:23:17 by gicomlan         ###   ########.fr        #
+#    Updated: 2024/08/06 14:07:02 by gicomlan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,41 +40,22 @@ MLX_DIR					= mlx/
 MLX_PATH				= $(LIBS_DIR)$(MLX_DIR)
 MINI_LIB_PATH			= $(LIBS_DIR)$(MINI_LIB_DIR)
 # 									     	   	  (Paths to subdir sources files)
-ANIMATION_SUBDIR	 	= $(BONUS_PATH)animation/
-CHECK_SUBDIR	 		= $(BONUS_PATH)check/
-DISPLAY_SUBDIR 			= $(BONUS_PATH)display/
-GAMEPLAY_SUBDIR 		= $(BONUS_PATH)gameplay/
-INIT_SUBDIR 			= $(BONUS_PATH)init/
-LOAD_SUBDIR 			= $(BONUS_PATH)load/
-PARSING_SUBDIR 			= $(BONUS_PATH)parsing/
-PRINTING_SUBDIR 		= $(BONUS_PATH)printing/
-CAMERA_SUBDIR 			= $(BONUS_PATH)camera/
-DEBUG_SUBDIR 			= $(BONUS_PATH)debug/
-FREE_SUBDIR 			= $(BONUS_PATH)free/
-HUD_SUBDIR 				= $(BONUS_PATH)hud/
-INPUT_SUBDIR 			= $(BONUS_PATH)input/
-MLX_SUBDIR 				= $(BONUS_PATH)mlx/
-PATH_FOUNDING_SUBDIR 	= $(BONUS_PATH)path-founding/
-UPDATE_SUBDIR 			= $(BONUS_PATH)update/
-
-#BONUS_SUBDIRS			+= animation
-#BONUS_SUBDIRS			+= check
-#BONUS_SUBDIRS			+= display
-#BONUS_SUBDIRS			+= gameplay
-#BONUS_SUBDIRS			+= init
-#BONUS_SUBDIRS			+= load
-#BONUS_SUBDIRS			+= parsing
-#BONUS_SUBDIRS			+= printing
-#BONUS_SUBDIRS			+= camera
-#BONUS_SUBDIRS			+= debug
-#BONUS_SUBDIRS			+= free
-#BONUS_SUBDIRS			+= hud
-#BONUS_SUBDIRS			+= input
-#BONUS_SUBDIRS			+= mlx
-#BONUS_SUBDIRS			+= path-founding
-#BONUS_SUBDIRS			+= update
-
-
+BONUS_SUBDIRS			+= animation
+BONUS_SUBDIRS			+= check
+BONUS_SUBDIRS			+= display
+BONUS_SUBDIRS			+= gameplay
+BONUS_SUBDIRS			+= init
+BONUS_SUBDIRS			+= load
+BONUS_SUBDIRS			+= parsing
+BONUS_SUBDIRS			+= printing
+BONUS_SUBDIRS			+= camera
+BONUS_SUBDIRS			+= debug
+BONUS_SUBDIRS			+= free
+BONUS_SUBDIRS			+= hud
+BONUS_SUBDIRS			+= input
+BONUS_SUBDIRS			+= mlx
+BONUS_SUBDIRS			+= path-founding
+BONUS_SUBDIRS			+= update
 # -------------------------------------------------------------------------- []
 # 							   (Calculation of the total number of source files)
 #TOTAL_SRCS_FILES 	:= $(words $(BONUS_SRCS_FILES))----------------------------
@@ -92,54 +73,8 @@ MANDATORY_SRCS_FILES	= mandatory/main.c \
 						mandatory/sources/ft_tools_linux.c \
 						mandatory/sources/ft_utils_map_finishable.c
 
-BONUS_SRCS_FILES		+= $(ANIMATION_SUBDIR)ft_animation_bonus.c
-BONUS_SRCS_FILES		+= $(ANIMATION_SUBDIR)ft_animation_digits_bonus.c
-BONUS_SRCS_FILES		+= $(ANIMATION_SUBDIR)ft_animation_player_bonus.c
-BONUS_SRCS_FILES		+= $(ANIMATION_SUBDIR)ft_animation_utils.c
-BONUS_SRCS_FILES		+= $(ANIMATION_SUBDIR)ft_animation_world_bonus.c
-BONUS_SRCS_FILES		+= $(CAMERA_SUBDIR)ft_camera_bonus.c
-BONUS_SRCS_FILES		+= $(CHECK_SUBDIR)ft_check_bonus.c
-BONUS_SRCS_FILES		+= $(CHECK_SUBDIR)ft_check_utils_bonus.c
-BONUS_SRCS_FILES		+= $(DEBUG_SUBDIR)ft_debug_bonus.c
-BONUS_SRCS_FILES		+= $(DEBUG_SUBDIR)ft_debug_utils_one.c
-BONUS_SRCS_FILES		+= $(DISPLAY_SUBDIR)ft_display_assets_bonus.c
-BONUS_SRCS_FILES		+= $(DISPLAY_SUBDIR)ft_display_assets_utils_bonus.c
-BONUS_SRCS_FILES		+= $(FREE_SUBDIR)ft_free_bonus.c
-BONUS_SRCS_FILES		+= $(FREE_SUBDIR)ft_free_parsing_bonus.c
-BONUS_SRCS_FILES		+= $(GAMEPLAY_SUBDIR)ft_lava_behaviour_bonus.c
-BONUS_SRCS_FILES		+= $(GAMEPLAY_SUBDIR)ft_lava_event_bonus.c
-BONUS_SRCS_FILES		+= $(GAMEPLAY_SUBDIR)ft_lava_movement.c
-BONUS_SRCS_FILES		+= $(GAMEPLAY_SUBDIR)ft_player_behaviour_bonus.c
-BONUS_SRCS_FILES		+= $(GAMEPLAY_SUBDIR)ft_player_event_bonus.c
-BONUS_SRCS_FILES		+= $(HUD_SUBDIR)ft_hud_bonus.c
-BONUS_SRCS_FILES		+= $(INIT_SUBDIR)ft_init_bonus.c
-BONUS_SRCS_FILES		+= $(INIT_SUBDIR)ft_init_map_bonus.c
-BONUS_SRCS_FILES		+= $(INIT_SUBDIR)ft_init_mlx_bonus.c
-BONUS_SRCS_FILES		+= $(INIT_SUBDIR)ft_init_so_long_bonus.c
-BONUS_SRCS_FILES		+= $(INPUT_SUBDIR)ft_input_player_bonus.c
-BONUS_SRCS_FILES		+= $(INPUT_SUBDIR)ft_input_utils_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_digits_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_door_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_even_digts_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_gameplay_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_gameplay_portal_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_odd_digts_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_player_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_portals_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_world_assets_bonus.c
-BONUS_SRCS_FILES		+= $(MLX_SUBDIR)ft_mlx_hook_loop_bonus.c
-BONUS_SRCS_FILES		+= $(PARSING_SUBDIR)ft_parsing_bonus.c
-BONUS_SRCS_FILES		+= $(PARSING_SUBDIR)ft_parsing_border_map_bonus.c
-BONUS_SRCS_FILES		+= $(PARSING_SUBDIR)ft_parsing_utils_bonus.c
-BONUS_SRCS_FILES		+= $(PATH_FOUNDING_SUBDIR)ft_path_founding_bonus.c
-BONUS_SRCS_FILES		+= $(PATH_FOUNDING_SUBDIR)ft_path_founding_utils_bonus.c
-BONUS_SRCS_FILES		+= $(PRINTING_SUBDIR)ft_print_bonus.c
-BONUS_SRCS_FILES		+= $(PRINTING_SUBDIR)ft_print_console_bonus.c
-BONUS_SRCS_FILES		+= $(UPDATE_SUBDIR)ft_update_bonus.c
 BONUS_SRCS_FILES		+= $(BONUS_DIR)main.c
-
-#BONUS_SRCS_FILES		= $(foreach dir,$(BONUS_SUBDIRS),$(shell find $(BONUS_PATH)$(dir) -name '*.c'))
+BONUS_SRCS_FILES		+= $(foreach dir,$(BONUS_SUBDIRS),$(shell find $(BONUS_PATH)$(dir) -name '*.c'))
 # ---------------------------------------------------------------- [ OBJECTS ]
 #OBJS_MANDATORY			= $(patsubst $(MANDATORY_DIR)%.c,$(MANDATORY_OBJS_DIR)%.o,$(MANDATORY_SRCS_FILES))
 OBJS_MANDATORY			= $(MANDATORY_SRCS_FILES:mandatory/%.c=objects/mandatory/%.o)
@@ -166,12 +101,27 @@ CFLAGS 					+= -Wall
 #CFLAGS 				+= -fPIE
 #CFLAGS 					+= -MMD
 #CFLAGS 					+= -g
-CFLAGS 					+= -I $(INCLUDES_DIR)
+#CFLAGS 					+= -I $(INCLUDES_DIR)
 #CFLAGS 				+= -lbsd
 #CFLAGS 				+= -fsanitize=address
 #CFLAGS 				+= -fsanitize=undefined
 #CFLAGS 					+= -MP -MF $(DEPS_DIR)/$*.define
 #CFLAGS 					+= -MP
+#CFLAGS			+=	-O3
+#CFLAGS			+=	-Ofast
+#C_DEBUG_CFLAGS	+=	-g3
+
+MAKE_NO_PRINT	:=	--no-print-directory
+MAKE_FLAGS		+=	--silent
+MAKE_FLAGS		+=	-C
+
+VALGRIND				:=	valgrind
+VALGRIND_FLAGES			+= --leak-check=full
+VALGRIND_FLAGES			+= --show-leak-kinds=all
+VALGRIND_FLAGES			+= --track-fds=yes
+VALGRIND_FLAGES			+= --show-reachable=yes
+VALGRIND_FLAGES			+= --tool=memcheck
+
 MLX_FLAGS				+= -L $(MLX_PATH)
 MLX_FLAGS				+= -lmlx
 MLX_FLAGS				+= -lXext
@@ -197,6 +147,8 @@ COPY					:= /bin/cp
 MKDIR					:= mkdir
 MKDIRFLAGS				:= -p
 NULL_FILE				:= /dev/null
+REDIRECT_STDERR			:= 2>&1
+
 # =================================================================== [ COLORS ]
 # 														   (Colors for messages)
 BLACK					=	\e[0;30m
@@ -229,62 +181,82 @@ STRIKE					= \e[9m
 RESET 					= \e[0m
 # ================================================================= [ Messages ]
 #												 (Colored display + emoji etc..)
-COMP_START				=	echo "\n🚧 $(PURPLE)Make: $(NO_COLOR)Starting the compilation...\n"
-SO_LONG_COMP			=	echo "\n🚧 $(YELLOW) $(NAME): $(NO_COLOR)Starting the compilation...\n"
-SO_LONG_READY			=	echo "\n🧮 $(RED) $(NAME) $(NO_COLOR)ready!\n"
-BONUS_READY				=	echo "\n🎯 Bonus: $(CYAN) $(BONUS_NAME) $(NO_COLOR)ready!\n"
-CLEANED					=	echo "\n💧 $(GREEN)Clean: $(NO_COLOR)$(UNDERLINE)Removed$(RESET) all the \".o\" files 🗑\\n"
-FCLEANED				=	echo "\n🧼 $(GREEN)Fclean: $(NO_COLOR)$(UNDERLINE)Removed$(RESET) the executables 🗑\\n"
+COMPILE					=	"Starting the compilation of *.o..."
+MAKING					=	" Making of "
+CLEANNING				=	" Cleanning of "
+FCLEANNING				=	" Fcleanning of "
+SO_LONG_COMP			=	echo "\n🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(MANDATORY_NAME): $(NO_COLOR)$(COMPILE)\n"
+SO_LONG_BONUS_COMP		=	echo "\n🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(BONUS_NAME): $(NO_COLOR)$(COMPILE)\n"
+MLX_COMP				=	echo "\n🚧$(BOLD)$(MAKING)$(RESET)$(PURPLE)$(MLX_NAME)$(NO_COLOR): $(COMPILE)\n"
+SO_LONG_READY			=	echo "\n🧮 $(RED)$(REVERSE)Mandatory$(RESET): $(RED) $(MANDATORY_NAME) ready!\n"
+BONUS_READY				=	echo "\n🎯 $(CYAN)$(REVERSE)Bonus$(RESET): $(CYAN) $(BONUS_NAME) ready!\n"
+CLEANED					=	echo "\n💧$(BOLD)$(CLEANNING)$(RESET)$(GREEN)$(ITALIC)$(UNDERLINE)$(MANDATORY_NAME)$(RESET)$(NO_COLOR) && $(GREEN)$(ITALIC)$(UNDERLINE)$(BONUS_NAME)$(RESET)$(NO_COLOR): $(DIM)Removed$(RESET) all the $(STRIKE)\".o\"$(RESET) files 🗑\\n"
+FCLEANED				=	echo "\n🧼$(BOLD)$(FCLEANNING)$(RESET)$(GREEN)$(ITALIC)$(UNDERLINE)$(MANDATORY_NAME)$(RESET)$(NO_COLOR) && $(GREEN)$(ITALIC)$(UNDERLINE)$(BONUS_NAME)$(NO_COLOR): $(DIM)Removed$(RESET) the $(UNDERLINE)executables$(RESET) 🗑\\n"
+MLX_CLEANED				=	echo "\n💧$(BOLD)$(CLEANNING)$(RESET)$(GREEN)$(ITALIC)$(UNDERLINE)$(MLX_NAME)$(RESET)$(NO_COLOR): $(DIM)Removed$(RESET) all the $(STRIKE)\".o\"$(RESET) files 🗑\\n"
+MLX_FCLEANED			=	echo "\n🧼$(BOLD)$(FCLEANNING)$(RESET)$(GREEN)$(ITALIC)$(UNDERLINE)$(MLX_NAME)$(RESET)$(NO_COLOR): $(DIM)Removed$(RESET) the $(STRIKE)executables$(RESET) 🗑\\n"
 NEW_LINE				=	echo "\n"
 # ==================================================================== [ Rules ]
 # 										  (Default rule for library compilation)
+TOTAL_SRCS_FILES	:= $(words $(BONUS_SRCS_FILES))
+PROGRESS_BAR_SIZE	:= 50
+COMPILED_SRCS_FILES	:= 0
+PROGRESS_UNICODE	:= █
+REMAINING_UNICODE	:= ▒
+
 all : $(MANDATORY_NAME)
 bonus : $(BONUS_NAME)
 # 									(Compilation of object files into a library)
 $(MANDATORY_NAME) : $(OBJS_MANDATORY)
-	$(MAKE) -C $(MINI_LIB_PATH)
-	$(COPY) $(MINI_LIB_PATH)$(LIB_SO_LONG_NAME) .
+	@$(MAKE) $(MAKE_FLAGS) $(MINI_LIB_PATH)
+	@$(COPY) $(MINI_LIB_PATH)$(LIB_SO_LONG_NAME) .
+	@$(MLX_COMP)
+	@$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MLX_PATH) > $(NULL_FILE) $(REDIRECT_STDERR)
+	@$(COPY) $(MLX_PATH)$(MLX_NAME) .
 	@$(SO_LONG_COMP)
-	$(MAKE) --no-print-directory -C $(MLX_PATH)
-	$(COPY) $(MLX_PATH)$(MLX_NAME) .
-	$(CC) $(CFLAGS) -o $(MANDATORY_NAME) $(OBJS_MANDATORY) $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
-	@echo "$$ASCII_MANDATORY"
+	@$(CC) $(CFLAGS) -o $(MANDATORY_NAME) $(OBJS_MANDATORY) $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
 	@$(SO_LONG_READY)
+	@echo "$$ASCII_MANDATORY"
 
 $(BONUS_NAME) : $(OBJS_BONUS)
-	$(MAKE) -C $(MINI_LIB_PATH)
-	$(COPY) $(MINI_LIB_PATH)$(LIB_SO_LONG_NAME) .
-	$(MAKE) --no-print-directory -C $(MLX_PATH)
-	$(COPY) $(MLX_PATH)$(MLX_NAME) .
-	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJS_BONUS) $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
-	@echo "$$ASCII_BONUS"
+	@$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MINI_LIB_PATH)
+	@$(COPY) $(MINI_LIB_PATH)$(LIB_SO_LONG_NAME) .
+	@$(MLX_COMP)
+	@$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MLX_PATH) > $(NULL_FILE) $(REDIRECT_STDERR)
+	@$(COPY) $(MLX_PATH)$(MLX_NAME) .
+	@$(SO_LONG_BONUS_COMP)
+	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJS_BONUS) $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
 	@$(BONUS_READY)
+	@echo "$$ASCII_BONUS"
 # 							   (Rule for creating object files and dependencies)
 
 objects/mandatory/%.o: mandatory/%.c
 	@mkdir -p $(dir $@)
 	@mkdir -p $(dir $(DEPS_MANDATORY))
-	$(CC) $(CFLAGS) -MMD -c -I $(INCLUDES_DIR) -MP $< -o $@ -MF dependencies/mandatory/$(patsubst mandatory/%.c,%.d,$<)
+	@echo "Compiling $< into $@"
+	@$(CC) $(CFLAGS) -MMD -c -I $(INCLUDES_DIR) -MP $< -o $@ -MF dependencies/mandatory/$(patsubst mandatory/%.c,%.d,$<)
 
 objects/bonus/%.o: bonus/%.c
 	@mkdir -p $(dir $@)
 	@mkdir -p $(dir $(DEPS_BONUS))
-	$(CC) $(CFLAGS) -MMD -c -I $(INCLUDES_DIR) -MP $< -o $@ -MF dependencies/bonus/$(patsubst bonus/%.c,%.d,$<)
+	@$(CC) $(CFLAGS) -MMD -c -I $(INCLUDES_DIR) -MP $< -o $@ -MF dependencies/bonus/$(patsubst bonus/%.c,%.d,$<)
+	@$(call progress_bar)
 
 clean :
 	$(RM) $(RMFLAGS) $(OBJS_DIR) > $(NULL_FILE)
 	$(RM) $(RMFLAGS) $(DEPS_DIR) > $(NULL_FILE)
-	$(MAKE) -C $(MINI_LIB_PATH) clean
-	$(MAKE) -C $(MLX_PATH) clean
-	@$(CLEANED)
+	$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MINI_LIB_PATH) clean
+	$(MLX_CLEANED)
+	$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MLX_PATH) clean > $(NULL_FILE)
+	$(CLEANED)
 # 													(Rule for complete cleaning)
 fclean : clean
 	$(RM) $(RMFLAGS) $(MANDATORY_NAME) > $(NULL_FILE)
 	$(RM) $(RMFLAGS) $(BONUS_NAME) > $(NULL_FILE)
 	$(RM) $(RMFLAGS) $(LIB_SO_LONG_NAME) > $(NULL_FILE)
 	$(RM) $(RMFLAGS) $(MLX_NAME) > $(NULL_FILE)
-	$(MAKE) -C $(MINI_LIB_PATH) fclean
-	@$(FCLEANED)
+	$(MLX_FCLEANED)
+	$(MAKE) $(MAKE_NO_PRINT) $(MAKE_FLAGS) $(MINI_LIB_PATH) fclean
+	$(FCLEANED)
 
 # 												(Rule for rebuilding everything)
 re : fclean all
@@ -293,17 +265,21 @@ debug_make:
 	@echo "MANDATORY_PATH = $(MANDATORY_PATH)"
 	@echo "MANDATORY_SRCS_FILES = $(MANDATORY_SRCS_FILES)"
 
+help:
+	@echo "$$HELP_MSG"
+
 # 								(Rule for checking compliance with the standard)
+
 define HELP_MSG
 Usage: make [TARGET]
-                all         - Build the main program
-                clean       - Remove object file(s)
-                fclean      - Remove object file(s) and binary file(s)
-                re          - Rebuild the program
-                bonus       - Build the bonus part of the program
-                norm        - Run norminette checks
-                debug       - Activate debug flags
-                help        - Display this help message
+
+all         - Build the main program
+clean       - Remove object file(s)
+fclean      - Remove object file(s) and binary file(s)
+re          - Rebuild the program
+bonus       - Build the bonus part of the program
+norm        - Run norminette checks
+help        - Display this help message
 endef
 export HELP_MSG
 norm :
@@ -335,6 +311,7 @@ define progress_bar
         $(COMPILED_SRCS_FILES) $(TOTAL_SRCS_FILES) $(notdir $<)
     @printf "\033[0K\r"
 endef
+
 # =============================================================== [ DEPENDENCY ]
 # 													(Including dependency files)
 -include $(DEPS_MANDATORY)
@@ -446,7 +423,18 @@ coffee:
 info: ascii
 
 define ASCII_MANDATORY
-$(RED)       								$(NO_COLOR)
+$(RED)                       ,         $(NO_COLOR)
+$(RED)       ❤            .:/          $(NO_COLOR)
+$(RED)         o      ,,///;,   ,;/    $(NO_COLOR)
+$(RED)           o   o)::::::;;///     $(NO_COLOR)
+$(RED)              >::::::::;;\\\     $(NO_COLOR)
+$(RED)                ''\\\\\'" ';\    $(NO_COLOR)
+$(RED)                   ';\           $(NO_COLOR)
+endef
+export ASCII_MANDATORY
+
+define ASCII_BONUS
+$(CYAN) o									$(NO_COLOR)
 $(CYAN)o      ______/~/~/~/__           /((	$(NO_COLOR)
 $(CYAN)  o  // __            ====__    /_((	$(NO_COLOR)
 $(CYAN) o  //  @))       ))))      ===/__((	$(NO_COLOR)
@@ -457,6 +445,6 @@ $(CYAN)                                 \((	$(NO_COLOR)
 endef
 export ASCII_BONUS
 
-.PHONY: all clean fclean re bonus coffee
-.SILENT: re
+.PHONY: all clean fclean re bonus coffee info debug_make help norm
+.SILENT: re clean fclean
 # ‧₊˚✩ { E̶̩̹̽ṉ̸̂d̷̰̫̉͊ ̷̖̀Ọ̴͆͝f̴͎̒ ̸̡͈̀̊M̵̞͘a̷͓̞͂͝ḳ̶̚é̴̹̈f̸̞̟̀́i̵̤͆l̷͔̐ḛ̵̥̎̓  •. 。　.

@@ -6,13 +6,13 @@
 #    By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 03:31:05 by gicomlan          #+#    #+#              #
-#    Updated: 2024/08/03 23:55:59 by gicomlan         ###   ########.fr        #
+#    Updated: 2024/08/06 12:52:34 by gicomlan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lib_so_long.a
 
-CC = gcc -Wall -Wextra -Werror
+CC = cc -Wall -Wextra -Werror
 
 SRC = 	ft_strlen.c \
 		ft_strncmp.c \
@@ -46,11 +46,21 @@ LIGHT_CYAN		=	\033[1;36m
 WHITE			=	\033[1;37m
 NO_COLOR		=	\033[0m
 
-COMP_START	=	echo "\n🚧 $(PURPLE)Make lib : $(NO_COLOR)Starting the compilation of *.o...\n"
+BOLD 					= \e[1m
+DIM 					= \e[2m
+ITALIC					= \e[3m
+UNDERLINE 				= \e[4m
+BLINK					= \e[5m
+REVERSE					= \e[7m
+HIDDEN					= \e[8m
+STRIKE					= \e[9m
+RESET 					= \e[0m
 
-CLEANED		=	echo "\n💧 $(GREEN)Clean lib: $(NO_COLOR)Removed all the \".o\" files 🗑\\n"
+COMP_START	=	echo "\n🚧 $(BOLD)Making of $(RESET)$(PURPLE)$(NAME)$(NO_COLOR): Starting the compilation of *.o...\n"
 
-FCLEANED	=	echo "\n🧼 $(GREEN)Fclean lib: $(NO_COLOR)Removed the executables 🗑\\n"
+CLEANED		=	echo "\n💧 $(BOLD)Cleanning of $(RESET)$(GREEN)$(ITALIC)$(UNDERLINE)$(NAME)$(RESET)$(NO_COLOR): $(DIM)Removed$(RESET) all the $(STRIKE)\".o\"$(RESET) files 🗑\\n"
+
+FCLEANED	=	echo "\n🧼 $(BOLD)Fcleanning of $(RESET)$(GREEN)$(ITALIC)$(UNDERLINE)$(NAME)$(RESET)$(NO_COLOR): $(DIM)Removed$(RESET) the $(STRIKE)executables$(RESET) 🗑\\n"
 
 OBJS = $(SRC:.c=.o)
 
@@ -58,15 +68,19 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@$(COMP_START)
-	ar rc $(NAME) $(OBJS)
+	@ar rc $(NAME) $(OBJS) > /dev/null 2>&1
+	@ranlib $(NAME)
+
+%.o: %.c
+	@$(CC) -c $< -o $@ > /dev/null 2>&1
 
 clean :
-	@$(CLEANED)
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
+	$(CLEANED)
 
 fclean : clean
-	@$(FCLEANED)
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	$(FCLEANED)
 
 re : fclean all
 

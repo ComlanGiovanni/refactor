@@ -6,13 +6,13 @@
 #    By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 03:27:53 by gicomlan          #+#    #+#              #
-#    Updated: 2024/07/20 03:27:56 by gicomlan         ###   ########.fr        #
+#    Updated: 2024/08/06 12:01:35 by gicomlan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-CC = gcc -Wall -Wextra -Werror
+CC = cc -Wall -Wextra -Werror
 
 SRC =	ft_printf.c \
 		ft_printf_hexa.c \
@@ -28,16 +28,17 @@ OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	@ar rc $(NAME) $(OBJS)
 
 bonus: $(NAME) $(OBJS_BONUS)
-	ar rc $(NAME) $(OBJS_BONUS)
+	@ar rc $(NAME) $(OBJS_BONUS)
+	@ranlib $(NAME)
 
 clean :
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
 
