@@ -6,7 +6,7 @@
 #    By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 03:25:21 by gicomlan          #+#    #+#              #
-#    Updated: 2024/08/05 01:11:42 by gicomlan         ###   ########.fr        #
+#    Updated: 2024/08/06 09:52:46 by gicomlan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,12 @@ MLX_NAME				= libmlx.a
 INCLUDES_DIR			= includes/
 # 													(Directory for object files)
 OBJS_DIR				= objects/
+MANDATORY_OBJS_DIR      = $(OBJS_DIR)mandatory/sources/
+BONUS_OBJS_DIR          = $(OBJS_DIR)bonus/sources/
 # 												(Directory for dependency files)
 DEPS_DIR 				= dependencies/
+MANDATORY_DEPS_DIR 		= $(DEPS_DIR)mandatory/sources/
+BONUS_DEPS_DIR			= $(DEPS_DIR)bonus/sources/
 # 											   	   (Directory for sources files)
 SRCS_DIR				= sources/
 MANDATORY_DIR			= mandatory/
@@ -36,94 +40,40 @@ MLX_DIR					= mlx/
 MLX_PATH				= $(LIBS_DIR)$(MLX_DIR)
 MINI_LIB_PATH			= $(LIBS_DIR)$(MINI_LIB_DIR)
 # 									     	   	  (Paths to subdir sources files)
-ANIMATION_SUBDIR	 	= $(BONUS_PATH)animation/
-CHECK_SUBDIR	 		= $(BONUS_PATH)check/
-DISPLAY_SUBDIR 			= $(BONUS_PATH)display/
-GAMEPLAY_SUBDIR 		= $(BONUS_PATH)gameplay/
-INIT_SUBDIR 			= $(BONUS_PATH)init/
-LOAD_SUBDIR 			= $(BONUS_PATH)load/
-PARSING_SUBDIR 			= $(BONUS_PATH)parsing/
-PRINTING_SUBDIR 		= $(BONUS_PATH)printing/
-CAMERA_SUBDIR 			= $(BONUS_PATH)camera/
-DEBUG_SUBDIR 			= $(BONUS_PATH)debug/
-FREE_SUBDIR 			= $(BONUS_PATH)free/
-HUD_SUBDIR 				= $(BONUS_PATH)hud/
-INPUT_SUBDIR 			= $(BONUS_PATH)input/
-MLX_SUBDIR 				= $(BONUS_PATH)mlx/
-PATH_FOUNDING_SUBDIR 	= $(BONUS_PATH)path-founding/
-UPDATE_SUBDIR 			= $(BONUS_PATH)update/
-# ------------------------------------------------------------------ [ SOURCES ]
-# 															  (Mandatory sources)
-MANDATORY_SRCS_FILES	+= $(MANDATORY_PATH)ft_check_map_finishable.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_utils_map_finishable.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_so_long_linux.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_check_map_format_linux.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_input_linux.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_sprite_linux.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_debug.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_map_linux.c
-MANDATORY_SRCS_FILES 	+= $(MANDATORY_PATH)ft_tools_linux.c
-MANDATORY_SRCS_FILES	+= $(MANDATORY_DIR)main.c
-# 																  (Bonus sources)
-BONUS_SRCS_FILES		+= $(ANIMATION_SUBDIR)ft_animation_bonus.c
-BONUS_SRCS_FILES		+= $(ANIMATION_SUBDIR)ft_animation_digits_bonus.c
-BONUS_SRCS_FILES		+= $(ANIMATION_SUBDIR)ft_animation_player_bonus.c
-BONUS_SRCS_FILES		+= $(ANIMATION_SUBDIR)ft_animation_utils.c
-BONUS_SRCS_FILES		+= $(ANIMATION_SUBDIR)ft_animation_world_bonus.c
-BONUS_SRCS_FILES		+= $(CAMERA_SUBDIR)ft_camera_bonus.c
-BONUS_SRCS_FILES		+= $(CHECK_SUBDIR)ft_check_bonus.c
-BONUS_SRCS_FILES		+= $(CHECK_SUBDIR)ft_check_utils_bonus.c
-BONUS_SRCS_FILES		+= $(DEBUG_SUBDIR)ft_debug_bonus.c
-BONUS_SRCS_FILES		+= $(DEBUG_SUBDIR)ft_debug_utils_one.c
-BONUS_SRCS_FILES		+= $(DISPLAY_SUBDIR)ft_display_assets_bonus.c
-BONUS_SRCS_FILES		+= $(DISPLAY_SUBDIR)ft_display_assets_utils_bonus.c
-BONUS_SRCS_FILES		+= $(FREE_SUBDIR)ft_free_bonus.c
-BONUS_SRCS_FILES		+= $(FREE_SUBDIR)ft_free_parsing_bonus.c
-BONUS_SRCS_FILES		+= $(GAMEPLAY_SUBDIR)ft_lava_behaviour_bonus.c
-BONUS_SRCS_FILES		+= $(GAMEPLAY_SUBDIR)ft_lava_event_bonus.c
-BONUS_SRCS_FILES		+= $(GAMEPLAY_SUBDIR)ft_lava_movement.c
-BONUS_SRCS_FILES		+= $(GAMEPLAY_SUBDIR)ft_player_behaviour_bonus.c
-BONUS_SRCS_FILES		+= $(GAMEPLAY_SUBDIR)ft_player_event_bonus.c
-BONUS_SRCS_FILES		+= $(HUD_SUBDIR)ft_hud_bonus.c
-BONUS_SRCS_FILES		+= $(INIT_SUBDIR)ft_init_bonus.c
-BONUS_SRCS_FILES		+= $(INIT_SUBDIR)ft_init_map_bonus.c
-BONUS_SRCS_FILES		+= $(INIT_SUBDIR)ft_init_mlx_bonus.c
-BONUS_SRCS_FILES		+= $(INIT_SUBDIR)ft_init_so_long_bonus.c
-BONUS_SRCS_FILES		+= $(INPUT_SUBDIR)ft_input_player_bonus.c
-BONUS_SRCS_FILES		+= $(INPUT_SUBDIR)ft_input_utils_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_digits_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_door_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_even_digts_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_gameplay_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_gameplay_portal_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_odd_digts_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_player_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_portals_assets_bonus.c
-BONUS_SRCS_FILES		+= $(LOAD_SUBDIR)ft_load_world_assets_bonus.c
-BONUS_SRCS_FILES		+= $(MLX_SUBDIR)ft_mlx_hook_loop_bonus.c
-BONUS_SRCS_FILES		+= $(PARSING_SUBDIR)ft_parsing_bonus.c
-BONUS_SRCS_FILES		+= $(PARSING_SUBDIR)ft_parsing_border_map_bonus.c
-BONUS_SRCS_FILES		+= $(PARSING_SUBDIR)ft_parsing_utils_bonus.c
-BONUS_SRCS_FILES		+= $(PATH_FOUNDING_SUBDIR)ft_path_founding_bonus.c
-BONUS_SRCS_FILES		+= $(PATH_FOUNDING_SUBDIR)ft_path_founding_utils_bonus.c
-BONUS_SRCS_FILES		+= $(PRINTING_SUBDIR)ft_print_bonus.c
-BONUS_SRCS_FILES		+= $(PRINTING_SUBDIR)ft_print_console_bonus.c
-BONUS_SRCS_FILES		+= $(UPDATE_SUBDIR)ft_update_bonus.c
-BONUS_SRCS_FILES		+= $(BONUS_DIR)main.c
+BONUS_SUBDIRS			+= animation
+BONUS_SUBDIRS			+= check
+BONUS_SUBDIRS			+= display
+BONUS_SUBDIRS			+= gameplay
+BONUS_SUBDIRS			+= init
+BONUS_SUBDIRS			+= load
+BONUS_SUBDIRS			+= parsing
+BONUS_SUBDIRS			+= printing
+BONUS_SUBDIRS			+= camera
+BONUS_SUBDIRS			+= debug
+BONUS_SUBDIRS			+= free
+BONUS_SUBDIRS			+= hud
+BONUS_SUBDIRS			+= input
+BONUS_SUBDIRS			+= mlx
+BONUS_SUBDIRS			+= path-founding
+BONUS_SUBDIRS			+= update
+
 # -------------------------------------------------------------------------- []
 # 							   (Calculation of the total number of source files)
 #TOTAL_SRCS_FILES 	:= $(words $(BONUS_SRCS_FILES))----------------------------
 # 										            (Full paths to source files)
 # Fichiers objets correspondants
-OBJS_BONUS				= $(patsubst ${BONUS_SRCS_FILES}%.c,$(OBJS_DIR)%.o,$(BONUS_SRCS_FILES))
-OBJS_MANDATORY			= $(patsubst ${MANDATORY_SRCS_FILES}%.c,$(OBJS_DIR)%.o,$(MANDATORY_SRCS_FILES))
-# Dépendances
-DEP_BONUS				= $(patsubst %.c,$(DEPS_DIR)%.d,$(BONUS_SRCS_FILES))
-DEPS_MANDATORY			= $(patsubst %.c,$(DEPS_DIR)%.d,$(MANDATORY_SRCS_FILES))
+MANDATORY_SRCS_FILES	+= $(shell find $(MANDATORY_PATH) -name '*.c')
+BONUS_SRCS_FILES		= $(foreach dir,$(BONUS_SUBDIRS),$(shell find $(BONUS_PATH)$(dir) -name '*.c'))
+# ---------------------------------------------------------------- [ OBJECTS ]
+OBJS_MANDATORY			= $(patsubst $(MANDATORY_PATH)%.c,$(MANDATORY_OBJS_DIR)%.o,$(MANDATORY_SRCS_FILES))
+OBJS_BONUS				= $(patsubst $(BONUS_PATH)%.c,$(BONUS_OBJS_DIR)%.o,$(BONUS_SRCS_FILES))
+
+# ---------------------------------------------------------------- [ DEPENDENCIES ]
+DEPS_BONUS				= $(patsubst $(BONUS_PATH)%.c,$(BONUS_DEPS_DIR)%.d,$(BONUS_SRCS_FILES))
+DEPS_MANDATORY			= $(patsubst $(MANDATORY_PATH)%.c,$(MANDATORY_DEPS_DIR)%.d,$(MANDATORY_SRCS_FILES))
 # ----------------------------------------------------------- ---------- [VPATH]
 # 																  (virtual path)
-vpath %.c $(BONUS_PATH)$(MANDATORY_PATH)
+vpath %.c $(MANDATORY_DIR)$(BONUS_DIR)
 vpath %.o $(OBJS_DIR)
 vpath %.d $(DEPS_DIR)
 vpath %.h $(INCLUDES_DIR)
@@ -134,13 +84,14 @@ CFLAGS 					+= -Werror
 CFLAGS 					+= -Wextra
 CFLAGS 					+= -Wall
 #CFLAGS 				+= -fPIE
-CFLAGS 					+= -MMD
+#CFLAGS 					+= -MMD
+#CFLAGS 					+= -g
 CFLAGS 					+= -I $(INCLUDES_DIR)
 #CFLAGS 				+= -lbsd
 #CFLAGS 				+= -fsanitize=address
 #CFLAGS 				+= -fsanitize=undefined
 #CFLAGS 					+= -MP -MF $(DEPS_DIR)/$*.define
-CFLAGS 					+= -MP
+#CFLAGS 					+= -MP
 MLX_FLAGS				+= -L $(MLX_PATH)
 MLX_FLAGS				+= -lmlx
 MLX_FLAGS				+= -lXext
@@ -208,7 +159,7 @@ NEW_LINE				=	echo "\n"
 # ==================================================================== [ Rules ]
 # 										  (Default rule for library compilation)
 all : $(MANDATORY_NAME)
-bonus : ${BONUS_NAME}
+bonus : $(BONUS_NAME)
 # 									(Compilation of object files into a library)
 $(MANDATORY_NAME) : $(OBJS_MANDATORY)
 	$(MAKE) -C $(MINI_LIB_PATH)
@@ -216,24 +167,29 @@ $(MANDATORY_NAME) : $(OBJS_MANDATORY)
 	@$(SO_LONG_COMP)
 	$(MAKE) --no-print-directory -C $(MLX_PATH)
 	$(COPY) $(MLX_PATH)$(MLX_NAME) .
-	$(CC) $(CFLAGS) -o $(MANDATORY_NAME) $(MANDATORY_SRCS_FILES) $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
+	$(CC) $(CFLAGS) -o $(MANDATORY_NAME) $(OBJS_MANDATORY) mandatory/main.c $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
 	@echo "$$ASCII_MANDATORY"
 	@$(SO_LONG_READY)
 
-${BONUS_NAME} : ${OBJS_BONUS}
+$(BONUS_NAME) : $(OBJS_BONUS)
 	$(MAKE) -C $(MINI_LIB_PATH)
 	$(COPY) $(MINI_LIB_PATH)$(LIB_SO_LONG_NAME) .
 	$(MAKE) --no-print-directory -C $(MLX_PATH)
 	$(COPY) $(MLX_PATH)$(MLX_NAME) .
-	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_SRCS_FILES) $(MLX_FLAGS)  -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
+	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJS_BONUS) bonus/main.c $(MLX_FLAGS) -L. $(MLX_NAME) -L. $(LIB_SO_LONG_NAME)
 	@echo "$$ASCII_BONUS"
 	@$(BONUS_READY)
 # 							   (Rule for creating object files and dependencies)
 
-$(OBJS_DIR) $(DEPS_DIR) :
-	@$(MKDIR) $(MKDIRFLAGS) $(OBJS_DIR)$(MANDATORY_PATH)
-	@$(MKDIR) $(MKDIRFLAGS) $(OBJS_DIR)$(BONUS_PATH)
+$(MANDATORY_OBJS_DIR)%.o: $(MANDATORY_PATH)%.c
+	@mkdir -p $(dir $@)
+	@mkdir -p $(dir $(MANDATORY_DEPS_DIR)$(patsubst $(MANDATORY_PATH)%,%,$(dir $<)))
+	$(CC) $(CFLAGS) -MMD -c -I $(INCLUDES_DIR) -MP $< -o $@ -MF $(MANDATORY_DEPS_DIR)$(patsubst $(MANDATORY_PATH)%,%,$(dir $<))/$*.d
 
+$(BONUS_OBJS_DIR)%.o: $(BONUS_PATH)%.c
+	@mkdir -p $(dir $@)
+	@mkdir -p $(dir $(BONUS_DEPS_DIR)$(patsubst $(BONUS_PATH)%,%,$(dir $<)))
+	$(CC) $(CFLAGS) -MMD -c -I $(INCLUDES_DIR) -MP $< -o $@ -MF $(BONUS_DEPS_DIR)$(patsubst $(BONUS_PATH)%,%,$(dir $<))/$*.d
 
 clean :
 	$(RM) $(RMFLAGS) $(OBJS_DIR) > $(NULL_FILE)
@@ -252,6 +208,11 @@ fclean : clean
 
 # 												(Rule for rebuilding everything)
 re : fclean all
+
+debug_make:
+	@echo "MANDATORY_PATH = $(MANDATORY_PATH)"
+	@echo "MANDATORY_SRCS_FILES = $(MANDATORY_SRCS_FILES)"
+
 # 								(Rule for checking compliance with the standard)
 define HELP_MSG
 Usage: make [TARGET]
@@ -296,9 +257,8 @@ define progress_bar
 endef
 # =============================================================== [ DEPENDENCY ]
 # 													(Including dependency files)
-#-include $(DEPS_DIR)
-#-include $(OBJS_MANDATORY:.o=.d)
-#-include $(OBJS_BONUS:.o=.d)
+-include $(DEPS_MANDATORY)
+-include $(DEPS_BONUS)
 # ==================================================================== [ ASCII ]
 # 							 (Ascii are to diplay at the end of the compilation)
 coffee:
