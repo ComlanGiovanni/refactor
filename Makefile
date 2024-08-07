@@ -6,7 +6,7 @@
 #    By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 03:25:21 by gicomlan          #+#    #+#              #
-#    Updated: 2024/08/06 15:49:46 by gicomlan         ###   ########.fr        #
+#    Updated: 2024/08/07 00:24:10 by gicomlan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -200,14 +200,14 @@ STRIKE					= \e[9m
 RESET 					= \e[0m
 # ================================================================= [ Messages ]
 #												 (Colored display + emoji etc..)
-COMPILE					=	"Starting the compilation of *.o..."
-COMPILE_DONE			=	"compilation of *.o DONE"
+COMPILE					=	"Starting the compilation of "
+COMPILE_DONE			=	"compilation of "
 MAKING					=	" Making of "
 CLEANNING				=	" Cleanning of "
 FCLEANNING				=	" Fcleanning of "
-SO_LONG_COMP			=	echo "🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(MANDATORY_NAME): $(NO_COLOR)$(COMPILE_DONE)"
-SO_LONG_BONUS_COMP		=	echo "🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(BONUS_NAME): $(NO_COLOR)$(COMPILE_DONE)"
-MLX_COMP				=	echo "\n🚧$(BOLD)$(MAKING)$(RESET)$(PURPLE)$(MLX_NAME)$(NO_COLOR): $(COMPILE)"
+SO_LONG_COMP			=	echo "🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(ITALIC)$(MANDATORY_NAME)$(RESET): $(NO_COLOR)$(COMPILE_DONE)$(UNDERLINE)*.o$(RESET) done"
+SO_LONG_BONUS_COMP		=	echo "🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(ITALIC)$(BONUS_NAME)$(RESET): $(NO_COLOR)$(COMPILE_DONE)$(UNDERLINE)*.o$(RESET)done"
+MLX_COMP				=	echo "\n🚧$(BOLD)$(MAKING)$(RESET)$(PURPLE)$(MLX_NAME)$(NO_COLOR): $(COMPILE)$(UNDERLINE)*.o$(RESET) ..."
 SO_LONG_READY			=	echo "\n🧮 $(RED)$(REVERSE)Mandatory$(RESET): $(RED) $(MANDATORY_NAME) ready!\n"
 BONUS_READY				=	echo "\n🎯 $(CYAN)$(REVERSE)Bonus$(RESET): $(CYAN) $(BONUS_NAME) ready!\n"
 CLEANED					=	echo "\n💧$(BOLD)$(CLEANNING)$(RESET)$(GREEN)$(ITALIC)$(UNDERLINE)$(MANDATORY_NAME)$(RESET)$(NO_COLOR) && $(GREEN)$(ITALIC)$(UNDERLINE)$(BONUS_NAME)$(RESET)$(NO_COLOR): $(DIM)Removed$(RESET) all the $(STRIKE)\".o\"$(RESET) files 🗑\\n"

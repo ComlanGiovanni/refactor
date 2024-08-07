@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:02:13 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 21:48:09 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 16:34:25 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,24 @@
 //make a fct to return the good usleep in fonction of the limitation
 //fps limiation usleep(game->fps.limitation); usleep(15000);
 
+void	ft_draw_pause_message(t_game *game)
+{
+	if (game->paused)
+		mlx_string_put(game->mlx, game->win, 300, 200, 0xFFFFFF, "PAUSED");
+}
+
 int	ft_update(t_game *game)
 {
+	if (game->paused)
+	{
+		ft_draw_pause_message(game);
+		return (EXIT_SUCCESS); // Do nothing if the game is paused
+	}
+	int x, y;
+	mlx_mouse_get_pos(game->mlx, game->win, &x, &y);
+	// system("clear");
+	// ft_printf("=[%d]=", x);
+	// ft_printf("=[%d]=", y);
 	ft_update_fps(game);
 	ft_update_camera(game);
 	ft_play_animation(game);
@@ -30,7 +46,7 @@ int	ft_update(t_game *game)
 	ft_put_sprites_by_line(game);
 	//ft_put_buffer_image(game);
 	//mlx_put_image_to_window(game->mlx, game->win, game->window.img, 0, 0);
-    //mlx_destroy_image(game->mlx, game->window.img);
+	//mlx_destroy_image(game->mlx, game->window.img);
 	//mlx_do_sync(game->mlx);
 	ft_print_info_on_window(game);
 	// system("clear");
@@ -66,14 +82,42 @@ void	ft_update_player_position(t_game *game)
 	game->player.movement.current_position.y = game->map.start.y;
 }
 
+// t_point	ft_find_pos_char_in_new_grid(char **tab, t_point size, char c)
+// {
+// 	int	x;
+// 	int	y;
+
+// 	if (!tab || size.x <= 0 || size.y <= 0)
+// 		return ((t_point){-1, -1});
+// 	y = 0;
+// 	while (y < size.y)
+// 	{
+// 		if (tab[y] == NULL)
+// 			return ((t_point){-1, -1});
+// 		x = 0;
+// 		while (x < size.x)
+// 		{
+// 			if (tab[y][x] == '\0')
+// 				break ;
+// 			if (tab[y][x] == c)
+// 				return ((t_point){x, y});
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	return ((t_point){-1, -1});
+// }
+
 void	ft_update_map_positions(t_game *game)
 {
 	game->map.start = ft_find_pos_char(game->map.grid, game->map.size,
-		PLAYER_CHAR);
-	game->map.end = ft_find_pos_char(game->map.grid, game->map.size,
-		EXIT_CHAR);
+			PLAYER_CHAR);
+	game->map.end = ft_find_pos_char(game->map.grid, game->map.size, EXIT_CHAR);
 	game->map.portal_1_pos = ft_find_pos_char(game->map.grid, game->map.size,
-		PORTAL_1_CHAR);
+			PORTAL_1_CHAR);
 	game->map.portal_2_pos = ft_find_pos_char(game->map.grid, game->map.size,
-		PORTAL_2_CHAR);
+			PORTAL_2_CHAR);
+	if ((game->map.start.x == -1 && game->map.start.y == -1)
+		|| (game->map.end.x == -1 && game->map.end.y == -1))
+		ft_free_and_print(game->map.matrice, game, NO_POSITION_FOUND);
 }

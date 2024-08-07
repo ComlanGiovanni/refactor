@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:21:59 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:14:28 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 14:30:50 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,26 @@
  *
  * @param game
  */
-void	ft_direction_by_pos_after_launch(t_game *game)
+void	ft_dir_player_by_pos_exit_after_launch(t_game *game)
 {
-	int	random;
-
-	srand(time(0));
-	random = rand() % 4;
-	if (random == 0x0)
-		game->player.movement.direction = 'u';
-	if (random == 0x1)
-		game->player.movement.direction = 'd';
-	if (random == 0x2)
-		game->player.movement.direction = 'l';
-	if (random == 0x3)
-		game->player.movement.direction = 'r';
+	if (game->map.start.y > game->map.end.y)
+		game->player.movement.direction = 'u'; // Exit is above the player
+	else if (game->map.start.y < game->map.end.y)
+		game->player.movement.direction = 'd'; // Exit is below the player
+	else if (game->map.start.x > game->map.end.x)
+		game->player.movement.direction = 'l'; // Exit is to the left of the player
+	else if (game->map.start.x < game->map.end.x)
+		game->player.movement.direction = 'r'; // Exit is to the right of the player
 }
 
 void	ft_move_box(t_game *game, int new_y, int new_x, int dir_y, int dir_x)
 {
-	char next_tile;
+	char	next_tile;
 
 	next_tile = game->map.grid[new_y + dir_y][new_x + dir_x];
-
 	// Vérifie si la box peut être déplacée dans la direction donnée
-	if (next_tile == VOID_CHAR && (next_tile != LOVE_CHAR && next_tile != EXIT_CHAR
-		&& next_tile != KEY_CHAR))
+	if (next_tile == VOID_CHAR && (next_tile != LOVE_CHAR
+			&& next_tile != EXIT_CHAR && next_tile != KEY_CHAR))
 	{
 		game->map.grid[new_y + dir_y][new_x + dir_x] = BOX_CHAR;
 		game->map.grid[new_y][new_x] = VOID_CHAR;
@@ -62,7 +57,7 @@ void	ft_move_box(t_game *game, int new_y, int new_x, int dir_y, int dir_x)
 
 void	ft_teleport_player(t_game *game, int y, int x)
 {
-	t_point		destination;
+	t_point	destination;
 
 	if (game->map.grid[y][x] == 'N')
 	{
@@ -73,7 +68,6 @@ void	ft_teleport_player(t_game *game, int y, int x)
 		destination = game->map.portal_2_pos;
 	else
 		return ;
-
 	if (destination.y != -1 && destination.x != -1)
 	{
 		game->map.grid[y][x] = VOID_CHAR;

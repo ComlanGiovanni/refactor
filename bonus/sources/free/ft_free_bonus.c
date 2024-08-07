@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 20:17:50 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 01:57:38 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 11:47:50 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	ft_exit_game(t_game *game)
 int	ft_win_game(t_game *game)
 {
 	system("pkill vlc");
+	game->player.step++;
 	ft_printf(WIN_MSG "%d ", game->player.step);
 	ft_printf("Storage : %d, ", game->player.storage);
 	ft_printf("Life : %d\n", game->player.life);

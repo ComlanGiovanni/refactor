@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:46:45 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 01:58:03 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:40:09 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,25 +88,25 @@ void	ft_portal_n_sprite(t_game *game, t_point pos)
 }
 
 
-void	ft_down_sprite(t_game *game, int draw_x, int draw_y)
+void	ft_player_down_sprite(t_game *game, int draw_x, int draw_y)
 {
 	mlx_put_image_to_window(game->mlx, game->win,
 		game->player.down_anim.current, draw_x, draw_y);
 }
 
-void	ft_up_sprite(t_game *game, int draw_x, int draw_y)
+void	ft_player_up_sprite(t_game *game, int draw_x, int draw_y)
 {
 	mlx_put_image_to_window(game->mlx, game->win, game->player.up_anim.current,
 		draw_x, draw_y);
 }
 
-void	ft_left_sprite(t_game *game, int draw_x, int draw_y)
+void	ft_player_left_sprite(t_game *game, int draw_x, int draw_y)
 {
 	mlx_put_image_to_window(game->mlx, game->win,
 		game->player.left_anim.current, draw_x, draw_y);
 }
 
-void	ft_right_sprite(t_game *game, int draw_x, int draw_y)
+void	ft_player_right_sprite(t_game *game, int draw_x, int draw_y)
 {
 	mlx_put_image_to_window(game->mlx, game->win,
 		game->player.right_anim.current, draw_x, draw_y);

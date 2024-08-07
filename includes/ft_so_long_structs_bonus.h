@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:28:13 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:50:23 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 14:58:42 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,6 +236,29 @@ struct						s_portal
 	t_animation				n;
 };
 
+struct						s_anim_keke
+{
+	void					*current;
+	void					*frame_0;
+	void					*frame_1;
+	void					*frame_2;
+	void					*frame_move_0;
+	void					*frame_move_1;
+};
+
+struct						s_keke
+{
+	t_anim_keke				up_anim;
+	t_anim_keke				down_anim;
+	t_anim_keke				left_anim;
+	t_anim_keke				right_anim;
+	t_bool					moved;
+	int						frames;
+	char					direction;
+	long long int			step;
+};
+
+
 struct						s_game
 {
 	t_player				player;
@@ -250,6 +273,9 @@ struct						s_game
 	t_portal				portal;
 	t_camera				camera;
 	t_sprite_node			*node;
+	t_point					screen;
+	t_bool					paused;
+	t_keke					keke;
 	// t_point			camera;// faire une struct camera
 	// t_point			camera_target;
 	t_fps					fps;

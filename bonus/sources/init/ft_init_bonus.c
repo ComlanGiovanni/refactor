@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 01:20:05 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:28:35 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 15:01:34 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,13 @@ void	ft_init_frames(t_game *game)
 {
 	game->player.frames = 9;
 	game->lava.animation.frames = 24;
+	game->keke.frames = 24;
 	game->key.animation.frames = 6;
 	game->wall.animation.frames = 64;
 	game->grass.animation.frames = 128;
 	game->love.animation.frames = 48;
 	game->hud.digits.zero.frames = 64;
-	game->door.closed.frames = 24;
-	game->door.open.frames = 24;
-	game->hud.digits.one.frames = 7;
+	game->hud.digits.one.frames = 2;
 	game->hud.digits.two.frames = 12;
 	game->hud.digits.tree.frames = 7;
 	game->hud.digits.four.frames = 12;
@@ -59,7 +58,9 @@ void	ft_init_frames(t_game *game)
 	game->hud.digits.six.frames = 12;
 	game->hud.digits.seven.frames = 7;
 	game->hud.digits.eight.frames = 7;
-	game->hud.digits.nine.frames = 78;
+	game->hud.digits.nine.frames = 12;
+	game->door.closed.frames = 24;
+	game->door.open.frames = 24;
 	game->box.animation.frames = 42;
 	game->portal.n.frames = 24;
 	game->portal.z.frames = 24;

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:23 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 11:45:26 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 15:00:21 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 void	ft_play_animation(t_game *game);
 void	ft_door_open_animation(t_anim_door *animation);
 void	ft_door_closed_animation(t_anim_door *animation);
-void	ft_update_animation(t_animation *animation, int *frame);
+void	ft_generic_animation(t_animation *animation, int *frame);
+void	ft_digits_animation(t_game *game);
 
 //=================================================================== [ file.c ]
 
-void	ft_digits_animation(t_game *game);
+
 void	ft_zero_animation(t_animation *animation);
 void	ft_one_animation(t_animation *animation);
 void	ft_two_animation(t_animation *animation);
@@ -32,6 +33,7 @@ void	ft_four_animation(t_animation *animation);
 //=================================================================== [ file.c ]
 
 void	ft_player_animation(t_player *player);
+void	ft_keke_animation(t_keke *keke);
 
 //=================================================================== [ file.c ]
 
@@ -101,10 +103,19 @@ void	ft_borders_sprite(t_game *game, t_point pos);
 void	ft_box_sprite(t_game *game, t_point pos);
 void	ft_portal_z_sprite(t_game *game, t_point pos);
 void	ft_portal_n_sprite(t_game *game, t_point pos);
-void	ft_down_sprite(t_game *game, int draw_x, int draw_y);
-void	ft_up_sprite(t_game *game, int draw_x, int draw_y);
-void	ft_left_sprite(t_game *game, int draw_x, int draw_y);
-void	ft_right_sprite(t_game *game, int draw_x, int draw_y);
+void	ft_player_down_sprite(t_game *game, int draw_x, int draw_y);
+void	ft_player_up_sprite(t_game *game, int draw_x, int draw_y);
+void	ft_player_left_sprite(t_game *game, int draw_x, int draw_y);
+void	ft_player_right_sprite(t_game *game, int draw_x, int draw_y);
+
+//=================================================================== [ file.c ]
+
+void	ft_keke_sprites(t_game *game, int width, int height,
+		t_point sprite_pos);
+void	ft_keke_down_sprite(t_game *game, int draw_x, int draw_y);
+void	ft_keke_up_sprite(t_game *game, int draw_x, int draw_y);
+void	ft_keke_left_sprite(t_game *game, int draw_x, int draw_y);
+void	ft_keke_right_sprite(t_game *game, int draw_x, int draw_y);
 
 //=================================================================== [ file.c ]
 
@@ -124,27 +135,28 @@ void	ft_clean_grid_map(char **grid, int row);
 
 //=================================================================== [ file.c ]
 
-int		ft_is_lava_obstacle(char tile);
-void	ft_lava_move_up(t_game *game);
-void	ft_lava_move_down(t_game *game);
-void	ft_lava_move_left(t_game *game);
-void	ft_lava_move_right(t_game *game);
+void	ft_direction_keke_after_launch(t_game *game);
+int		ft_is_keke_obstacle(char tile);
+void	ft_keke_move_up(t_game *game);
+void	ft_keke_move_down(t_game *game);
+void	ft_keke_move_left(t_game *game);
+void	ft_keke_move_right(t_game *game);
 
 //=================================================================== [ file.c ]
 
-void	ft_random_lava_move(t_game *game);
-void	ft_move_lava(t_game *game);
+void	ft_random_keke_move(t_game *game);
+void	ft_move_keke(t_game *game);
 
 //=================================================================== [ file.c ]
 
-void	ft_move_lava_up(t_game *game, int row, int col);
-void	ft_move_lava_down(t_game *game, int row, int col);
-void	ft_move_lava_left(t_game *game, int row, int col);
-void	ft_move_lava_right(t_game *game, int row, int col);
+void	ft_move_keke_up(t_game *game, int row, int col);
+void	ft_move_keke_down(t_game *game, int row, int col);
+void	ft_move_keke_left(t_game *game, int row, int col);
+void	ft_move_keke_right(t_game *game, int row, int col);
 
 //=================================================================== [ file.c ]
 
-void	ft_direction_by_pos_after_launch(t_game *game);
+void	ft_dir_player_by_pos_exit_after_launch(t_game *game);
 void	ft_move_box(t_game *game, int new_y, int new_x, int dir_y, int dir_x);
 void	ft_teleport_player(t_game *game, int y, int x);
 
@@ -188,6 +200,7 @@ void	ft_create_window(t_game *game);
 void	ft_init_game(t_game *game, char *map_name);
 void	ft_init_player_info(t_game *game);
 void	ft_init_map_info(t_game *game, char *line);
+void	ft_init_keke_info(t_game *game);
 
 //=================================================================== [ file.c ]
 
@@ -256,6 +269,15 @@ void	ft_load_player_down_sprites(t_game *game);
 void	ft_load_player_left_sprites(t_game *game);
 void	ft_load_player_right_sprites(t_game *game);
 void	ft_load_player_current(t_game *game);
+
+//=================================================================== [ file.c ]
+
+void	ft_load_keke_up_sprites(t_game *game);
+void	ft_load_keke_down_sprites(t_game *game);
+void	ft_load_keke_left_sprites(t_game *game);
+void	ft_load_keke_right_sprites(t_game *game);
+void	ft_load_keke_current(t_game *game);
+
 //=================================================================== [ file.c ]
 
 void	ft_load_ground_sprites(t_game *game);

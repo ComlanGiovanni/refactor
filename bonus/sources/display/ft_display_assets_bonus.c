@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:46:14 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:14:06 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:40:21 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ void	ft_put_all_sprites_to_line(t_game *game, int width, int height,
 		ft_portal_n_sprite(game, sprite_pos);
 	else if (tile == PORTAL_2_CHAR)
 		ft_portal_z_sprite(game, sprite_pos);
+	else if (tile == KEKE_CHAR)
+		ft_keke_sprites(game, width, height, sprite_pos);
 	else
 		ft_player_sprite_call(game, width, height, sprite_pos);
 }
@@ -131,12 +133,13 @@ void	ft_player_sprite_call(t_game *game, int width, int height,
 	if (game->map.grid[height][width] == PLAYER_CHAR)
 	{
 		if (game->player.movement.direction == 'd')
-			ft_down_sprite(game, sprite_pos.x, sprite_pos.y);
+			ft_player_down_sprite(game, sprite_pos.x, sprite_pos.y);
 		else if (game->player.movement.direction == 'u')
-			ft_up_sprite(game, sprite_pos.x, sprite_pos.y);
+			ft_player_up_sprite(game, sprite_pos.x, sprite_pos.y);
 		else if (game->player.movement.direction == 'l')
-			ft_left_sprite(game, sprite_pos.x, sprite_pos.y);
+			ft_player_left_sprite(game, sprite_pos.x, sprite_pos.y);
 		else if (game->player.movement.direction == 'r')
-			ft_right_sprite(game, sprite_pos.x, sprite_pos.y);
+			ft_player_right_sprite(game, sprite_pos.x, sprite_pos.y);
 	}
 }
+

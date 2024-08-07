@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:25:57 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 15:13:34 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:33:13 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define NO_ENV_ERROR		"No variable environment available\n"
 # define NO_DISP_ERROR		"DISPLAY not found in env\n"
 # define MALLOC_GAME_ERROR	"Malloc t_game fail to\n"
-# define BAD_CHAR_MAP_ERROR	"Should contain char : '1' 'P' 'C' 'E' '0' 'L'\n"
+# define BAD_CHAR_MAP_ERROR	"Should contain char : '1' 'P' 'C' 'E' '0' 'L' 'N' 'Z' 'B' 'K' 'S'\n"
 # define WALL_ERROR	        ".ber should be surrounded by walls\n"
 # define FORM_ERROR	        ".ber should be in rectangular form !\n"
 # define COIN_ERROR			".ber should have at least one collectible -> C\n"

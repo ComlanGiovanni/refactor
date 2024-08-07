@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_linux.c                                    :+:      :+:    :+:   */
+/*   ft_so_long_linux.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:00:12 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 14:38:48 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 11:50:05 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ int	ft_exit_game(t_game *game)
  */
 int	ft_win_game(t_game *game)
 {
+	game->step++;
 	ft_printf(WIN_MSG "%d", game->step);
 	ft_free_all(game);
 	exit(EXIT_SUCCESS);

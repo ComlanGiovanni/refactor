@@ -6,7 +6,7 @@
 #    By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 03:31:05 by gicomlan          #+#    #+#              #
-#    Updated: 2024/08/06 14:52:38 by gicomlan         ###   ########.fr        #
+#    Updated: 2024/08/07 00:23:15 by gicomlan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ COMPILED_SRCS_FILES	:= 0
 PROGRESS_UNICODE	:= █
 REMAINING_UNICODE	:= ▒
 
-COMP_START	=	echo "\n🚧 $(BOLD)Making of $(RESET)$(PURPLE)$(NAME)$(NO_COLOR): compilation of *.o DONE\n"
+COMP_START	=	echo "\n🚧 $(BOLD)Making of $(RESET)$(PURPLE)$(NAME)$(NO_COLOR): compilation of $(UNDERLINE)*.o$(RESET) done\n"
 
 CLEANED		=	echo "\n💧 $(BOLD)Cleanning of $(RESET)$(GREEN)$(ITALIC)$(UNDERLINE)$(NAME)$(RESET)$(NO_COLOR): $(DIM)Removed$(RESET) all the $(STRIKE)\".o\"$(RESET) files 🗑\\n"
 

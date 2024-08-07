@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 12:12:44 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 16:06:05 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:00:24 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ typedef struct s_wall			t_wall;
 typedef struct s_anim_door		t_anim_door;
 typedef struct s_door			t_door;
 typedef struct s_love			t_love;
+typedef struct s_keke			t_keke;
 typedef struct s_anim_player	t_anim_player;
+typedef struct s_anim_keke		t_anim_keke;
 typedef struct s_movement		t_movement;
 typedef struct s_player			t_player;
 typedef struct s_info			t_info;

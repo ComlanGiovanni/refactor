@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:32:50 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:09:57 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/06 23:34:52 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,68 +16,43 @@ void	ft_five_animation(t_animation *animation)
 {
 	static int	frame;
 
-	if (frame == animation->frames)
-		animation->current = animation->frame_1;
-	else if (frame >= animation->frames * 2)
-	{
-		animation->current = animation->frame_2;
-		frame = FALSE;
-	}
-	frame += TRUE;
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
 }
 
 void	ft_six_animation(t_animation *animation)
 {
 	static int	frame;
 
-	if (frame == animation->frames)
-		animation->current = animation->frame_1;
-	else if (frame >= animation->frames * 2)
-	{
-		animation->current = animation->frame_2;
-		frame = FALSE;
-	}
-	frame += TRUE;
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
 }
 
 void	ft_seven_animation(t_animation *animation)
 {
 	static int	frame;
 
-	if (frame == animation->frames)
-		animation->current = animation->frame_1;
-	else if (frame >= animation->frames * 2)
-	{
-		animation->current = animation->frame_2;
-		frame = FALSE;
-	}
-	frame += TRUE;
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
 }
 
 void	ft_eight_animation(t_animation *animation)
 {
 	static int	frame;
 
-	if (frame == animation->frames)
-		animation->current = animation->frame_1;
-	else if (frame >= animation->frames * 2)
-	{
-		animation->current = animation->frame_2;
-		frame = FALSE;
-	}
-	frame += TRUE;
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
 }
 
 void	ft_nine_animation(t_animation *animation)
 {
 	static int	frame;
 
-	if (frame == animation->frames)
-		animation->current = animation->frame_1;
-	else if (frame >= animation->frames * 2)
-	{
-		animation->current = animation->frame_2;
-		frame = FALSE;
-	}
-	frame += TRUE;
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
 }

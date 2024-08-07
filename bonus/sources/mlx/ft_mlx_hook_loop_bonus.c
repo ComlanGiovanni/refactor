@@ -6,16 +6,43 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:09:22 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:15:40 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/06 19:57:18 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
 
+int	ft_mouse_manager(int button, int x, int y, t_game *game)
+{
+	char	*button_name;
+	if (button == 1){
+		button_name = "Left Click";
+	}
+	else if (button == 2)
+	{
+		button_name = "Right Click";
+		ft_exit_game(game);
+	}
+	else if (button == 3)
+		button_name = "Middle Click";
+	else if (button == 4)
+		button_name = "Scroll Up";
+	else if (button == 5)
+		button_name = "Scroll Down";
+	else
+		button_name = "Unknown Click";
+	//system("clear");
+	ft_printf("=[%d]=", x);
+	ft_printf("=[%d]=", y);
+	ft_printf("%s", button_name);
+	return (0);
+}
+
 void	ft_mlx_hook_loop(t_game *game)
 {
 	mlx_do_key_autorepeaton(game->mlx);
 	mlx_hook(game->win, LINUX_KEY_PRESS, TRUE, &ft_input_manager, game);
+	mlx_mouse_hook(game->win, ft_mouse_manager, game);
 	mlx_hook(game->win, LINUX_CLOSE_ICON, TRUE, &ft_exit_game, game);
 	mlx_loop_hook(game->mlx, &ft_update, game);
 	mlx_loop(game->mlx);

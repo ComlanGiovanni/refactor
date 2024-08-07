@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:11 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 11:43:44 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 16:34:30 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,22 @@
  */
 int	ft_input_manager(int key_code, t_game *game)
 {
-	ft_random_lava_move(game);
+	if (key_code == 112)//make enumaration for input ?abcd
+	{ // 'P' key for pause
+		game->paused = !game->paused;
+		if (game->paused)
+		{
+			ft_printf("Game Paused\n");
+		}
+		else
+		{
+			ft_printf("Game Resumed\n");
+		}
+		return (EXIT_SUCCESS);
+	}
+	if (game->paused)
+		return (EXIT_SUCCESS);
+	ft_random_keke_move(game);
 	if (key_code == LINUX_ESC_KEY)
 		ft_exit_game(game);
 	if ((key_code == LINUX_W_KEY || key_code == LINUX_UP_ARROW_KEY
@@ -75,7 +90,8 @@ void	ft_move_up(t_game *game)
 			ft_teleport_player(game, y - 1, x);
 			return ;
 		}
-		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR && !(next_tile == EXIT_CHAR
+		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
+			&& !(next_tile == EXIT_CHAR
 				&& game->map.info.nbr_key != game->player.storage)
 			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
 		{
@@ -111,7 +127,8 @@ void	ft_move_down(t_game *game)
 			ft_teleport_player(game, y + 1, x);
 			return ;
 		}
-		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR && !(next_tile == EXIT_CHAR
+		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
+			&& !(next_tile == EXIT_CHAR
 				&& game->map.info.nbr_key != game->player.storage)
 			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
 		{
@@ -138,7 +155,8 @@ void	ft_move_left(t_game *game)
 		ft_handle_tile_action(game, next_tile);
 		if (next_tile == BOX_CHAR)
 		{
-			ft_move_box(game, y, x - 1, 0, -1);;
+			ft_move_box(game, y, x - 1, 0, -1);
+			;
 			next_tile = game->map.grid[y][x - 1];
 		}
 		if (next_tile == 'N' || next_tile == 'Z')
@@ -147,7 +165,8 @@ void	ft_move_left(t_game *game)
 			ft_teleport_player(game, y, x - 1);
 			return ;
 		}
-		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR && !(next_tile == EXIT_CHAR
+		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
+			&& !(next_tile == EXIT_CHAR
 				&& game->map.info.nbr_key != game->player.storage)
 			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
 		{
@@ -183,7 +202,8 @@ void	ft_move_right(t_game *game)
 			ft_teleport_player(game, y, x + 1);
 			return ;
 		}
-		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR && !(next_tile == EXIT_CHAR
+		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
+			&& !(next_tile == EXIT_CHAR
 				&& game->map.info.nbr_key != game->player.storage)
 			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
 		{

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:29:36 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:14:35 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/06 22:06:17 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,25 @@ void	ft_print_info_on_window(t_game *game)
 void	ft_display_digits_sprites(t_game *game, char *digits_str,
 		t_point position)
 {
+	void	*digit_images[10];
 	int		index;
+
+	digit_images[0] = game->hud.digits.zero.current;
+	digit_images[1] = game->hud.digits.one.current;
+	digit_images[2] = game->hud.digits.two.current;
+	digit_images[3] = game->hud.digits.tree.current;
+	digit_images[4] = game->hud.digits.four.current;
+	digit_images[5] = game->hud.digits.five.current;
+	digit_images[6] = game->hud.digits.six.current;
+	digit_images[7] = game->hud.digits.seven.current;
+	digit_images[8] = game->hud.digits.eight.current;
+	digit_images[9] = game->hud.digits.nine.current;
 	index = 0;
 	while (digits_str[index] != '\0')
 	{
 		if ((digits_str[index] - '0') >= 0 && (digits_str[index] - '0') <= 9)
 		{
-			mlx_put_image_to_window(game->mlx, game->win, game->hud.digits.tab[(digits_str[index] - '0')],
+			mlx_put_image_to_window(game->mlx, game->win, digit_images[(digits_str[index] - '0')],
 					position.x, position.y);
 			position.x += 24;
 		}

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 19:55:04 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 11:45:05 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/07 11:28:42 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**ft_create_map_with_border(t_game *game)
 		ft_clean_grid_map(game->map.matrice, game->height);
 	game->height = new_height;
 	game->width = new_width;
-	game->map.size.x = game->height;
-	game->map.size.y = game->width;
+	game->map.size.x = game->width;
+	game->map.size.y = game->height;
 	return (new_map);
 }
