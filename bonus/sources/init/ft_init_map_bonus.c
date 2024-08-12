@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:59:15 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:14:43 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 15:37:20 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_setup_map(t_game *game)
 {
+	ft_printf("\nGrid Width && Height -> \t[%d %d]\n",game->map.size.x, game->map.size.y);
 	ft_print_initial_positions(game);
 	ft_update_map_matrice(game);
 	ft_print_display_grid(game->map.matrice);
@@ -25,10 +26,12 @@ void	ft_setup_map(t_game *game)
 	ft_print_display_grid(game->map.grid);
 
 	ft_update_map_positions(game);
+	ft_printf("\nGrid Width && Height -> \t[%d %d]\n",game->map.size.x, game->map.size.y);
 	ft_display_position(game->map.start, game->map.end,
 		game->map.portal_1_pos, game->map.portal_2_pos);
 
 	ft_update_player_position(game);
+	ft_init_pawns_array(game);
 }
 
 /**
@@ -66,6 +69,10 @@ void	ft_get_info_map(t_game *game)
 			game->map.info.nbr_portal_2++;
 		else if (game->map.map_str[idx] == BORDER_CHAR)
 			game->map.info.nbr_border++;
+		else if (game->map.map_str[idx] == PAWN_CHAR)
+			game->map.info.nbr_pawn++;
+		else if (game->map.map_str[idx] == KEKE_CHAR)
+			game->map.info.nbr_keke++;
 		else
 			game->map.info.nbr_void++;
 	}
@@ -75,14 +82,14 @@ void	ft_play_random_theme()
 {
 	static int random;
 
-	srand(time(0));
+	srand(time(NULL));
 	random = rand() % 4 ;
 	if (random == 0)
-		system("cvlc sounds/BabaIsYouOnTheIsland.wav &");
+		system("aplay sounds/theme/baba_is_you_on_the_island.wav &");
 	if (random == 1)
-		system("cvlc sounds/BabaIsYouTheme.wav &");
+		system("aplay sounds/theme/baba_is_you_theme.wav &");
 	if (random == 2)
-		system("cvlc sounds/BabaIsYouWaterIsSinkThelake.wav &");
+		system("aplay sounds/theme/baba_is_you_water_is_sink_the_lake.wav &");
 	if (random == 3)
-		system("cvlc sounds/BabaIsYouCrystalIsStillCrystalcave.wav &");
+		system("aplay sounds/theme/baba_is_you_crystal_is_still_crystal_cave.wav &");
 }

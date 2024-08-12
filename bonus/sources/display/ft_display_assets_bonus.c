@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:46:14 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 13:40:21 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:23:00 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ void	ft_put_all_sprites_to_line(t_game *game, int width, int height,
 	tile = game->map.grid[height][width];
 	if (tile == WALL_CHAR)
 		ft_wall_sprite(game, sprite_pos);
+	else if (tile == PAWN_CHAR)
+		ft_pawn_sprite(game, sprite_pos);
 	else if (tile == KEY_CHAR)
 		ft_key_sprite(game, sprite_pos);
 	else if (tile == LAVA_CHAR)

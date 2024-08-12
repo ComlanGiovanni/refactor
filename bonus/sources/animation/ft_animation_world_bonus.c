@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:35:47 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/06 23:36:26 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:23:57 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 
 void	ft_wall_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_pawn_animation(t_animation *animation)
 {
 	static int	frame = 0;
 

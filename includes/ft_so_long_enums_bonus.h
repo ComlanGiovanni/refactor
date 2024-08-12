@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:20 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 12:24:57 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:20:33 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ enum	e_map_char
 	BOX_CHAR = 'B',
 	PORTAL_1_CHAR = 'Z',
 	PORTAL_2_CHAR = 'N',
-	KEKE_CHAR = 'K'
+	KEKE_CHAR = 'K',
+	PAWN_CHAR = 'W',
 };
 
 enum	e_bool

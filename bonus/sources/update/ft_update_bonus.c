@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:02:13 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 16:34:25 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 15:42:45 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 //make a fct to return the good usleep in fonction of the limitation
 //fps limiation usleep(game->fps.limitation); usleep(15000);
+
+void move_pawn(t_game *game);
+//void move_pawn_to_target(t_pawn_movement *pawn, t_game *game);
+void update_grid(t_game *game, t_point old_pos, t_point new_pos, char pawn_char, char void_char);
+int is_obstacle(char **grid, t_point pos, char player_char);
+void ft_find_pawn_positions(t_game *game);
+void ft_init_pawns_array(t_game *game);
+void find_farthest_position_for_pawn(t_game *game);
+t_point calculate_farthest_position(t_point start_position, const char *direction, t_game *game);
+int ft_is_position_free_for_pawn(char **grid, t_point pos);
+t_point get_next_position(t_point current, const char *direction);
 
 void	ft_draw_pause_message(t_game *game)
 {
@@ -40,7 +51,7 @@ int	ft_update(t_game *game)
 	if ((game->map.info.nbr_key == game->player.storage) && !game->finished)
 	{
 		game->finished = 1;
-		system("cvlc sounds/FinishLevel.wav &");
+		system("aplay sounds/theme/level_finished.wav &");
 	}
 	mlx_clear_window(game->mlx, game->win);
 	ft_put_sprites_by_line(game);
@@ -49,8 +60,8 @@ int	ft_update(t_game *game)
 	//mlx_destroy_image(game->mlx, game->window.img);
 	//mlx_do_sync(game->mlx);
 	ft_print_info_on_window(game);
-	// system("clear");
-	// ft_print_display_grid(game->map.grid);
+	//system("clear");
+	//ft_print_display_grid(game->map.grid);
 	return (EXIT_SUCCESS);
 }
 
@@ -60,6 +71,9 @@ void	ft_update_fps(t_game *game)
 	game->fps.elapsed = (game->fps.current_time.tv_sec
 			- game->fps.last_time.tv_sec) +
 		(game->fps.current_time.tv_nsec - game->fps.last_time.tv_nsec) / 1e9;
+	game->fps.elapsed_time = (game->fps.current_time.tv_sec
+			- game->fps.last_time.tv_sec) +
+		(game->fps.current_time.tv_nsec - game->fps.last_time.tv_nsec) / 1e9;
 	game->fps.frame_count++;
 	if (game->fps.elapsed >= 1.0)
 	{
@@ -67,6 +81,17 @@ void	ft_update_fps(t_game *game)
 		game->fps.frame_count = 0;
 		game->fps.last_time = game->fps.current_time;
 	}
+	if (game->fps.elapsed_time >= 1.0) {
+            // Perform the desired action
+            //printf("One second has passed!\n");
+			// srand(time(NULL));
+			// int tic_or_tac = rand() % 2;
+			if (game->fps.last_time.tv_sec % 2)
+				system("aplay sounds/special-effects/clock_tic.wav &");
+			else
+				system("aplay sounds/special-effects/clock_tac.wav &");
+			move_pawn(game);
+        }
 }
 
 void	ft_update_map_matrice(t_game *game)

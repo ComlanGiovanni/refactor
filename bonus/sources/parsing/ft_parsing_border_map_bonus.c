@@ -6,11 +6,18 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 19:55:04 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 11:28:42 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 01:14:47 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
+
+// char ft_random_border_char() {
+// 	 srand(time(NULL));
+//     char chars[] = "@$%&?!+#+^*";
+//     int num_chars = sizeof(chars) - 1;  // Subtract 1 for null terminator
+//     return chars[rand() % num_chars];
+// }
 
 char	**ft_allocate_new_map(int new_height, int new_width, t_game *game)
 {

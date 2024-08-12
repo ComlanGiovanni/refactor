@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:10:59 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 13:35:03 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:54:19 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_is_valid_char(char tile)
 	static const char valid_map_chars[] = {
 		LAVA_CHAR, EXIT_CHAR, LOVE_CHAR, KEY_CHAR, PLAYER_CHAR, WALL_CHAR,
 			VOID_CHAR, BORDER_CHAR, VISITED_CHAR, BOX_CHAR, PORTAL_1_CHAR,
-			PORTAL_2_CHAR, KEKE_CHAR};
+			PORTAL_2_CHAR, KEKE_CHAR, PAWN_CHAR};
 	index = 0;
 	valid_chars_count = sizeof(valid_map_chars) / sizeof(valid_map_chars[0]);
 	while (index < valid_chars_count)
@@ -104,11 +104,13 @@ void	ft_check_playability(t_game *game)
 		ft_print_error(PLAYER_ERROR, game);
 	if (game->map.info.nbr_exit != TRUE)
 		ft_print_error(EXIT_ERROR, game);
+	if (game->map.info.nbr_keke > TRUE)
+		ft_print_error(KEKE_ERROR, game);
 	if ((game->map.info.nbr_portal_1 > 1 || game->map.info.nbr_portal_2 > 1) ||
 		(game->map.info.nbr_portal_1 == 1 && game->map.info.nbr_portal_2 == 0)
 			||
 		(game->map.info.nbr_portal_1 == 0 && game->map.info.nbr_portal_2 == 1))
-		ft_print_error("There must be either exactly one N portal and one Z portal, or no portals at all", game);
+		ft_print_error("There must be either exactly one N portal and one Z portal, or no portals at all", game);//put in define
 }
 
 /**

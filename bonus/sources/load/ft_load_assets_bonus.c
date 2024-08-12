@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:10:08 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 13:16:02 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:13:10 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_load_sprites(t_game *game)
 	ft_load_lava_sprites(game);
 	ft_load_love_sprites(game);
 	ft_load_wall_sprites(game);
+	ft_load_pawn_sprites(game);
 	ft_load_ground_sprites(game);
 	ft_load_borders_sprite(game);
 	//ft_load_player_sprites(game);

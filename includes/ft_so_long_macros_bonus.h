@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:25:57 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 13:33:13 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/10 12:42:05 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define BER_EXTENSION		".ber"
 # define IMG_SIZE 			64
 # define ICON_SIZE 			10
-# define BORDERS_WIDTH 		10
+# define BORDERS_WIDTH 		10//put 20 to test
 # define ERROR_MSG			"Error\n"
 # define KEY_FOUND			"Key found ->"
 # define KEY_AVAILABLE		"Key available -> "
@@ -25,12 +25,13 @@
 # define NO_ENV_ERROR		"No variable environment available\n"
 # define NO_DISP_ERROR		"DISPLAY not found in env\n"
 # define MALLOC_GAME_ERROR	"Malloc t_game fail to\n"
-# define BAD_CHAR_MAP_ERROR	"Should contain char : '1' 'P' 'C' 'E' '0' 'L' 'N' 'Z' 'B' 'K' 'S'\n"
+# define BAD_CHAR_MAP_ERROR	"Should contain char : '1' 'P' 'C' 'E' '0' 'L' 'N' 'Z' 'B' 'K' 'S' 'W'\n"
 # define WALL_ERROR	        ".ber should be surrounded by walls\n"
 # define FORM_ERROR	        ".ber should be in rectangular form !\n"
 # define COIN_ERROR			".ber should have at least one collectible -> C\n"
 # define PLAYER_ERROR		".ber should have one starting point -> P\n"
 # define EXIT_ERROR			".ber should have only one exit -> E\n"
+# define KEKE_ERROR			".ber should have only one keke -> K\n"
 # define EXTENSION_ERROR	"Map extension should be a .ber\n"
 # define FAIL_OPEN_ERROR	"[Map_name].ber fail to open\n"
 # define MLX_INIT_ERROR		"mlx_init() fail\n"

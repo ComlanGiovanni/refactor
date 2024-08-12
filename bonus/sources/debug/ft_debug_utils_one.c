@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:05:43 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 01:50:07 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/10 12:45:39 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_display_sprites_addr(t_game *game)
 {
-	ft_printf("All image width and height are [%d x %d]\n\n",
+	ft_printf("\nAll image width and height are [%d x %d]\n\n",
 				IMG_SIZE,
 				IMG_SIZE);
 	ft_printf("assets/xpm/Bonus/lava/lava_frame_0.xpm");

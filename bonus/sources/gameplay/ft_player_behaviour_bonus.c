@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:21:59 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 14:30:50 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 11:56:41 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_move_box(t_game *game, int new_y, int new_x, int dir_y, int dir_x)
 	{
 		game->map.grid[new_y + dir_y][new_x + dir_x] = BOX_CHAR;
 		game->map.grid[new_y][new_x] = VOID_CHAR;
-		system("cvlc sounds/box_move.wav &");
+		system("aplay sounds/special-effects/box_move.wav &");
 	}
 }
 
@@ -71,7 +71,7 @@ void	ft_teleport_player(t_game *game, int y, int x)
 	if (destination.y != -1 && destination.x != -1)
 	{
 		game->map.grid[y][x] = VOID_CHAR;
-		system("cvlc sounds/teleportation.wav &");
+		system("aplay sounds/special-effects/teleportation.wav &");
 		game->map.grid[destination.y][destination.x] = PLAYER_CHAR;
 		game->player.movement.current_position.y = destination.y;
 		game->player.movement.current_position.x = destination.x;

@@ -6,7 +6,7 @@
 #    By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 03:25:21 by gicomlan          #+#    #+#              #
-#    Updated: 2024/08/07 00:24:10 by gicomlan         ###   ########.fr        #
+#    Updated: 2024/08/12 02:47:35 by gicomlan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,7 +120,9 @@ VALGRIND				:=	valgrind
 VALGRIND_FLAGES			+= --leak-check=full
 VALGRIND_FLAGES			+= --show-leak-kinds=all
 VALGRIND_FLAGES			+= --track-fds=yes
+VALGRIND_FLAGES			+= --track-origins=yes
 VALGRIND_FLAGES			+= --show-reachable=yes
+VALGRIND_FLAGES			+= --error-limit=no
 VALGRIND_FLAGES			+= --tool=memcheck
 
 MLX_FLAGS				+= -L $(MLX_PATH)
@@ -206,7 +208,7 @@ MAKING					=	" Making of "
 CLEANNING				=	" Cleanning of "
 FCLEANNING				=	" Fcleanning of "
 SO_LONG_COMP			=	echo "🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(ITALIC)$(MANDATORY_NAME)$(RESET): $(NO_COLOR)$(COMPILE_DONE)$(UNDERLINE)*.o$(RESET) done"
-SO_LONG_BONUS_COMP		=	echo "🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(ITALIC)$(BONUS_NAME)$(RESET): $(NO_COLOR)$(COMPILE_DONE)$(UNDERLINE)*.o$(RESET)done"
+SO_LONG_BONUS_COMP		=	echo "🚧$(BOLD)$(MAKING)$(RESET)$(YELLOW)$(ITALIC)$(BONUS_NAME)$(RESET): $(NO_COLOR)$(COMPILE_DONE)$(UNDERLINE)*.o$(RESET) done"
 MLX_COMP				=	echo "\n🚧$(BOLD)$(MAKING)$(RESET)$(PURPLE)$(MLX_NAME)$(NO_COLOR): $(COMPILE)$(UNDERLINE)*.o$(RESET) ..."
 SO_LONG_READY			=	echo "\n🧮 $(RED)$(REVERSE)Mandatory$(RESET): $(RED) $(MANDATORY_NAME) ready!\n"
 BONUS_READY				=	echo "\n🎯 $(CYAN)$(REVERSE)Bonus$(RESET): $(CYAN) $(BONUS_NAME) ready!\n"

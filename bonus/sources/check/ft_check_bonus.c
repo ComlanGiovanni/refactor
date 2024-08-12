@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 16:30:10 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 00:50:31 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:37:27 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_check_env(char **envp)
 	idx = FALSE;
 	while (envp[idx])
 	{
-		if (ft_strncmp("DISPLAY", envp[idx], ft_strlen("DISPLAY")) == FALSE)
+		if (ft_strncmp("DISPLAY", envp[idx], ft_strlen("DISPLAY")) == FALSE)//put in define
 			return ;
 		else
 			idx++;

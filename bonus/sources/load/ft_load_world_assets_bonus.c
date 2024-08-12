@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:12:28 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:15:37 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:15:17 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,20 @@ void	ft_load_wall_sprites(t_game *game)
 		WALL_2_XPM_ERROR};
 
 	ft_load_animation_sprites(&(game->wall.animation), game, paths,
+		error_messages);
+}
+
+void	ft_load_pawn_sprites(t_game *game)
+{
+	const char	*paths[] = {
+		"assets/xpm/Bonus/pawn/pawn_frame_0.xpm",
+		"assets/xpm/Bonus/pawn/pawn_frame_1.xpm",
+		"assets/xpm/Bonus/pawn/pawn_frame_2.xpm"};
+	const char	*error_messages[] = {
+		"Generic message change soon",
+		"Generic message change soon",
+		"Generic message change soon"};
+
+	ft_load_animation_sprites(&(game->pawn.animation), game, paths,
 		error_messages);
 }

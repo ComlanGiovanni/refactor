@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:28:13 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 14:58:42 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 15:19:04 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct						s_fps
 	int						frame_count;
 	double					fps;
 	double					elapsed;
+	double					elapsed_time;
 };
 
 struct						s_animation
@@ -56,6 +57,25 @@ struct						s_grass
 struct						s_wall
 {
 	t_animation				animation;
+};
+
+struct s_pawn_movement
+{
+	t_point initial_position;
+	t_point current_position;
+	t_point target_position;
+	//char	dir_char[4];
+	char	*direction;
+	//t_point *path;
+	int		is_returning;
+	int		steps_taken;
+	int		steps_need;
+};
+
+struct						s_pawn
+{
+	t_animation				animation;
+	t_pawn_movement			*pawns_array;
 };
 
 struct						s_anim_door
@@ -135,9 +155,11 @@ struct						s_info
 	long long int			nbr_lava;
 	long long int			nbr_love;
 	long long int			nbr_wall;
+	long long int			nbr_pawn;
 	long long int			nbr_void;
 	long long int			nbr_box;
 	long long int			nbr_border;
+	long long int			nbr_keke;
 	long long int			nbr_portal_1;
 	long long int			nbr_portal_2;
 };
@@ -246,6 +268,36 @@ struct						s_anim_keke
 	void					*frame_move_1;
 };
 
+
+struct s_a_star_node
+{
+	t_point							pos;
+	int								g; // Cost from start to this node
+	int								f; // Total cost (g + h)
+	struct s_a_star_node			*parent;
+};
+
+struct s_lists
+{
+	t_a_star_node		**open;
+	t_a_star_node		**closed;
+	int 			open_count;
+	int				closed_count;
+};
+
+struct s_neighbor
+{
+	t_point		goal;
+	t_point		directions[4];
+	char		dir_char[4];
+};
+
+struct s_a_star
+{
+	t_lists					lists;
+    t_neighbor				neighbor;
+};
+
 struct						s_keke
 {
 	t_anim_keke				up_anim;
@@ -253,6 +305,7 @@ struct						s_keke
 	t_anim_keke				left_anim;
 	t_anim_keke				right_anim;
 	t_bool					moved;
+	t_a_star				a_star;
 	int						frames;
 	char					direction;
 	long long int			step;
@@ -267,6 +320,7 @@ struct						s_game
 	t_lava					lava;
 	t_key					key;
 	t_wall					wall;
+	t_pawn					pawn;
 	t_grass					grass;
 	t_door					door;
 	t_box					box;

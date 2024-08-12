@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:23 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 15:00:21 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:56:55 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_nine_animation(t_animation *animation);
 //=================================================================== [ file.c ]
 
 void	ft_wall_animation(t_animation *animation);
+void	ft_pawn_animation(t_animation *animation);
 void	ft_lava_animation(t_animation *animation);
 void	ft_key_animation(t_animation *animation);
 void	ft_love_animation(t_animation *animation);
@@ -99,6 +100,7 @@ void	ft_love_sprite(t_game *game, t_point pos);
 void	ft_exit_sprite(t_game *game, t_point pos);
 void	ft_ground_sprite(t_game *game, t_point pos);
 void	ft_wall_sprite(t_game *game, t_point pos);
+void	ft_pawn_sprite(t_game *game, t_point pos);
 void	ft_borders_sprite(t_game *game, t_point pos);
 void	ft_box_sprite(t_game *game, t_point pos);
 void	ft_portal_z_sprite(t_game *game, t_point pos);
@@ -144,7 +146,7 @@ void	ft_keke_move_right(t_game *game);
 
 //=================================================================== [ file.c ]
 
-void	ft_random_keke_move(t_game *game);
+void	ft_a_star_keke_movement(t_game *game);
 void	ft_move_keke(t_game *game);
 
 //=================================================================== [ file.c ]
@@ -153,6 +155,11 @@ void	ft_move_keke_up(t_game *game, int row, int col);
 void	ft_move_keke_down(t_game *game, int row, int col);
 void	ft_move_keke_left(t_game *game, int row, int col);
 void	ft_move_keke_right(t_game *game, int row, int col);
+
+//=================================================================== [ file.c ]
+
+void ft_find_pawn_positions(t_game *game);
+void ft_free_pawns_array(t_game *game);
 
 //=================================================================== [ file.c ]
 
@@ -167,6 +174,7 @@ void	ft_player_take_coin(t_game *game);
 void	ft_player_take_life(t_game *game);
 void	ft_player_get_hit(t_game *game);
 void	ft_baba_forbidden(t_game *game);
+void	ft_pawn_movement(t_game *game);
 
 //=================================================================== [ file.c ]
 
@@ -183,6 +191,7 @@ void	ft_init_frames(t_game *game);
 void	ft_init_fps(t_game *game);
 void	ft_init_map_info(t_game *game, char *line);
 void	ft_init_game_info(t_game *game);
+void	ft_init_pawns_array(t_game *game);
 
 //=================================================================== [ file.c ]
 
@@ -283,6 +292,7 @@ void	ft_load_keke_current(t_game *game);
 void	ft_load_ground_sprites(t_game *game);
 void	ft_load_borders_sprite(t_game *game);
 void	ft_load_wall_sprites(t_game *game);
+void	ft_load_pawn_sprites(t_game *game);
 
 //=================================================================== [ file.c ]
 

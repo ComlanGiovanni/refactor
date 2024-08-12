@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 20:17:50 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 11:47:50 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 00:29:54 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
  */
 int	ft_exit_game(t_game *game)
 {
-	system("pkill vlc");
+	//system("pkill vlc");
+	system("pkill aplay");
 	ft_free_all(game);
 	exit(EXIT_SUCCESS);
 }
@@ -67,7 +68,8 @@ int	ft_exit_game(t_game *game)
 //make a fonction and add some interresting thing
 int	ft_win_game(t_game *game)
 {
-	system("pkill vlc");
+	//system("pkill vlc");
+	system("pkill aplay");
 	game->player.step++;
 	ft_printf(WIN_MSG "%d ", game->player.step);
 	ft_printf("Storage : %d, ", game->player.storage);

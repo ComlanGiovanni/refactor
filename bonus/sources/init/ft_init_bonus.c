@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 01:20:05 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 15:01:34 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/10 13:15:10 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_init_frames(t_game *game)
 	game->keke.frames = 24;
 	game->key.animation.frames = 6;
 	game->wall.animation.frames = 64;
+	game->pawn.animation.frames = 32;
 	game->grass.animation.frames = 128;
 	game->love.animation.frames = 48;
 	game->hud.digits.zero.frames = 64;
@@ -106,8 +107,10 @@ void	ft_init_game_info(t_game *game)
 	game->map.info.nbr_key = FALSE;
 	game->map.info.nbr_exit = FALSE;
 	game->map.info.nbr_lava = FALSE;
+	game->map.info.nbr_keke = FALSE;
 	game->map.info.nbr_love = FALSE;
 	game->map.info.nbr_wall = TRUE;
+	game->map.info.nbr_pawn = FALSE;
 	game->map.info.nbr_void = FALSE;
 	game->map.info.nbr_box = FALSE;
 	game->map.info.nbr_border = FALSE;
