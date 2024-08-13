@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 23:24:37 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 00:56:47 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 03:06:54 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	ft_flood_fill(char **tab, t_game *game, t_point start,
 		(*coins)++;
 	}
 	if (tab[start.y][start.x] == EXIT_CHAR)
+		return ;
+	if ((*coins) == game->map.info.nbr_key)
 		*exit_found = TRUE;
 	tab[start.y][start.x] = VISITED_CHAR;
 	ft_print_fill_grid(tab);

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:20 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 22:16:06 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 02:20:36 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ enum	e_map_char
 	GRASS_CHAR = '#',
 	TREE_CHAR = '@',
 	TREES_CHAR = '$',
-	REED_CHAR = '%',//
-	HUSKS_CHAR = '&',//
-	FUNGUS_CHAR = '?',//
-	FUNGI_CHAR = '!',//
+	REED_CHAR = '%',
+	HUSKS_CHAR = '&',
+	FUNGUS_CHAR = '?',
+	FUNGI_CHAR = '!',
 	FLOWER_CHAR = '+',
 	ALGAE_CHAR = '*',
 	WATER_CHAR = '=',
