@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:46:14 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/09 17:23:00 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 22:38:38 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * 					the sprite we need for the game aka
  * 		key lava wall ground player direct sprite door open and close
  *
- *  //ft_load_borders_sprite(game)
+ *  //ft_load_grass_sprites(game)
  * @param mlx
  * @return t_sprites
  */
@@ -54,6 +54,142 @@ void	ft_put_sprites_by_line(t_game *game)
 	}
 }
 
+void ft_put_sprite(t_game *game, void *sprite, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win, sprite, pos.x, pos.y);
+}
+
+void ft_handle_key_love_box_sprites(t_game *game, char tile, t_point sprite_pos)
+{
+	if (tile == KEY_CHAR)
+		ft_key_sprite(game, sprite_pos);
+	else if (tile == LOVE_CHAR)
+		ft_love_sprite(game, sprite_pos);
+	else if (tile == BOX_CHAR)
+		ft_box_sprite(game, sprite_pos);
+}
+
+void ft_handle_exit_portals_sprites(t_game *game, char tile, t_point sprite_pos)
+{
+	if (tile == EXIT_CHAR)
+	{
+		if (game->player.storage == game->map.info.nbr_key)
+			ft_put_sprite(game, game->door.open.current, sprite_pos);
+		else
+			ft_exit_sprite(game, sprite_pos);
+	}
+	else if (tile == PORTAL_1_CHAR)
+		ft_portal_n_sprite(game, sprite_pos);
+	else if (tile == PORTAL_2_CHAR)
+		ft_portal_z_sprite(game, sprite_pos);
+}
+
+void ft_handle_enemies_sprites(t_game *game, char tile, t_point sprite_pos)
+{
+  	if (tile == LAVA_CHAR)
+		ft_lava_sprite(game, sprite_pos);
+	else if (tile == PAWN_CHAR)
+		ft_pawn_sprite(game, sprite_pos);
+}
+
+void	ft_tree_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->tree.animation.current, pos.x, pos.y);
+}
+
+void	ft_trees_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->trees.animation.current, pos.x, pos.y);
+}
+
+void	ft_reed_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->reed.animation.current, pos.x, pos.y);
+}
+
+void	ft_husks_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->husks.animation.current, pos.x, pos.y);
+}
+
+void	ft_fungus_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->fungus.animation.current, pos.x, pos.y);
+}
+
+void	ft_fungi_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->fungi.animation.current, pos.x, pos.y);
+}
+
+void	ft_flower_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->flower.animation.current, pos.x, pos.y);
+}
+
+void	ft_algae_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->algae.animation.current, pos.x, pos.y);
+}
+
+void	ft_water_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->water.animation.current, pos.x, pos.y);
+}
+
+void ft_handle_borders_sprites(t_game *game, char tile, t_point sprite_pos)
+{
+	if (tile == GRASS_CHAR)
+		ft_grass_sprite(game, sprite_pos);
+    else if (tile == TREE_CHAR)
+        ft_tree_sprite(game, sprite_pos);
+    else if (tile == TREES_CHAR)
+        ft_trees_sprite(game, sprite_pos);
+    else if (tile == REED_CHAR)
+        ft_reed_sprite(game, sprite_pos);
+    else if (tile == HUSKS_CHAR)
+        ft_husks_sprite(game, sprite_pos);
+    else if (tile == FUNGUS_CHAR)
+        ft_fungus_sprite(game, sprite_pos);
+	else if (tile == FUNGI_CHAR)
+        ft_fungi_sprite(game, sprite_pos);
+	else if (tile ==  FLOWER_CHAR)
+        ft_flower_sprite(game, sprite_pos);
+	else if (tile == ALGAE_CHAR)
+        ft_algae_sprite(game, sprite_pos);
+	else if (tile == WATER_CHAR)
+        ft_water_sprite(game, sprite_pos);
+}
+
+t_bool ft_is_key_love_box_sprites(char tile)
+{
+	return (tile == KEY_CHAR) || (tile == LOVE_CHAR) || (tile == BOX_CHAR);
+}
+
+t_bool ft_is_exit_portals_sprites(char tile)
+{
+	return (tile == EXIT_CHAR) || (tile == PORTAL_1_CHAR) || tile == (PORTAL_2_CHAR);
+}
+t_bool ft_is_enemies_sprites(char tile)
+{
+	return ((tile == LAVA_CHAR) || (tile == PAWN_CHAR));
+}
+t_bool ft_is_borders_sprites(char tile)
+{
+	return (tile == GRASS_CHAR) || (tile == TREE_CHAR) || (tile == TREES_CHAR)
+		|| (tile == REED_CHAR) || (tile == HUSKS_CHAR) || (tile == FUNGUS_CHAR)
+		|| (tile == FUNGI_CHAR) || (tile == FLOWER_CHAR) || (tile == ALGAE_CHAR) || (tile == WATER_CHAR);
+}
+
 /**
  * @brief
  * 			1111
@@ -84,8 +220,8 @@ void	ft_put_sprites_by_line(t_game *game)
  * 						mlx_put_image_to_window
  *
  *
- * // else if (tile == BORDER_CHAR)
- * //		ft_borders_sprite(game, sprite_pos);
+ * // else if (tile == GRASS_CHAR)
+ * //		ft_grass_sprite(game, sprite_pos);
 
  * @param game
  * @param width
@@ -97,32 +233,19 @@ void	ft_put_all_sprites_to_line(t_game *game, int width, int height,
 	char	tile;
 
 	tile = game->map.grid[height][width];
+	//printf("Tile -> %c Width -> %d Height -> %d sprite_pos.x -> %d sprite_pos.y -> %d\n", tile, width, height, sprite_pos.x, sprite_pos.y);
 	if (tile == WALL_CHAR)
 		ft_wall_sprite(game, sprite_pos);
-	else if (tile == PAWN_CHAR)
-		ft_pawn_sprite(game, sprite_pos);
-	else if (tile == KEY_CHAR)
-		ft_key_sprite(game, sprite_pos);
-	else if (tile == LAVA_CHAR)
-		ft_lava_sprite(game, sprite_pos);
-	else if (tile == LOVE_CHAR)
-		ft_love_sprite(game, sprite_pos);
-	else if (tile == EXIT_CHAR
-		&& game->player.storage == game->map.info.nbr_key)
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->door.open.current, sprite_pos.x, sprite_pos.y);
-	else if (tile == EXIT_CHAR)
-		ft_exit_sprite(game, sprite_pos);
 	else if (tile == VOID_CHAR)
 		ft_ground_sprite(game, sprite_pos);
-	else if (tile == BORDER_CHAR)
-		ft_borders_sprite(game, sprite_pos);
-	else if (tile == BOX_CHAR)
-		ft_box_sprite(game, sprite_pos);
-	else if (tile == PORTAL_1_CHAR)
-		ft_portal_n_sprite(game, sprite_pos);
-	else if (tile == PORTAL_2_CHAR)
-		ft_portal_z_sprite(game, sprite_pos);
+	else if (ft_is_key_love_box_sprites(tile))
+		ft_handle_key_love_box_sprites(game, tile, sprite_pos);
+	else if (ft_is_exit_portals_sprites(tile))
+		ft_handle_exit_portals_sprites(game, tile, sprite_pos);
+	else if (ft_is_borders_sprites(tile))
+		ft_handle_borders_sprites(game, tile, sprite_pos);
+	else if (ft_is_enemies_sprites(tile))
+		ft_handle_enemies_sprites(game, tile, sprite_pos);
 	else if (tile == KEKE_CHAR)
 		ft_keke_sprites(game, width, height, sprite_pos);
 	else

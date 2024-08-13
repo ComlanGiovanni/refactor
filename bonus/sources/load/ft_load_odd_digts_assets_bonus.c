@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:21:40 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:40:22 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:43:01 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_load_digit_tree(t_game *game)
 		"Generic message error replace soon",
 		"Generic message error replace soon"};
 
-	ft_load_animation_sprites(&(game->hud.digits.tree), game, paths,
+	ft_load_animation_sprites(&(game->hud.digits.three), game, paths,
 		error_messages);
 }
 

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:10:59 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/09 17:54:19 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 01:54:37 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void	ft_map_fit_screen(t_game *game)
 		ft_print_error(MAP_TOO_BIG, game);
 }
 
+// , TREE_CHAR, TREES_CHAR,
+// 			REED_CHAR, HUSKS_CHAR, FUNGUS_CHAR,
+// 			FUNGI_CHAR, FLOWER_CHAR, ALGAE_CHAR, WATER_CHAR
 int	ft_is_valid_char(char tile)
 {
 	size_t	index;
@@ -28,7 +31,7 @@ int	ft_is_valid_char(char tile)
 
 	static const char valid_map_chars[] = {
 		LAVA_CHAR, EXIT_CHAR, LOVE_CHAR, KEY_CHAR, PLAYER_CHAR, WALL_CHAR,
-			VOID_CHAR, BORDER_CHAR, VISITED_CHAR, BOX_CHAR, PORTAL_1_CHAR,
+			VOID_CHAR, GRASS_CHAR, VISITED_CHAR, BOX_CHAR, PORTAL_1_CHAR,
 			PORTAL_2_CHAR, KEKE_CHAR, PAWN_CHAR};
 	index = 0;
 	valid_chars_count = sizeof(valid_map_chars) / sizeof(valid_map_chars[0]);

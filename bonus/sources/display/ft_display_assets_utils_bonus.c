@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:46:45 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/09 17:23:27 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:58:55 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_pawn_sprite(t_game *game, t_point pos)
 		game->pawn.animation.current, pos.x, pos.y);
 }
 
-void	ft_borders_sprite(t_game *game, t_point pos)
+void	ft_grass_sprite(t_game *game, t_point pos)
 {
 	mlx_put_image_to_window(game->mlx, game->win,
 		game->grass.animation.current, pos.x, pos.y);

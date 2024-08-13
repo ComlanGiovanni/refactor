@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 16:58:49 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 12:12:23 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 21:19:09 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -370,7 +370,7 @@ void move_pawn(t_game *game) {
                 }
             }
         }
-        printf("Pawn %d moved to [%d, %d]\n", index, pawn->current_position.x, pawn->current_position.y);
+       	// printf("Pawn %d moved to [%d, %d]\n", index, pawn->current_position.x, pawn->current_position.y);
         index++;
     }
 }

@@ -6,22 +6,16 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:11 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 15:42:35 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 02:18:11 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
 
-// void move_pawn(t_game *game);
-// //void move_pawn_to_target(t_pawn_movement *pawn, t_game *game);
-// void update_grid(t_game *game, t_point old_pos, t_point new_pos, char pawn_char, char void_char);
-// int is_obstacle(char **grid, t_point pos, char player_char);
-// void ft_find_pawn_positions(t_game *game);
-// void ft_init_pawns_array(t_game *game);
-// void find_farthest_position_for_pawn(t_game *game);
-// t_point calculate_farthest_position(t_point start_position, const char *direction, t_game *game);
-// int ft_is_position_free_for_pawn(char **grid, t_point pos);
-// t_point get_next_position(t_point current, const char *direction);
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
  * @brief

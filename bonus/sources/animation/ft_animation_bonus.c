@@ -6,11 +6,97 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:10:53 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/09 18:22:46 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 22:34:08 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
+
+void	ft_tree_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_trees_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_reed_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_husks_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_fungus_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_fungi_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_flower_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_algae_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_water_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_borders_animation(t_game *game)
+{
+	ft_grass_animation(&game->grass.animation);
+	ft_tree_animation(&game->tree.animation);
+	ft_trees_animation(&game->trees.animation);
+	ft_reed_animation(&game->reed.animation);
+	ft_husks_animation(&game->husks.animation);
+	ft_fungus_animation(&game->fungus.animation);
+	ft_fungi_animation(&game->fungi.animation);
+	ft_flower_animation(&game->flower.animation);
+	ft_algae_animation(&game->algae.animation);
+	ft_water_animation(&game->water.animation);
+}
 
 void	ft_play_animation(t_game *game)
 {
@@ -25,7 +111,7 @@ void	ft_play_animation(t_game *game)
 	ft_portal_z_animation(&game->portal.z);
 	ft_door_open_animation(&game->door.open);
 	ft_door_closed_animation(&game->door.closed);
-	ft_grass_animation(&game->grass.animation);
+	ft_borders_animation(game);
 	if (game->player.life == 6)
 		game->love.animation.current = game->love.nope;
 	else
@@ -121,7 +207,7 @@ void	ft_digits_animation(t_game *game)
 	ft_zero_animation(&game->hud.digits.zero);
 	ft_one_animation(&game->hud.digits.one);
 	ft_two_animation(&game->hud.digits.two);
-	ft_tree_animation(&game->hud.digits.tree);
+	ft_three_animation(&game->hud.digits.three);
 	ft_four_animation(&game->hud.digits.four);
 	ft_five_animation(&game->hud.digits.five);
 	ft_six_animation(&game->hud.digits.six);

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:25 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 15:37:17 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 23:48:10 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_direction_keke_after_launch(t_game *game)
 {
 	static int	random;
 
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	random = rand() % 4;
 	if (random == 0x0)
 		game->keke.direction = 'u';

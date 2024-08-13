@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 12:12:44 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/10 20:22:42 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 22:17:44 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ typedef struct s_animation		t_animation;
 typedef struct s_lava			t_lava;
 typedef struct s_key			t_key;
 typedef struct s_grass			t_grass;
+typedef struct s_water			t_water;
+typedef struct s_tree			t_tree;
+typedef struct s_trees			t_trees;
+typedef struct s_reed			t_reed;
+typedef struct s_husks			t_husks;
+typedef struct s_fungus			t_fungus;
+typedef struct s_fungi			t_fungi;
+typedef struct s_flower			t_flower;
+typedef struct s_algae			t_algae;
 typedef struct s_wall			t_wall;
 typedef struct s_pawn			t_pawn;
 typedef struct s_pawn_movement  t_pawn_movement;
@@ -47,5 +56,7 @@ typedef struct s_a_star			t_a_star;
 typedef struct s_a_star_node	t_a_star_node;
 typedef struct s_lists			t_lists;
 typedef struct s_neighbor		t_neighbor;
+typedef struct s_uv_params		t_uv_params;
+typedef struct s_perlin_vars	t_perlin_vars;
 
 #endif // !FT_SO_LONG_TYPEDEF_BONUS_H

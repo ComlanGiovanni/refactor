@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:59:15 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 15:37:20 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 23:48:16 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_setup_map(t_game *game)
 	ft_print_display_grid(game->map.matrice);
 
 	game->map.grid = ft_create_map_with_border(game);
-	game->map.info.nbr_border = (game->map.size.x * game->map.size.y)
+	game->map.info.nbr_grass = (game->map.size.x * game->map.size.y)
 		- game->map.len;
 	ft_printf(NEW_GRID_MSG);
 	ft_print_display_grid(game->map.grid);
@@ -67,8 +67,8 @@ void	ft_get_info_map(t_game *game)
 			game->map.info.nbr_portal_1++;
 		else if (game->map.map_str[idx] == PORTAL_2_CHAR)
 			game->map.info.nbr_portal_2++;
-		else if (game->map.map_str[idx] == BORDER_CHAR)
-			game->map.info.nbr_border++;
+		else if (game->map.map_str[idx] == GRASS_CHAR)
+			game->map.info.nbr_grass++;
 		else if (game->map.map_str[idx] == PAWN_CHAR)
 			game->map.info.nbr_pawn++;
 		else if (game->map.map_str[idx] == KEKE_CHAR)
@@ -82,7 +82,7 @@ void	ft_play_random_theme()
 {
 	static int random;
 
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	random = rand() % 4 ;
 	if (random == 0)
 		system("aplay sounds/theme/baba_is_you_on_the_island.wav &");

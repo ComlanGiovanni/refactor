@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:12:28 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/09 17:15:17 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:13:58 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	ft_load_ground_sprites(t_game *game)
 		ft_print_error(GROUND_XPM_ERROR, game);
 }
 
-void	ft_load_borders_sprite(t_game *game)
+void	ft_load_grass_sprites(t_game *game)
 {
 	const char	*paths[] = {
 		"assets/xpm/Bonus/grass/grass_frame_0.xpm",
 		"assets/xpm/Bonus/grass/grass_frame_1.xpm",
-		"assets/xpm/Bonus/grass/grass_frame_0.xpm"};
+		"assets/xpm/Bonus/grass/grass_frame_2.xpm"};
 	const char	*error_messages[] = {
 		GRASS_0_XPM_ERROR,
 		GRASS_1_XPM_ERROR,

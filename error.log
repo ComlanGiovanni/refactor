@@ -1,0 +1,437 @@
+==508704== Memcheck, a memory error detector
+==508704== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==508704== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==508704== Command: ./so_long_bonus fast.ber
+==508704== 
+11111111
+1W000001
+11110001
+1VSLCE01
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1W000001
+11110001
+1VVLCE01
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1W000001
+11110001
+1VVVCE01
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1W000001
+11110001
+1VVVVE01
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1W000001
+11110001
+1VVVVV01
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1W000001
+11110001
+1VVVVVV1
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1W000001
+111100V1
+1VVVVVV1
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1W000001
+11110VV1
+1VVVVVV1
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1W000001
+1111VVV1
+1VVVVVV1
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1W00V001
+1111VVV1
+1VVVVVV1
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1W0VV001
+1111VVV1
+1VVVVVV1
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1WVVV001
+1111VVV1
+1VVVVVV1
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1VVVV001
+1111VVV1
+1VVVVVV1
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1VVVVV01
+1111VVV1
+1VVVVVV1
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+10000001
+10000001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+100000V1
+10000001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+10000VV1
+10000001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+1000VVV1
+10000001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+100VVVV1
+10000001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+10VVVVV1
+10000001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+1VVVVVV1
+10000001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+1VVVVVV1
+1V000001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+1VVVVVV1
+1VV00001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+1VVVVVV1
+1VVV0001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+1VVVVVV1
+1VVVV001
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+1VVVVVV1
+1VVVVV01
+11111111
+[H[2J[3J11111111
+1VVVVVV1
+1111VVV1
+1VVVVVV1
+1VVVVVV1
+1VVVVVV1
+11111111
+[H[2J[3JMap is - > fast.ber
+A Valid path found in map
+All coin are collectible in map
+
+Grid Width && Height -> 	[8 7]
+
+Player Start  position in grid x->1 y->3
+Player Exit  position in grid x->5 y->3
+
+11111111
+1W000001
+11110001
+1PSLCE01
+10000001
+10000001
+11111111
+
+New grid with border for camera
+
+!%%%%%!#####!%%%%%!!!!!!!!!!
+!!%%%%!!###!!%%?%%!!!!!!!!!!
+!!%%%%!!!!!!%%??%%!!!!!%%%!!
+!!!%%%!!!!!%%???%%!!!!!%%%!!
+#!!%%%%!!%%%????%%%!!!%%%%!!
+#!!%%%%%%%%??????%%%%%%%%%!!
+##!!!%%%%%%??????%%%%%%%%%!!
+##!!!!!!%%%%????%%%%????%%!!
+##!!!!!!!!%%%%%%%%%?????%%!!
+#!!!%%!!!!%%%%%%!%%%????%%!!
+%%!!!###!!11111111!%%???%%!!
+%%%!!###!%1W000001%%????%%!!
+%%%!!!!!!%11110001??????%%!!
+?%%%!!!!!%1PSLCE01??????%%!!
+??%%!!!!!%10000001??????%%!!
+??%%!!!!!!10000001?%%%%%%%!!
+?%%%!###!!11111111%%%%%%%%!!
+%%!!!###!!!%%???%%!!!!!%%%!!
+%!!!####!!!%%??%%!!!!!!%%%%!
+%!!#####!!!%%%%%!!###!!%%%%%
+!!!####!!!!%%!!!#####!!%%%%%
+!!!!##!!!%!!!!#######!!%%%%%
+%%!!!!!!%%!!!######!!!!%%%%?
+%%!!!!!%%%!!!####!!!%%!!!%%%
+%%!!!!!%%%!!!###!!!%%%!!!!!%
+%%%!!!!%%%!!!##!!%%%%%%!!!!!
+%%%%!!!%%!!!!#!!%%???%%!###!
+
+Grid Width && Height -> 	[28 27]
+
+Player Start   position in grid x->11 y->13
+Player Exit    position in grid x->15 y->13
+
+Portal 1 : {Z} position in grid x->-1 y->-1
+Portal 2 : {N} position in grid x->-1 y->-1
+
+  No movement position in down direction.
+  No movement position in down-left direction.
+  No movement position in left direction.
+  No movement position in up-left direction.
+  No movement position in up direction.
+  No movement position in up-right direction.
+  No movement position in down-right direction.
+[All item in map Number]
+
+Player : [P] -> {1}
+Wall   : [1] -> {29}
+Pawn   : [W] -> {1}
+Void   : [0] -> {22}
+Life   : [S] -> {1}
+Lava   : [L] -> {1}
+Keke   : [K] -> {0}
+Key    : [C] -> {1}
+Exit   : [E] -> {1}
+Box    : [B] -> {0}
+Portal : [B] -> {0}
+Grass : [#] -> {700}
+
+Screen Height && Width [7280 x 2890]
+Window Height && Width [864 x 896]
+
+All image width and height are [64 x 64]
+
+assets/xpm/Bonus/lava/lava_frame_0.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/lava/lava_frame_1.xpm : [[0;32m0x52769f0[0m]
+assets/xpm/Bonus/lava/lava_frame_2.xpm : [[0;32m0x5277230[0m]
+assets/xpm/Bonus/door/closed/door_closed_frame_0.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/door/closed/door_closed_frame_1.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/door/closed/door_closed_frame_2.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/door/open/door_open_frame_0.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/door/open/door_open_frame_1.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/door/open/door_open_frame_2.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/up/player_up_frame_0.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/up/player_up_frame_1.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/up/player_up_frame_2.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/up/player_up_frame_move.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/down/player_down_frame_0.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/down/player_down_frame_1.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/down/player_down_frame_2.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/down/player_down_frame_move.x.pm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/left/player_left_frame_0.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/left/player_left_frame_1.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/left/player_left_frame_2.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/left/player_left_frame_move.x.pm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/right/player_right_frame_0.xp);m : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/right/player_right_frame_1.xp);m : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/right/player_right_frame_2.xp);m : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/player/right/player_right_frame_move);.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/key/key_frame_0.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/key/key_frame_1.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/key/key_frame_2.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/wall/wall_frame_0.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/wall/wall_frame_1.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/wall/wall_frame_2.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/grass/grass_frame_0.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/grass/grass_frame_1.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/grass/grass_frame_0.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/ground/ground.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/love/love_frame_0.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/love/love_frame_1.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/love/love_frame_2.xpm : [[0;32m0x52761b0[0m]
+assets/xpm/Bonus/love/love_small_icon.xpmPlaying WAVE 'sounds/theme/baba_is_you_theme.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/clock_tic.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Game Paused
+Game Resumed
+Playing WAVE 'sounds/special-effects/clock_tic.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Game Paused
+Game Resumed
+Game Paused
+Game Resumed
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Game Paused
+Game Resumed
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tic.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tic.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_take_key.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/theme/level_finished.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tic.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_take_damage.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_take_life.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tic.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tic.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tic.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/clock_tic.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/baba_move.wav' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Playing WAVE 'sounds/special-effects/clock_tac.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Mono
+Aborted by signal Terminated...
+Aborted by signal Terminated...
+aplay: pcm_write:2127: write error: Interrupted system callaplay: pcm_write:2127: 
+write error: Interrupted system call
+Thanks for playing, you WIN with steps : 34 Storage : 1, Life : 3
+Pawn 0 - Position: (11, 11), Target: (11, 11), Direction:  , Returning: 0
+
+  Farthest Position in right direction: [16, 11] with 5 steps.
+
+
+ The Farthest Position for   in right direction: [16, 11] with 5 steps.
+
+Pawn 0 - Position: (11, 11), Target: (16, 11), Direction: right, Returning: 0
+
+==508704== 
+==508704== FILE DESCRIPTORS: 8 open (3 std) at exit.
+==508704== Open file descriptor 4: fast.ber
+==508704==    at 0x4BC953B: open (open64.c:41)
+==508704==    by 0x117DDC: ft_check_ber_format (in /home/ysera/Documents/42 cursus folder/so_long_working_folder/cleaning/so_long_bonus)
+==508704==    by 0x117BCA: ft_read_map (in /home/ysera/Documents/42 cursus folder/so_long_working_folder/cleaning/so_long_bonus)
+==508704==    by 0x115547: ft_init_game (in /home/ysera/Documents/42 cursus folder/so_long_working_folder/cleaning/so_long_bonus)
+==508704==    by 0x10FBEA: main (in /home/ysera/Documents/42 cursus folder/so_long_working_folder/cleaning/so_long_bonus)
+==508704== 
+==508704== Open file descriptor 103: /usr/share/code/v8_context_snapshot.bin
+==508704==    <inherited from parent>
+==508704== 
+==508704== Open file descriptor 40: /dev/ptmx
+==508704==    <inherited from parent>
+==508704== 
+==508704== Open file descriptor 39: /home/ysera/.config/Code/logs/20240812T211201/ptyhost.log
+==508704==    <inherited from parent>
+==508704== 
+==508704== Open file descriptor 38: /usr/share/code/resources/app/node_modules.asar
+==508704==    <inherited from parent>
+==508704== 
+==508704== 
+==508704== HEAP SUMMARY:
+==508704==     in use at exit: 48 bytes in 1 blocks
+==508704==   total heap usage: 556,421 allocs, 556,420 frees, 20,001,343 bytes allocated
+==508704== 
+==508704== 48 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==508704==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==508704==    by 0x113DDB: ft_init_pawns_array (in /home/ysera/Documents/42 cursus folder/so_long_working_folder/cleaning/so_long_bonus)
+==508704==    by 0x114A22: ft_setup_map (in /home/ysera/Documents/42 cursus folder/so_long_working_folder/cleaning/so_long_bonus)
+==508704==    by 0x11555F: ft_init_game (in /home/ysera/Documents/42 cursus folder/so_long_working_folder/cleaning/so_long_bonus)
+==508704==    by 0x10FBEA: main (in /home/ysera/Documents/42 cursus folder/so_long_working_folder/cleaning/so_long_bonus)
+==508704== 
+==508704== LEAK SUMMARY:
+==508704==    definitely lost: 48 bytes in 1 blocks
+==508704==    indirectly lost: 0 bytes in 0 blocks
+==508704==      possibly lost: 0 bytes in 0 blocks
+==508704==    still reachable: 0 bytes in 0 blocks
+==508704==         suppressed: 0 bytes in 0 blocks
+==508704== 
+==508704== For lists of detected and suppressed errors, rerun with: -s
+==508704== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)

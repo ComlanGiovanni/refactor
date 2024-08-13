@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 20:05:20 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:12:41 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 20:24:16 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_camera_shake(t_game *game)
 	game->camera.current.y += shake_offset_y;
 }
 
+//(double)
 void	ft_update_camera(t_game *game)
 {
 	game->camera.lerp_speed = 0.02;
@@ -39,15 +40,36 @@ void	ft_update_camera(t_game *game)
 			* IMG_SIZE) - ((game->width * IMG_SIZE) / 4);
 	game->camera.target.y = (game->player.movement.current_position.y
 			* IMG_SIZE) - ((game->height * IMG_SIZE) / 4);
-	game->camera.current.x = ft_lerp(game->camera.current.x,
-										game->camera.target.x,
-										game->camera.lerp_speed);
-	game->camera.current.y = ft_lerp(game->camera.current.y,
-										game->camera.target.y,
-										game->camera.lerp_speed);
+	game->camera.current.x = ft_linear_interpolation(game->camera.lerp_speed,
+										game->camera.current.x,
+										game->camera.target.x);
+	game->camera.current.y = ft_linear_interpolation(game->camera.lerp_speed,
+										game->camera.current.y,
+										game->camera.target.y);
 }
 
-double	ft_lerp(double start, double end, double t)
+// double	ft_lerp(double start, double end, double t)
+// {
+// 	return (start + t * (end - start));
+// }
+
+// Fonction d'interpolation linéaire
+/*
+t: This is the interpolation factor,
+typically permutation_index_lower_left value between 0 and 1.
+It determines the weight of each of the two values being interpolated.
+permutation_index_lower_left: The starting value.
+permutation_index_upper_left: The ending value.
+The function calculates permutation_index_lower_left weighted average
+of permutation_index_lower_left and permutation_index_upper_left. When t is 0,
+	the function returns permutation_index_lower_left. When t is 1,
+	it returns permutation_index_upper_left. For values of t between 0 and 1,
+	the function returns permutation_index_lower_left value that is
+	proportionally between permutation_index_lower_left and
+	permutation_index_upper_left.
+*/
+float	ft_linear_interpolation(float interpolation_factor, float start,
+		float end)
 {
-	return (start + t * (end - start));
+	return (start + interpolation_factor * (end - start));
 }

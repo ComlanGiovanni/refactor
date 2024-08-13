@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 23:24:37 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/06 15:51:24 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 00:56:47 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void	ft_check_map_finishable(t_game *game)
 		ft_free_and_print(game->map.matrice, game, PATH_MAP_ERROR);
 	if (coin != game->map.info.nbr_key)
 	{
-		ft_printf("%s %d\n%s %d\n", KEY_FOUND, coin, KEY_AVAILABLE,
+		ft_printf("%s %d\n%s %d\n\n", KEY_FOUND, coin, KEY_AVAILABLE,
 			game->map.info.nbr_key);
 		ft_free_and_print(game->map.matrice, game, COIN_MAP_ERROR);
 	}
+	ft_printf("Map is - > %s\n", game->map.map_name);//how to get the .ber and put in it the title
 	ft_printf("%s", PATH_MAP_GOOD);
 	ft_printf("%s", COIN_MAP_GOOD);
 }

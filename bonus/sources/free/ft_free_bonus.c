@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 20:17:50 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 00:29:54 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 01:45:04 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,9 +138,9 @@ void	ft_free_all(t_game *game)
 
 void	ft_free_mlx(t_game *game)
 {
-	if (game->window.img)
+	if (game->window.img)//usless if no buffering
 		mlx_destroy_image(game->mlx, game->window.img);
-	if (game->window.img_data)
+	if (game->window.img_data)//usless if no buffering
 		free(game->window.img);
 	if (game->mlx && game->win)
 		mlx_destroy_window(game->mlx, game->win);

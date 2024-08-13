@@ -6,13 +6,13 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 19:55:04 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 01:14:47 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:35:03 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
 
-// char ft_random_border_char() {
+// char ft_random_GRASS_CHAR() {
 // 	 srand(time(NULL));
 //     char chars[] = "@$%&?!+#+^*";
 //     int num_chars = sizeof(chars) - 1;  // Subtract 1 for null terminator
@@ -39,11 +39,14 @@ char	**ft_allocate_new_map(int new_height, int new_width, t_game *game)
 	return (new_map);
 }
 
+//noise_value = ft_perlin_noise(x, y, perm);
+//printf("%c", ft_determine_fill_char(noise_value));
 void	ft_fill_map_row(char **new_map, int row, t_game *game, int new_width)
 {
 	int	column;
 	int	border_width;
 	int	new_height;
+	float	noise_value;
 
 	border_width = game->map.border_width;
 	new_height = game->height + 2 * border_width;
@@ -52,7 +55,11 @@ void	ft_fill_map_row(char **new_map, int row, t_game *game, int new_width)
 	{
 		if (row < border_width || row >= new_height - border_width
 			|| column < border_width || column >= new_width - border_width)
-			new_map[row][column] = BORDER_CHAR;
+			{
+				noise_value = ft_perlin_noise((float)(row - border_width) / game->height,
+										  (float)(column - border_width) / game->width);
+				new_map[row][column] =  ft_determine_fill_char(noise_value);
+			}
 		else
 			new_map[row][column] = game->map.matrice[row - border_width][column
 				- border_width];

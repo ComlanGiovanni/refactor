@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:23 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/10 20:56:55 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:52:49 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_digits_animation(t_game *game);
 void	ft_zero_animation(t_animation *animation);
 void	ft_one_animation(t_animation *animation);
 void	ft_two_animation(t_animation *animation);
-void	ft_tree_animation(t_animation *animation);
+void	ft_three_animation(t_animation *animation);
 void	ft_four_animation(t_animation *animation);
 
 //=================================================================== [ file.c ]
@@ -59,7 +59,8 @@ void	ft_portal_z_animation(t_animation *animation);
 
 void	ft_camera_shake(t_game *game);
 void	ft_update_camera(t_game *game);
-double	ft_lerp(double start, double end, double t);
+float	ft_linear_interpolation(float interpolation_factor, float start,
+		float end);
 
 //=================================================================== [ file.c ]
 
@@ -101,7 +102,7 @@ void	ft_exit_sprite(t_game *game, t_point pos);
 void	ft_ground_sprite(t_game *game, t_point pos);
 void	ft_wall_sprite(t_game *game, t_point pos);
 void	ft_pawn_sprite(t_game *game, t_point pos);
-void	ft_borders_sprite(t_game *game, t_point pos);
+void	ft_grass_sprite(t_game *game, t_point pos);
 void	ft_box_sprite(t_game *game, t_point pos);
 void	ft_portal_z_sprite(t_game *game, t_point pos);
 void	ft_portal_n_sprite(t_game *game, t_point pos);
@@ -290,7 +291,7 @@ void	ft_load_keke_current(t_game *game);
 //=================================================================== [ file.c ]
 
 void	ft_load_ground_sprites(t_game *game);
-void	ft_load_borders_sprite(t_game *game);
+void	ft_load_grass_sprites(t_game *game);
 void	ft_load_wall_sprites(t_game *game);
 void	ft_load_pawn_sprites(t_game *game);
 
@@ -324,6 +325,19 @@ void	ft_flood_fill(char **tab, t_game *game, t_point start,
 			t_bool *exit_found, int *coins);
 char	**ft_split_map(t_game *game);
 t_point	ft_find_pos_char(char **tab, t_point size, char c);
+
+//=================================================================== [ file.c ]
+
+float	ft_perlin_noise(float x, float y);
+void	ft_calculate_relatives_positions(t_perlin_vars *vars, float x, float y);
+void	ft_calculate_fades_values(t_perlin_vars *vars);
+void	ft_calculate_permutation_indices(t_perlin_vars *vars, int *perm);
+void	ft_calculate_gradients(t_perlin_vars *vars, int *perm);
+void	ft_calculate_interpolation_x(t_perlin_vars *vars);
+char	ft_determine_fill_char(float noise_value);
+float	ft_fade(float relative_position_fade_factor);
+int		ft_floor(float value);
+float	ft_gradient(int hash, float x, float y);
 
 //=================================================================== [ file.c ]
 

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 01:20:05 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/10 13:15:10 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 02:17:20 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,65 @@ void	ft_init_hud_sprites_position(t_game *game)
 	game->hud.keys.y = 240;
 }
 
-void	ft_init_frames(t_game *game)
+void	ft_init_borders_frames(t_game *game)
 {
-	game->player.frames = 9;
-	game->lava.animation.frames = 24;
-	game->keke.frames = 24;
-	game->key.animation.frames = 6;
 	game->wall.animation.frames = 64;
-	game->pawn.animation.frames = 32;
-	game->grass.animation.frames = 128;
-	game->love.animation.frames = 48;
+	game->grass.animation.frames = 12;
+	game->tree.animation.frames = 42;
+	game->trees.animation.frames = 24;
+	game->reed.animation.frames = 64;
+	game->husks.animation.frames = 48;
+	game->fungus.animation.frames = 55;
+	game->fungi.animation.frames = 32;
+	game->flower.animation.frames = 128;
+	game->algae.animation.frames = 16;
+	game->water.animation.frames = 56;
+}
+
+void	ft_init_digits_frames(t_game *game)
+{
 	game->hud.digits.zero.frames = 64;
 	game->hud.digits.one.frames = 2;
 	game->hud.digits.two.frames = 12;
-	game->hud.digits.tree.frames = 7;
+	game->hud.digits.three.frames = 7;
 	game->hud.digits.four.frames = 12;
 	game->hud.digits.five.frames = 7;
 	game->hud.digits.six.frames = 12;
 	game->hud.digits.seven.frames = 7;
 	game->hud.digits.eight.frames = 7;
 	game->hud.digits.nine.frames = 12;
-	game->door.closed.frames = 24;
-	game->door.open.frames = 24;
-	game->box.animation.frames = 42;
+}
+
+void	ft_init_enemies_frames(t_game *game)
+{
+	game->lava.animation.frames = 24;
+	game->keke.frames = 24;
+	game->pawn.animation.frames = 32;
+}
+
+void	ft_init_gameplay_frames(t_game *game)
+{
 	game->portal.n.frames = 24;
 	game->portal.z.frames = 24;
+	game->box.animation.frames = 42;
+	game->key.animation.frames = 6;
+	game->love.animation.frames = 48;
+}
+
+void ft_init_others_frames(t_game *game)
+{
+	game->player.frames = 9;
+	game->door.closed.frames = 24;
+	game->door.open.frames = 24;
+}
+
+void	ft_init_frames(t_game *game)
+{
+	ft_init_enemies_frames(game);
+	ft_init_gameplay_frames(game);
+	ft_init_others_frames(game);
+	ft_init_digits_frames(game);
+	ft_init_borders_frames(game);
 }
 
 void	ft_init_fps(t_game *game)
@@ -83,7 +117,8 @@ void	ft_init_fps(t_game *game)
  * 				and init width to the
  * 		len of line send to the fct
  * 					the copy the line in map
- *game->window.img = NULL;
+ *	game->window.img = NULL;//
+ * game->window.img_data = NULL;//
  * @param game
  * @param line
  */
@@ -113,7 +148,7 @@ void	ft_init_game_info(t_game *game)
 	game->map.info.nbr_pawn = FALSE;
 	game->map.info.nbr_void = FALSE;
 	game->map.info.nbr_box = FALSE;
-	game->map.info.nbr_border = FALSE;
+	game->map.info.nbr_grass = FALSE;
 	game->map.info.nbr_portal_1 = FALSE;
 	game->map.info.nbr_portal_2 = FALSE;
 	game->map.border_width = BORDERS_WIDTH;

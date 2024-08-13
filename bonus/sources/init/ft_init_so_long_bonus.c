@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 01:18:15 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/09 13:17:21 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 00:51:45 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_init_game(t_game *game, char *map_name)
 {
 	if (!ft_check_extension(map_name, BER_EXTENSION))
 		ft_print_error_empty_and_free(EXTENSION_ERROR, game);
+	game->map.map_name = map_name;
 	ft_init_camera(game);
 	ft_init_hud_sprites_position(game);
 	ft_init_mlx(game);

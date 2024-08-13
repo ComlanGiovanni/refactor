@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:01:57 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/06 23:38:04 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:42:24 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_two_animation(t_animation *animation)
 	frame++;
 }
 
-void	ft_tree_animation(t_animation *animation)
+void	ft_three_animation(t_animation *animation)
 {
 	static int	frame = 0;
 

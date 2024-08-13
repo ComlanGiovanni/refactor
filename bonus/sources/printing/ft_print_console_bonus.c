@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:52:04 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/10 11:42:15 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:59:43 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	ft_print_map_info(t_game *game)
 	ft_printf("Box    : [%c] -> {%d}\n", BOX_CHAR, game->map.info.nbr_box);
 	ft_printf("Portal : [%c] -> {%d}\n", BOX_CHAR, game->map.info.nbr_portal_1
 			+ game->map.info.nbr_portal_2);
-	ft_printf("Border : [%c] -> {%d}\n\n", BORDER_CHAR,
-			game->map.info.nbr_border);
+	ft_printf("Grass : [%c] -> {%d}\n\n", GRASS_CHAR,
+			game->map.info.nbr_grass);
 }
 
 void	ft_print_initial_positions(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 01:16:16 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 15:36:32 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 23:48:03 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <time.h>
 #define PERM_SIZE 256
 
-// Bibliothèque pour les fonctions mathématiques comme floor
+// Bibliothèque pour les fonctions mathématiques comme ft_floor
 // Bibliothèque pour les entrées/sorties standard comme printf
 // Bibliothèque pour les fonctions d'allocation dynamique et rand
 // Bibliothèque pour la gestion du temps,utilisé pour srand
@@ -74,7 +74,7 @@ typedef struct s_perlin_vars
 }				t_perlin_vars;
 
 static float	ft_fade(float t);
-static float	ft_linear_interpolate(float t,
+static float	ft_linear_interpolation(float t,
 					float permutation_index_lower_left,
 					float permutation_index_upper_left);
 static float	ft_gradient(int hash, float x, float y);
@@ -122,20 +122,10 @@ of permutation_index_lower_left and permutation_index_upper_left. When t is 0,
 	proportionally between permutation_index_lower_left and
 	permutation_index_upper_left.
 */
-static float	ft_linear_interpolate(float interpolation_factor, float start,
+static float	ft_linear_interpolation(float interpolation_factor, float start,
 		float end)
 {
 	return (start + interpolation_factor * (end - start));
-}
-
-// Fonction pour extraire les 4 bits les moins significatifs du hash
-/*
-The ft_compute_h function extracts the 4 least significant bits from the hash,
-	used to determine gradient directions.
-*/
-static int	ft_compute_h(int hash)
-{
-	return (hash & 15);
 }
 
 // Fonction pour déterminer les valeurs fade_x et fade_y en fonction du hash
@@ -190,7 +180,7 @@ static float	ft_gradient(int hash, float x, float y)
 	float		fade_y;
 	t_uv_params	uv_params;
 
-	h = ft_compute_h(hash);
+	h = (hash & 15);
 	uv_params.hash = h;
 	uv_params.x = x;
 	uv_params.y = y;
@@ -203,14 +193,14 @@ static float	ft_gradient(int hash, float x, float y)
 // Fonction pour mélanger le tableau de permutations
 // Initialise le générateur de nombres aléatoires avec l'heure actuelle
 // Génère un indice aléatoire
-//as a seed provides different sequences on each run 
+//as a seed provides different sequences on each run
 static void	ft_shuffle_permutation(int *perm)
 {
 	int	i;
 	int	j;
 	int	temp;
 
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	i = PERM_SIZE - 1;
 	while (i > 0)
 	{
@@ -289,6 +279,17 @@ void	ft_init_perlin_vars(t_perlin_vars *vars)
 	vars->interpolation_x_upper = 0.0f;
 }
 
+static int ft_floor(float value)
+{
+	int int_value;
+
+	int_value = (int)value;
+	if (value < int_value)
+		return (int_value - 0x1);
+	else
+		return (int_value);
+}
+
 // Fonction pour calculer les positions dans la grille de Perlin
 // Coordonnée x du coin inférieur gauche
 // Coordonnée y du coin inférieur gauche
@@ -296,10 +297,10 @@ void	ft_init_perlin_vars(t_perlin_vars *vars)
 // Position relative dans la cellule
 void	ft_calculate_relatives_positions(t_perlin_vars *vars, float x, float y)
 {
-	vars->grid_position_x = (int)floor(x) & 255;
-	vars->grid_position_y = (int)floor(y) & 255;
-	vars->relative_position_x = x - floor(x);
-	vars->relative_position_y = y - floor(y);
+	vars->grid_position_x = (int)ft_floor(x) & 255;
+	vars->grid_position_y = (int)ft_floor(y) & 255;
+	vars->relative_position_x = x - ft_floor(x);
+	vars->relative_position_y = y - ft_floor(y);
 }
 
 // Fonction pour calculer les valeurs de fade (adoucissement) pour x et y
@@ -347,10 +348,10 @@ void	ft_calculate_gradients(t_perlin_vars *vars, int *perm)
 // Interpolation pour y1
 void	ft_calculate_interpolation_x(t_perlin_vars *vars)
 {
-	vars->interpolation_x_lower = ft_linear_interpolate(
+	vars->interpolation_x_lower = ft_linear_interpolation(
 			vars->fade_x, vars->gradient_lower_left,
 			vars->gradient_lower_right);
-	vars->interpolation_x_upper = ft_linear_interpolate(
+	vars->interpolation_x_upper = ft_linear_interpolation(
 			vars->fade_x, vars->gradient_upper_left,
 			vars->gradient_upper_right);
 }
@@ -367,7 +368,7 @@ float	ft_perlin_noise(float x, float y, int *perm)
 	ft_calculate_permutation_indices(&vars, perm);
 	ft_calculate_gradients(&vars, perm);
 	ft_calculate_interpolation_x(&vars);
-	return (ft_linear_interpolate(vars.fade_y, vars.interpolation_x_lower,
+	return (ft_linear_interpolation(vars.fade_y, vars.interpolation_x_lower,
 			vars.interpolation_x_upper));
 }
 
@@ -384,7 +385,7 @@ char	ft_determine_fill_char(float noise_value)
 	int					index;
 	float				range_size;
 	static const char	fill_chars[] = {'@', '$', '%', '&', '?',
-		'!', '+', '#', '^', '*'};
+		'!', '+', '#', '*'};
 
 	num_chars = sizeof(fill_chars) / sizeof(fill_chars[0]);
 	range_size = 2.0 / num_chars;
@@ -410,10 +411,10 @@ int	main(void)
 
 	ft_init_permutation(perm);
 	y = 0.0f;
-	while (y < 4.0f)
+	while (y < 8.0f)
 	{
 		x = 0.0f;
-		while (x < 4.0f)
+		while (x < 8.0f)
 		{
 			noise_value = ft_perlin_noise(x, y, perm);
 			printf("%c", ft_determine_fill_char(noise_value));

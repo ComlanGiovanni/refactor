@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:29:36 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/06 22:06:17 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:43:01 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ft_display_digits_sprites(t_game *game, char *digits_str,
 	digit_images[0] = game->hud.digits.zero.current;
 	digit_images[1] = game->hud.digits.one.current;
 	digit_images[2] = game->hud.digits.two.current;
-	digit_images[3] = game->hud.digits.tree.current;
+	digit_images[3] = game->hud.digits.three.current;
 	digit_images[4] = game->hud.digits.four.current;
 	digit_images[5] = game->hud.digits.five.current;
 	digit_images[6] = game->hud.digits.six.current;

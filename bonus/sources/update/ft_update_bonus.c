@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:02:13 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 15:42:45 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 01:59:58 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	ft_update(t_game *game)
 	}
 	mlx_clear_window(game->mlx, game->win);
 	ft_put_sprites_by_line(game);
-	//ft_put_buffer_image(game);
 	//mlx_put_image_to_window(game->mlx, game->win, game->window.img, 0, 0);
 	//mlx_destroy_image(game->mlx, game->window.img);
 	//mlx_do_sync(game->mlx);
@@ -81,10 +80,10 @@ void	ft_update_fps(t_game *game)
 		game->fps.frame_count = 0;
 		game->fps.last_time = game->fps.current_time;
 	}
-	if (game->fps.elapsed_time >= 1.0) {
+	if (game->map.info.nbr_pawn && game->fps.elapsed_time >= 1.0) {
             // Perform the desired action
             //printf("One second has passed!\n");
-			// srand(time(NULL));
+			// srand((unsigned int)time(NULL));
 			// int tic_or_tac = rand() % 2;
 			if (game->fps.last_time.tv_sec % 2)
 				system("aplay sounds/special-effects/clock_tic.wav &");

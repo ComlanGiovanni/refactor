@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:20 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/09 17:20:33 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/12 22:16:06 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,29 @@ enum	e_key_code
 
 enum	e_map_char
 {
-	LAVA_CHAR = 'L',
 	EXIT_CHAR = 'E',
 	LOVE_CHAR = 'S',
 	KEY_CHAR = 'C',
 	PLAYER_CHAR = 'P',
 	WALL_CHAR = '1',
 	VOID_CHAR = '0',
-	BORDER_CHAR = '#',
-	VISITED_CHAR = 'V',
 	BOX_CHAR = 'B',
 	PORTAL_1_CHAR = 'Z',
 	PORTAL_2_CHAR = 'N',
+	LAVA_CHAR = 'L',
 	KEKE_CHAR = 'K',
 	PAWN_CHAR = 'W',
+	GRASS_CHAR = '#',
+	TREE_CHAR = '@',
+	TREES_CHAR = '$',
+	REED_CHAR = '%',//
+	HUSKS_CHAR = '&',//
+	FUNGUS_CHAR = '?',//
+	FUNGI_CHAR = '!',//
+	FLOWER_CHAR = '+',
+	ALGAE_CHAR = '*',
+	WATER_CHAR = '=',
+	VISITED_CHAR = 'V'
 };
 
 enum	e_bool
