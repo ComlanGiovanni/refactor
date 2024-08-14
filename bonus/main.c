@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:12:49 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 05:07:22 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 14:16:25 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,15 @@ int	main(int argc, char *argv[], char **envp)
 		game = ft_calloc(sizeof(t_game), sizeof(t_game));
 		if (game == NULL)
 			ft_print_error(MALLOC_GAME_ERROR, game);
-		srand((unsigned int)time(NULL));
 		ft_init_game(game, argv[1]);
 		ft_mlx_hook_loop(game);
 	}
 	return (EXIT_SUCCESS);
 }
 /*
+
+make re bonus && valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --show-reachable=yes --track-origins=yes ./so_long_bonus maps/Level\ Design\ Bonus/level_0.ber 2>&1 | tee valgrind.log
+
 https://audiotrimmer.com/
 https://encycolorpedia.fr/619ad2
 https://rtouti.github.io/graphics/perlin-noise-algorithm

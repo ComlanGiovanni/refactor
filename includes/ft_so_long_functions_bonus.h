@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:23 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 01:55:28 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 15:44:19 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ void ft_free_pawns_array(t_game *game);
 //=================================================================== [ file.c ]
 
 void	ft_dir_player_by_pos_exit_after_launch(t_game *game);
-void	ft_move_box(t_game *game, int new_y, int new_x, int dir_y, int dir_x);
+void	ft_move_box(t_game *game, t_point new_pos, int dir_y, int dir_x);
 void	ft_teleport_player(t_game *game, int y, int x);
 
 //=================================================================== [ file.c ]
@@ -323,8 +323,7 @@ char	*ft_custom_strjoin(char *s1, char *s2);
 
 //=================================================================== [ file.c ]
 void	ft_check_map_finishable(t_game *game);
-void	ft_flood_fill(char **tab, t_game *game, t_point start,
-			t_bool *exit_found, int *coins);
+void ft_flood_fill(char **tab, t_game *game, t_point start);
 char	**ft_split_map(t_game *game);
 t_point	ft_find_pos_char(char **tab, t_point size, char c);
 

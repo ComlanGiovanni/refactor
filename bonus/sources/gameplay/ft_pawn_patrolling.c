@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 16:58:49 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 04:49:46 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:28:27 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,17 +275,6 @@ void ft_init_pawns_array(t_game *game)
     //            game->pawn.pawns_array[i].target_position.x, game->pawn.pawns_array[i].target_position.y,
     //            game->pawn.pawns_array[i].direction, game->pawn.pawns_array[i].is_returning);
 	// }
-	//ft_free_pawns_array(game);
-}
-
-void ft_free_pawns_array(t_game *game)
-{
-    // Free the allocated pawns array only once
-    if (game->pawn.pawns_array)
-    {
-        free(game->pawn.pawns_array);
-        game->pawn.pawns_array = NULL; // Set to NULL to avoid dangling pointer
-    }
 }
 
 void	initialize_pawn(t_game *game, long long int index, int x, int y)

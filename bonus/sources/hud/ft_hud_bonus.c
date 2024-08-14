@@ -6,21 +6,11 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:29:36 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 05:19:23 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 20:20:16 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
-
-// typedef struct s_img {
-//     void    *img;
-//     char    *data;
-//     int     bpp;
-//     int     size_line;
-//     int     endian;
-//     int     width;
-//     int     height;
-// } t_img;
 
 // int get_pixel_color(t_img *img, int x, int y)
 // {
@@ -77,69 +67,123 @@
 //ANIMATED LIFE ICON LOAD AND PALY ANIMATION
 //ANIMATED LIFE ICON LOAD AND PALY ANIMATION
 //ANIMATED LIFE ICON LOAD AND PALY ANIMATION
-void ft_display_transparent_image(void *mlx, void *win, void *img, int x, int y)
-{
-    char    *img_data;
-    int     img_bpp;
-    int     img_size_line;
-    int     img_endian;
-    int     img_width;
-    int     img_height;
-    int     i;
-    int     j;
-    int     color;
-    char    *src;
+
+typedef struct s_img {
+    char    *data;
     int     bpp;
+    int     size_line;
+    int     endian;
+    int     width;
+    int     height;
+} t_img;
 
-    // Get image data
-    img_data = mlx_get_data_addr(img, &img_bpp, &img_size_line, &img_endian);
- 	img_width = 32; // depand don't hard code get it with get mlx_...
-    img_height = 32; // MAKE YOU HUD THE SAME SIZE LOL WITH CONVERT
-    bpp = img_bpp / 8;
-    i = 0;
-    while (i < img_height)
-    {
-        j = 0;
-        while (j < img_width)
-        {
-            // Calculate the address of the current pixel
-            src = img_data + (i * img_size_line + j * bpp);
-            color = *(int *)src;
+typedef struct s_img_size {
+    int     width;
+    int     height;
+} t_img_size;
 
-            // Check if pixel is not fully transparent (assuming transparency is 0xFF000000)
-            if ((color & 0xFF000000) != 0xFF000000)
-            {
-                mlx_pixel_put(mlx, win, x + j, y + i, color);
+void ft_init_struct_img(void *img_ptr, t_img *img, t_img_size img_size) {
+    img->data = mlx_get_data_addr(img_ptr, &img->bpp, &img->size_line, &img->endian);
+    img->width = img_size.width;
+    img->height = img_size.height;
+}
+
+int ft_get_pixel_color(t_img *img, int x, int y) {
+	    if (x < 0 || x >= img->width || y < 0 || y >= img->height) {
+        return 0; // Return a default color or handle error
+    }
+    int bpp = img->bpp / 8;
+    char *pixel = img->data + (y * img->size_line + x * bpp);
+    return (*(int *)pixel);
+}
+
+void ft_display_transparent_image(t_game *game, void *img_ptr, t_point position, t_img_size img_size) {
+    t_img   img;
+    int     x;
+    int     y;
+    int     color;
+
+    ft_init_struct_img(img_ptr, &img, img_size);
+
+    y = 0;
+    while (y < img.height) {
+        x = 0;
+        while (x < img.width) {
+            color = ft_get_pixel_color(&img, x, y);
+            if ((color & 0xFF000000) != 0xFF000000) {
+                mlx_pixel_put(game->mlx, game->win, position.x + x, position.y + y, color);
             }
-            j++;
+            x++;
         }
-        i++;
+        y++;
     }
 }
 
+// void ft_display_transparent_image(void *mlx, void *win, void *img, int x, int y)
+// {
+//     char    *img_data;
+//     int     img_bpp;
+//     int     img_size_line;
+//     int     img_endian;
+//     int     img_width;
+//     int     img_height;
+//     int     i;
+//     int     j;
+//     int     color;
+//     char    *src;
+//     int     bpp;
 
-void	ft_display_uppercase(t_game *game, char c, t_point *pos,
+//     // Get image data
+//     img_data = mlx_get_data_addr(img, &img_bpp, &img_size_line, &img_endian);
+//  	img_width = 32; // depand don't hard code get it with get mlx_...
+//     img_height = 32; // MAKE YOU HUD THE SAME SIZE LOL WITH CONVERT
+//     bpp = img_bpp / 8;
+//     i = 0;
+//     while (i < img_height)
+//     {
+//         j = 0;
+//         while (j < img_width)
+//         {
+//             // Calculate the address of the current pixel
+//             src = img_data + (i * img_size_line + j * bpp);
+//             color = *(int *)src;
+
+//             // Check if pixel is not fully transparent (assuming transparency is 0xFF000000)
+//             if ((color & 0xFF000000) != 0xFF000000)
+//             {
+//                 mlx_pixel_put(mlx, win, x + j, y + i, color);
+//             }
+//             j++;
+//         }
+//         i++;
+//     }
+// }
+
+
+void	ft_display_uppercase(t_game *game, char c, t_point *position,
 		void **letter_images)
 {
 	int	char_index;
 
 	char_index = c - 'A';
-	ft_display_transparent_image(game->mlx, game->win, letter_images[char_index], pos->x, pos->y);
-	// mlx_put_image_to_window(game->mlx, game->win,
-	// 	letter_images[char_index], pos->x, pos->y);
-	pos->x += 32;
+	ft_display_transparent_image(game, letter_images[char_index], (t_point){position->x, position->y}, (t_img_size){32,32});//macro ICON_SIZE
+	//ft_display_transparent_image(game->mlx, game->win, letter_images[char_index], position->x, position->y);
+	//mlx_put_image_to_window(game->mlx, game->win,
+	// 	letter_images[char_index], position->x, position->y);
+	position->x += 32;//macro ICON_SIZE
 }
 
-void	ft_display_lowercase(t_game *game, char c, t_point *pos,
+void	ft_display_lowercase(t_game *game, char c, t_point *position,
 		void **letter_images)
 {
 	int	char_index;
 
 	char_index = c - 'a';
-	ft_display_transparent_image(game->mlx, game->win, letter_images[char_index], pos->x, pos->y);
+	ft_display_transparent_image(game, letter_images[char_index], (t_point){position->x, position->y}, (t_img_size){32,32});//macro ICON_SIZE
+	//ft_display_transparent_image(game->mlx, game->win, letter_images[char_index], position->x, position->y);
 	//mlx_put_image_to_window(game->mlx, game->win,
-	//	letter_images[char_index], pos->x, pos->y);
-	pos->x += 32;
+	//	letter_images[char_index], position->x, position->y);
+	position->x += 32;//macro ICON_SIZE
 }
 
 void	init_even_letter_images(t_game *game, void **letter_images)
@@ -282,7 +326,8 @@ void	ft_display_digits_sprites(t_game *game, char *digits_str,
 	{
 		if ((digits_str[index] - '0') >= 0 && (digits_str[index] - '0') <= 9)
 		{
-			ft_display_transparent_image(game->mlx, game->win, digit_images[(digits_str[index] - '0')], position.x, position.y);
+			ft_display_transparent_image(game, digit_images[(digits_str[index] - '0')], (t_point){position.x, position.y}, (t_img_size){32,32});
+			//ft_display_transparent_image(game->mlx, game->win, digit_images[(digits_str[index] - '0')], position.x, position.y);
 			//mlx_put_image_to_window(game->mlx, game->win, digit_images[(digits_str[index] - '0')],
 					//position.x, position.y);
 			position.x += 24;
@@ -309,8 +354,8 @@ void	ft_display_digits_sprites(t_game *game, char *digits_str,
 void	ft_display_life_on_windows(t_game *game)
 {
 	int	idx;
-	int	x;
-	int	y;
+	int	x; //t_point in struct
+	int	y; //t_point in struct
 	int	icons_per_row;
 	int	icon_spacing;
 	idx = 0;
@@ -320,7 +365,8 @@ void	ft_display_life_on_windows(t_game *game)
 	icon_spacing = 5;
 	while (idx < game->player.life && idx < 500)
 	{
-		ft_display_transparent_image(game->mlx, game->win, game->love.icon, x, y);
+		ft_display_transparent_image(game, game->love.icon, (t_point){x, y}, (t_img_size){32,32});
+		//ft_display_transparent_image(game->mlx, game->win, game->love.icon, x, y);
 		//mlx_put_image_to_window(game->mlx, game->win, game->love.icon, x, y);//try transparence
 		idx++;
 		if ((idx % icons_per_row) == 0)
@@ -331,6 +377,4 @@ void	ft_display_life_on_windows(t_game *game)
 		else
 			x += 32 + icon_spacing;
 	}
-	if (game->player.life <= 0)
-		ft_lose_game(game);
 }

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:32:10 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 15:13:42 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 15:51:44 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,19 @@ struct						s_sprites
 
 //=================================================================== [ file.c ]
 
+
+typedef struct s_flood_fill_data {
+    t_bool exit_found;
+    int coins;
+} t_flood_fill_data;
+
 typedef struct s_game
 {
 	t_sprites				sprite;
+	t_point	start;
+	t_point	end;
+	t_point	size;
+	t_flood_fill_data		flood_fill;
 	long long int			step;
 	long long int			nbr_love;
 	void					*mlx;
@@ -156,12 +166,12 @@ void						ft_init_map_info(t_game *game, char *line);
 
 void						ft_get_number_collectible(t_game *game);
 t_point						ft_find_pos_char(char **tab, t_point size, char c);
-void						ft_flood_fill(char **tab, t_game *game,
-								t_point start, t_bool *exit_found, int *coins);
+void	ft_flood_fill(char **tab, t_game *game, t_point start);
 
 //=================================================================== [ file.c ]
 
 void						ft_check_map_finishable(t_game *game);
+
 char						**ft_split_map(t_game *game);
 void	ft_clean_fail_malloc_split_map(t_game *game,
 									char **grid,

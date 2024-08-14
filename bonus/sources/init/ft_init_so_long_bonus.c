@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 01:18:15 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 05:18:21 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:44:51 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,26 @@ void	ft_init_game(t_game *game, char *map_name)
 	if (!ft_check_extension(map_name, BER_EXTENSION))
 		ft_print_error_empty_and_free(EXTENSION_ERROR, game);
 	game->map.map_name = map_name;
-	ft_init_camera(game);
-	ft_init_mlx(game);
-	ft_init_frames(game);
-	ft_load_sprites(game);
-	ft_init_fps(game);
-	ft_init_player_info(game);
-	ft_init_keke_info(game);
-	ft_read_map(game, map_name);
-	ft_check_map(game);
-	ft_setup_map(game);
-	ft_print_map_info(game);
-	ft_dir_player_by_pos_exit_after_launch(game);
-	ft_create_window(game);
-	ft_init_hud_sprites_position(game);
-	ft_display_sprites_addr(game);
-	ft_play_random_theme();
+	game->state = STATE_PLAYING;
+	if (game->state == STATE_PLAYING)
+	{
+		ft_init_camera(game);
+		ft_init_mlx(game);
+		ft_init_frames(game);
+		ft_load_sprites(game);
+		ft_init_fps(game);
+		ft_init_player_info(game);
+		ft_init_keke_info(game);
+		ft_read_map(game, map_name);
+		ft_check_map(game);
+		ft_setup_map(game);
+		ft_print_map_info(game);
+		ft_dir_player_by_pos_exit_after_launch(game);
+		ft_create_window(game);
+		ft_init_hud_sprites_position(game);
+		ft_display_sprites_addr(game);
+		ft_play_random_theme();
+	}
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 20:17:50 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 05:30:24 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:29:27 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	ft_exit_game(t_game *game)
 {
 	//system("pkill vlc");
 	system("pkill aplay");
+	ft_printf("\n Game exited \n");//ascii art like win and lose
 	ft_free_all(game);
 	exit(EXIT_SUCCESS);
 }
@@ -114,6 +115,17 @@ int	ft_lose_game(t_game *game)
 	exit(EXIT_FAILURE);
 }
 
+void ft_free_pawns_array(t_game *game)
+{
+	//ft_free_pawns_array(game);
+    // Free the allocated pawns array only once
+    if (game->pawn.pawns_array)
+    {
+        free(game->pawn.pawns_array);
+        game->pawn.pawns_array = NULL; // Set to NULL to avoid dangling pointer
+    }
+}
+
 /**
  * @brief
  *
@@ -131,6 +143,7 @@ void	ft_free_all(t_game *game)
 {
 	//add free pawn
 	mlx_loop_end(game->mlx);
+	ft_free_pawns_array(game);
 	ft_free_animation(game);
 	ft_free_sprites_list(&game->node, game->mlx);
 	if (game->map.map_str)

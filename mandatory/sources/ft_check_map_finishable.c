@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 16:30:10 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 03:11:11 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 15:51:13 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ t_point	ft_find_pos_char(char **tab, t_point size, char c)
 	return ((t_point){-1, -1});
 }
 
-void	ft_flood_fill(char **tab, t_game *game, t_point start,
-		t_bool *exit_found, int *coins)
+void	ft_flood_fill(char **tab, t_game *game, t_point start)
 {
 	if (start.y < 0 || start.y >= game->height || start.x < 0
 		|| start.x >= game->width || tab[start.y][start.x] == WALL_CHAR
@@ -55,19 +54,15 @@ void	ft_flood_fill(char **tab, t_game *game, t_point start,
 	if (tab[start.y][start.x] == COIN_CHAR)
 	{
 		tab[start.y][start.x] = VOID_CHAR;
-		(*coins)++;
+		 game->flood_fill.coins++;
 	}
 	if (tab[start.y][start.x] == EXIT_CHAR)
 		return ;
-	if ((*coins) == game->key)
-		*exit_found = TRUE;
+	if (game->flood_fill.coins == game->key)
+		game->flood_fill.exit_found = TRUE;
 	tab[start.y][start.x] = VISITED_CHAR;
-	ft_flood_fill(tab, game, (t_point){start.x - 1, start.y}, exit_found,
-			coins);
-	ft_flood_fill(tab, game, (t_point){start.x + 1, start.y}, exit_found,
-			coins);
-	ft_flood_fill(tab, game, (t_point){start.x, start.y - 1}, exit_found,
-			coins);
-	ft_flood_fill(tab, game, (t_point){start.x, start.y + 1}, exit_found,
-			coins);
+	ft_flood_fill(tab, game, (t_point){start.x - 1, start.y});
+	ft_flood_fill(tab, game, (t_point){start.x + 1, start.y});
+	ft_flood_fill(tab, game, (t_point){start.x, start.y - 1});
+	ft_flood_fill(tab, game, (t_point){start.x, start.y + 1});
 }

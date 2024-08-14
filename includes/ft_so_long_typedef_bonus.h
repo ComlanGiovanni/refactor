@@ -6,16 +6,19 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 12:12:44 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 21:03:03 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:11:12 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SO_LONG_TYPEDEF_BONUS_H
 # define FT_SO_LONG_TYPEDEF_BONUS_H
 
+//sort in term of type and len for name
+
 typedef enum e_key_code			t_key_code;
 typedef enum e_map_char			t_map_char;
 typedef enum e_bool				t_bool;
+typedef enum e_game_state		t_game_state;
 typedef struct s_point			t_point;
 typedef struct s_fps			t_fps;
 typedef struct s_animation		t_animation;

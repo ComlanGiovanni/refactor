@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 23:24:37 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 11:32:59 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 15:49:46 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,25 @@
 
 void	ft_check_map_finishable(t_game *game)
 {
-	t_point	start;
-	t_point	end;
-	t_point	size;
-	t_bool	exit_found;
+	game->flood_fill.coins =  0;
+    game->flood_fill.exit_found = FALSE;
 	char	**map;
-	int		coin;
 
 	map = ft_split_map(game);
 	ft_print_display_grid(map);
-	size.x = game->width;
-	size.y = game->height;
-	coin = 0;
-	exit_found = 0;
-	start = ft_find_pos_char(map, size, 'P');
-	end = ft_find_pos_char(map, size, 'E');
-	if ((start.x == -1 && start.y == -1)
-		|| (end.x == -1 && end.y == -1))
+	game->size.x = game->width;
+	game->size.y = game->height;
+	game->start = ft_find_pos_char(map, game->size, 'P');
+	game->end = ft_find_pos_char(map, game->size, 'E');
+	if ((game->start.x == -1 && game->start.y == -1)
+		|| (game->end.x == -1 && game->end.y == -1))
 		ft_free_and_print(map, game, NO_POSITION_FOUND);
-	ft_flood_fill(map, game, start, &exit_found, &coin);
-	if (!exit_found)
+	ft_flood_fill(map, game, game->start);
+	if (!game->flood_fill.exit_found)
 		ft_free_and_print(map, game, PATH_MAP_ERROR);
-	if (coin != game->key)
+	if (game->flood_fill.coins != game->key)
 	{
-		ft_printf("%s %d\n%s %d\n", KEY_FOUND, coin, KEY_AVAILABLE,
+		ft_printf("%s %d\n%s %d\n", KEY_FOUND, game->flood_fill.coins, KEY_AVAILABLE,
 			game->key);
 		ft_free_and_print(map, game, COIN_MAP_ERROR);
 	}

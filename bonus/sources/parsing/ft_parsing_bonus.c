@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:30:44 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/10 12:38:39 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:25:45 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,18 @@ int	ft_get_map_height(char *map_name, t_game *game)
 	return (height);
 }
 
+void ft_handle_line_error(char *line, int fd, t_game *game, int curr_height, int height) {
+    if ((line == NULL || line[0] == '\n') && curr_height != height) {
+        game->empty_line = 1;
+    }
+    free(line);
+    if (curr_height == height) {
+        close(fd);
+		return;
+    }
+}
+
+
 /**
  * @brief
  *
@@ -142,11 +154,9 @@ void	ft_check_ber_format(char *map_name, int height, t_game *game)
 	{
 		line = get_next_line(fd);
 		curr_height++;
-		if ((line == NULL || line[FALSE] == '\n') && curr_height != height)
-			game->empty_line = 1;
-		if ((curr_height == height) && line == NULL)
-			return ;
-		free(line);
+		ft_handle_line_error(line, fd, game, curr_height, height);
+		// if (line == NULL)
+		// 	break; // Exit loop if line is set to NULL
 	}
 	close(fd);
 }

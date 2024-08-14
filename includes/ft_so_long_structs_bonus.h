@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:28:13 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 04:47:33 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:09:05 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -450,10 +450,19 @@ struct						s_hedge
 };
 
 
+typedef struct s_flood_fill_data {
+    t_bool exit_found;
+    int coins;
+} t_flood_fill_data;
+
 //can put all in a different struct like
 //t_border border
 struct						s_game
 {
+	t_game_state 			state;
+	t_bool					paused;//state replaced
+	t_bool					key_collected;
+	t_flood_fill_data		flood_fill;
 	t_player				player;
 	t_love					love;
 	t_map					map;
@@ -461,6 +470,7 @@ struct						s_game
 	t_key					key;
 	t_wall					wall;
 	t_pawn					pawn;
+	//t_border				border
 	t_water					water;
 	t_grass					grass;
 	t_tree					tree;
@@ -477,20 +487,19 @@ struct						s_game
 	t_snail					snail;
 	t_pillar				pillar;
 	t_hedge					hedge;
+	//t_border				border
 	t_door					door;
 	t_box					box;
 	t_portal				portal;
 	t_camera				camera;
 	t_sprite_node			*node;
 	t_point					screen;
-	t_bool					paused;
 	t_keke					keke;
 	t_fps					fps;
 	t_window				window;
 	t_hud					hud;
 	void					*mlx;
 	void					*win;
-	t_bool					finished;
 	//void			*img;
 	//char			*img_data;
 	// char			*str_step;
@@ -499,8 +508,8 @@ struct						s_game
 	// float 			distance_camera;
 	// float			zoom_factor;
 	// double			last_time;
-	long long int width;      //useleep try to make a map very big;
-	long long int height;     //useleep
+	long long int width;
+	long long int height;
 	long long int empty_line; //mettre dans map information
 };
 

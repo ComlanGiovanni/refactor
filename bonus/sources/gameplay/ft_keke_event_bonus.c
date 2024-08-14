@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:40:59 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 04:40:07 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 15:36:39 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ int ft_is_same_point(t_point a, t_point b)
 
 int ft_is_keke_walkable_point(char **grid, int x, int y)
 {
-	return grid[y][x] != WALL_CHAR && grid[y][x] != KEY_CHAR && grid[y][x] != LOVE_CHAR && grid[y][x] != EXIT_CHAR
-	&& grid[y][x] != PORTAL_1_CHAR && grid[y][x] != PORTAL_2_CHAR && grid[y][x] != LAVA_CHAR && grid[y][x] != PAWN_CHAR;
+	return grid[y][x] != WALL_CHAR
+		&& grid[y][x] != KEY_CHAR && grid[y][x] != LOVE_CHAR
+			&& grid[y][x] != EXIT_CHAR && grid[y][x] != PORTAL_1_CHAR
+				&& grid[y][x] != PORTAL_2_CHAR && grid[y][x] != LAVA_CHAR
+					&& grid[y][x] != PAWN_CHAR;
 }
 
 void ft_free_a_star_lists_nodes_elements(t_a_star_node **list, int count)
@@ -52,7 +55,8 @@ void ft_free_a_star_lists_nodes_elements(t_a_star_node **list, int count)
 	free(list);
 }
 
-void ft_free_a_star_lists_nodes(t_a_star_node **open_list, int open_count, t_a_star_node **closed_list, int closed_count)
+void ft_free_a_star_lists_nodes(t_a_star_node **open_list,
+	int open_count, t_a_star_node **closed_list, int closed_count)
 {
 	ft_free_a_star_lists_nodes_elements(open_list, open_count);
 	ft_free_a_star_lists_nodes_elements(closed_list, closed_count);
@@ -61,6 +65,7 @@ void ft_free_a_star_lists_nodes(t_a_star_node **open_list, int open_count, t_a_s
 t_a_star_node *ft_init_keke_start_node(t_point start, t_point goal)
 {
 	t_a_star_node *start_node;
+
 	start_node = (t_a_star_node *)malloc(sizeof(t_a_star_node));
 	if (!start_node)
 		return (NULL);
@@ -71,7 +76,8 @@ t_a_star_node *ft_init_keke_start_node(t_point start, t_point goal)
 	return (start_node);
 }
 
-void ft_add_to_open_list(t_a_star_node **open_list, int *open_count, t_a_star_node *new_node)
+void ft_add_to_open_list(t_a_star_node **open_list, int *open_count,
+	t_a_star_node *new_node)
 {
 	open_list[*open_count] = new_node;
 	(*open_count)++;
@@ -83,14 +89,15 @@ void ft_sort_open_list(t_a_star_node **open_list, int open_count)
 	int insertion_index;
 	t_a_star_node *current_node;
 
-	insertion_index = 0;
+	insertion_index = 0x0;
 	current_index = 1;
 	current_node = NULL;
 	while (current_index < open_count)
 	{
 		current_node = open_list[current_index];
 		insertion_index = current_index - 1;
-		while (insertion_index >= 0 && open_list[insertion_index]->total_cost > current_node->total_cost)
+		while (insertion_index >= 0 && open_list[insertion_index]->total_cost
+			> current_node->total_cost)
 		{
 			open_list[insertion_index + 1] = open_list[insertion_index];
 			insertion_index--;
@@ -113,34 +120,40 @@ void	ft_init_neighbor_data(t_game *game, t_point goal)
 	game->keke.a_star.neighbor.dir_char[3] = 'r';
 }
 
-void ft_find_keke_direction(t_game *game, t_a_star_node *current, t_point start, t_point directions[], char dir_char[])
+void ft_find_keke_direction(t_game *game, t_a_star_node *current, t_point start)
 {
 	int index;
 
-	while (current->parent && !ft_is_same_point((current->parent->pos) , start))
-		current = current->parent;
-
 	index = 0;
-	while (index < 4) //maccor for direction
-	{
-		if (ft_is_same_point((t_point){start.x + directions[index].x, start.y + directions[index].y}, current->pos))
-		{
-			game->keke.direction = dir_char[index];
+    // Traverse to the parent node that matches the start position
+    while (current->parent && !ft_is_same_point((current->parent->pos), start)) {
+        current = current->parent;
+    }
+
+    // Determine the direction based on the neighbor data
+    while (index < 4) {
+        if (ft_is_same_point((t_point){start.x \
+			+ game->keke.a_star.neighbor.directions[index].x,\
+				start.y + game->keke.a_star.neighbor.directions[index].y},\
+					current->pos)) {game->keke.direction \
+						= game->keke.a_star.neighbor.dir_char[index];
 			break;
 		}
 		index++;
 	}
 }
 
-void ft_check_if_current_node_is_player_pos(t_game *game, t_a_star_node *current, t_point directions[], char dir_char[])
+void ft_check_if_current_node_is_player_pos(t_game *game, \
+	t_a_star_node *current)
 {
-	t_point start;
-	start = ft_find_pos_char(game->map.grid, game->map.size, KEKE_CHAR);
+    t_point start;
 
-	// Si l'objectif est atteint, trouver la direction
-	if (ft_is_same_point(current->pos, game->player.movement.current_position))
-		ft_find_keke_direction(game, current, start, directions, dir_char);
-	//return ;
+    start = ft_find_pos_char(game->map.grid, game->map.size, KEKE_CHAR);
+
+    // Check if the goal is reached, then find the direction
+    if (ft_is_same_point(current->pos, game->player.movement.current_position)) {
+        ft_find_keke_direction(game, current, start);
+    }
 }
 
 void ft_remove_from_open_list(t_a_star_node **open_list, int *open_count)
@@ -171,7 +184,8 @@ int ft_check_if_point_is_in_list(t_a_star_node **list, int count, t_point pos)
 	return (FALSE);  // Le nœud n'est pas dans la liste
 }
 
-t_a_star_node *create_neighbor_node(t_game *game, t_a_star_node *current, t_point pos)
+t_a_star_node *create_neighbor_node(t_game *game,
+	t_a_star_node *current, t_point pos)
 {
 	t_a_star_node *node;
 	node = (t_a_star_node *)malloc(sizeof(t_a_star_node));
@@ -180,14 +194,18 @@ t_a_star_node *create_neighbor_node(t_game *game, t_a_star_node *current, t_poin
 		ft_print_error("init neighbor node fail malloc", game); //MACRO
 	node->pos = pos;
 	node->cost_from_start = current->cost_from_start + 1;
-	node->total_cost = node->total_cost + ft_manhattan_heuristic_distance(pos, game->keke.a_star.neighbor.goal);
+	node->total_cost = node->cost_from_start \
+		+ ft_manhattan_heuristic_distance(pos, \
+			game->keke.a_star.neighbor.goal);
 	node->parent = current;
 	return (node);
 }
 
 int ft_node_is_valid_neighbor(t_game *game, int x, int y)
 {
-	return x >= 0 && y >= 0 && x < game->width && y < game->height && ft_is_keke_walkable_point(game->map.grid, x, y);
+	return x >= 0 && y >= 0 && x < game->width \
+		&& y < game->height \
+			&& ft_is_keke_walkable_point(game->map.grid, x, y);
 }
 
 t_point get_neighbor_pos(t_game *game, t_a_star_node *current, int index)
@@ -197,14 +215,16 @@ t_point get_neighbor_pos(t_game *game, t_a_star_node *current, int index)
 
 	// x = current->pos.x + game->keke.a_star.neighbor.directions[index].x;
 	// y = current->pos.y + game->keke.a_star.neighbor.directions[index].y;
-	return (t_point){current->pos.x + game->keke.a_star.neighbor.directions[index].x,
-		current->pos.y + game->keke.a_star.neighbor.directions[index].y};
+	return (t_point){current->pos.x \
+		+ game->keke.a_star.neighbor.directions[index].x, \
+			current->pos.y + game->keke.a_star.neighbor.directions[index].y};
 }
 
 t_bool ft_node_is_valid_and_not_in_closed(t_game *game, t_point pos)
 {
-	return ft_node_is_valid_neighbor(game, pos.x, pos.y) &&
-		!ft_check_if_point_is_in_list(game->keke.a_star.lists.closed, game->keke.a_star.lists.closed_count, pos);
+	return ft_node_is_valid_neighbor(game, pos.x, pos.y) \
+		&& !ft_check_if_point_is_in_list(game->keke.a_star.lists.closed, \
+			game->keke.a_star.lists.closed_count, pos);
 }
 
 void ft_check_neighbor_node(t_game *game, t_a_star_node *current, t_point pos)
@@ -212,8 +232,10 @@ void ft_check_neighbor_node(t_game *game, t_a_star_node *current, t_point pos)
 	t_a_star_node *node;
 
 	node = create_neighbor_node(game, current, pos);
-	if (!ft_check_if_point_is_in_list(game->keke.a_star.lists.open, game->keke.a_star.lists.open_count, pos))
-		ft_add_to_open_list(game->keke.a_star.lists.open, &(game->keke.a_star.lists.open_count), node);
+	if (!ft_check_if_point_is_in_list(game->keke.a_star.lists.open, \
+		game->keke.a_star.lists.open_count, pos))
+		ft_add_to_open_list(game->keke.a_star.lists.open, \
+			&(game->keke.a_star.lists.open_count), node);
 	else
 		free(node);
 }
@@ -237,42 +259,51 @@ void ft_init_a_star_lists(t_game *game)
 {
 	game->keke.a_star.lists.open_count = 0;
 	game->keke.a_star.lists.closed_count = 0;
-	game->keke.a_star.lists.open = (t_a_star_node **)malloc(game->map.len * sizeof(t_a_star_node *));
-	game->keke.a_star.lists.closed = (t_a_star_node **)malloc(game->map.len * sizeof(t_a_star_node *));
+	game->keke.a_star.lists.open = (t_a_star_node **)malloc(game->map.len \
+		* sizeof(t_a_star_node *));
+	game->keke.a_star.lists.closed = (t_a_star_node **)malloc(game->map.len \
+		* sizeof(t_a_star_node *));
 	if (!game->keke.a_star.lists.open || !game->keke.a_star.lists.closed)
 		ft_print_error("Memory allocation failed for A* lists", game);
 }
 
-void	ft_a_star_keke_movement(t_game *game)
-{
-	t_point start;
-	t_point goal;
-	t_a_star_node *start_node;
-	t_a_star_node *current;
-
-	start = ft_find_pos_char(game->map.grid, game->map.size, KEKE_CHAR);
-	goal = game->player.movement.current_position;
-	start_node = ft_init_keke_start_node(start, goal);
-	if (!start_node)
-		ft_print_error("init start node for path founding fall", game);
-	ft_init_a_star_lists(game);
-	ft_add_to_open_list(game->keke.a_star.lists.open, &(game->keke.a_star.lists.open_count), start_node);
-	ft_init_neighbor_data(game, goal); //we can init in init fonction game->keke.a_star.neighbor.goal = goal;
-	while (game->keke.a_star.lists.open_count > 0)
-	{
-		ft_sort_open_list(game->keke.a_star.lists.open, game->keke.a_star.lists.open_count);
-		//qsort(game->keke.a_star.lists.open, game->keke.a_star.lists.open_count, sizeof(t_a_star_node *), compare_nodes);
-		current = game->keke.a_star.lists.open[0];// Prendre le nœud avec le coût le plus bas
-		ft_check_if_current_node_is_player_pos(game, current, game->keke.a_star.neighbor.directions, game->keke.a_star.neighbor.dir_char);
-		ft_remove_from_open_list(game->keke.a_star.lists.open, &(game->keke.a_star.lists.open_count));
-		game->keke.a_star.lists.closed[game->keke.a_star.lists.closed_count++] = current;
-		ft_explore_neighbors_node(game, current);
-	}
-	ft_free_a_star_lists_nodes(game->keke.a_star.lists.open, game->keke.a_star.lists.open_count,
-		game->keke.a_star.lists.closed, game->keke.a_star.lists.closed_count);
-	ft_move_keke(game);
+void init_a_star_data(t_game *game, t_point *start, t_point *goal, t_a_star_node **start_node) {
+    *start = ft_find_pos_char(game->map.grid, game->map.size, KEKE_CHAR);
+    *goal = game->player.movement.current_position;
+    *start_node = ft_init_keke_start_node(*start, *goal);
+    if (!*start_node)
+        ft_print_error("init start node for path finding failed", game);
+    ft_init_a_star_lists(game);
+    ft_add_to_open_list(game->keke.a_star.lists.open, &(game->keke.a_star.lists.open_count), *start_node);
+    ft_init_neighbor_data(game, *goal);
 }
 
+void process_a_star_node(t_game *game) {
+    t_a_star_node *current;
+
+    ft_sort_open_list(game->keke.a_star.lists.open, game->keke.a_star.lists.open_count);
+    current = game->keke.a_star.lists.open[0];
+    ft_check_if_current_node_is_player_pos(game, current);
+    ft_remove_from_open_list(game->keke.a_star.lists.open, &(game->keke.a_star.lists.open_count));
+    game->keke.a_star.lists.closed[game->keke.a_star.lists.closed_count++] = current;
+    ft_explore_neighbors_node(game, current);
+}
+
+void ft_a_star_keke_movement(t_game *game) {
+    t_point start;
+    t_point goal;
+    t_a_star_node *start_node;
+
+    init_a_star_data(game, &start, &goal, &start_node);
+
+    while (game->keke.a_star.lists.open_count > 0) {
+        process_a_star_node(game);
+    }
+
+    ft_free_a_star_lists_nodes(game->keke.a_star.lists.open, game->keke.a_star.lists.open_count,
+                               game->keke.a_star.lists.closed, game->keke.a_star.lists.closed_count);
+    ft_move_keke(game);
+}
 
 void	ft_move_keke(t_game *game)
 {

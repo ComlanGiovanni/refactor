@@ -6,12 +6,21 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:20 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 14:13:10 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:20:40 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SO_LONG_ENUMS_BONUS_H
 # define FT_SO_LONG_ENUMS_BONUS_H
+
+enum e_game_state
+{
+	STATE_MENU,
+	STATE_PAUSED,
+	STATE_PLAYING,
+	STATE_WIN,
+	STATE_LOSE
+};
 
 enum	e_key_code
 {

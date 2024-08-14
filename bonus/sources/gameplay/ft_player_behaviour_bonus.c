@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:21:59 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 11:56:41 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 14:59:10 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ void	ft_dir_player_by_pos_exit_after_launch(t_game *game)
 		game->player.movement.direction = 'r'; // Exit is to the right of the player
 }
 
-void	ft_move_box(t_game *game, int new_y, int new_x, int dir_y, int dir_x)
+void	ft_move_box(t_game *game, t_point new_pos, int dir_y, int dir_x)
 {
 	char	next_tile;
 
-	next_tile = game->map.grid[new_y + dir_y][new_x + dir_x];
+	next_tile = game->map.grid[new_pos.y + dir_y][new_pos.x + dir_x];
 	// Vérifie si la box peut être déplacée dans la direction donnée
 	if (next_tile == VOID_CHAR && (next_tile != LOVE_CHAR
 			&& next_tile != EXIT_CHAR && next_tile != KEY_CHAR))
 	{
-		game->map.grid[new_y + dir_y][new_x + dir_x] = BOX_CHAR;
-		game->map.grid[new_y][new_x] = VOID_CHAR;
-		system("aplay sounds/special-effects/box_move.wav &");
+		game->map.grid[new_pos.y + dir_y][new_pos.x + dir_x] = BOX_CHAR;
+		game->map.grid[new_pos.y][new_pos.x] = VOID_CHAR;
+		system("aplay sounds/special-effects/box_move.wav > /dev/null 2>&1 &");
 	}
 }
 
@@ -60,10 +60,7 @@ void	ft_teleport_player(t_game *game, int y, int x)
 	t_point	destination;
 
 	if (game->map.grid[y][x] == 'N')
-	{
 		destination = game->map.portal_1_pos;
-		ft_printf("bugs");
-	}
 	else if (game->map.grid[y][x] == 'Z')
 		destination = game->map.portal_2_pos;
 	else
@@ -71,7 +68,7 @@ void	ft_teleport_player(t_game *game, int y, int x)
 	if (destination.y != -1 && destination.x != -1)
 	{
 		game->map.grid[y][x] = VOID_CHAR;
-		system("aplay sounds/special-effects/teleportation.wav &");
+		system("aplay sounds/special-effects/teleportation.wav > /dev/null 2>&1 &");
 		game->map.grid[destination.y][destination.x] = PLAYER_CHAR;
 		game->player.movement.current_position.y = destination.y;
 		game->player.movement.current_position.x = destination.x;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_format_linux.c                           :+:      :+:    :+:   */
+/*   ft_check_map_format_linux.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:00:42 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 11:45:26 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:25:15 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ int	ft_get_map_height(char *map_name, t_game *game)
 	}
 	close(fd);
 	return (height);
+}
+
+void handle_line(char **line, int fd, t_game *game, int curr_height, int height) {
+    if ((*line == NULL || (*line)[0] == '\n') && curr_height != height) {
+        game->empty_line = 1;
+    }
+    free(*line);
+    if (curr_height == height) {
+        close(fd);
+        //*line = NULL; // Set line to NULL to exit the loop
+		return;
+    }
 }
 
 /**
@@ -96,11 +108,9 @@ void	ft_check_ber_format(char *map_name, int height, t_game *game)
 	{
 		line = get_next_line(fd);
 		curr_height++;
-		if ((line == NULL || line[FALSE] == '\n') && curr_height != height)
-			game->empty_line = 1;
-		if ((curr_height == height) && line == NULL)
-			return ;
-		free(line);
+		handle_line(&line, fd, game, curr_height, height);
+        // if (line == NULL)
+		// 	break; // Exit loop if line is set to NULL
 	}
 	close(fd);
 }

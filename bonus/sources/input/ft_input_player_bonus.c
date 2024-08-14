@@ -6,16 +6,26 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:11 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 05:18:46 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 20:28:25 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
 
+//remove this shit
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+//remove this shit
+
+void toggle_pause(t_game *game) {
+    if (game->state == STATE_PAUSED) {
+        game->state = STATE_PLAYING;
+    } else {
+        game->state = STATE_PAUSED;
+    }
+}
 
 /**
  * @brief
@@ -42,19 +52,14 @@ int	ft_input_manager(int key_code, t_game *game)
 	//move_pawn(game);
 	if (key_code == 112)//make enumaration for input ?abcd
 	{ // 'P' key for pause
-		game->paused = !game->paused;
-		if (game->paused)
-			ft_printf("Game Paused\n");//displayer PAUSE ANIMATION
-		else
-			ft_printf("Game Resumed\n");//put in macro header
+		//game->paused = !game->paused;
+		toggle_pause(game);
 		return (EXIT_SUCCESS);
 	}
-	if (game->paused)
+	if (game->state == STATE_PAUSED)
 		return (EXIT_SUCCESS);
 	if (game->map.info.nbr_keke)
 		ft_a_star_keke_movement(game);
-	if (key_code == LINUX_ESC_KEY)
-		ft_exit_game(game);
 	if ((key_code == LINUX_W_KEY || key_code == LINUX_UP_ARROW_KEY
 			|| key_code == LINUX_UP_PAV_NUM_KEY))
 		ft_input_up(game);
@@ -67,6 +72,8 @@ int	ft_input_manager(int key_code, t_game *game)
 	if ((key_code == LINUX_D_KEY || key_code == LINUX_RIGHT_ARROW_KEY
 			|| key_code == LINUX_RIGHT_PAV_NUM_KEY))
 		ft_input_right(game);
+	if (key_code == LINUX_ESC_KEY)
+		ft_exit_game(game);
 	return (EXIT_SUCCESS);
 }
 
@@ -77,6 +84,7 @@ t_bool	can_move_to_tile(t_game *game, char next_tile)
 		// Trigger feedback (e.g., camera shake) when trying to take more lives than allowed
 		ft_baba_forbidden(game);
 		ft_camera_shake(game);
+		ft_printf("Maximum life is 3");
 		return FALSE;
 	}
 	return (next_tile != WALL_CHAR && next_tile != BOX_CHAR
@@ -98,9 +106,13 @@ t_bool	handle_teleport(t_game *game, int new_x, int new_y, char next_tile)
 // Helper function to handle moving boxes
 void	handle_box_movement(t_game *game, int new_x, int new_y, char *next_tile)
 {
+	t_point	new_pos;
+
+	new_pos.x = new_x;
+	new_pos.y = new_y;
 	if (*next_tile == BOX_CHAR)
 	{
-		ft_move_box(game, new_y, new_x, new_y - game->player.movement.current_position.y, new_x - game->player.movement.current_position.x);
+		ft_move_box(game, new_pos, new_y - game->player.movement.current_position.y, new_x - game->player.movement.current_position.x);
 		*next_tile = game->map.grid[new_y][new_x]; // Re-evaluate the next tile
 	}
 }
@@ -116,11 +128,15 @@ void ft_random_pawn_activation(t_game *game) {
 
 void	ft_move_player(t_game *game, int new_x, int new_y)
 {
-	int		x = game->player.movement.current_position.x;
-	int		y = game->player.movement.current_position.y;
-	char	next_tile = game->map.grid[new_y][new_x];
+	int		x;
+	int		y;
+	char	next_tile;
 
-	ft_random_pawn_activation(game);
+	x = game->player.movement.current_position.x;
+	y = game->player.movement.current_position.y;
+	next_tile = game->map.grid[new_y][new_x];
+	if (game->map.info.nbr_pawn)
+		ft_random_pawn_activation(game);
 	handle_box_movement(game, new_x, new_y, &next_tile);
 	if (handle_teleport(game, new_x, new_y, next_tile))
 		return;

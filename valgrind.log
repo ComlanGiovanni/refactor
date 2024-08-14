@@ -1,0 +1,166 @@
+==638048== Memcheck, a memory error detector
+==638048== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==638048== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==638048== Command: ./so_long_bonus maps/Level\ Design\ Bonus/level_1.ber
+==638048== 
+111111111
+1BLLSLLB1
+1W0111ZW1
+1S1VCE1S1
+1WN1110W1
+1BLLKLLB1
+111111111
+[H[2J[3J111111111
+1BLLSLLB1
+1W0111ZW1
+1S1VVE1S1
+1WN1110W1
+1BLLKLLB1
+111111111
+[H[2J[3JMap is -> maps/Level Design Bonus/level_1.ber
+
+A Valid path found in map
+All coin are collectible in map
+
+Grid Width && Height -> 	[9 7]
+
+Player Start  position in grid x->3 y->3
+Player Exit  position in grid x->5 y->3
+
+111111111
+1BLLSLLB1
+1W0111ZW1
+1S1PCE1S1
+1WN1110W1
+1BLLKLLB1
+111111111
+
+New grid with border for camera
+
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+""""""""""111111111""""""""""
+""""""""""1BLLSLLB1""""""""""
+""""""""""1W0111ZW1""""""""""
+""""""""""1S1PCE1S1""""""""""
+""""""""""1WN1110W1""""""""""
+""""""""""1BLLKLLB1""""""""""
+""""""""""111111111""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+
+Grid Width && Height -> 	[29 27]
+
+Player Start   position in grid x->13 y->13
+Player Exit    position in grid x->15 y->13
+
+Portal 1 : {Z} position in grid x->16 y->12
+Portal 2 : {N} position in grid x->12 y->14
+
+Pawn 0 Initial Position (11, 12) Target [12, 12] in right Direction with 1 Steps.
+Pawn 1 Initial Position (17, 12) Target [17, 12] in down Direction with 0 Steps.
+Pawn 2 Initial Position (11, 14) Target [11, 14] in down Direction with 0 Steps.
+Pawn 3 Initial Position (17, 14) Target [16, 14] in left Direction with 1 Steps.
+
+[All item in map Number]
+
+Player : [P] -> {1}
+Wall   : [1] -> {37}
+Pawn   : [W] -> {4}
+Void   : [0] -> {25}
+Life   : [S] -> {3}
+Lava   : [L] -> {8}
+Keke   : [K] -> {1}
+Key    : [C] -> {1}
+Exit   : [E] -> {1}
+Box    : [B] -> {4}
+Portal : [B] -> {2}
+Grass :  [#] -> {0}
+
+Screen Height && Width [7280 x 2890]
+Window Height && Width [864 x 928]
+
+All image width and height are [64 x 64]
+
+assets/xpm/bonus/lava/lava_frame_0.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/lava/lava_frame_1.xpm : [[0;32m0x59b49f0[0m]
+assets/xpm/bonus/lava/lava_frame_2.xpm : [[0;32m0x59b5230[0m]
+assets/xpm/bonus/door/closed/door_closed_frame_0.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/door/closed/door_closed_frame_1.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/door/closed/door_closed_frame_2.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/door/open/door_open_frame_0.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/door/open/door_open_frame_1.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/door/open/door_open_frame_2.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/up/player_up_frame_0.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/up/player_up_frame_1.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/up/player_up_frame_2.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/up/player_up_frame_move.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/down/player_down_frame_0.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/down/player_down_frame_1.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/down/player_down_frame_2.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/down/player_down_frame_move.x.pm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/left/player_left_frame_0.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/left/player_left_frame_1.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/left/player_left_frame_2.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/left/player_left_frame_move.x.pm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/right/player_right_frame_0.xp);m : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/right/player_right_frame_1.xp);m : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/right/player_right_frame_2.xp);m : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/player/right/player_right_frame_move);.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/key/key_frame_0.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/key/key_frame_1.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/key/key_frame_2.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/wall/wall_frame_0.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/wall/wall_frame_1.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/wall/wall_frame_2.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/grass/grass_frame_0.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/grass/grass_frame_1.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/grass/grass_frame_0.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/ground/ground.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/love/love_frame_0.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/love/love_frame_1.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/love/love_frame_2.xpm : [[0;32m0x59b41b0[0m]
+assets/xpm/bonus/love/love_small_icon.xpm
+ Game exited 
+==638048== 
+==638048== FILE DESCRIPTORS: 8 open (3 std) at exit.
+==638048== Open file descriptor 103: /usr/share/code/v8_context_snapshot.bin
+==638048==    <inherited from parent>
+==638048== 
+==638048== Open file descriptor 42: /dev/ptmx
+==638048==    <inherited from parent>
+==638048== 
+==638048== Open file descriptor 40: /dev/ptmx
+==638048==    <inherited from parent>
+==638048== 
+==638048== Open file descriptor 39: /home/ysera/.config/Code/logs/20240814T122723/ptyhost.log
+==638048==    <inherited from parent>
+==638048== 
+==638048== Open file descriptor 38: /usr/share/code/resources/app/node_modules.asar
+==638048==    <inherited from parent>
+==638048== 
+==638048== 
+==638048== HEAP SUMMARY:
+==638048==     in use at exit: 0 bytes in 0 blocks
+==638048==   total heap usage: 81,937 allocs, 81,937 frees, 16,434,988 bytes allocated
+==638048== 
+==638048== All heap blocks were freed -- no leaks are possible
+==638048== 
+==638048== For lists of detected and suppressed errors, rerun with: -s
+==638048== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

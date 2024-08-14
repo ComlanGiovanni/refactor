@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:09:22 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/06 19:57:18 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 14:13:18 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 int	ft_mouse_manager(int button, int x, int y, t_game *game)
 {
 	char	*button_name;
-	if (button == 1){
-		button_name = "Left Click";
+	if (button == 1){//enum_for_mouse_input
+		button_name = "Left Click";//maccro
 	}
 	else if (button == 2)
 	{
-		button_name = "Right Click";
+		button_name = "Right Click";//maccro
 		ft_exit_game(game);
 	}
 	else if (button == 3)
-		button_name = "Middle Click";
+		button_name = "Middle Click";//maccro
 	else if (button == 4)
-		button_name = "Scroll Up";
+		button_name = "Scroll Up";//maccro
 	else if (button == 5)
-		button_name = "Scroll Down";
+		button_name = "Scroll Down";//maccro
 	else
-		button_name = "Unknown Click";
+		button_name = "Unknown Click";//maccro
 	//system("clear");
-	ft_printf("=[%d]=", x);
-	ft_printf("=[%d]=", y);
+	ft_printf("\n[%d]=", x);//t_mouse position if need
+	ft_printf("=[%d]", y);//t_mouse position if need
 	ft_printf("%s", button_name);
-	return (0);
+	return (0x0);
 }
 
 void	ft_mlx_hook_loop(t_game *game)
