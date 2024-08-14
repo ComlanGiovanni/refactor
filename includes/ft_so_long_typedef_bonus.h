@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 12:12:44 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 22:17:44 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 21:03:03 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef struct s_fungus			t_fungus;
 typedef struct s_fungi			t_fungi;
 typedef struct s_flower			t_flower;
 typedef struct s_algae			t_algae;
+typedef struct s_crab			t_crab;
+typedef struct s_foliage		t_foliage;
+typedef struct s_bog			t_bog;
+typedef struct s_snail			t_snail;
+typedef struct s_pillar			t_pillar;
+typedef struct s_hedge			t_hedge;
+typedef struct s_alphabet		t_alphabet;
 typedef struct s_wall			t_wall;
 typedef struct s_pawn			t_pawn;
 typedef struct s_pawn_movement  t_pawn_movement;

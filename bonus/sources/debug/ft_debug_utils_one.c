@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:05:43 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/10 12:45:39 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:00:18 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,83 +17,83 @@ void	ft_display_sprites_addr(t_game *game)
 	ft_printf("\nAll image width and height are [%d x %d]\n\n",
 				IMG_SIZE,
 				IMG_SIZE);
-	ft_printf("assets/xpm/Bonus/lava/lava_frame_0.xpm");
+	ft_printf(PATH_ASSET"lava/lava_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/lava/lava_frame_1.xpm");
+	ft_printf(PATH_ASSET"lava/lava_frame_1.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_1);
-	ft_printf("assets/xpm/Bonus/lava/lava_frame_2.xpm");
+	ft_printf(PATH_ASSET"lava/lava_frame_2.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_2);
-	ft_printf("assets/xpm/Bonus/door/closed/door_closed_frame_0.xpm");
+	ft_printf(PATH_ASSET"door/closed/door_closed_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/door/closed/door_closed_frame_1.xpm");
+	ft_printf(PATH_ASSET"door/closed/door_closed_frame_1.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/door/closed/door_closed_frame_2.xpm");
+	ft_printf(PATH_ASSET"door/closed/door_closed_frame_2.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/door/open/door_open_frame_0.xpm");
+	ft_printf(PATH_ASSET"door/open/door_open_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/door/open/door_open_frame_1.xpm");
+	ft_printf(PATH_ASSET"door/open/door_open_frame_1.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/door/open/door_open_frame_2.xpm");
+	ft_printf(PATH_ASSET"door/open/door_open_frame_2.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/up/player_up_frame_0.xpm");
+	ft_printf(PATH_ASSET"player/up/player_up_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/up/player_up_frame_1.xpm");
+	ft_printf(PATH_ASSET"player/up/player_up_frame_1.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/up/player_up_frame_2.xpm");
+	ft_printf(PATH_ASSET"player/up/player_up_frame_2.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/up/player_up_frame_move.xpm");
+	ft_printf(PATH_ASSET"player/up/player_up_frame_move.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/down/player_down_frame_0.xpm");
+	ft_printf(PATH_ASSET"player/down/player_down_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/down/player_down_frame_1.xpm");
+	ft_printf(PATH_ASSET"player/down/player_down_frame_1.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/down/player_down_frame_2.xpm");
+	ft_printf(PATH_ASSET"player/down/player_down_frame_2.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/down/player_down_frame_move.x.pm");
+	ft_printf(PATH_ASSET"player/down/player_down_frame_move.x.pm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/left/player_left_frame_0.xpm");
+	ft_printf(PATH_ASSET"player/left/player_left_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/left/player_left_frame_1.xpm");
+	ft_printf(PATH_ASSET"player/left/player_left_frame_1.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/left/player_left_frame_2.xpm");
+	ft_printf(PATH_ASSET"player/left/player_left_frame_2.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/left/player_left_frame_move.x.pm");
+	ft_printf(PATH_ASSET"player/left/player_left_frame_move.x.pm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/right/player_right_frame_0.xp);m");
+	ft_printf(PATH_ASSET"player/right/player_right_frame_0.xp);m");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/right/player_right_frame_1.xp);m");
+	ft_printf(PATH_ASSET"player/right/player_right_frame_1.xp);m");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/right/player_right_frame_2.xp);m");
+	ft_printf(PATH_ASSET"player/right/player_right_frame_2.xp);m");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/player/right/player_right_frame_move);.xpm");
+	ft_printf(PATH_ASSET"player/right/player_right_frame_move);.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/key/key_frame_0.xpm");
+	ft_printf(PATH_ASSET"key/key_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/key/key_frame_1.xpm");
+	ft_printf(PATH_ASSET"key/key_frame_1.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/key/key_frame_2.xpm");
+	ft_printf(PATH_ASSET"key/key_frame_2.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/wall/wall_frame_0.xpm");
+	ft_printf(PATH_ASSET"wall/wall_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/wall/wall_frame_1.xpm");
+	ft_printf(PATH_ASSET"wall/wall_frame_1.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/wall/wall_frame_2.xpm");
+	ft_printf(PATH_ASSET"wall/wall_frame_2.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/grass/grass_frame_0.xpm");
+	ft_printf(PATH_ASSET"grass/grass_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/grass/grass_frame_1.xpm");
+	ft_printf(PATH_ASSET"grass/grass_frame_1.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/grass/grass_frame_0.xpm");
+	ft_printf(PATH_ASSET"grass/grass_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/ground/ground.xpm");
+	ft_printf(PATH_ASSET"ground/ground.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/love/love_frame_0.xpm");
+	ft_printf(PATH_ASSET"love/love_frame_0.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/love/love_frame_1.xpm");
+	ft_printf(PATH_ASSET"love/love_frame_1.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/love/love_frame_2.xpm");
+	ft_printf(PATH_ASSET"love/love_frame_2.xpm");
 	ft_printf(" : [\033[0;32m%p\033[0m]\n", game->lava.animation.frame_0);
-	ft_printf("assets/xpm/Bonus/love/love_small_icon.xpm");
+	ft_printf(PATH_ASSET"love/love_small_icon.xpm");
 }
 
 /**

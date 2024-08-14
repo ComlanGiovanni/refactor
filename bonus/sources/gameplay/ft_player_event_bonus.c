@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:23:29 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 11:54:01 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 04:51:52 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,12 @@ void	ft_player_get_hit(t_game *game)
 	game->player.life--;
 	system("aplay sounds/special-effects/baba_take_damage.wav &");
 	ft_camera_shake(game);
+	//game->player.up_anim.current = game->player.up_anim.current
+	//load read print or display on hud message or blood
 }
 
 void	ft_baba_forbidden(t_game *game)
 {
 	ft_camera_shake(game);
+	//display on hud a message like can not take more than 6
 }

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:17:02 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 12:35:06 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:00:18 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_load_lava_sprites(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/lava/lava_frame_0.xpm",
-		"assets/xpm/Bonus/lava/lava_frame_1.xpm",
-		"assets/xpm/Bonus/lava/lava_frame_2.xpm"};
+		PATH_ASSET"lava/lava_frame_0.xpm",
+		PATH_ASSET"lava/lava_frame_1.xpm",
+		PATH_ASSET"lava/lava_frame_2.xpm"};
 	const char	*error_messages[] = {
 		LAVA_0_XPM_ERROR,
 		LAVA_1_XPM_ERROR,
@@ -30,9 +30,9 @@ void	ft_load_lava_sprites(t_game *game)
 void	ft_load_key_sprites(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/key/key_frame_0.xpm",
-		"assets/xpm/Bonus/key/key_frame_1.xpm",
-		"assets/xpm/Bonus/key/key_frame_2.xpm"};
+		PATH_ASSET"key/key_frame_0.xpm",
+		PATH_ASSET"key/key_frame_1.xpm",
+		PATH_ASSET"key/key_frame_2.xpm"};
 	const char	*error_messages[] = {
 		KEY_0_XPM_ERROR,
 		KEY_1_XPM_ERROR,
@@ -45,9 +45,9 @@ void	ft_load_key_sprites(t_game *game)
 void	ft_load_love_sprites(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/love/love_frame_0.xpm",
-		"assets/xpm/Bonus/love/love_frame_1.xpm",
-		"assets/xpm/Bonus/love/love_frame_2.xpm",
+		PATH_ASSET"love/love_frame_0.xpm",
+		PATH_ASSET"love/love_frame_1.xpm",
+		PATH_ASSET"love/love_frame_2.xpm",
 	};
 	const char	*error_messages[] = {
 		"Generic message error replace soon",
@@ -58,19 +58,19 @@ void	ft_load_love_sprites(t_game *game)
 	ft_load_animation_sprites(&(game->love.animation), game, paths,
 		error_messages);
 	ft_load_sprite_frame(&(game->love.icon), game,
-		"assets/xpm/Bonus/love/love_small_icon.xpm",
+		PATH_ASSET"love/love_small_icon.xpm",
 		"Generic message error replace soon");
 	ft_load_sprite_frame(&(game->love.nope), game,
-		"assets/xpm/Bonus/love/love_frame_nope.xpm",
+		PATH_ASSET"love/love_frame_nope.xpm",
 		"Generic message error replace soon");
 }
 
 void	ft_load_box_sprites(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/box/box_frame_0.xpm",
-		"assets/xpm/Bonus/box/box_frame_1.xpm",
-		"assets/xpm/Bonus/box/box_frame_2.xpm"};
+		PATH_ASSET"box/box_frame_0.xpm",
+		PATH_ASSET"box/box_frame_1.xpm",
+		PATH_ASSET"box/box_frame_2.xpm"};
 	const char	*error_messages[] = {
 		"Generic message eeferror replace soon",
 		"Generic message ererror replace soon",

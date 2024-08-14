@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:25:57 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 17:46:43 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:01:43 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define ICON_SIZE 			10
 # define BORDERS_WIDTH 		10//put 20 to test
 # define PERMUTATION_SIZE 	256
+# define PATH_ASSET			"assets/xpm/bonus/"
 # define ERROR_MSG			"Error\n"
 # define KEY_FOUND			"Key found ->"
 # define KEY_AVAILABLE		"Key available -> "

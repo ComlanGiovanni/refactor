@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:02:13 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 01:59:58 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:29:05 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	ft_update(t_game *game)
 	//mlx_destroy_image(game->mlx, game->window.img);
 	//mlx_do_sync(game->mlx);
 	ft_print_info_on_window(game);
+	//mlx_clear_window(game->mlx, game->win);
 	//system("clear");
 	//ft_print_display_grid(game->map.grid);
 	return (EXIT_SUCCESS);

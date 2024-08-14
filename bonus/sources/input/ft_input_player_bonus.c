@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:11 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 02:18:11 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 05:18:46 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	ft_input_manager(int key_code, t_game *game)
 	{ // 'P' key for pause
 		game->paused = !game->paused;
 		if (game->paused)
-			ft_printf("Game Paused\n");
+			ft_printf("Game Paused\n");//displayer PAUSE ANIMATION
 		else
-			ft_printf("Game Resumed\n");
+			ft_printf("Game Resumed\n");//put in macro header
 		return (EXIT_SUCCESS);
 	}
 	if (game->paused)
@@ -70,151 +70,247 @@ int	ft_input_manager(int key_code, t_game *game)
 	return (EXIT_SUCCESS);
 }
 
+t_bool	can_move_to_tile(t_game *game, char next_tile)
+{
+	if (next_tile == LOVE_CHAR && game->player.life >= 6)
+	{
+		// Trigger feedback (e.g., camera shake) when trying to take more lives than allowed
+		ft_baba_forbidden(game);
+		ft_camera_shake(game);
+		return FALSE;
+	}
+	return (next_tile != WALL_CHAR && next_tile != BOX_CHAR
+		&& !(next_tile == EXIT_CHAR && game->map.info.nbr_key != game->player.storage));
+}
+
+// Helper function to handle teleportation
+t_bool	handle_teleport(t_game *game, int new_x, int new_y, char next_tile)
+{
+	if (next_tile == 'N' || next_tile == 'Z')
+	{
+		game->map.grid[game->player.movement.current_position.y][game->player.movement.current_position.x] = VOID_CHAR;
+		ft_teleport_player(game, new_y, new_x);
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+// Helper function to handle moving boxes
+void	handle_box_movement(t_game *game, int new_x, int new_y, char *next_tile)
+{
+	if (*next_tile == BOX_CHAR)
+	{
+		ft_move_box(game, new_y, new_x, new_y - game->player.movement.current_position.y, new_x - game->player.movement.current_position.x);
+		*next_tile = game->map.grid[new_y][new_x]; // Re-evaluate the next tile
+	}
+}
+
+void ft_random_pawn_activation(t_game *game) {
+    // Seed the random number generator once at the start of the program, not here
+    int random_index = rand() % game->map.info.nbr_pawn;
+
+    // Toggle the activation status of a random pawn
+    game->pawn.pawns_array[random_index].is_active = !game->pawn.pawns_array[random_index].is_active;
+}
+
+
+void	ft_move_player(t_game *game, int new_x, int new_y)
+{
+	int		x = game->player.movement.current_position.x;
+	int		y = game->player.movement.current_position.y;
+	char	next_tile = game->map.grid[new_y][new_x];
+
+	ft_random_pawn_activation(game);
+	handle_box_movement(game, new_x, new_y, &next_tile);
+	if (handle_teleport(game, new_x, new_y, next_tile))
+		return;
+	if (can_move_to_tile(game, next_tile))
+	{
+		game->map.grid[y][x] = VOID_CHAR;
+		game->map.grid[new_y][new_x] = PLAYER_CHAR;
+		game->player.movement.current_position.x = new_x;
+		game->player.movement.current_position.y = new_y;
+		ft_play_movement_sound(game);
+		ft_handle_tile_action(game, next_tile);
+	}
+}
+
 void	ft_move_up(t_game *game)
 {
-	int		x;
-	int		y;
-	char	next_tile;
-
-	x = game->player.movement.current_position.x;
-	y = game->player.movement.current_position.y;
+	int x = game->player.movement.current_position.x;
+	int y = game->player.movement.current_position.y;
 	if (y > 0)
-	{
-		next_tile = game->map.grid[y - 1][x];
-		ft_handle_tile_action(game, next_tile);
-		if (next_tile == BOX_CHAR)
-		{
-			ft_move_box(game, y - 1, x, -1, 0);
-			next_tile = game->map.grid[y - 1][x];
-		}
-		if (next_tile == 'N' || next_tile == 'Z')
-		{
-			game->map.grid[y][x] = VOID_CHAR;
-			ft_teleport_player(game, y - 1, x);
-			return ;
-		}
-		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
-			&& !(next_tile == EXIT_CHAR
-				&& game->map.info.nbr_key != game->player.storage)
-			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
-		{
-			game->map.grid[y][x] = VOID_CHAR;
-			game->map.grid[y - 1][x] = PLAYER_CHAR;
-			ft_play_movement_sound(game);
-			game->player.movement.current_position.y -= 1;
-			//ft_handle_tile_action(game, next_tile);
-		}
-	}
+		ft_move_player(game, x, y - 1);
 }
 
 void	ft_move_down(t_game *game)
 {
-	int		x;
-	int		y;
-	char	next_tile;
-
-	x = game->player.movement.current_position.x;
-	y = game->player.movement.current_position.y;
+	int x = game->player.movement.current_position.x;
+	int y = game->player.movement.current_position.y;
 	if (y < game->height - 1)
-	{
-		next_tile = game->map.grid[y + 1][x];
-		ft_handle_tile_action(game, next_tile);
-		if (next_tile == BOX_CHAR)
-		{
-			ft_move_box(game, y + 1, x, 1, 0);
-			next_tile = game->map.grid[y + 1][x];
-		}
-		if (next_tile == 'N' || next_tile == 'Z')
-		{
-			game->map.grid[y][x] = VOID_CHAR;
-			ft_teleport_player(game, y + 1, x);
-			return ;
-		}
-		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
-			&& !(next_tile == EXIT_CHAR
-				&& game->map.info.nbr_key != game->player.storage)
-			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
-		{
-			game->map.grid[y][x] = VOID_CHAR;
-			game->map.grid[y + 1][x] = PLAYER_CHAR;
-			ft_play_movement_sound(game);
-			game->player.movement.current_position.y += 1;
-			//ft_handle_tile_action(game, next_tile);
-		}
-	}
+		ft_move_player(game, x, y + 1);
 }
 
 void	ft_move_left(t_game *game)
 {
-	int		x;
-	int		y;
-	char	next_tile;
-
-	x = game->player.movement.current_position.x;
-	y = game->player.movement.current_position.y;
+	int x = game->player.movement.current_position.x;
+	int y = game->player.movement.current_position.y;
 	if (x > 0)
-	{
-		next_tile = game->map.grid[y][x - 1];
-		ft_handle_tile_action(game, next_tile);
-		if (next_tile == BOX_CHAR)
-		{
-			ft_move_box(game, y, x - 1, 0, -1);
-			;
-			next_tile = game->map.grid[y][x - 1];
-		}
-		if (next_tile == 'N' || next_tile == 'Z')
-		{
-			game->map.grid[y][x] = VOID_CHAR;
-			ft_teleport_player(game, y, x - 1);
-			return ;
-		}
-		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
-			&& !(next_tile == EXIT_CHAR
-				&& game->map.info.nbr_key != game->player.storage)
-			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
-		{
-			game->map.grid[y][x] = VOID_CHAR;
-			game->map.grid[y][x - 1] = PLAYER_CHAR;
-			ft_play_movement_sound(game);
-			game->player.movement.current_position.x -= 1;
-			//ft_handle_tile_action(game, next_tile);
-		}
-	}
+		ft_move_player(game, x - 1, y);
 }
 
 void	ft_move_right(t_game *game)
 {
-	int		x;
-	int		y;
-	char	next_tile;
-
-	x = game->player.movement.current_position.x;
-	y = game->player.movement.current_position.y;
+	int x = game->player.movement.current_position.x;
+	int y = game->player.movement.current_position.y;
 	if (x < game->width - 1)
-	{
-		next_tile = game->map.grid[y][x + 1];
-		ft_handle_tile_action(game, next_tile);
-		if (next_tile == BOX_CHAR)
-		{
-			ft_move_box(game, y, x + 1, 0, 1);
-			next_tile = game->map.grid[y][x + 1];
-		}
-		if (next_tile == 'N' || next_tile == 'Z')
-		{
-			game->map.grid[y][x] = VOID_CHAR;
-			ft_teleport_player(game, y, x + 1);
-			return ;
-		}
-		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
-			&& !(next_tile == EXIT_CHAR
-				&& game->map.info.nbr_key != game->player.storage)
-			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
-		{
-			game->map.grid[y][x] = VOID_CHAR;
-			game->map.grid[y][x + 1] = PLAYER_CHAR;
-			ft_play_movement_sound(game);
-			game->player.movement.current_position.x += 1;
-			//ft_handle_tile_action(game, next_tile);
-		}
-	}
+		ft_move_player(game, x + 1, y);
 }
+
+// void	ft_move_up(t_game *game)
+// {
+// 	int		x;
+// 	int		y;
+// 	char	next_tile;
+
+// 	x = game->player.movement.current_position.x;
+// 	y = game->player.movement.current_position.y;
+// 	if (y > 0)
+// 	{
+// 		next_tile = game->map.grid[y - 1][x];
+// 		ft_handle_tile_action(game, next_tile);
+// 		if (next_tile == BOX_CHAR)
+// 		{
+// 			ft_move_box(game, y - 1, x, -1, 0);
+// 			next_tile = game->map.grid[y - 1][x];
+// 		}
+// 		if (next_tile == 'N' || next_tile == 'Z')
+// 		{
+// 			game->map.grid[y][x] = VOID_CHAR;
+// 			ft_teleport_player(game, y - 1, x);
+// 			return ;
+// 		}
+// 		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
+// 			&& !(next_tile == EXIT_CHAR
+// 				&& game->map.info.nbr_key != game->player.storage)
+// 			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
+// 		{
+// 			game->map.grid[y][x] = VOID_CHAR;
+// 			game->map.grid[y - 1][x] = PLAYER_CHAR;
+// 			ft_play_movement_sound(game);
+// 			game->player.movement.current_position.y -= 1;
+// 			//ft_handle_tile_action(game, next_tile);
+// 		}
+// 	}
+// }
+
+// void	ft_move_down(t_game *game)
+// {
+// 	int		x;
+// 	int		y;
+// 	char	next_tile;
+
+// 	x = game->player.movement.current_position.x;
+// 	y = game->player.movement.current_position.y;
+// 	if (y < game->height - 1)
+// 	{
+// 		next_tile = game->map.grid[y + 1][x];
+// 		if (next_tile == BOX_CHAR)
+// 		{
+// 			ft_move_box(game, y + 1, x, 1, 0);
+// 			next_tile = game->map.grid[y + 1][x];
+// 		}
+// 		if (next_tile == 'N' || next_tile == 'Z')
+// 		{
+// 			game->map.grid[y][x] = VOID_CHAR;
+// 			ft_teleport_player(game, y + 1, x);
+// 			return ;
+// 		}
+// 		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
+// 			&& !(next_tile == EXIT_CHAR
+// 				&& game->map.info.nbr_key != game->player.storage)
+// 			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
+// 		{
+// 			game->map.grid[y][x] = VOID_CHAR;
+// 			game->map.grid[y + 1][x] = PLAYER_CHAR;
+// 			ft_play_movement_sound(game);
+// 			game->player.movement.current_position.y += 1;
+// 			//ft_handle_tile_action(game, next_tile);
+// 		}
+// 		ft_handle_tile_action(game, next_tile);
+// 	}
+// }
+
+// void	ft_move_left(t_game *game)
+// {
+// 	int		x;
+// 	int		y;
+// 	char	next_tile;
+
+// 	x = game->player.movement.current_position.x;
+// 	y = game->player.movement.current_position.y;
+// 	if (x > 0)
+// 	{
+// 		next_tile = game->map.grid[y][x - 1];
+// 		ft_handle_tile_action(game, next_tile);
+// 		if (next_tile == BOX_CHAR)
+// 		{
+// 			ft_move_box(game, y, x - 1, 0, -1);
+// 			next_tile = game->map.grid[y][x - 1];
+// 		}
+// 		if (next_tile == 'N' || next_tile == 'Z')
+// 		{
+// 			game->map.grid[y][x] = VOID_CHAR;
+// 			ft_teleport_player(game, y, x - 1);
+// 			return ;
+// 		}
+// 		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
+// 			&& !(next_tile == EXIT_CHAR
+// 				&& game->map.info.nbr_key != game->player.storage)
+// 			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
+// 		{
+// 			game->map.grid[y][x] = VOID_CHAR;
+// 			game->map.grid[y][x - 1] = PLAYER_CHAR;
+// 			ft_play_movement_sound(game);
+// 			game->player.movement.current_position.x -= 1;
+// 			//ft_handle_tile_action(game, next_tile);
+// 		}
+// 	}
+// }
+
+// void	ft_move_right(t_game *game)
+// {
+// 	int		x;
+// 	int		y;
+// 	char	next_tile;
+
+// 	x = game->player.movement.current_position.x;
+// 	y = game->player.movement.current_position.y;
+// 	if (x < game->width - 1)
+// 	{
+// 		next_tile = game->map.grid[y][x + 1];
+// 		ft_handle_tile_action(game, next_tile);
+// 		if (next_tile == BOX_CHAR)
+// 		{
+// 			ft_move_box(game, y, x + 1, 0, 1);
+// 			next_tile = game->map.grid[y][x + 1];
+// 		}
+// 		if (next_tile == 'N' || next_tile == 'Z')
+// 		{
+// 			game->map.grid[y][x] = VOID_CHAR;
+// 			ft_teleport_player(game, y, x + 1);
+// 			return ;
+// 		}
+// 		if (next_tile != WALL_CHAR && next_tile != BOX_CHAR
+// 			&& !(next_tile == EXIT_CHAR
+// 				&& game->map.info.nbr_key != game->player.storage)
+// 			&& !(next_tile == LOVE_CHAR && game->player.life >= 6))
+// 		{
+// 			game->map.grid[y][x] = VOID_CHAR;
+// 			game->map.grid[y][x + 1] = PLAYER_CHAR;
+// 			ft_play_movement_sound(game);
+// 			game->player.movement.current_position.x += 1;
+// 			//ft_handle_tile_action(game, next_tile);
+// 		}
+// 	}
+// }

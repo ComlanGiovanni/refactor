@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:46:14 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 22:38:38 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 14:13:10 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,42 @@ void	ft_water_sprite(t_game *game, t_point pos)
 		game->water.animation.current, pos.x, pos.y);
 }
 
+void	ft_crab_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->crab.animation.current, pos.x, pos.y);
+}
+
+void	ft_foliage_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->foliage.animation.current, pos.x, pos.y);
+}
+
+void	ft_bog_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->bog.animation.current, pos.x, pos.y);
+}
+
+void	ft_snail_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->snail.animation.current, pos.x, pos.y);
+}
+
+void	ft_pillar_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->pillar.animation.current, pos.x, pos.y);
+}
+
+void	ft_hedge_sprite(t_game *game, t_point pos)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->hedge.animation.current, pos.x, pos.y);
+}
+
 void ft_handle_borders_sprites(t_game *game, char tile, t_point sprite_pos)
 {
 	if (tile == GRASS_CHAR)
@@ -170,6 +206,22 @@ void ft_handle_borders_sprites(t_game *game, char tile, t_point sprite_pos)
         ft_water_sprite(game, sprite_pos);
 }
 
+void ft_handle_other_borders_sprites(t_game *game, char tile, t_point sprite_pos)
+{
+	if (tile == CRAB_CHAR)
+		ft_crab_sprite(game, sprite_pos);
+    else if (tile == FOLIAGE_CHAR)
+        ft_foliage_sprite(game, sprite_pos);
+    else if (tile == BOG_CHAR)
+        ft_bog_sprite(game, sprite_pos);
+    else if (tile == SNAIL_CHAR)
+        ft_snail_sprite(game, sprite_pos);
+    else if (tile == PILLAR_CHAR)
+        ft_pillar_sprite(game, sprite_pos);
+    else if (tile == HEDGE_CHAR)
+		ft_hedge_sprite(game, sprite_pos);
+}
+
 t_bool ft_is_key_love_box_sprites(char tile)
 {
 	return (tile == KEY_CHAR) || (tile == LOVE_CHAR) || (tile == BOX_CHAR);
@@ -188,6 +240,12 @@ t_bool ft_is_borders_sprites(char tile)
 	return (tile == GRASS_CHAR) || (tile == TREE_CHAR) || (tile == TREES_CHAR)
 		|| (tile == REED_CHAR) || (tile == HUSKS_CHAR) || (tile == FUNGUS_CHAR)
 		|| (tile == FUNGI_CHAR) || (tile == FLOWER_CHAR) || (tile == ALGAE_CHAR) || (tile == WATER_CHAR);
+}
+
+t_bool ft_is_other_borders_sprites(char tile)
+{
+	return (tile == CRAB_CHAR) || (tile == FOLIAGE_CHAR) || (tile == BOG_CHAR)
+		|| (tile == SNAIL_CHAR) || (tile == PILLAR_CHAR) || (tile == HEDGE_CHAR);
 }
 
 /**
@@ -244,6 +302,8 @@ void	ft_put_all_sprites_to_line(t_game *game, int width, int height,
 		ft_handle_exit_portals_sprites(game, tile, sprite_pos);
 	else if (ft_is_borders_sprites(tile))
 		ft_handle_borders_sprites(game, tile, sprite_pos);
+	else if (ft_is_other_borders_sprites(tile))
+		ft_handle_other_borders_sprites(game, tile, sprite_pos);
 	else if (ft_is_enemies_sprites(tile))
 		ft_handle_enemies_sprites(game, tile, sprite_pos);
 	else if (tile == KEKE_CHAR)

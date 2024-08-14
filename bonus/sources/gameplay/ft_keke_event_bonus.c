@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:40:59 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 12:06:39 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 04:40:07 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ t_a_star_node *ft_init_keke_start_node(t_point start, t_point goal)
 	if (!start_node)
 		return (NULL);
 	start_node->pos = start;
-	start_node->g = 0;
-	start_node->f = ft_manhattan_heuristic_distance(start, goal);
+	start_node->cost_from_start = 0;
+	start_node->total_cost = ft_manhattan_heuristic_distance(start, goal);
 	start_node->parent = NULL;
 	return (start_node);
 }
@@ -90,7 +90,7 @@ void ft_sort_open_list(t_a_star_node **open_list, int open_count)
 	{
 		current_node = open_list[current_index];
 		insertion_index = current_index - 1;
-		while (insertion_index >= 0 && open_list[insertion_index]->f > current_node->f)
+		while (insertion_index >= 0 && open_list[insertion_index]->total_cost > current_node->total_cost)
 		{
 			open_list[insertion_index + 1] = open_list[insertion_index];
 			insertion_index--;
@@ -179,8 +179,8 @@ t_a_star_node *create_neighbor_node(t_game *game, t_a_star_node *current, t_poin
 	if (!node)
 		ft_print_error("init neighbor node fail malloc", game); //MACRO
 	node->pos = pos;
-	node->g = current->g + 1;
-	node->f = node->g + ft_manhattan_heuristic_distance(pos, game->keke.a_star.neighbor.goal);
+	node->cost_from_start = current->cost_from_start + 1;
+	node->total_cost = node->total_cost + ft_manhattan_heuristic_distance(pos, game->keke.a_star.neighbor.goal);
 	node->parent = current;
 	return (node);
 }

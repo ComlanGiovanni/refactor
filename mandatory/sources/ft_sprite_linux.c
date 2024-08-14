@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite_linux.c                                     :+:      :+:    :+:   */
+/*   ft_sprite_linux.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:00:05 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/04 00:02:37 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 12:56:53 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,23 @@ t_sprites	ft_init_sprites(void *mlx, t_game *game)
 	int			height;
 
 	sprite.player = mlx_xpm_file_to_image(mlx,
-			"assets/xpm/Mandatory/player.xpm", &width, &height);
+			"assets/xpm/mandatory/player.xpm", &width, &height);
 	if (sprite.player == NULL)
 		ft_print_error(PLAYER_XPM_ERROR, game);
 	sprite.ground = mlx_xpm_file_to_image(mlx,
-			"assets/xpm/Mandatory/ground.xpm", &width, &height);
+			"assets/xpm/mandatory/ground.xpm", &width, &height);
 	if (sprite.ground == NULL)
 		ft_print_error(GROUND_XPM_ERROR, game);
 	sprite.wall = mlx_xpm_file_to_image(mlx,
-			"assets/xpm/Mandatory/wall.xpm", &width, &height);
+			"assets/xpm/mandatory/wall.xpm", &width, &height);
 	if (sprite.wall == NULL)
 		ft_print_error(WALL_XPM_ERROR, game);
 	sprite.key = mlx_xpm_file_to_image(mlx,
-			"assets/xpm/Mandatory/key.xpm", &width, &height);
+			"assets/xpm/mandatory/key.xpm", &width, &height);
 	if (sprite.key == NULL)
 		ft_print_error(KEY_XPM_ERROR, game);
 	sprite.exit = mlx_xpm_file_to_image(mlx,
-			"assets/xpm/Mandatory/exit.xpm", &width, &height);
+			"assets/xpm/mandatory/exit.xpm", &width, &height);
 	if (sprite.exit == NULL)
 		ft_print_error(EXIT_XPM_ERROR, game);
 	return (sprite);

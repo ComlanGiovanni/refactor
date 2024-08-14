@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:28:13 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 00:48:34 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 04:47:33 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ struct s_pawn_movement
 	//char	dir_char[4];
 	char	*direction;
 	//t_point *path;
-	int		is_returning;
+	t_bool		is_returning;
+	t_bool 	is_active;
 	int		steps_taken;
 	int		steps_need;
 };
@@ -235,7 +236,7 @@ struct						s_window
 
 struct						s_digits
 {
-	void					*tab[10];
+	//void					*tab[10];
 	t_animation				zero;
 	t_animation				one;
 	t_animation				two;
@@ -248,6 +249,38 @@ struct						s_digits
 	t_animation				nine;
 };
 
+
+struct						s_alphabet
+{
+	void					*tab[26];
+	t_animation				a;
+	t_animation				b;
+	t_animation				c;
+	t_animation				d;
+	t_animation				e;
+	t_animation				f;
+	t_animation				g;
+	t_animation				h;
+	t_animation				i;
+	t_animation				j;
+	t_animation				k;
+	t_animation				l;
+	t_animation				m;
+	t_animation				n;
+	t_animation				o;
+	t_animation				p;
+	t_animation				q;
+	t_animation				r;
+	t_animation				s;
+	t_animation				t;
+	t_animation				u;
+	t_animation				v;
+	t_animation				w;
+	t_animation				x;
+	t_animation				y;
+	t_animation				z;
+};
+
 struct						s_hud
 {
 	char					*str_step;
@@ -256,6 +289,7 @@ struct						s_hud
 	char					*str_key_remain;
 	//int				frame;
 	t_digits				digits;
+	t_alphabet				alphabet;
 	t_point					fps;
 	t_point					step;
 	t_point					direction;
@@ -305,11 +339,10 @@ struct						s_anim_keke
 struct s_a_star_node
 {
 	t_point							pos;
-	int								g; // Cost from start to this node
-	int								f; // Total cost (g + h)
+	int								cost_from_start; // Cost from start to this node
+	int								total_cost; // Total cost (g + h)
 	struct s_a_star_node			*parent;
 };
-
 struct s_lists
 {
 	t_a_star_node		**open;
@@ -385,6 +418,38 @@ struct						s_algae
 	t_animation				animation;
 };
 
+struct						s_crab
+{
+	t_animation				animation;
+};
+
+struct						s_foliage
+{
+	t_animation				animation;
+};
+
+struct						s_bog
+{
+	t_animation				animation;
+};
+
+struct						s_snail
+{
+	t_animation				animation;
+};
+
+
+struct						s_pillar
+{
+	t_animation				animation;
+};
+
+struct						s_hedge
+{
+	t_animation				animation;
+};
+
+
 //can put all in a different struct like
 //t_border border
 struct						s_game
@@ -406,6 +471,12 @@ struct						s_game
 	t_fungi					fungi;
 	t_flower				flower;
 	t_algae					algae;
+	t_crab					crab;
+	t_foliage				foliage;
+	t_bog					bog;
+	t_snail					snail;
+	t_pillar				pillar;
+	t_hedge					hedge;
 	t_door					door;
 	t_box					box;
 	t_portal				portal;
@@ -414,8 +485,6 @@ struct						s_game
 	t_point					screen;
 	t_bool					paused;
 	t_keke					keke;
-	// t_point			camera;// faire une struct camera
-	// t_point			camera_target;
 	t_fps					fps;
 	t_window				window;
 	t_hud					hud;

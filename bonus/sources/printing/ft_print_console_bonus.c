@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:52:04 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 17:59:43 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 02:41:57 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_display_position(t_point start, t_point end, t_point z, t_point n)
 
 void	ft_print_map_info(t_game *game)
 {
-	ft_printf("[All item in map Number]\n\n");
+	ft_printf("\n[All item in map Number]\n\n");
 	ft_printf("Player : [%c] -> {%d}\n", PLAYER_CHAR,
 			game->map.info.nbr_player);
 	ft_printf("Wall   : [%c] -> {%d}\n", WALL_CHAR, game->map.info.nbr_wall);

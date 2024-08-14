@@ -16,6 +16,9 @@
 		"ft_so_long_enums_bonus.h": "c",
 		"ft_so_long_headers_bonus.h": "c",
 		"ft_so_long_macros_bonus.h": "c",
-		"ft_so_long_typedef_bonus.h": "c"
+		"ft_so_long_typedef_bonus.h": "c",
+		"ft_printf.h": "c",
+		"get_next_line.h": "c",
+		"stdio.h": "c"
 	}
 }

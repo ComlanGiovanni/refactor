@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:21:40 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 19:43:01 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:00:18 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_load_digit_one(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/digits/1/digit_1_frame_0.xpm",
-		"assets/xpm/Bonus/digits/1/digit_1_frame_1.xpm",
-		"assets/xpm/Bonus/digits/1/digit_1_frame_2.xpm"};
+		PATH_ASSET"digits/1/digit_1_frame_0.xpm",
+		PATH_ASSET"digits/1/digit_1_frame_1.xpm",
+		PATH_ASSET"digits/1/digit_1_frame_2.xpm"};
 	const char	*error_messages[] = {
 		"Generic message error replace soon",
 		"Generic message error replace soon",
@@ -30,9 +30,9 @@ void	ft_load_digit_one(t_game *game)
 void	ft_load_digit_tree(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/digits/3/digit_3_frame_0.xpm",
-		"assets/xpm/Bonus/digits/3/digit_3_frame_1.xpm",
-		"assets/xpm/Bonus/digits/3/digit_3_frame_2.xpm"};
+		PATH_ASSET"digits/3/digit_3_frame_0.xpm",
+		PATH_ASSET"digits/3/digit_3_frame_1.xpm",
+		PATH_ASSET"digits/3/digit_3_frame_2.xpm"};
 	const char	*error_messages[] = {
 		"Generic message error replace soon",
 		"Generic message error replace soon",
@@ -45,9 +45,9 @@ void	ft_load_digit_tree(t_game *game)
 void	ft_load_digit_five(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/digits/5/digit_5_frame_0.xpm",
-		"assets/xpm/Bonus/digits/5/digit_5_frame_1.xpm",
-		"assets/xpm/Bonus/digits/5/digit_5_frame_2.xpm"};
+		PATH_ASSET"digits/5/digit_5_frame_0.xpm",
+		PATH_ASSET"digits/5/digit_5_frame_1.xpm",
+		PATH_ASSET"digits/5/digit_5_frame_2.xpm"};
 	const char	*error_messages[] = {
 		"Generic message error replace soon",
 		"Generic message error replace soon",
@@ -60,9 +60,9 @@ void	ft_load_digit_five(t_game *game)
 void	ft_load_digit_seven(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/digits/7/digit_7_frame_0.xpm",
-		"assets/xpm/Bonus/digits/7/digit_7_frame_1.xpm",
-		"assets/xpm/Bonus/digits/7/digit_7_frame_2.xpm"};
+		PATH_ASSET"digits/7/digit_7_frame_0.xpm",
+		PATH_ASSET"digits/7/digit_7_frame_1.xpm",
+		PATH_ASSET"digits/7/digit_7_frame_2.xpm"};
 	const char	*error_messages[] = {
 		"Generic message error replace soon",
 		"Generic message error replace soon",
@@ -75,9 +75,9 @@ void	ft_load_digit_seven(t_game *game)
 void	ft_load_digit_nine(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/digits/9/digit_9_frame_0.xpm",
-		"assets/xpm/Bonus/digits/9/digit_9_frame_1.xpm",
-		"assets/xpm/Bonus/digits/9/digit_9_frame_2.xpm"};
+		PATH_ASSET"digits/9/digit_9_frame_0.xpm",
+		PATH_ASSET"digits/9/digit_9_frame_1.xpm",
+		PATH_ASSET"digits/9/digit_9_frame_2.xpm"};
 	const char	*error_messages[] = {
 		"Generic message error replace soon",
 		"Generic message error replace soon",

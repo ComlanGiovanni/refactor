@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 20:17:50 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 01:45:04 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 05:30:24 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,10 @@ int	ft_win_game(t_game *game)
 	//system("pkill vlc");
 	system("pkill aplay");
 	game->player.step++;
+	//ascii art for win and loos message or animation
 	ft_printf(WIN_MSG "%d ", game->player.step);
-	ft_printf("Storage : %d, ", game->player.storage);
-	ft_printf("Life : %d\n", game->player.life);
+	ft_printf("Storage : %d, ", game->player.storage);//put in macro header
+	ft_printf("Life : %d\n", game->player.life);//put in macro header
 	ft_free_all(game);
 	exit(EXIT_SUCCESS);
 }
@@ -103,10 +104,12 @@ int	ft_win_game(t_game *game)
  */
 int	ft_lose_game(t_game *game)
 {
+	system("pkill aplay");
+	//ascii art for win and loos message or animation
 	ft_printf(LOSE_MSG "%d ", game->player.step);
 	ft_printf("Storage : %d, ", game->player.storage);
 	ft_printf("Life : %d\n\n", game->player.life);
-	ft_free_step_and_storage(game);
+	//ft_free_step_and_storage(game);
 	ft_free_all(game);
 	exit(EXIT_FAILURE);
 }
@@ -126,6 +129,7 @@ int	ft_lose_game(t_game *game)
  */
 void	ft_free_all(t_game *game)
 {
+	//add free pawn
 	mlx_loop_end(game->mlx);
 	ft_free_animation(game);
 	ft_free_sprites_list(&game->node, game->mlx);

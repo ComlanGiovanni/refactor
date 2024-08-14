@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:10:49 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:15:05 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:00:18 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_load_door_closed_sprites(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/door/closed/door_closed_frame_0.xpm",
-		"assets/xpm/Bonus/door/closed/door_closed_frame_1.xpm",
-		"assets/xpm/Bonus/door/closed/door_closed_frame_2.xpm"};
+		PATH_ASSET"door/closed/door_closed_frame_0.xpm",
+		PATH_ASSET"door/closed/door_closed_frame_1.xpm",
+		PATH_ASSET"door/closed/door_closed_frame_2.xpm"};
 	const char	*error_messages[] = {
 		DOOR_C_0_XPM_ERROR,
 		DOOR_C_1_XPM_ERROR,
@@ -30,9 +30,9 @@ void	ft_load_door_closed_sprites(t_game *game)
 void	ft_load_door_open_sprites(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/door/open/door_open_frame_0.xpm",
-		"assets/xpm/Bonus/door/open/door_open_frame_1.xpm",
-		"assets/xpm/Bonus/door/open/door_open_frame_2.xpm"};
+		PATH_ASSET"door/open/door_open_frame_0.xpm",
+		PATH_ASSET"door/open/door_open_frame_1.xpm",
+		PATH_ASSET"door/open/door_open_frame_2.xpm"};
 	const char	*error_messages[] = {
 		DOOR_O_0_XPM_ERROR,
 		DOOR_O_1_XPM_ERROR,

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:10:53 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 22:34:08 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 22:10:25 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,54 @@ void	ft_water_animation(t_animation *animation)
 	frame++;
 }
 
+void	ft_crab_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_foliage_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_bog_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_snail_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_pillar_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_hedge_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
 void	ft_borders_animation(t_game *game)
 {
 	ft_grass_animation(&game->grass.animation);
@@ -96,6 +144,270 @@ void	ft_borders_animation(t_game *game)
 	ft_flower_animation(&game->flower.animation);
 	ft_algae_animation(&game->algae.animation);
 	ft_water_animation(&game->water.animation);
+	ft_crab_animation(&game->crab.animation);
+	ft_foliage_animation(&game->foliage.animation);
+	ft_bog_animation(&game->bog.animation);
+	ft_snail_animation(&game->snail.animation);
+	ft_pillar_animation(&game->pillar.animation);
+	ft_hedge_animation(&game->hedge.animation);
+}
+
+void	ft_alphabet_a_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_b_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_c_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_d_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_e_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_f_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_g_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_h_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_i_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_j_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_k_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_l_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_m_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_n_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_o_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_p_animation(t_animation *animation)
+{
+	static int	frame = 0;
+
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_q_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_r_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_s_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_t_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_u_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_v_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_w_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_x_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_y_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_alphabet_z_animation(t_animation *animation)
+{
+	static int	frame;
+
+	frame = 0;
+	ft_generic_animation(animation, &frame);
+	frame++;
+}
+
+void	ft_odd_alphabet_animation(t_game *game)
+{
+	ft_alphabet_a_animation(&game->hud.alphabet.a);
+	ft_alphabet_c_animation(&game->hud.alphabet.c);
+	ft_alphabet_e_animation(&game->hud.alphabet.e);
+	ft_alphabet_g_animation(&game->hud.alphabet.g);
+	ft_alphabet_i_animation(&game->hud.alphabet.i);
+	ft_alphabet_k_animation(&game->hud.alphabet.k);
+	ft_alphabet_m_animation(&game->hud.alphabet.m);
+	ft_alphabet_o_animation(&game->hud.alphabet.o);
+	ft_alphabet_q_animation(&game->hud.alphabet.q);
+	ft_alphabet_s_animation(&game->hud.alphabet.s);
+	ft_alphabet_u_animation(&game->hud.alphabet.u);
+	ft_alphabet_w_animation(&game->hud.alphabet.w);
+	ft_alphabet_y_animation(&game->hud.alphabet.y);
+}
+
+void	ft_even_alphabet_animation(t_game *game)
+{
+	ft_alphabet_b_animation(&game->hud.alphabet.b);
+	ft_alphabet_d_animation(&game->hud.alphabet.d);
+	ft_alphabet_f_animation(&game->hud.alphabet.f);
+	ft_alphabet_h_animation(&game->hud.alphabet.h);
+	ft_alphabet_j_animation(&game->hud.alphabet.j);
+	ft_alphabet_l_animation(&game->hud.alphabet.l);
+	ft_alphabet_n_animation(&game->hud.alphabet.n);
+	ft_alphabet_p_animation(&game->hud.alphabet.p);
+	ft_alphabet_r_animation(&game->hud.alphabet.r);
+	ft_alphabet_t_animation(&game->hud.alphabet.t);
+	ft_alphabet_v_animation(&game->hud.alphabet.v);
+	ft_alphabet_x_animation(&game->hud.alphabet.x);
+	ft_alphabet_z_animation(&game->hud.alphabet.z);
+}
+
+void	ft_alphabet_animation(t_game *game)
+{
+	ft_odd_alphabet_animation(game);
+	ft_even_alphabet_animation(game);
 }
 
 void	ft_play_animation(t_game *game)
@@ -117,6 +429,7 @@ void	ft_play_animation(t_game *game)
 	else
 		ft_love_animation(&game->love.animation);
 	ft_digits_animation(game);
+	ft_alphabet_animation(game);
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:12:49 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 13:33:46 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 05:07:22 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,16 @@ int	main(int argc, char *argv[], char **envp)
 		game = ft_calloc(sizeof(t_game), sizeof(t_game));
 		if (game == NULL)
 			ft_print_error(MALLOC_GAME_ERROR, game);
+		srand((unsigned int)time(NULL));
 		ft_init_game(game, argv[1]);
 		ft_mlx_hook_loop(game);
 	}
 	return (EXIT_SUCCESS);
 }
 /*
+https://audiotrimmer.com/
+https://encycolorpedia.fr/619ad2
+https://rtouti.github.io/graphics/perlin-noise-algorithm
 https://www.vertopal.com/
 https://en.wikipedia.org/wiki/Quintic_function
 https://fr.wikipedia.org/wiki/Algorithme_A*
@@ -59,4 +63,6 @@ https://fr.wikipedia.org/wiki/Bruit_de_Perlin#:~:text
 ale%20primitive%2C%20c,am%C3%A9liorer%20le%20r%C3%A9alisme%20des%20infographies.
 https://fr.wikipedia.org/wiki/Distance_de_Manhattan
 https://fr.wikipedia.org/wiki/Interpolation_lin%C3%A9aire
+https://www.freefileconvert.com/file/ag-qaoaqG-RO
+Sélecteur de couleur de couleur
 */

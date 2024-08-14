@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:20 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 02:20:36 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 14:13:10 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,13 @@ enum	e_map_char
 	FLOWER_CHAR = '+',
 	ALGAE_CHAR = '*',
 	WATER_CHAR = '=',
-	VISITED_CHAR = 'V'
+	VISITED_CHAR = 'V',
+	CRAB_CHAR = '~',
+	FOLIAGE_CHAR = '"',
+	BOG_CHAR = '.',
+	SNAIL_CHAR = ',',
+	PILLAR_CHAR = '|',
+	HEDGE_CHAR = '/',
 };
 
 enum	e_bool

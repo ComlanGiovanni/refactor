@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:23 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 19:52:49 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 01:55:28 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ void	ft_free_step_and_storage(t_game *game);
 void	ft_clean_fail_malloc_split_map(t_game *game, char **grid, int row);
 void	ft_clean_grid_map(char **grid, int row);
 
+//=================================================================== [ file.c ]
+int ft_absolute_value(int value);
 //=================================================================== [ file.c ]
 
 void	ft_direction_keke_after_launch(t_game *game);

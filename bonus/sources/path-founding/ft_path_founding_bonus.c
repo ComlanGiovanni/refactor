@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 23:24:37 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 03:06:54 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 05:20:48 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	ft_check_map_finishable(t_game *game)
 	coin = 0;
 	exit_found = 0;
 	game->map.matrice = ft_split_map(game);
-	game->map.start = ft_find_pos_char(game->map.matrice, game->map.size, 'P');
-	game->map.end = ft_find_pos_char(game->map.matrice, game->map.size, 'E');
+	game->map.start = ft_find_pos_char(game->map.matrice, game->map.size, 'P');//ENUM
+	game->map.end = ft_find_pos_char(game->map.matrice, game->map.size, 'E');//ENUM
 	if ((game->map.start.x == -1 && game->map.start.y == -1)
 		|| (game->map.end.x == -1 && game->map.end.y == -1))
 		ft_free_and_print(game->map.matrice, game, NO_POSITION_FOUND);
@@ -34,7 +34,7 @@ void	ft_check_map_finishable(t_game *game)
 			game->map.info.nbr_key);
 		ft_free_and_print(game->map.matrice, game, COIN_MAP_ERROR);
 	}
-	ft_printf("Map is - > %s\n", game->map.map_name);//how to get the .ber and put in it the title
+	ft_printf("Map is -> %s\n\n", game->map.map_name);////put in macro headerhow to get the .ber and put in it the title //macro
 	ft_printf("%s", PATH_MAP_GOOD);
 	ft_printf("%s", COIN_MAP_GOOD);
 }

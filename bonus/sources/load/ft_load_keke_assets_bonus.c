@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:11:28 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/07 13:12:35 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:00:18 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_load_keke_up_sprites(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/keke/up/keke_up_frame_0.xpm",
-		"assets/xpm/Bonus/keke/up/keke_up_frame_1.xpm",
-		"assets/xpm/Bonus/keke/up/keke_up_frame_2.xpm"};
+		PATH_ASSET"keke/up/keke_up_frame_0.xpm",
+		PATH_ASSET"keke/up/keke_up_frame_1.xpm",
+		PATH_ASSET"keke/up/keke_up_frame_2.xpm"};
 	const char	*error_messages[] = {
 		"Generic message error replace soon",
 		"Generic message error replace soon",
@@ -26,19 +26,19 @@ void	ft_load_keke_up_sprites(t_game *game)
 	ft_load_animation_sprites((t_animation *)&(game->keke.up_anim), game,
 		paths, error_messages);
 	ft_load_sprite_frame(&(game->keke.up_anim.frame_move_0), game,
-		"assets/xpm/Bonus/keke/up/keke_up_frame_move_0.xpm",
+		PATH_ASSET"keke/up/keke_up_frame_move_0.xpm",
 		"Generic message error replace soon");
 	ft_load_sprite_frame(&(game->keke.up_anim.frame_move_1), game,
-		"assets/xpm/Bonus/keke/up/keke_up_frame_move_1.xpm",
+		PATH_ASSET"keke/up/keke_up_frame_move_1.xpm",
 		"Generic message error replace soon");
 }
 
 void	ft_load_keke_down_sprites(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/keke/down/keke_down_frame_0.xpm",
-		"assets/xpm/Bonus/keke/down/keke_down_frame_1.xpm",
-		"assets/xpm/Bonus/keke/down/keke_down_frame_2.xpm"};
+		PATH_ASSET"keke/down/keke_down_frame_0.xpm",
+		PATH_ASSET"keke/down/keke_down_frame_1.xpm",
+		PATH_ASSET"keke/down/keke_down_frame_2.xpm"};
 	const char	*error_messages[] = {
 		"keke_D_0_ERROR",
 		"keke_D_1_ERROR",
@@ -47,19 +47,19 @@ void	ft_load_keke_down_sprites(t_game *game)
 	ft_load_animation_sprites((t_animation *)&(game->keke.down_anim), game,
 		paths, error_messages);
 	ft_load_sprite_frame(&(game->keke.down_anim.frame_move_0), game,
-		"assets/xpm/Bonus/keke/down/keke_down_frame_move_0.xpm",
+		PATH_ASSET"keke/down/keke_down_frame_move_0.xpm",
 		"Generic message error replace soon");
 	ft_load_sprite_frame(&(game->keke.down_anim.frame_move_1), game,
-		"assets/xpm/Bonus/keke/down/keke_down_frame_move_1.xpm",
+		PATH_ASSET"keke/down/keke_down_frame_move_1.xpm",
 		"Generic message error replace soon");
 }
 
 void	ft_load_keke_left_sprites(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/keke/left/keke_left_frame_0.xpm",
-		"assets/xpm/Bonus/keke/left/keke_left_frame_1.xpm",
-		"assets/xpm/Bonus/keke/left/keke_left_frame_2.xpm"};
+		PATH_ASSET"keke/left/keke_left_frame_0.xpm",
+		PATH_ASSET"keke/left/keke_left_frame_1.xpm",
+		PATH_ASSET"keke/left/keke_left_frame_2.xpm"};
 	const char	*error_messages[] = {
 		"keke_L_0_ERROR",
 		"keke_L_1_ERROR",
@@ -68,19 +68,19 @@ void	ft_load_keke_left_sprites(t_game *game)
 	ft_load_animation_sprites((t_animation *)&(game->keke.left_anim), game,
 		paths, error_messages);
 	ft_load_sprite_frame(&(game->keke.left_anim.frame_move_0), game,
-		"assets/xpm/Bonus/keke/left/keke_left_frame_move_0.xpm",
+		PATH_ASSET"keke/left/keke_left_frame_move_0.xpm",
 		"Generic message error replace soon");
 	ft_load_sprite_frame(&(game->keke.left_anim.frame_move_1), game,
-		"assets/xpm/Bonus/keke/left/keke_left_frame_move_1.xpm",
+		PATH_ASSET"keke/left/keke_left_frame_move_1.xpm",
 		"Generic message error replace soon");
 }
 
 void	ft_load_keke_right_sprites(t_game *game)
 {
 	const char	*paths[] = {
-		"assets/xpm/Bonus/keke/right/keke_right_frame_0.xpm",
-		"assets/xpm/Bonus/keke/right/keke_right_frame_1.xpm",
-		"assets/xpm/Bonus/keke/right/keke_right_frame_2.xpm",};
+		PATH_ASSET"keke/right/keke_right_frame_0.xpm",
+		PATH_ASSET"keke/right/keke_right_frame_1.xpm",
+		PATH_ASSET"keke/right/keke_right_frame_2.xpm",};
 	const char	*error_messages[] = {
 		"keke_R_0_ERROR",
 		"keke_R_1_ERROR",
@@ -90,10 +90,10 @@ void	ft_load_keke_right_sprites(t_game *game)
 	ft_load_animation_sprites((t_animation *)&(game->keke.right_anim), game,
 		paths, error_messages);
 	ft_load_sprite_frame(&(game->keke.right_anim.frame_move_0), game,
-		"assets/xpm/Bonus/keke/right/keke_right_frame_move_0.xpm",
+		PATH_ASSET"keke/right/keke_right_frame_move_0.xpm",
 		"Generic message error replace soon");
 	ft_load_sprite_frame(&(game->keke.right_anim.frame_move_1), game,
-		"assets/xpm/Bonus/keke/right/keke_right_frame_move_1.xpm",
+		PATH_ASSET"keke/right/keke_right_frame_move_1.xpm",
 		"Generic message error replace soon");
 }
 
