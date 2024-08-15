@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:25:57 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 14:15:24 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/15 02:17:00 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 # define FT_SO_LONG_MACROS_BONUS_H
 
 # define BER_EXTENSION		".ber"
+# define FANTASTIC		 	4
 # define IMG_SIZE 			64
 # define ICON_SIZE 			10
 # define BORDERS_WIDTH 		10//put 20 to test
 # define PERMUTATION_SIZE 	256
+# define DISPLAY			"DISPLAY"
 # define PATH_ASSET			"assets/xpm/bonus/"
 # define ERROR_MSG			"Error\n"
 # define KEY_FOUND			"Key found ->"
@@ -28,6 +30,7 @@
 # define NO_DISP_ERROR		"DISPLAY not found in env\n"
 # define MALLOC_GAME_ERROR	"Malloc t_game fail to\n"
 # define BAD_CHAR_MAP_ERROR	"Should contain char : '1' 'P' 'C' 'E' '0' 'L' 'N' 'Z' 'B' 'K' 'S' 'W'\n"
+# define BAD_CHAR_MAP_BONUS	"There must be either exactly one N portal and one Z portal, or no portals at all"
 # define WALL_ERROR	        ".ber should be surrounded by walls\n"
 # define FORM_ERROR	        ".ber should be in rectangular form !\n"
 # define COIN_ERROR			".ber should have at least one collectible -> C\n"
@@ -77,8 +80,6 @@
 # define LOVE_1_XPM_ERROR	"love_frame_1.xpm fail to load\n"
 # define LOVE_2_XPM_ERROR	"love_frame_2.xpm fail to load\n"
 # define LOVE_ICON_ERROR	"love_small_icon.xpm fail to load\n"
-# define WIN_MSG			"\nThanks for playing, you WIN with steps : "
-# define LOSE_MSG			"\nYou LOSE with steps : "
 # define EMPTY_LINE 		"Remove that empty line at the top or middle or bottom\n"
 # define MAP_TOO_BIG		"Reduce map size, map too big for the screen\n"
 # define SPLIT_MAP_ERROR	"Malloc grid for path finding fail\n"
@@ -89,5 +90,8 @@
 # define COIN_MAP_GOOD		"All coin are collectible in map\n"
 # define NO_POSITION_FOUND	"P or E position not found in map\n"
 # define NEW_GRID_MSG		"\nNew grid with border for camera\n\n"
+# define A_STAR_LIST_FAIL	"Memory allocation failed for A* lists"
+# define NODE_INIT_FAIL		"Init start node for path finding failed"
+# define NEIGHBOR_INIT_FAIL	"init neighbor node fail malloc"
 
 #endif // !FT_SO_LONG_MACROS_BONUS_H

@@ -6,11 +6,32 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 16:30:10 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/09 16:37:27 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 22:55:40 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
+
+void	ft_check_map(t_game *game)
+{
+	ft_map_fit_screen(game);
+	ft_check_valid_char(game);
+	ft_check_rectangular(game);
+	ft_check_sealed(game);
+	ft_init_game_info(game);
+	ft_get_info_map(game);
+	ft_check_playability(game);
+	ft_check_map_finishable(game);
+}
+
+void	ft_map_fit_screen(t_game *game)
+{
+	game->screen.x = 0;
+	game->screen.y = 0;
+	mlx_get_screen_size(game->mlx, &game->screen.x, &game->screen.y);
+	if (game->width * 64 > game->screen.x || game->height * 64 > game->screen.y)
+		ft_print_error(MAP_TOO_BIG, game);
+}
 
 /**
  * @brief
@@ -50,7 +71,6 @@ int	ft_check_extension(char *map_name, char *extension)
 	return (EXIT_FAILURE);
 }
 
-//make a ft_printf maybe ?
 void	ft_check_env(char **envp)
 {
 	int	idx;
@@ -64,7 +84,7 @@ void	ft_check_env(char **envp)
 	idx = FALSE;
 	while (envp[idx])
 	{
-		if (ft_strncmp("DISPLAY", envp[idx], ft_strlen("DISPLAY")) == FALSE)//put in define
+		if (ft_strncmp(DISPLAY, envp[idx], ft_strlen(DISPLAY)) == FALSE)
 			return ;
 		else
 			idx++;
@@ -73,18 +93,3 @@ void	ft_check_env(char **envp)
 	write(STDERR_FILENO, NO_DISP_ERROR, ft_strlen(NO_DISP_ERROR));
 	exit(EXIT_FAILURE);
 }
-
-void	ft_check_map(t_game *game)
-{
-	ft_map_fit_screen(game);
-	ft_check_valid_char(game);
-	ft_check_rectangular(game);
-	ft_check_sealed(game);
-	ft_init_game_info(game);
-	ft_get_info_map(game);
-	ft_check_playability(game);
-	ft_check_map_finishable(game);
-}
-
-
-

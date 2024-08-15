@@ -1,6 +1,15 @@
 
 
-
+// void	ft_generic_animation(t_animation *animation, int *frame)
+// {
+// 	if (*frame == animation->frames)
+// 		animation->current = animation->frame_1;
+// 	else if (*frame >= animation->frames * 2)
+// 	{
+// 		animation->current = animation->frame_2;
+// 		*frame = 0;
+// 	}
+// }
 
 // void handle_returning_pawn(t_pawn_movement *pawn, t_game *game) {
 
@@ -366,3 +375,24 @@
 //     }
 // }
 
+// void	ft_free_animation(t_game *game)
+// {
+// 	//ft_free_ground(game);// add this to node and remove this fct
+// 	ft_free_sprites_list(&game->node, game->mlx);
+// }
+
+/* add this with the fct and check it there is no use of this */
+
+// void	ft_free_sprite_frame(void **frame, void *mlx)
+// {
+// 	if (*frame)
+// 	{
+// 		mlx_destroy_image(mlx, *frame);
+// 		*frame = NULL;
+// 	}
+// }
+
+// void	ft_free_ground(t_game *game)
+// {
+// 	ft_free_sprite_frame((void **)&game->map.ground, game->mlx);
+// }

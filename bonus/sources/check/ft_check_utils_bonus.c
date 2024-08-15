@@ -6,33 +6,21 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:10:59 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 01:54:37 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/14 22:59:25 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
 
-void	ft_map_fit_screen(t_game *game)
+static int	ft_is_valid_char_check_map(char tile)
 {
-	game->screen.x = 0;
-	game->screen.y = 0;
-	mlx_get_screen_size(game->mlx, &game->screen.x, &game->screen.y);
-	if (game->width * 64 > game->screen.x || game->height * 64 > game->screen.y)
-		ft_print_error(MAP_TOO_BIG, game);
-}
-
-// , TREE_CHAR, TREES_CHAR,
-// 			REED_CHAR, HUSKS_CHAR, FUNGUS_CHAR,
-// 			FUNGI_CHAR, FLOWER_CHAR, ALGAE_CHAR, WATER_CHAR
-int	ft_is_valid_char(char tile)
-{
-	size_t	index;
-	size_t	valid_chars_count;
-
-	static const char valid_map_chars[] = {
+	size_t				index;
+	size_t				valid_chars_count;
+	static const char	valid_map_chars[] = {
 		LAVA_CHAR, EXIT_CHAR, LOVE_CHAR, KEY_CHAR, PLAYER_CHAR, WALL_CHAR,
-			VOID_CHAR, GRASS_CHAR, VISITED_CHAR, BOX_CHAR, PORTAL_1_CHAR,
-			PORTAL_2_CHAR, KEKE_CHAR, PAWN_CHAR};
+		VOID_CHAR, GRASS_CHAR, VISITED_CHAR, BOX_CHAR, PORTAL_1_CHAR,
+		PORTAL_2_CHAR, KEKE_CHAR, PAWN_CHAR};
+
 	index = 0;
 	valid_chars_count = sizeof(valid_map_chars) / sizeof(valid_map_chars[0]);
 	while (index < valid_chars_count)
@@ -60,7 +48,7 @@ void	ft_check_valid_char(t_game *game)
 	idx = FALSE;
 	while (game->map.map_str[idx] != '\0')
 	{
-		if (!ft_is_valid_char(game->map.map_str[idx]))
+		if (!ft_is_valid_char_check_map(game->map.map_str[idx]))
 			ft_print_error(BAD_CHAR_MAP_ERROR, game);
 		idx++;
 	}
@@ -109,11 +97,12 @@ void	ft_check_playability(t_game *game)
 		ft_print_error(EXIT_ERROR, game);
 	if (game->map.info.nbr_keke > TRUE)
 		ft_print_error(KEKE_ERROR, game);
-	if ((game->map.info.nbr_portal_1 > 1 || game->map.info.nbr_portal_2 > 1) ||
-		(game->map.info.nbr_portal_1 == 1 && game->map.info.nbr_portal_2 == 0)
-			||
-		(game->map.info.nbr_portal_1 == 0 && game->map.info.nbr_portal_2 == 1))
-		ft_print_error("There must be either exactly one N portal and one Z portal, or no portals at all", game);//put in define
+	if ((game->map.info.nbr_portal_1 > 1 || game->map.info.nbr_portal_2 > 1)
+		|| (game->map.info.nbr_portal_1 == 1
+			&& game->map.info.nbr_portal_2 == 0)
+		|| (game->map.info.nbr_portal_1 == 0
+			&& game->map.info.nbr_portal_2 == 1))
+		ft_print_error(BAD_CHAR_MAP_BONUS, game);
 }
 
 /**
@@ -159,8 +148,8 @@ void	ft_check_sealed(t_game *game)
 			if (game->map.map_str[idx] != WALL_CHAR)
 				ft_print_error(WALL_ERROR, game);
 		}
-		else if (idx % game->width == FALSE || idx % game->width == game->width
-				- TRUE)
+		else if (idx % game->width == FALSE
+			|| idx % game->width == game->width - TRUE)
 		{
 			if (game->map.map_str[idx] != WALL_CHAR)
 				ft_print_error(WALL_ERROR, game);

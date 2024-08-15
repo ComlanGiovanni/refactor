@@ -1,19 +1,26 @@
-==638048== Memcheck, a memory error detector
-==638048== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==638048== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==638048== Command: ./so_long_bonus maps/Level\ Design\ Bonus/level_1.ber
-==638048== 
+==444340== Memcheck, a memory error detector
+==444340== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==444340== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==444340== Command: ./so_long_bonus maps/Level\ Design\ Bonus/level_1.ber
+==444340== 
 111111111
 1BLLSLLB1
 1W0111ZW1
-1S1VCE1S1
+1S1VCWES1
 1WN1110W1
 1BLLKLLB1
 111111111
 [H[2J[3J111111111
 1BLLSLLB1
 1W0111ZW1
-1S1VVE1S1
+1S1VVWES1
+1WN1110W1
+1BLLKLLB1
+111111111
+[H[2J[3J111111111
+1BLLSLLB1
+1W0111ZW1
+1S1VVVES1
 1WN1110W1
 1BLLKLLB1
 111111111
@@ -25,65 +32,66 @@ All coin are collectible in map
 Grid Width && Height -> 	[9 7]
 
 Player Start  position in grid x->3 y->3
-Player Exit  position in grid x->5 y->3
+Player Exit  position in grid x->6 y->3
 
 111111111
 1BLLSLLB1
 1W0111ZW1
-1S1PCE1S1
+1S1PCWES1
 1WN1110W1
 1BLLKLLB1
 111111111
 
 New grid with border for camera
 
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-""""""""""111111111""""""""""
-""""""""""1BLLSLLB1""""""""""
-""""""""""1W0111ZW1""""""""""
-""""""""""1S1PCE1S1""""""""""
-""""""""""1WN1110W1""""""""""
-""""""""""1BLLKLLB1""""""""""
-""""""""""111111111""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
+++++++++++111111111++++++++++
+++++++++++1BLLSLLB1++++++++++
+++++++++++1W0111ZW1++++++++++
+++++++++++1S1PCWES1++++++++++
+++++++++++1WN1110W1++++++++++
+++++++++++1BLLKLLB1++++++++++
+++++++++++111111111++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
 
 Grid Width && Height -> 	[29 27]
 
 Player Start   position in grid x->13 y->13
-Player Exit    position in grid x->15 y->13
+Player Exit    position in grid x->16 y->13
 
 Portal 1 : {Z} position in grid x->16 y->12
 Portal 2 : {N} position in grid x->12 y->14
 
 Pawn 0 Initial Position (11, 12) Target [12, 12] in right Direction with 1 Steps.
 Pawn 1 Initial Position (17, 12) Target [17, 12] in down Direction with 0 Steps.
-Pawn 2 Initial Position (11, 14) Target [11, 14] in down Direction with 0 Steps.
-Pawn 3 Initial Position (17, 14) Target [16, 14] in left Direction with 1 Steps.
+Pawn 2 Initial Position (15, 13) Target [16, 14] in down-right Direction with 1 Steps.
+Pawn 3 Initial Position (11, 14) Target [11, 14] in down Direction with 0 Steps.
+Pawn 4 Initial Position (17, 14) Target [16, 14] in left Direction with 1 Steps.
 
 [All item in map Number]
 
 Player : [P] -> {1}
-Wall   : [1] -> {37}
-Pawn   : [W] -> {4}
-Void   : [0] -> {25}
+Wall   : [1] -> {36}
+Pawn   : [W] -> {5}
+Void   : [0] -> {26}
 Life   : [S] -> {3}
 Lava   : [L] -> {8}
 Keke   : [K] -> {1}
@@ -137,30 +145,50 @@ assets/xpm/bonus/love/love_frame_0.xpm : [[0;32m0x59b41b0[0m]
 assets/xpm/bonus/love/love_frame_1.xpm : [[0;32m0x59b41b0[0m]
 assets/xpm/bonus/love/love_frame_2.xpm : [[0;32m0x59b41b0[0m]
 assets/xpm/bonus/love/love_small_icon.xpm
- Game exited 
-==638048== 
-==638048== FILE DESCRIPTORS: 8 open (3 std) at exit.
-==638048== Open file descriptor 103: /usr/share/code/v8_context_snapshot.bin
-==638048==    <inherited from parent>
-==638048== 
-==638048== Open file descriptor 42: /dev/ptmx
-==638048==    <inherited from parent>
-==638048== 
-==638048== Open file descriptor 40: /dev/ptmx
-==638048==    <inherited from parent>
-==638048== 
-==638048== Open file descriptor 39: /home/ysera/.config/Code/logs/20240814T122723/ptyhost.log
-==638048==    <inherited from parent>
-==638048== 
-==638048== Open file descriptor 38: /usr/share/code/resources/app/node_modules.asar
-==638048==    <inherited from parent>
-==638048== 
-==638048== 
-==638048== HEAP SUMMARY:
-==638048==     in use at exit: 0 bytes in 0 blocks
-==638048==   total heap usage: 81,937 allocs, 81,937 frees, 16,434,988 bytes allocated
-==638048== 
-==638048== All heap blocks were freed -- no leaks are possible
-==638048== 
-==638048== For lists of detected and suppressed errors, rerun with: -s
-==638048== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
+
+[0;31m        \           EXIT            /
+[0;31m         \                         /
+[0;31m          \    Road to cube 3D   /
+[0;31m           ]    So_long was fun   [    ,'|
+[0;31m           ]                     [   /  |
+[0;31m           ]___               ___[ ,'   |
+[0;31m           ]  ]\             /[  [ |:   |
+[0;31m           ]  ] \           / [  [ |:   |
+[0;31m           ]  ]  ]         [  [  [ |:   |
+[0;31m           ]  ]  ]__     __[  [  [ |:   |
+[0;31m           ]  ]  ] ]\ _ /[ [  [  [ |:   |
+[0;31m           ]  ]  ] ] (#) [ [  [  [ :===='
+[0;31m           ]  ]  ]_].nHn.[_[  [  [
+[0;31m           ]  ]  ]  HHHHH. [  [  [
+[0;31m           ]  ] /   `HH("N  \ [  [
+[0;31m           ]__]/     HHH  "  \[__[
+[0;31m           ]         NNN         [
+[0;31m           ]         N/"         [
+[0;31m           ]         N H         [
+[0;31m          /          N            \
+[0;31m         /           q,            \
+[0;31m        /                           \
+[0m
+==444340== 
+==444340== FILE DESCRIPTORS: 7 open (3 std) at exit.
+==444340== Open file descriptor 103: /usr/share/code/v8_context_snapshot.bin
+==444340==    <inherited from parent>
+==444340== 
+==444340== Open file descriptor 40: /dev/ptmx
+==444340==    <inherited from parent>
+==444340== 
+==444340== Open file descriptor 39: /home/ysera/.config/Code/logs/20240814T212137/ptyhost.log
+==444340==    <inherited from parent>
+==444340== 
+==444340== Open file descriptor 38: /usr/share/code/resources/app/node_modules.asar
+==444340==    <inherited from parent>
+==444340== 
+==444340== 
+==444340== HEAP SUMMARY:
+==444340==     in use at exit: 0 bytes in 0 blocks
+==444340==   total heap usage: 89,141 allocs, 89,141 frees, 16,729,243 bytes allocated
+==444340== 
+==444340== All heap blocks were freed -- no leaks are possible
+==444340== 
+==444340== For lists of detected and suppressed errors, rerun with: -s
+==444340== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

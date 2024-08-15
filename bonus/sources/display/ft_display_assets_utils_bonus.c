@@ -5,114 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 03:46:45 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/12 17:58:55 by gicomlan         ###   ########.fr       */
+/*   Created: 2024/08/14 23:14:26 by gicomlan          #+#    #+#             */
+/*   Updated: 2024/08/15 00:09:12 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
 
-/**
- * @brief
- *
- *
- * 		we split for 25 line norm so see ft_put_all_sprites_to_line comment
- *
- *
- * @param game
- * @param width
- * @param height
- */
-void	ft_key_sprite(t_game *game, t_point pos)
+t_bool	ft_is_key_love_box_sprites(char tile)
 {
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->key.animation.current,
-		pos.x, pos.y);
+	return ((tile == KEY_CHAR) || (tile == LOVE_CHAR) || (tile == BOX_CHAR));
 }
 
-void	ft_lava_sprite(t_game *game, t_point pos)
+t_bool	ft_is_exit_portals_sprites(char tile)
 {
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->lava.animation.current,
-		pos.x, pos.y);
+	return ((tile == EXIT_CHAR) || (tile == PORTAL_1_CHAR) \
+		|| tile == (PORTAL_2_CHAR));
 }
 
-void	ft_love_sprite(t_game *game, t_point pos)
+t_bool	ft_is_enemies_sprites(char tile)
 {
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->love.animation.current,
-		pos.x, pos.y);
+	return ((tile == LAVA_CHAR) || (tile == PAWN_CHAR));
 }
 
-void	ft_exit_sprite(t_game *game, t_point pos)
+t_bool	ft_is_borders_sprites(char tile)
 {
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->door.closed.current,
-		pos.x, pos.y);
+	return ((tile == GRASS_CHAR) || (tile == TREE_CHAR) \
+		|| (tile == TREES_CHAR) || (tile == REED_CHAR) \
+		|| (tile == HUSKS_CHAR) || (tile == FUNGUS_CHAR) \
+		|| (tile == FUNGI_CHAR) || (tile == FLOWER_CHAR) \
+		|| (tile == ALGAE_CHAR) || (tile == WATER_CHAR));
 }
 
-void	ft_ground_sprite(t_game *game, t_point pos)
+t_bool	ft_is_other_borders_sprites(char tile)
 {
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->map.ground, pos.x,
-		pos.y);
-}
-void	ft_wall_sprite(t_game *game, t_point pos)
-{
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->wall.animation.current, pos.x, pos.y);
-}
-void	ft_pawn_sprite(t_game *game, t_point pos)
-{
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->pawn.animation.current, pos.x, pos.y);
-}
-
-void	ft_grass_sprite(t_game *game, t_point pos)
-{
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->grass.animation.current, pos.x, pos.y);
-}
-
-void	ft_box_sprite(t_game *game, t_point pos)
-{
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->box.animation.current, pos.x, pos.y);
-}
-
-void	ft_portal_z_sprite(t_game *game, t_point pos)
-{
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->portal.z.current, pos.x, pos.y);
-}
-
-void	ft_portal_n_sprite(t_game *game, t_point pos)
-{
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->portal.n.current, pos.x, pos.y);
-}
-
-
-void	ft_player_down_sprite(t_game *game, int draw_x, int draw_y)
-{
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->player.down_anim.current, draw_x, draw_y);
-}
-
-void	ft_player_up_sprite(t_game *game, int draw_x, int draw_y)
-{
-	mlx_put_image_to_window(game->mlx, game->win, game->player.up_anim.current,
-		draw_x, draw_y);
-}
-
-void	ft_player_left_sprite(t_game *game, int draw_x, int draw_y)
-{
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->player.left_anim.current, draw_x, draw_y);
-}
-
-void	ft_player_right_sprite(t_game *game, int draw_x, int draw_y)
-{
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->player.right_anim.current, draw_x, draw_y);
+	return ((tile == CRAB_CHAR) || (tile == FOLIAGE_CHAR) \
+		|| (tile == BOG_CHAR) || (tile == SNAIL_CHAR) \
+		|| (tile == PILLAR_CHAR) || (tile == HEDGE_CHAR));
 }

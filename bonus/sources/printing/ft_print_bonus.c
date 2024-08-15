@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 01:14:51 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/02 13:15:58 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/15 01:20:35 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_free_and_print(char **map, t_game *game, char *str)
 
 void	ft_print_error_empty_and_free(char *error_msg, t_game *game)
 {
-	ft_free_animation(game);
+	ft_free_sprites_list(&game->node, game->mlx);
 	ft_free_mlx(game);
 	ft_printf("%s%s", ERROR_MSG, error_msg);
 	exit(EXIT_FAILURE);

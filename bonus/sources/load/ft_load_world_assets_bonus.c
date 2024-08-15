@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 02:12:28 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/13 13:00:18 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/15 01:12:49 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 
 void	ft_load_ground_sprites(t_game *game)
 {
-	int	width;
-	int	height;
-
-	game->map.ground = mlx_xpm_file_to_image(game->mlx,
-			PATH_ASSET"ground/ground.xpm", &width, &height);
-	if (game->map.ground == NULL)
-		ft_print_error(GROUND_XPM_ERROR, game);
+	ft_load_sprite_frame(&(game->map.ground), game, PATH_ASSET"ground/ground.xpm",
+		"error_messages[0]");
 }
 
 void	ft_load_grass_sprites(t_game *game)
