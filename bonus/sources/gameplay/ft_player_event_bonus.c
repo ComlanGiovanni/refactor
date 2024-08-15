@@ -6,35 +6,38 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:23:29 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 14:10:14 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/15 16:25:13 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
 
-// if ((game->fps.current_time.tv_sec - game->fps.last_time.tv_sec) > 1.0)
 void	ft_play_movement_sound(t_game *game)
 {
 	game->player.step++;
-	system("aplay sounds/special-effects/baba_move.wav > /dev/null 2>&1 &");
+	system("aplay sounds/special-effects/baba_move.wav \
+		> /dev/null 2>&1 &");
 }
 
 void	ft_player_take_coin(t_game *game)
 {
 	game->player.storage++;
-	system("aplay sounds/special-effects/baba_take_key.wav > /dev/null 2>&1 &");
+	system("aplay sounds/special-effects/baba_take_key.wav \
+		> /dev/null 2>&1 &");
 }
 
 void	ft_player_take_life(t_game *game)
 {
 	game->player.life++;
-	system("aplay sounds/special-effects/baba_take_life.wav > /dev/null 2>&1 &");
+	system("aplay sounds/special-effects/baba_take_life.wav \
+		> /dev/null 2>&1 &");
 }
 
 void	ft_player_get_hit(t_game *game)
 {
 	game->player.life--;
-	system("aplay sounds/special-effects/baba_take_damage.wav > /dev/null 2>&1 &");
+	system("aplay sounds/special-effects/baba_take_damage.wav \
+		> /dev/null 2>&1 &");
 	ft_camera_shake(game);
 	//game->player.up_anim.current = game->player.up_anim.current
 	//load read print or display on hud message or blood

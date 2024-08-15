@@ -11,34 +11,34 @@
 // 	}
 // }
 
-// void handle_returning_pawn(t_pawn_movement *pawn, t_game *game) {
+// void ft_handle_pawn_returning_pawn(t_pawn_movement *pawn, t_game *game) {
 
-// int is_obstacle(char **grid, t_point pos, char player_char) {
+// int ft_is_pawn_obstacle(char **grid, t_point pos, char player_char) {
 //     obstacle is exeything exept CHAR_PLAYER 'P'
 // }
 
-// void move_pawn(t_pawn_movement *pawn, t_game *game) {
+// void ft_move_pawn(t_pawn_movement *pawn, t_game *game) {
 
-//     if (is_obstacle(game->map.grid, next_pos, PLAYER_CHAR)) {
+//     if (ft_is_pawn_obstacle(game->map.grid, next_pos, PLAYER_CHAR)) {
 //         pawn->is_returning = 1; // If obstacle is encountered, return to initial position
 //     } else {
-//         update_grid(game, pawn->current_position, next_pos, PAWN_CHAR, VOID_CHAR);
+//         ft_update_pawn_grid(game, pawn->current_position, next_pos, PAWN_CHAR, VOID_CHAR);
 
 //             pawn->is_returning = 1; // Start returning after reaching the target
 //     }
 // }
 
 // // Main function to move pawn to target
-// void move_pawn_to_target(t_pawn_movement *pawn, t_game *game) {
+// void ft_move_pawn_to_target(t_pawn_movement *pawn, t_game *game) {
 //     if (pawn->is_returning) {
-//         handle_returning_pawn(pawn, game);
+//         ft_handle_pawn_returning_pawn(pawn, game);
 //     } else {
-//         move_pawn(pawn, game);
+//         ft_move_pawn(pawn, game);
 //     }
 // }
 
 // // Function to update the grid after a pawn's move
-// void update_grid(t_game *game, t_point old_pos, t_point new_pos, char pawn_char, char void_char)
+// void ft_update_pawn_grid(t_game *game, t_point old_pos, t_point new_pos, char pawn_char, char void_char)
 // {
 //         game->map.grid[old_pos.y][old_pos.x] = void_char;
 //         game->map.grid[new_pos.y][new_pos.x] = pawn_char;
@@ -112,7 +112,7 @@
 
 
 // Function to get the next position based on the direction
-// t_point get_next_position(t_point current, char direction) {
+// t_point ft_get_pawn_next_position(t_point current, char direction) {
 //     if (direction == 'D') {
 //         current.y += 1;
 //     } else if (direction == 'L') {
@@ -131,7 +131,7 @@
 // }
 
 // // Function to check if a position contains an obstacle
-// int is_obstacle(char **grid, t_point pos, char player_char) {
+// int ft_is_pawn_obstacle(char **grid, t_point pos, char player_char) {
 //     return grid[pos.y][pos.x] != player_char && grid[pos.y][pos.x] != VOID_CHAR;
 // }
 
@@ -139,11 +139,11 @@
 // size_t calculate_farthest_position(char **grid, t_point current_pos, char direction, t_point *farthest_pos)
 // {
 //     size_t step = 0;
-//     t_point next_pos = get_next_position(current_pos, direction);
+//     t_point next_pos = ft_get_pawn_next_position(current_pos, direction);
 
 //     while (ft_is_position_free_for_pawn(grid, next_pos)) {
 //         current_pos = next_pos;
-//         next_pos = get_next_position(current_pos, direction);
+//         next_pos = ft_get_pawn_next_position(current_pos, direction);
 //         step++;
 //     }
 
@@ -152,7 +152,7 @@
 // }
 
 // // Function to handle returning pawns
-// void handle_returning_pawn(t_pawn_movement *pawn, t_game *game) {
+// void ft_handle_pawn_returning_pawn(t_pawn_movement *pawn, t_game *game) {
 //     t_point next_pos;
 
 //     if (pawn->current_position.x < pawn->initial_position.x) {
@@ -165,9 +165,9 @@
 //         pawn->direction = 'U';
 //     }
 
-//     next_pos = get_next_position(pawn->current_position, pawn->direction);
-//     if (!is_obstacle(game->map.grid, next_pos, PLAYER_CHAR)) {
-//         update_grid(game, pawn->current_position, next_pos, PAWN_CHAR, VOID_CHAR);
+//     next_pos = ft_get_pawn_next_position(pawn->current_position, pawn->direction);
+//     if (!ft_is_pawn_obstacle(game->map.grid, next_pos, PLAYER_CHAR)) {
+//         ft_update_pawn_grid(game, pawn->current_position, next_pos, PAWN_CHAR, VOID_CHAR);
 //         pawn->current_position = next_pos;
 //     }
 
@@ -181,13 +181,13 @@
 
 
 // // Function to move the pawn in the chosen direction
-// void move_pawn(t_pawn_movement *pawn, t_game *game) {
-//     t_point next_pos = get_next_position(pawn->current_position, pawn->direction);
+// void ft_move_pawn(t_pawn_movement *pawn, t_game *game) {
+//     t_point next_pos = ft_get_pawn_next_position(pawn->current_position, pawn->direction);
 
-//     if (is_obstacle(game->map.grid, next_pos, PLAYER_CHAR)) {
+//     if (ft_is_pawn_obstacle(game->map.grid, next_pos, PLAYER_CHAR)) {
 //         pawn->is_returning = 1; // If obstacle is encountered, return to initial position
 //     } else {
-//         update_grid(game, pawn->current_position, next_pos, PAWN_CHAR, VOID_CHAR);
+//         ft_update_pawn_grid(game, pawn->current_position, next_pos, PAWN_CHAR, VOID_CHAR);
 //         pawn->current_position = next_pos;
 
 //         if (pawn->current_position.x == pawn->target_position.x &&
@@ -198,17 +198,17 @@
 // }
 
 // // Main function to move pawn to target
-// void move_pawn_to_target(t_pawn_movement *pawn, t_game *game) {
+// void ft_move_pawn_to_target(t_pawn_movement *pawn, t_game *game) {
 //     if (pawn->is_returning) {
-//         handle_returning_pawn(pawn, game);
+//         ft_handle_pawn_returning_pawn(pawn, game);
 //     } else {
 //         find_farthest_position_for_pawn(pawn, game);
-//         move_pawn(pawn, game);
+//         ft_move_pawn(pawn, game);
 //     }
 // }
 
 // // Function to update the grid after a pawn's move
-// void update_grid(t_game *game, t_point old_pos, t_point new_pos, char pawn_char, char void_char) {
+// void ft_update_pawn_grid(t_game *game, t_point old_pos, t_point new_pos, char pawn_char, char void_char) {
 //     // Ensure position is within grid bounds
 //     if (old_pos.x >= 0 && old_pos.y >= 0 && old_pos.x < game->width && old_pos.y < game->height) {
 //         game->map.grid[old_pos.y][old_pos.x] = void_char;
@@ -261,7 +261,7 @@
 // 		i++;
 // 	}
 // 	find_farthest_position_for_pawn(pawns->pawn_array, game);
-// 	//move_pawn_to_target(&pawns->pawn_array[i], game);
+// 	//ft_move_pawn_to_target(&pawns->pawn_array[i], game);
 //     // Free memory after movement processing
 //     free_pawns(pawns);
 // }
@@ -272,7 +272,7 @@
 // //        i, pawn->current_position.x, pawn->current_position.y,
 // //        pawn->target_position.x, pawn->target_position.y,
 // //        pawn->direction, pawn->is_returning);
-// // void update_grid(t_game *game, t_point old_pos, t_point new_pos, char pawn_char, char void_char) {
+// // void ft_update_pawn_grid(t_game *game, t_point old_pos, t_point new_pos, char pawn_char, char void_char) {
 // //     // Remove pawn from old position
 // //     if (old_pos.x >= 0 && old_pos.y >= 0 && old_pos.x < game->map.size.x && old_pos.y < game->map.size.y) {
 // //         game->map.grid[old_pos.y][old_pos.x] = void_char;
@@ -284,7 +284,7 @@
 // //     }
 // // }
 
-// t_point get_next_position(t_point current, char direction)
+// t_point ft_get_pawn_next_position(t_point current, char direction)
 // {
 //     if (direction == 'd') {
 //         current.y += 1;
@@ -312,7 +312,7 @@
 //     while (1)
 //     {
 //         // Get the next position in the given direction
-//         t_point next_position = get_next_position(current_position, direction);
+//         t_point next_position = ft_get_pawn_next_position(current_position, direction);
 
 //         // Check if the next position is out of bounds
 //         if (next_position.x < 0 || next_position.x >= game->map.size.x ||
@@ -396,3 +396,244 @@
 // {
 // 	ft_free_sprite_frame((void **)&game->map.ground, game->mlx);
 // }
+// t_point ft_get_pawn_next_position(t_point current, const char *direction)
+// {
+// 	if (ft_strcmp((char *)direction, "down") == 0)
+// 		current.y += 1;
+// 	else if (ft_strcmp((char *)direction, "left") == 0)
+// 		current.x -= 1;
+// 	else if (ft_strcmp((char *)direction, "up") == 0)
+// 		current.y -= 1;
+// 	else if (ft_strcmp((char *)direction, "right") == 0)
+// 		current.x += 1;
+// 	else if (ft_strcmp((char *)direction, "down-right") == 0)
+// 	{
+// 		current.x += 1;
+// 		current.y += 1;
+// 	} else if (ft_strcmp((char *)direction, "down-left") == 0)
+// 	{
+// 		current.x -= 1;
+// 		current.y += 1;
+// 	} else if (ft_strcmp((char *)direction, "up-right") == 0)
+// 	{
+// 		current.x += 1;
+// 		current.y -= 1;
+// 	} else if (ft_strcmp((char *)direction, "up-left") == 0)
+// 	{
+// 		current.x -= 1;
+// 		current.y -= 1;
+// 	}
+// 	return (current);
+// }
+// t_point ft_calculate_farthest_position(t_point start_position, const char *direction, t_game *game)
+// {
+// 	t_point current_position;
+// 	t_point next_position;
+
+// 	current_position = start_position;
+// 	while ("The prophecy is true !") //TRUE
+// 	{
+// 		next_position = ft_get_pawn_next_position(current_position, direction);
+// 		//put in same if
+// 		if (next_position.x < 0 || next_position.x >= game->map.size.x || next_position.y < 0 || next_position.y >= game->map.size.y)
+// 			break;
+// 		if (!ft_is_position_free_for_pawn(game->map.grid, next_position))
+// 			break;
+// 		current_position = next_position;
+// 	}
+
+// 	return (current_position);
+// }
+// void ft_find_farthest_position_for_pawn(t_game *game)
+// {
+// 	t_point temp_farthest_position;
+// 	t_point best_position;
+// 	int index;
+// 	size_t max_steps;
+// 	const char *best_dir;
+// 	int dir_index;
+// 	size_t steps;
+
+// 	index = 0;
+// 	max_steps = 0;
+// 	dir_index = 0;
+// 	const char *dir_names[8] = {
+// 		"down", "down-left", "left", "up-left",
+// 		"up", "up-right", "right", "down-right"
+// 	};
+// 	while (index < game->map.info.nbr_pawn)
+// 	{
+// 		//ft_printf("Pawn %d at initial position [%d, %d]:\n", index, game->pawn.pawns_array[index].current_position.x, game->pawn.pawns_array[index].current_position.y);
+// 		dir_index = 0;
+// 		max_steps = 0;
+// 		while (dir_index < 8)
+// 		{
+// 			temp_farthest_position = ft_calculate_farthest_position(game->pawn.pawns_array[index].current_position, dir_names[dir_index], game);
+// 			if ((ft_strcmp((char *)dir_names[dir_index], "up") == 0) || (ft_strcmp((char *)dir_names[dir_index], "down") == 0) || (ft_strcmp((char *)dir_names[dir_index], "up-left") == 0) || (ft_strcmp((char *)dir_names[dir_index], "up-right") == 0))
+// 				steps = ft_absolute_value(temp_farthest_position.y - game->pawn.pawns_array[index].current_position.y);//int ft_ft_absolute_valueolute_value(int value)
+// 			else
+// 				steps = ft_absolute_value(temp_farthest_position.x - game->pawn.pawns_array[index].current_position.x);
+// 			// if (steps == 0)
+// 			// 	ft_printf("  No movement position in %s direction.\n", dir_names[dir_index]);
+// 			// else
+// 			// 	printf("  Farthest Position in %s direction: [%d, %d] with %zu steps.\n", dir_names[dir_index], temp_farthest_position.x, temp_farthest_position.y, steps);
+// 			if (steps > max_steps || (steps == max_steps && dir_index < 8))
+// 			{
+// 				max_steps = steps;
+// 				best_position = temp_farthest_position;
+// 				best_dir = dir_names[dir_index];
+// 				game->pawn.pawns_array[index].target_position.x = best_position.x;
+// 				game->pawn.pawns_array[index].target_position.y = best_position.y;
+// 				game->pawn.pawns_array[index].direction = (char *)best_dir;
+// 				game->pawn.pawns_array[index].steps_need = max_steps;
+// 			}
+// 			dir_index++;
+// 		}
+// 		//ft_printf("\nPawn %d Initial Position (%d, %d) Target %s Direction: [%d, %d] with %u steps.",index , best_dir, best_position.x, best_position.y, max_steps);
+// 		ft_printf("\nPawn %d Initial Position (%d, %d) Target [%d, %d] in %s Direction with %u Steps.", index , game->pawn.pawns_array[index].initial_position.x, game->pawn.pawns_array[index].initial_position.y, best_position.x, best_position.y, best_dir, max_steps);
+// 		index++;
+// 	}
+// }
+
+
+// void ft_find_pawn_positions(t_game *game)
+// {
+// 	int	x;
+// 	int	y;
+// 	long long int index = 0;
+
+// 	if (!game || game->map.grid == NULL || game->map.size.x <= 0 || game->map.size.y <= 0)
+// 		ft_print_error("Pawn position fail to get", game);//macro
+// 	y = 0;
+// 	while (y < game->map.size.y)
+// 	{
+// 		if (game->map.grid[y] == NULL)
+// 			ft_print_error("game->map.grid[y] == NULL", game);//macro
+// 		x = 0;
+// 		while (x < game->map.size.x)
+// 		{
+// 			if (game->map.grid[y][x] == '\0')
+// 				break ;
+// 			if (game->map.grid[y][x] == 'W')
+// 			{
+// 				if (index >= game->map.info.nbr_pawn)
+// 					ft_print_error("Too much pawn found magic is happening\n", game);//macro
+//                 game->pawn.pawns_array[index].initial_position = (t_point){x, y};
+//                 game->pawn.pawns_array[index].current_position = (t_point){x, y};
+//                 game->pawn.pawns_array[index].target_position = (t_point){x, y};
+//                 game->pawn.pawns_array[index].direction = " ";
+//                 game->pawn.pawns_array[index].is_returning = 0;
+//                 game->pawn.pawns_array[index].steps_taken = 0;
+//                 game->pawn.pawns_array[index].steps_need = 0;
+//                 index++;
+// 			}
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	if (index < game->map.info.nbr_pawn)
+// 		ft_print_error("Not enough pawns found", game);//macro
+// }
+
+
+
+
+// void ft_move_pawn(t_game *game) {
+//     int index;
+//     const char *reverse_direction;
+//     t_point next_pos;
+//     t_pawn_movement *pawn;
+
+//     index = 0;
+//     while (index < game->map.info.nbr_pawn) {
+//         pawn = &game->pawn.pawns_array[index];
+
+//         if (pawn->is_returning) {
+//             reverse_direction = ft_get_pawn_reverse_direction(pawn->direction);
+//             next_pos = ft_get_pawn_next_position(pawn->current_position, reverse_direction);
+
+//             // Check if returning movement is valid
+//             if (next_pos.x < 0 || next_pos.x >= game->map.size.x || next_pos.y < 0 || next_pos.y >= game->map.size.y ||
+//                 !ft_is_position_free_for_pawn(game->map.grid, next_pos) ||
+//                 (pawn->current_position.x == pawn->initial_position.x && pawn->current_position.y == pawn->initial_position.y)) {
+//                 // If back to initial position or obstacle, stop returning
+//                 pawn->is_returning = 0;
+//             } else {
+//                 ft_update_pawn_grid(game, pawn->current_position, next_pos);
+//                 pawn->current_position = next_pos;
+//             }
+//         } else {
+//             // Calculate the next position based on the pawn's direction
+//             next_pos = ft_get_pawn_next_position(pawn->current_position, pawn->direction);
+
+//             // Check if the next position is valid
+//             if (next_pos.x < 0 || next_pos.x >= game->map.size.x || next_pos.y < 0 || next_pos.y >= game->map.size.y ||
+//                 !ft_is_position_free_for_pawn(game->map.grid, next_pos) ||
+//                 ft_absolute_value(next_pos.x - pawn->initial_position.x) > pawn->steps_need ||
+//                 ft_absolute_value(next_pos.y - pawn->initial_position.y) > pawn->steps_need) {
+//                 // If obstacle or out of steps limit, start returning int ft_ft_absolute_valueolute_value(int value)
+//                 pawn->is_returning = 1;
+//             } else {
+//                 ft_update_pawn_grid(game, pawn->current_position, next_pos);
+//                 pawn->current_position = next_pos;
+
+//                 // Check if the target position is reached
+//                 if (pawn->current_position.x == pawn->target_position.x && pawn->current_position.y == pawn->target_position.y) {
+//                     pawn->is_returning = 1;
+//                 }
+//             }
+//         }
+//        	// printf("Pawn %d moved to [%d, %d]\n", index, pawn->current_position.x, pawn->current_position.y);
+//         index++;
+//     }
+// }
+/ int get_pixel_color(t_img *img, int x, int y)
+// {
+//     char *data = img->data;
+//     int bpp = img->bpp / 8;
+//     int color;
+
+//     data += (y * img->size_line + x * bpp);
+//     color = *(int *)data;
+//     return color;
+// }
+
+// void init_image_struct(t_img *img)
+// {
+// 	img->bpp = 0x0;//for conditional jump
+// 	//..
+// }
+
+// void	ft_display_transparent_image(void *mlx, void *win, char *file_path,
+// 		int x, int y)
+// {
+// 	t_img	img;
+// 	int		i;
+// 	int		j;
+// 	int		color;
+// 	char	*src;
+// 	int		bpp;
+
+// 	img.img = mlx_xpm_file_to_image(mlx, file_path, &img.width, &img.height);
+// 	if (!img.img)
+// 		return ;
+// 	img.data = mlx_get_data_addr(img.img, &img.bpp, &img.size_line,
+// 			&img.endian);
+// 	bpp = img.bpp / 8;
+// 	i = 0;
+// 	while (i < img.height)
+// 	{
+// 		j = 0;
+// 		while (j < img.width)
+// 		{
+// 			src = img.data + (i * img.size_line + j * bpp);
+// 			color = *(int *)src;
+// 			if ((color & 0xFF000000) != 0xFF000000)
+// 				mlx_pixel_put(mlx, win, x + j, y + i, color);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
+// if ((game->fps.current_time.tv_sec - game->fps.last_time.tv_sec) > 1.0)

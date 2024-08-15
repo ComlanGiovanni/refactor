@@ -6,13 +6,13 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 01:46:58 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/15 02:28:43 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/15 14:45:03 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long_bonus.h"
 
-t_a_star_node *ft_init_keke_start_node(t_point start, t_point goal)
+t_a_star_node	*ft_init_keke_start_node(t_point start, t_point goal)
 {
 	t_a_star_node *start_node;
 
@@ -26,7 +26,7 @@ t_a_star_node *ft_init_keke_start_node(t_point start, t_point goal)
 	return (start_node);
 }
 
-t_a_star_node *ft_init_create_neighbor_node(t_game *game, \
+t_a_star_node	*ft_init_create_neighbor_node(t_game *game, \
 	t_a_star_node *current, t_point pos)
 {
 	t_a_star_node *node;
@@ -47,7 +47,7 @@ void	ft_init_neighbor_data(t_game *game, t_point goal)
 {
 	game->keke.a_star.neighbor.goal = goal;
 	game->keke.a_star.neighbor.directions[0x0] = (t_point){0x0, -1};
-	game->keke.a_star.neighbor.directions[0x1] = (t_point){0x0, 1};
+	game->keke.a_star.neighbor.directions[0x1] = (t_point){0x0, 0x1};
 	game->keke.a_star.neighbor.directions[0x2] = (t_point){-1, 0x0};
 	game->keke.a_star.neighbor.directions[0x3] = (t_point){1, 0x0};
 	game->keke.a_star.neighbor.dir_char[0x0] = 'u';
@@ -56,7 +56,7 @@ void	ft_init_neighbor_data(t_game *game, t_point goal)
 	game->keke.a_star.neighbor.dir_char[0x3] = 'r';
 }
 
-void ft_init_a_star_lists(t_game *game)
+void	ft_init_a_star_lists(t_game *game)
 {
 	game->keke.a_star.lists.open_count = 0x0;
 	game->keke.a_star.lists.closed_count = 0x0;
@@ -68,8 +68,7 @@ void ft_init_a_star_lists(t_game *game)
 		ft_print_error(A_STAR_LIST_FAIL, game);
 }
 
-
-void ft_init_a_star_data(t_game *game, t_point *start, \
+void	ft_init_a_star_data(t_game *game, t_point *start, \
 	t_point *goal, t_a_star_node **start_node)
 {
 	*start = ft_find_pos_char(game->map.grid, game->map.size, KEKE_CHAR);

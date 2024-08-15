@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:24:23 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/15 02:32:17 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/15 17:10:01 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -341,9 +341,50 @@ void	ft_move_keke_left(t_game *game, int row, int col);
 void	ft_move_keke_right(t_game *game, int row, int col);
 
 //============ [ file.c ]
+//============ [ ft_pawn_patrolling_utils_bonus.c ]
 
-void ft_find_pawn_positions(t_game *game);
-void ft_free_pawns_array(t_game *game);
+int	ft_is_pawn_position_valid(t_game *game, t_point pos, t_pawn_movement *pawn);
+int ft_is_position_free_for_pawn(char **grid, t_point pos);
+int	ft_is_pawn_obstacle(char **grid, t_point pos);
+t_bool ft_is_position_within_bounds_for_pawn(t_point pos, t_point size);
+t_bool ft_pawn_can_move_to_position(t_game *game, t_point pos);
+
+//============ [ ft_pawn_patrolling_utils_one_bonus.c ]
+
+t_point ft_calculate_farthest_position(t_point start_position, \
+	const char *direction, t_game *game);
+size_t ft_calculate_steps(t_point start, t_point end, const char *direction);
+t_point ft_get_pawn_next_position(t_point current, const char *direction);
+t_point	ft_get_pawn_direction_delta(const char *direction);
+void ft_find_best_direction_for_pawn(t_game *game, t_pawn_movement *pawn);
+
+
+//============ [ ft_pawn_patrolling_utils_two_bonus.c ]
+
+void ft_update_pawn_target(t_pawn_movement *pawn, t_point best_position, \
+	const char *best_dir, size_t max_steps);
+void	ft_find_farthest_position_for_pawn(t_game *game);
+void ft_update_pawn_best_direction(t_pawn_movement *pawn, \
+	t_direction_evaluation *eval);
+void ft_evaluate_pawn_direction(t_game *game, t_pawn_movement *pawn, \
+	const char *direction, t_direction_evaluation *eval);
+void	ft_find_pawn_positions(t_game *game);
+
+//============ [ ft_pawn_patrolling_utils_two_bonus.c ]
+
+void	ft_check_valid_map_for_pawn_positions(t_game *game);
+void	ft_check_row_for_pawn_positions(char *row, t_game *game);
+void	ft_update_pawn_grid(t_game *game, t_point old_position, t_point new_position);
+
+
+//============ [ ft_pawn_patrolling.c ]
+
+void	ft_move_pawn(t_game *game);
+t_bool ft_handle_pawn_collision(t_game *game, \
+	t_pawn_movement *pawn, t_point next_pos);
+void	ft_handle_pawn_returning(t_game *game, t_pawn_movement *pawn);
+void	ft_handle_pawn_movement(t_game *game, t_pawn_movement *pawn);
+const char	*ft_get_pawn_reverse_direction(const char *direction);
 
 //============ [ file.c ]
 
@@ -385,16 +426,27 @@ void	ft_init_map_info(t_game *game, char *line);
 void	ft_init_game_info(t_game *game);
 void	ft_init_pawns_array(t_game *game);
 
+
+//============ [ ft_init_hud_bonus.c ]
+
+void	init_even_letter_images(t_game *game, void **letter_images);
+void	init_odd_letter_images(t_game *game, void **letter_images);
+
 //============ [ file.c ]
 
 void	ft_setup_map(t_game *game);
 void	ft_get_info_map(t_game *game);
 void	ft_play_random_theme(void);
 
-//============ [ file.c ]
+//============ [ ft_init_mlx_bonus.c ]
 
 void	ft_init_mlx(t_game *game);
 void	ft_create_window(t_game *game);
+
+//============ [ ft_init_pawn_bonus.c ]
+
+void	ft_init_pawns_array(t_game *game);
+void	ft_initialize_pawn(t_game *game, long long int index, int x, int y);
 
 //============ [ file.c ]
 
@@ -556,6 +608,10 @@ void	ft_print_display_grid(char **res);
 void	ft_display_position(t_point start, t_point end, t_point z, t_point n);
 void	ft_print_map_info(t_game *game);
 void	ft_print_initial_positions(t_game *game);
+
+//============ [ ft_print_console_one_bonus.c ]
+
+void	ft_print_pawn_info(int index, t_pawn_movement *pawn);
 
 //============ [ ft_print_game_state_bonus.c ]
 

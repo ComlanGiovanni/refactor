@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 03:11:11 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 20:28:25 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:38:41 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void toggle_pause(t_game *game) {
  */
 int	ft_input_manager(int key_code, t_game *game)
 {
-	//move_pawn(game);
+	//ft_move_pawn(game);
 	if (key_code == 112)//make enumaration for input ?abcd
 	{ // 'P' key for pause
 		//game->paused = !game->paused;
@@ -122,7 +122,8 @@ void ft_random_pawn_activation(t_game *game) {
     int random_index = rand() % game->map.info.nbr_pawn;
 
     // Toggle the activation status of a random pawn
-    game->pawn.pawns_array[random_index].is_active = !game->pawn.pawns_array[random_index].is_active;
+	if (game->pawn.pawns_array[random_index].is_available)
+    	game->pawn.pawns_array[random_index].is_active = !game->pawn.pawns_array[random_index].is_active;
 }
 
 

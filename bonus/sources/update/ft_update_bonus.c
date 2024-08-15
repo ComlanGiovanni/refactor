@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 03:02:13 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 20:32:01 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:00:27 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,6 @@
 
 //make a fct to return the good usleep in fonction of the limitation
 //fps limiation usleep(game->fps.limitation); usleep(15000);
-
-void move_pawn(t_game *game);
-//void move_pawn_to_target(t_pawn_movement *pawn, t_game *game);
-void update_grid(t_game *game, t_point old_pos, t_point new_pos, char pawn_char, char void_char);
-int is_obstacle(char **grid, t_point pos, char player_char);
-void ft_find_pawn_positions(t_game *game);
-void ft_init_pawns_array(t_game *game);
-void find_farthest_position_for_pawn(t_game *game);
-t_point calculate_farthest_position(t_point start_position, const char *direction, t_game *game);
-int ft_is_position_free_for_pawn(char **grid, t_point pos);
-t_point get_next_position(t_point current, const char *direction);
 
 void	ft_display_string_sprites(t_game *game, char *alphabet_str,
 		t_point position);
@@ -96,7 +85,7 @@ void	ft_update_fps(t_game *game)
 				system("aplay sounds/special-effects/clock_tic.wav > /dev/null 2>&1 &");
 			else
 				system("aplay sounds/special-effects/clock_tac.wav > /dev/null 2>&1 &");
-			move_pawn(game);
+			ft_move_pawn(game);
         }
 }
 

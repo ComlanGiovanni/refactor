@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:28:13 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/15 01:21:02 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/15 16:32:39 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ struct						s_point
 	int						y;
 };
 
+//fps management bad you have a time struct separate don't know how yet
 struct						s_fps
 {
 	struct timespec			last_time;
@@ -74,8 +75,22 @@ struct s_pawn_movement
 	//t_point *path;
 	t_bool		is_returning;
 	t_bool 	is_active;
+	t_bool 	is_available;
 	int		steps_taken;
 	int		steps_need;
+};
+
+struct s_direction_map
+{
+	const char	*name;
+	t_point		delta;
+};
+
+struct s_direction_evaluation
+{
+	size_t		max_steps;
+	t_point		best_position;
+	const char	*best_dir;
 };
 
 struct						s_pawn
@@ -168,6 +183,22 @@ struct						s_info
 	long long int			nbr_keke;
 	long long int			nbr_portal_1;
 	long long int			nbr_portal_2;
+};
+
+struct s_img_size
+{
+	int		width;
+	int		height;
+};
+
+struct s_img
+{
+	char	*data;
+	int		bpp;
+	int		size_line;
+	int		endian;
+	int		width;
+	int		height;
 };
 
 struct						s_map

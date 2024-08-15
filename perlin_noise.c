@@ -6,7 +6,7 @@
 /*   By: gicomlan <gicomlan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 01:16:16 by gicomlan          #+#    #+#             */
-/*   Updated: 2024/08/14 05:10:53 by gicomlan         ###   ########.fr       */
+/*   Updated: 2024/08/15 17:54:39 by gicomlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -411,10 +411,10 @@ int	main(void)
 
 	ft_init_permutation(perm);
 	y = 0.0f;
-	while (y < 8.0f)
+	while (y < 3.0f)
 	{
 		x = 0.0f;
-		while (x < 8.0f)
+		while (x < 3.0f)
 		{
 			noise_value = ft_perlin_noise(x, y, perm);
 			printf("%c", ft_determine_fill_char(noise_value));
